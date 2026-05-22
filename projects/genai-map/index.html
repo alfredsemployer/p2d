@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>genai value chain map · p2d</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+</head>
+<body class="page-wide">
+  <div class="graph-shell">
+
+    <header class="graph-header">
+      <div class="left">
+        <span class="crumb"><a href="/">p2d</a> / <a href="/projects/">projects</a> /</span>
+        <span class="title">genai value chain map</span>
+      </div>
+      <div class="right">
+        <div class="search">
+          <input type="text" id="search" placeholder="search entities…" autocomplete="off">
+        </div>
+      </div>
+    </header>
+
+    <aside class="graph-sidebar">
+      <div class="section">
+        <h3>edge lens</h3>
+        <ul class="lens-list" id="lens-list">
+          <li data-lens="supply" class="active"><span class="swatch" style="background:var(--amber)"></span> supply &amp; dependency</li>
+          <li data-lens="capital" class="inactive"><span class="swatch" style="background:var(--mauve)"></span> capital flows</li>
+          <li data-lens="resource" class="inactive"><span class="swatch" style="background:var(--green)"></span> resource flows</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>layers</h3>
+        <ul class="layer-list" id="layer-list"></ul>
+      </div>
+
+      <div class="section">
+        <h3>node size</h3>
+        <ul class="layer-list">
+          <li>uniform</li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="graph-canvas">
+      <div class="layer-bands" id="layer-bands"></div>
+      <svg id="graph"></svg>
+    </main>
+
+    <aside class="graph-inspect" id="inspect">
+      <div class="empty">// click a node to inspect.</div>
+    </aside>
+
+    <footer class="graph-footer">
+      <span id="status">seed dataset · 30 nodes</span>
+      <span class="spacer"></span>
+      <span>updated 2026&#8209;05&#8209;22</span>
+      <span>citations available on each edge</span>
+    </footer>
+
+  </div>
+
+  <script src="/assets/data.js"></script>
+  <script src="/assets/graph.js"></script>
+</body>
+</html>
