@@ -17,6 +17,7 @@
       <div class="left">
         <span class="crumb"><a href="../../">p2d</a> / <a href="../../projects/">projects</a> /</span>
         <span class="title">genai value chain map</span>
+        <span class="tagline">— what flows through the layers</span>
       </div>
       <div class="right">
         <div class="search">
@@ -24,6 +25,8 @@
         </div>
       </div>
     </header>
+
+    <section class="kpi-strip" id="kpi-strip"></section>
 
     <aside class="graph-sidebar">
       <div class="section">
@@ -40,11 +43,12 @@
         <ul class="layer-list" id="layer-list"></ul>
       </div>
 
-      <div class="section">
-        <h3>node size</h3>
-        <ul class="layer-list">
-          <li>uniform</li>
-        </ul>
+      <div class="section legend-section">
+        <h3>legend</h3>
+        <div class="legend-item"><span class="dot lg"></span> larger node = larger capex / scale</div>
+        <div class="legend-item"><span class="line amber"></span> solid = supply</div>
+        <div class="legend-item"><span class="line mauve"></span> dashed = capital</div>
+        <div class="legend-item"><span class="line green"></span> dotted = resource flow</div>
       </div>
     </aside>
 
@@ -54,14 +58,14 @@
     </main>
 
     <aside class="graph-inspect" id="inspect">
-      <div class="empty">// click a node to inspect.</div>
+      <!-- default state: receipt + news; swapped to node inspector on click -->
     </aside>
 
     <footer class="graph-footer">
       <span id="status">seed dataset · 30 nodes</span>
       <span class="spacer"></span>
       <span>updated 2026&#8209;05&#8209;22</span>
-      <span>citations available on each edge</span>
+      <span>numbers labeled [est.] are triangulated, not first-party</span>
     </footer>
 
   </div>
