@@ -161,6 +161,101 @@ a:hover { color: var(--amber); border-bottom-color: var(--amber); }
   border: 1px solid var(--border);
   font-size: 13px;
 }
+.post h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg-hi);
+  margin: 24px 0 6px;
+}
+.post ul, .post ol {
+  margin: 0 0 18px;
+  padding-left: 22px;
+  max-width: 68ch;
+}
+.post li { margin: 0 0 6px; }
+.post strong { color: var(--fg-hi); font-weight: 600; }
+.post pre {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  margin: 0 0 18px;
+  max-width: 80ch;
+  overflow-x: auto;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+.post pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  color: var(--fg);
+}
+.post table {
+  border-collapse: collapse;
+  margin: 8px 0 22px;
+  width: 100%;
+  max-width: 80ch;
+  font-size: 13px;
+}
+.post th, .post td {
+  border-bottom: 1px solid var(--border);
+  padding: 6px 12px 6px 0;
+  text-align: left;
+  vertical-align: top;
+}
+.post th {
+  color: var(--fg-mute);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+  border-bottom: 1px solid var(--border-hi);
+}
+.post td.num, .post th.num { text-align: right; padding-right: 14px; font-variant-numeric: tabular-nums; }
+.post tr.total td { border-top: 1px solid var(--border-hi); font-weight: 600; color: var(--fg-hi); }
+.post figure {
+  margin: 24px 0;
+  max-width: 80ch;
+}
+.post figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  background: #000;
+}
+.post figcaption {
+  color: var(--fg-mute);
+  font-size: 12px;
+  margin-top: 8px;
+  letter-spacing: 0.02em;
+}
+.post hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+  max-width: 68ch;
+}
+.post .tldr {
+  border: 1px solid var(--border-hi);
+  background: var(--bg-panel);
+  padding: 14px 18px;
+  margin: 0 0 28px;
+  max-width: 68ch;
+}
+.post .tldr .label {
+  color: var(--amber);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-right: 8px;
+}
+.post .repo-link {
+  color: var(--fg-mute);
+  font-size: 12px;
+  margin-bottom: 24px;
+}
 
 /* ─── projects ─── */
 .project-card {
