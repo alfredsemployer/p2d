@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>podcast · p2d</title>
+  <meta name="description" content="A self-study audio curriculum on AI infrastructure and hardware — the value chain, key players, history, and trends.">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .ep-feature { border: 1px solid var(--border-hi); background: var(--bg-panel); padding: 20px 22px; margin: 0 0 28px; }
+    .ep-feature .tag { color: var(--amber); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+    .ep-feature h2 { font-size: 16px; font-weight: 600; color: var(--fg-hi); margin: 6px 0 4px; letter-spacing: 0.01em; }
+    .ep-feature .ep-meta { color: var(--fg-mute); font-size: 12px; margin-bottom: 14px; }
+    audio { width: 100%; margin: 6px 0 4px; filter: invert(0.9) hue-rotate(180deg); }
+    .ep-list { list-style: none; padding: 0; margin: 0 0 8px; }
+    .ep-list li { display: grid; grid-template-columns: 34px 1fr auto; gap: 14px; padding: 12px 0; border-top: 1px solid var(--border); align-items: baseline; }
+    .ep-list li:last-child { border-bottom: 1px solid var(--border); }
+    .ep-num { color: var(--fg-mute); font-variant-numeric: tabular-nums; font-size: 13px; }
+    .ep-title { color: var(--fg-hi); font-weight: 500; }
+    .ep-meta { color: var(--fg-mute); font-size: 12px; margin-top: 2px; }
+    .ep-soon { color: var(--fg-dim); font-size: 12px; }
+    details.transcript { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 14px; }
+    details.transcript summary { cursor: pointer; color: var(--fg); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; list-style: none; user-select: none; }
+    details.transcript summary::before { content: '＋  '; color: var(--fg-mute); }
+    details.transcript[open] summary::before { content: '－  '; }
+    .transcript .turn { margin: 0 0 12px; max-width: 68ch; color: var(--fg); }
+    .transcript .spk { display: inline-block; min-width: 42px; margin-right: 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; vertical-align: top; }
+    .transcript .spk.aus { color: var(--green); }
+    .transcript .spk.usa { color: var(--mauve); }
+    .transcript-body { margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <a class="wordmark" href="../">p2d</a>
+      <nav class="nav">
+        <a href="../">posts</a>
+        <a href="../projects/">projects</a>
+        <a href="../podcast/" class="active">podcast</a>
+        <a href="../about/">about</a>
+      </nav>
+    </header>
+
+    <section class="intro">
+      <h1>the AI infrastructure &amp; hardware curriculum</h1>
+      <p>a self-study audio series — roughly two hours across six episodes — on the systems behind generative AI: the value chain layer by layer, the key players, the history, and where the constraints actually bind. two co-hosts, one Australian and one American. built for getting fluent enough to talk about this in a room.</p>
+    </section>
+
+    <div class="ep-feature">
+      <span class="tag">Episode 01 · now playing</span>
+      <h2>The Value Chain: From Sand to Served Tokens</h2>
+      <div class="ep-meta">21:31 · the reference map every later episode hangs on — fabless vs. foundry, the choke points, training vs. inference.</div>
+      <audio controls preload="none" src="./audio/ep1.mp3"></audio>
+      <div><a href="./audio/ep1.mp3" download>download mp3 (15 MB)</a></div>
+
+      <details class="transcript">
+        <summary>transcript</summary>
+        <div class="transcript-body">
+        <p class="turn"><span class="spk aus">AUS</span>Hello and welcome to the series. I&#x27;m here with my co-host, and over the next six episodes we&#x27;re going to build you a complete working picture of the AI infrastructure and hardware world.</p>
+        <p class="turn"><span class="spk usa">USA</span>We are. And the goal is specific and practical. By the end, you should be able to walk into an interview for an AI infrastructure or hardware role and speak fluently about how this whole machine fits together, who the key players are, and what&#x27;s actually driving the headlines.</p>
+        <p class="turn"><span class="spk aus">AUS</span>I love that it&#x27;s interview-focused. So this is really the physical chain that turns sand into the tokens a chatbot streams back at you, plus the money and power flowing along it.</p>
+        <p class="turn"><span class="spk usa">USA</span>Exactly. You already know the basics. What this curriculum does is give you the mental model that organizes everything else.</p>
+        <p class="turn"><span class="spk aus">AUS</span>And today, episode one, is the map, right? Lay out the whole value chain layer by layer, name the marquee company in each layer, and show where the money and bottlenecks concentrate.</p>
+        <p class="turn"><span class="spk usa">USA</span>That&#x27;s it. Every later episode goes deep on a slice. Fabrication in episode two, the chips and racks in episode three, datacenters and power in episode four, the business and strategy in episode five, and the latest fast-moving developments in episode six. So if a term flies by quickly today, don&#x27;t worry, we&#x27;ll come back to it.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Okay, so before we walk the chain, give me the single most useful sentence in the entire series.</p>
+        <p class="turn"><span class="spk usa">USA</span>Here it is. AI capability is bottlenecked by compute, and compute is bottlenecked by a narrow, deep supply chain where a handful of companies hold near-monopolies at each layer. That&#x27;s the thesis. If you remember nothing else, remember that the AI boom is, at bottom, a supply chain story, and a remarkably concentrated one.</p>
+        <p class="turn"><span class="spk aus">AUS</span>A supply chain story. So walk me through that chain in one breath, atoms to tokens, and then we&#x27;ll go back and unpack it.</p>
+        <p class="turn"><span class="spk usa">USA</span>Right. It goes roughly like this. Chip design and the software tools to design with, then the equipment that builds chip factories, then fabrication, the factories themselves, then memory, then advanced packaging that stitches the pieces together, then the accelerator chip itself, then the networking that wires thousands of chips into one machine, then the server and rack systems, then the datacenter that supplies power and cooling, then the cloud providers who rent it all out, and finally the model labs whose AI systems create the demand for every layer beneath them.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Design, equipment, fabrication, memory, packaging, accelerator, networking, systems, datacenter, cloud, model labs. That&#x27;s the spine of everything.</p>
+        <p class="turn"><span class="spk usa">USA</span>That&#x27;s the spine.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Now the phrase &quot;value chain&quot; is doing a lot of work here. Define it for me.</p>
+        <p class="turn"><span class="spk usa">USA</span>A value chain is just the full sequence of steps that adds value as a raw input becomes a finished product and reaches the customer. At each step, somebody does something, captures some margin, and hands it on. What makes the AI hardware value chain so interesting, and so investable, and so geopolitically fraught, is that the value and the power are not spread evenly across those steps. They pile up at a few choke points.</p>
+        <p class="turn"><span class="spk aus">AUS</span>And a choke point is a layer everyone above it depends on and very few companies can supply.</p>
+        <p class="turn"><span class="spk usa">USA</span>Exactly. Control a choke point and you have enormous leverage over the entire chain.</p>
+        <p class="turn"><span class="spk aus">AUS</span>There&#x27;s a classic way to picture where the value lands, isn&#x27;t there? The smile curve.</p>
+        <p class="turn"><span class="spk usa">USA</span>There is. Picture the value chain laid out left to right, and plot how much profit each step captures as a curve. It tends to look like a smile. High at the two ends, the deep design and intellectual property end on one side, and the customer-facing, brand-and-software end on the other, and lower in the middle, where commoditized assembly happens.</p>
+        <p class="turn"><span class="spk aus">AUS</span>But you said there&#x27;s a twist in the AI world.</p>
+        <p class="turn"><span class="spk usa">USA</span>There is. A few brutal middle-of-the-chain choke points, like extreme ultraviolet lithography, leading-edge fabrication, high-bandwidth memory, and advanced packaging, have such scarce supply that they capture enormous value too. So it&#x27;s a smile with a few unexpected peaks in the middle.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Great image. Let&#x27;s walk the layers properly and meet the marquee players. Start at the very bottom.</p>
+        <p class="turn"><span class="spk usa">USA</span>The bottom is design and design software. Before any chip is built, it&#x27;s designed, and chips are designed using software called EDA, electronic design automation. That&#x27;s the toolset engineers use to lay out and verify billions of transistors. This layer is a tight oligopoly. Synopsys and Cadence are the two giants, with Siemens rounding out the top three. Alongside them sits Arm, which licenses the instruction-set architecture and CPU designs that anchor most datacenter processors. And this is also the layer where custom AI chips, Google&#x27;s and Amazon&#x27;s and others, actually get designed.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Just above design is the equipment layer, the companies that build the machines that build chips. Who&#x27;s the crown jewel?</p>
+        <p class="turn"><span class="spk usa">USA</span>ASML, a Dutch company that holds a one hundred percent monopoly on EUV, extreme ultraviolet lithography. Lithography is the process of printing circuit patterns onto silicon using light, and EUV uses an extraordinarily short wavelength of light to print the tiniest features. You literally cannot manufacture a leading-edge chip without ASML&#x27;s machines, and only ASML makes them.</p>
+        <p class="turn"><span class="spk aus">AUS</span>A true monopoly. What do the numbers look like?</p>
+        <p class="turn"><span class="spk usa">USA</span>In twenty twenty-five ASML had net sales of around thirty-two and a half billion euros, with gross margins around fifty-three percent. A single next-generation High-NA EUV machine, High-NA meaning higher numerical aperture, for printing even finer features, reportedly costs upwards of three hundred and fifty million dollars, though treat that figure as a commonly cited approximation.</p>
+        <p class="turn"><span class="spk aus">AUS</span>And ASML isn&#x27;t alone in that layer.</p>
+        <p class="turn"><span class="spk usa">USA</span>No. Around ASML sit four more equipment giants, each dominant in its niche. Applied Materials, Lam Research, Tokyo Electron, and KLA. Remember those names, they matter enormously for geopolitics later.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Noted. Next is fabrication, the factories. And this is the most concentrated choke point of all.</p>
+        <p class="turn"><span class="spk usa">USA</span>It is. The factories are called foundries or fabs, and they turn designs into physical silicon wafers. And here we hit it. TSMC, the Taiwan Semiconductor Manufacturing Company. Essentially all leading-edge AI silicon, Nvidia&#x27;s chips, AMD&#x27;s, Google&#x27;s, Apple&#x27;s, is fabricated by TSMC. In twenty twenty-five TSMC had revenue of roughly one hundred and twenty-two billion dollars and has guided to more than thirty percent growth in twenty twenty-six, on track to become the first chip company past around one hundred and sixty billion in annual revenue, with gross margins typically above fifty percent.</p>
+        <p class="turn"><span class="spk aus">AUS</span>This feels like the moment to define &quot;process node,&quot; since people throw around two-nanometer and three-nanometer.</p>
+        <p class="turn"><span class="spk usa">USA</span>Right. A process node is, loosely, a generation of manufacturing technology. Smaller node numbers mean you can pack more transistors into the same area, which means more performance per watt, exactly what AI accelerators crave. TSMC&#x27;s two-nanometer node, called N2, entered high-volume manufacturing in the fourth quarter of twenty twenty-five with good yield.</p>
+        <p class="turn"><span class="spk aus">AUS</span>And yield is the make-or-break concept here.</p>
+        <p class="turn"><span class="spk usa">USA</span>It is. Yield is the percentage of usable, working chips you get per wafer. On a brand-new node, low yield means high effective cost per good chip. TSMC&#x27;s real moat isn&#x27;t just having the smallest node, it&#x27;s having high yield on it. Its yields run around eighty percent on leading nodes, while its closest competitors lag well behind.</p>
+        <p class="turn"><span class="spk aus">AUS</span>So who are those competitors, and how far behind?</p>
+        <p class="turn"><span class="spk usa">USA</span>Samsung Foundry is a distant number two, with twenty twenty-five foundry revenue of roughly fifteen to eighteen billion dollars, less than a single TSMC quarter, and its two-nanometer yields have been reported below forty percent, which is exactly why customers stay with TSMC. Intel is trying to re-enter the leading-edge foundry business with its 18A node, but its foundry segment is still deeply unprofitable, losing around two point three billion dollars in the third quarter of twenty twenty-five alone.</p>
+        <p class="turn"><span class="spk aus">AUS</span>That brings up a structural concept I want you to nail down, the fabless-foundry-IDM split.</p>
+        <p class="turn"><span class="spk usa">USA</span>Yes. For decades, chip companies did everything in-house, designing and manufacturing under one roof. A company that does both is called an IDM, an integrated device manufacturer. Intel and Samsung are the classic examples. But building and running a leading-edge fab now costs more than twenty billion dollars and demands relentless capital investment. So most chip companies went fabless, they design chips but own no factories.</p>
+        <p class="turn"><span class="spk aus">AUS</span>So Nvidia and AMD are fabless, and they hand designs to a foundry like TSMC.</p>
+        <p class="turn"><span class="spk usa">USA</span>Exactly. A foundry is a pure-play manufacturer that builds chips for others but designs none of its own. And this separation of design from manufacturing is one of the most important structural facts in the industry. It&#x27;s why a design company like Nvidia and a manufacturing company like TSMC can each hold a near-monopoly in their own layer at the same time.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Let&#x27;s move up to memory. Why does it matter so much for AI?</p>
+        <p class="turn"><span class="spk usa">USA</span>Because AI accelerators are starved for data. They can do math far faster than ordinary memory can feed them. The answer is HBM, high-bandwidth memory, which stacks memory chips vertically and places them right next to the processor for enormous bandwidth. Because AI workloads are memory-bandwidth-bound, HBM capacity and bandwidth often determine real-world performance.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Another oligopoly, I&#x27;m guessing.</p>
+        <p class="turn"><span class="spk usa">USA</span>Another oligopoly, dominated by three Korean and American firms. SK hynix leads with roughly sixty-two percent of the HBM market, followed by Micron at around twenty-one percent, and Samsung at around seventeen percent. The HBM market was worth roughly thirty-eight billion dollars in twenty twenty-five and is projected to reach around fifty-eight billion in twenty twenty-six, with demand growing about one hundred and thirty percent year over year.</p>
+        <p class="turn"><span class="spk aus">AUS</span>And there&#x27;s a ripple effect worth mentioning in an interview.</p>
+        <p class="turn"><span class="spk usa">USA</span>There is. HBM is so hot that producers are shifting capacity toward it, which is dragging the broader memory market into shortage.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Next comes advanced packaging, which you said newcomers underrate. Why?</p>
+        <p class="turn"><span class="spk usa">USA</span>Because a single chip can only be made so big. There&#x27;s a physical reticle limit of around eight hundred and fifty-eight square millimeters, the largest pattern the lithography tools can print at once. To keep scaling past that, the industry now stitches multiple silicon pieces, called chiplets, plus the HBM stacks, into a single package. TSMC&#x27;s dominant technology for this is called CoWoS, chip-on-wafer-on-substrate.</p>
+        <p class="turn"><span class="spk aus">AUS</span>And here&#x27;s the striking part you flagged.</p>
+        <p class="turn"><span class="spk usa">USA</span>In twenty twenty-five and twenty twenty-six, packaging, not the transistor, is arguably the single tightest bottleneck in the whole chain. Nvidia&#x27;s entire product ramp is gated by how much CoWoS capacity TSMC can build. That capacity went from roughly thirteen thousand wafers a month at the end of twenty twenty-three to around seventy-five thousand at the end of twenty twenty-five, heading toward perhaps one hundred and twenty to one hundred and thirty thousand by the end of twenty twenty-six, and it&#x27;s still been sold out. When you hear GPUs are supply-constrained, packaging and HBM are usually why.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Okay, now the star of the show, the accelerator. What exactly is it?</p>
+        <p class="turn"><span class="spk usa">USA</span>An accelerator is a specialized chip built to do the massively parallel matrix multiplication that training and running AI models require. The most familiar accelerator is the GPU, the graphics processing unit, which was originally designed for video games but turned out to be perfect for AI math. This is the layer with the most visible value capture and the most famous moat, and it belongs overwhelmingly to Nvidia, led by its CEO Jensen Huang.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Just how dominant is Nvidia?</p>
+        <p class="turn"><span class="spk usa">USA</span>It holds something like eighty to ninety percent of AI accelerator revenue and well over ninety percent of frontier model training, effectively all of it. Its fiscal twenty twenty-six revenue came in around two hundred and sixteen billion dollars, up sixty-five percent, with gross margins around seventy-five percent. The credible number two is AMD with its Instinct line, stronger in inference than in frontier training. And then there are the hyperscalers&#x27; own custom chips, plus the silent enablers Broadcom and Marvell, who help those custom chips get built.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Wiring all those accelerators together is the networking layer. And training is as much a networking problem as a compute one, isn&#x27;t it?</p>
+        <p class="turn"><span class="spk usa">USA</span>It really is, because you need thousands of chips to behave like one machine. There are two domains. Scale-up means the ultra-fast links within a single rack, where Nvidia&#x27;s NVLink is the marquee technology. And scale-out means the links across many racks, where the choice is between InfiniBand and Ethernet.</p>
+        <p class="turn"><span class="spk aus">AUS</span>What&#x27;s the structural trend there?</p>
+        <p class="turn"><span class="spk usa">USA</span>Ethernet is gaining ground because it&#x27;s open and multi-vendor. The key players are Broadcom and Arista on the Ethernet side, with Nvidia pushing its own InfiniBand and Ethernet products. We&#x27;ll devote real time to this in episode three.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Above networking sits the systems layer. What changed there?</p>
+        <p class="turn"><span class="spk usa">USA</span>The systems layer integrates accelerators, processors, memory, networking, power, and now liquid cooling into complete servers and racks. The defining shift is that AI compute is increasingly sold as an entire rack, not as a chip. Nvidia&#x27;s reference design, the GB200 NVL72, packs seventy-two GPUs and thirty-six processors into one liquid-cooled rack drawing well over one hundred kilowatts. Most of the volume is actually built by contract manufacturers like Foxconn and Quanta, with Dell and Supermicro leading the branded-server market.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Then the building itself, the datacenter. And this is where power becomes the story.</p>
+        <p class="turn"><span class="spk usa">USA</span>It is. This is a theme that dominates episode four. In twenty twenty-five and twenty twenty-six, power has become the new binding constraint, arguably more than chips. You can now buy GPUs faster than you can energize and cool them. Global datacenter electricity use is projected to exceed roughly one thousand terawatt-hours by the end of twenty twenty-six, about as much as the entire country of Japan uses in a year.</p>
+        <p class="turn"><span class="spk aus">AUS</span>So that&#x27;s why we&#x27;re hearing about gas and nuclear deals.</p>
+        <p class="turn"><span class="spk usa">USA</span>Right. Grid connection queues in the US stretch into multi-year waits, which is why companies are turning to on-site gas generation and even nuclear deals to get power faster.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Above the building is the cloud layer, the hyperscalers. Who are they, and why do we watch them so closely?</p>
+        <p class="turn"><span class="spk usa">USA</span>The big three are Amazon Web Services, Microsoft Azure, and Google Cloud. Their capital expenditure, capex, the money they spend building infrastructure, is the single most-watched demand signal in the entire sector. Combined big-tech capex for twenty twenty-six has been guided in the range of roughly six hundred to seven hundred and twenty-five billion dollars, up from around three hundred and sixty-five to five hundred billion in twenty twenty-five, with about three-quarters of it tied directly to AI.</p>
+        <p class="turn"><span class="spk aus">AUS</span>So when they raise capex guidance, the whole chain feels it.</p>
+        <p class="turn"><span class="spk usa">USA</span>TSMC, Nvidia, the memory makers, the power suppliers, all of them. And alongside the hyperscalers, a newer layer called neoclouds, GPU-specialist clouds like CoreWeave, rents dense GPU capacity to the model labs.</p>
+        <p class="turn"><span class="spk aus">AUS</span>And at the very top, the model labs, the demand engine.</p>
+        <p class="turn"><span class="spk usa">USA</span>OpenAI, Anthropic, Google DeepMind, Meta, xAI. They build the frontier models that consume all this compute. Increasingly they sign multi-year, multi-gigawatt, hundreds-of-billions-of-dollar compute commitments that literally pull capacity into existence. The chain is now demand-shaped by roughly five labs.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Now there are two demand engines running through the whole stack that you said we must distinguish, training and inference.</p>
+        <p class="turn"><span class="spk usa">USA</span>Yes. Training is the process of building the model, a huge, bursty, capital-intensive computation that leans hardest on raw compute and on the networking that ties thousands of chips together. Inference is running the finished model to answer queries, a continuous, ongoing, margin-sensitive cost that leans more on memory bandwidth and on cost-per-token efficiency.</p>
+        <p class="turn"><span class="spk aus">AUS</span>And the balance between them is shifting.</p>
+        <p class="turn"><span class="spk usa">USA</span>It is. They pull on different parts of the stack, and the industry is shifting toward inference. It was about half of AI compute in twenty twenty-five and is projected to be roughly two-thirds in twenty twenty-six, as companies move from experiments to running AI around the clock.</p>
+        <p class="turn"><span class="spk aus">AUS</span>That connects to the big economic framing, compute as the new oil.</p>
+        <p class="turn"><span class="spk usa">USA</span>Right. Compute has become a strategic commodity that everyone is racing to secure, and capex is flowing into it at staggering scale. The crucial insight for an interview is this. Today the AI value chain is supply-constrained, not demand-constrained. The demand is effectively unlimited. The limit is how fast the chain can produce leading-edge wafers, package them, stack HBM onto them, and plug them into a powered, cooled building. Whoever controls the scarce links, TSMC, ASML, SK hynix, Nvidia, holds the leverage.</p>
+        <p class="turn"><span class="spk aus">AUS</span>So how do we actually use this map? That&#x27;s the real payoff of episode one.</p>
+        <p class="turn"><span class="spk usa">USA</span>Any AI hardware news story you encounter can be located on this chain. When you read that GPUs are sold out, ask, is the constraint really the chip, or is it packaging and HBM beneath it? When you read about a giant new datacenter, ask, where&#x27;s the power coming from, and who&#x27;s renting it? When you read about export controls, ask, which choke point are they aimed at, the lithography machines, the leading-edge fab, the memory, or the accelerators?</p>
+        <p class="turn"><span class="spk aus">AUS</span>So every story lives somewhere on the map, and locating it tells you who has leverage.</p>
+        <p class="turn"><span class="spk usa">USA</span>Exactly, and what&#x27;s actually at stake. That single habit will make you sound fluent.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Let me ask for the systemic-risk version of the whole picture, because I think it&#x27;s the most compelling thing you can say about this industry.</p>
+        <p class="turn"><span class="spk usa">USA</span>Here it is. Nearly every layer has a near-monopoly. TSMC in fabrication. ASML in EUV lithography. Nvidia, with its software, in accelerators. SK hynix in high-bandwidth memory. And TSMC again in advanced packaging. Several of these sit physically in just three places, Taiwan, Korea, and the Netherlands. A disruption at any one of them cascades through the entire AI economy.</p>
+        <p class="turn"><span class="spk aus">AUS</span>That fragility is the deepest truth of the value chain, and the thread we&#x27;ll pull on for the rest of the series. So that&#x27;s the map.</p>
+        <p class="turn"><span class="spk usa">USA</span>That&#x27;s the map. And in the next episode, we go all the way to the bottom of the stack, into fabrication and equipment, where TSMC and ASML run the deepest moats in all of technology, and we&#x27;ll find out what two-nanometer really means and why a single fab costs more than twenty billion dollars to build.</p>
+        <p class="turn"><span class="spk aus">AUS</span>Can&#x27;t wait. See you in episode two for fabrication and equipment.</p>
+        </div>
+      </details>
+    </div>
+
+    <ul class="ep-list">
+      <li>
+        <span class="ep-num">02</span>
+        <div>
+          <span class="ep-title">Fabrication &amp; Equipment: The Deepest Moat</span>
+          <div class="ep-meta">in production</div>
+        </div>
+        <span class="ep-soon">soon</span>
+      </li>
+      <li>
+        <span class="ep-num">03</span>
+        <div>
+          <span class="ep-title">Accelerators, Memory &amp; Networking: The Chip and the Rack</span>
+          <div class="ep-meta">in production</div>
+        </div>
+        <span class="ep-soon">soon</span>
+      </li>
+      <li>
+        <span class="ep-num">04</span>
+        <div>
+          <span class="ep-title">Datacenters, Power &amp; Cooling: Why Energy Is the New Bottleneck</span>
+          <div class="ep-meta">in production</div>
+        </div>
+        <span class="ep-soon">soon</span>
+      </li>
+      <li>
+        <span class="ep-num">05</span>
+        <div>
+          <span class="ep-title">The Business &amp; Strategic Layer: Moats, Money, and Geopolitics</span>
+          <div class="ep-meta">in production</div>
+        </div>
+        <span class="ep-soon">soon</span>
+      </li>
+      <li>
+        <span class="ep-num">06</span>
+        <div>
+          <span class="ep-title">Recent Developments &amp; the Frontier</span>
+          <div class="ep-meta">in production</div>
+        </div>
+        <span class="ep-soon">soon</span>
+      </li>
+    </ul>
+
+    <p class="intro" style="margin-top:28px;color:var(--fg-dim);font-size:12px;">voices: Aoede (Australian) &amp; Zephyr (American), Gemini 3.1 Flash TTS. episodes 2–6 to follow.</p>
+  </div>
+</body>
+</html>
