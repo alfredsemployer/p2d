@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><!-- STAGING: remove on launch to a dedicated domain -->
+<title>Cold Email Cost Calculator — the real all-in price of every cold email tool (2026)</title>
+<meta name="description" content="The headline price is never the real price. Enter your sending volume and see the true all-in monthly cost — software + mailboxes + domains — across Smartlead, Instantly, lemlist, QuickMail, Saleshandy and Mailshake.">
+<link rel="canonical" href="https://p2d.space/cold-email-cost/">
+<meta property="og:title" content="Cold Email Cost Calculator (2026)">
+<meta property="og:description" content="The real all-in monthly cost of cold email tools, including the mailbox and domain costs nobody shows you.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --bg:#0d0f14; --panel:#161922; --panel2:#1d212d; --line:#2a2f3d;
+    --ink:#e8eaf0; --muted:#9aa3b5; --faint:#6b7488;
+    --accent:#5eead4; --accent2:#38bdf8; --warn:#fbbf24; --good:#4ade80;
+    --radius:14px;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+  header.hero{padding:54px 0 30px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  h1{font-size:clamp(28px,4.4vw,44px);line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
+  h1 em{color:var(--accent);font-style:normal}
+  .lede{font-size:18px;color:var(--muted);max-width:62ch;margin:0}
+  .updated{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:18px}
+
+  section{padding:34px 0}
+  h2{font-size:22px;letter-spacing:-.01em;margin:0 0 6px}
+  .sub{color:var(--muted);margin:0 0 22px;font-size:15px}
+
+  .calc{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin-top:8px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  label.field{display:block}
+  .flabel{font-size:13px;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between;align-items:baseline}
+  .fval{font-family:var(--mono);color:var(--accent);font-size:15px}
+  input[type=range]{width:100%;accent-color:var(--accent);height:4px}
+  input[type=number]{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:10px 12px;font-family:var(--mono);font-size:15px}
+  .toggles{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+  .chk{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);cursor:pointer}
+  .chk input{accent-color:var(--accent);width:17px;height:17px}
+  .billtoggle{display:inline-flex;background:var(--panel2);border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .billtoggle button{background:none;border:0;color:var(--muted);font-family:var(--mono);font-size:13px;padding:8px 14px;cursor:pointer}
+  .billtoggle button.on{background:var(--accent);color:#08231f;font-weight:600}
+
+  details.adv{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+  details.adv summary{cursor:pointer;color:var(--muted);font-size:13px;font-family:var(--mono)}
+  .adv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
+  @media(max-width:680px){.adv-grid{grid-template-columns:1fr}}
+
+  .headline{background:linear-gradient(135deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;margin:26px 0}
+  .headline .big{font-size:15px;color:var(--muted);margin:0 0 6px}
+  .headline strong{color:var(--ink)}
+  .gap{font-family:var(--mono);font-size:clamp(22px,3.5vw,30px);color:var(--warn);font-weight:600;letter-spacing:-.01em}
+  .mailmath{font-family:var(--mono);font-size:13px;color:var(--faint);margin-top:10px}
+
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:right;padding:13px 12px;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--faint);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  tbody tr:hover{background:var(--panel2)}
+  .rank{color:var(--faint);font-family:var(--mono)}
+  .tool{font-weight:600;font-size:15px}
+  .badge{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:5px;border:1px solid var(--line);color:var(--muted);margin-left:7px;vertical-align:middle}
+  .badge.db{border-color:#2b4a4f;color:var(--accent)}
+  .plan{color:var(--muted);font-size:12px}
+  .total{font-family:var(--mono);font-weight:600;font-size:16px;color:var(--ink)}
+  .breakdown{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  tr.best .total{color:var(--good)}
+  tr.best{background:rgba(74,222,128,.05)}
+  .cta{display:inline-block;background:var(--accent);color:#08231f;font-weight:600;font-size:13px;padding:7px 14px;border-radius:8px}
+  .cta:hover{text-decoration:none;filter:brightness(1.07)}
+  .na{color:var(--faint);font-style:italic}
+
+  .method li{margin-bottom:10px;color:var(--muted)}
+  .method code{font-family:var(--mono);background:var(--panel2);padding:2px 6px;border-radius:5px;color:var(--accent);font-size:13px}
+  .disclosure{font-size:13px;color:var(--faint);border:1px dashed var(--line);border-radius:10px;padding:14px 16px;margin-top:10px}
+  footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--faint);font-size:13px}
+  .pricetable td,.pricetable th{font-size:13px;padding:10px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Cold Email Cost Calculator</p>
+    <h1>The headline price is <em>never</em> the real price.</h1>
+    <p class="lede">Every cold email tool advertises a low monthly fee — then volume forces you onto dozens of mailboxes and domains they never priced in. Enter your real sending volume and see the true all-in cost across the six leading platforms.</p>
+    <p class="updated">Pricing data verified <span id="updated"></span> · 6 platforms tracked</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="calc">
+      <div class="grid">
+        <label class="field">
+          <span class="flabel">Emails sent per month <span class="fval" id="volOut">25,000</span></span>
+          <input type="range" id="vol" min="1000" max="500000" step="1000" value="25000">
+        </label>
+        <label class="field">
+          <span class="flabel">Active prospects in your lists <span class="fval" id="prosOut">10,000</span></span>
+          <input type="range" id="pros" min="500" max="200000" step="500" value="10000">
+        </label>
+      </div>
+      <div class="toggles">
+        <label class="chk"><input type="checkbox" id="needDb"> I need a built-in lead database</label>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
+          <span style="font-size:13px;color:var(--muted)">Billing</span>
+          <div class="billtoggle">
+            <button id="bMonthly" class="on">Monthly</button>
+            <button id="bAnnual">Annual</button>
+          </div>
+        </div>
+      </div>
+
+      <details class="adv">
+        <summary>Adjust the sending assumptions</summary>
+        <div class="adv-grid">
+          <label class="field"><span class="flabel">Emails / mailbox / day <span class="fval" id="epmOut">30</span></span><input type="range" id="epm" min="10" max="80" step="5" value="30"></label>
+          <label class="field"><span class="flabel">Sending days / month <span class="fval" id="daysOut">22</span></span><input type="range" id="days" min="20" max="31" step="1" value="22"></label>
+          <label class="field"><span class="flabel">$ / mailbox / month <span class="fval" id="mbcOut">$3.00</span></span><input type="range" id="mbc" min="1" max="8" step="0.5" value="3"></label>
+          <label class="field"><span class="flabel">Mailboxes / domain <span class="fval" id="mpdOut">3</span></span><input type="range" id="mpd" min="1" max="5" step="1" value="3"></label>
+        </div>
+      </details>
+    </div>
+
+    <div class="headline" id="headline"></div>
+
+    <table>
+      <thead>
+        <tr><th>#</th><th>Platform</th><th>Plan</th><th>Software</th><th>Infrastructure</th><th>True total / mo</th><th></th></tr>
+      </thead>
+      <tbody id="results"></tbody>
+    </table>
+    <p class="sub" style="margin-top:14px;font-size:13px">Infrastructure = mailboxes + domains you must buy regardless of platform. It's applied equally to every tool, so the ranking reflects real software value — not marketing.</p>
+  </div>
+</section>
+
+<section style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap method">
+    <h2>How this is calculated</h2>
+    <p class="sub">No black box. Here's the exact model — adjust any assumption above.</p>
+    <ol>
+      <li>Safe cold sending is ~<code>30 emails / mailbox / day</code>. Your monthly volume ÷ sending days ÷ this rate = <strong>mailboxes you actually need</strong>.</li>
+      <li>Mailboxes are grouped onto domains (<code>3 per domain</code> by default). Each domain and mailbox carries a real monthly cost most calculators ignore.</li>
+      <li>For each platform we pick the <strong>cheapest plan that actually fits</strong> your volume, prospect count, and required number of sending accounts — then add identical infrastructure cost.</li>
+      <li>The winner is the lowest <em>true</em> all-in monthly cost — not the lowest sticker price.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Every plan, side by side</h2>
+    <p class="sub">Raw published pricing for all six platforms. This is the dataset the calculator runs on.</p>
+    <div style="overflow-x:auto">
+      <table class="pricetable">
+        <thead><tr><th>Platform</th><th>Plan</th><th>$/mo</th><th>Sends/mo</th><th>Prospects</th><th>Mailboxes</th><th>Warmup</th><th>Lead DB</th></tr></thead>
+        <tbody id="priceTable"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="disclosure"><strong>How this stays free.</strong> Some platform links are affiliate links — if you start a paid plan through one, we may earn a commission at no extra cost to you. It never changes the ranking: results are sorted purely by your inputs and the cost model above.</p>
+    <p>Pricing is collected from each vendor's public pricing page and re-verified regularly. Vendors change prices often — always confirm on the vendor site before buying. Last verified <span id="updated2"></span>.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var D = window.CEC_DATA, def = D.defaults;
+  document.getElementById('updated').textContent = D.lastUpdated;
+  document.getElementById('updated2').textContent = D.lastUpdated;
+
+  var state = {
+    vol:25000, pros:10000, needDb:false, annual:false,
+    epm:def.emailsPerMailboxPerDay, days:def.sendingDaysPerMonth,
+    mbc:def.mailboxMonthly, mpd:def.mailboxesPerDomain
+  };
+
+  function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
+  function fmtN(n){ return Number(n).toLocaleString(); }
+  function link(t){ return (t.affiliate && t.affiliate.url) ? t.affiliate.url : t.homepage; }
+
+  function mailboxesNeeded(){
+    var perDay = state.vol / state.days;
+    return Math.max(1, Math.ceil(perDay / state.epm));
+  }
+  function infraCost(mb){
+    var domains = Math.ceil(mb / state.mpd);
+    return mb * state.mbc + domains * (def.domainAnnual/12);
+  }
+
+  // cheapest plan that fits; returns {plan, fits:true} or {fits:false}
+  function pickPlan(tool, mb){
+    var ok = tool.plans.filter(function(p){
+      var sendsOk = p.sends === null || p.sends >= state.vol;
+      var prosOk  = p.prospects === null || p.prospects >= state.pros;
+      var mbOk    = p.maxMailboxes === null || p.maxMailboxes >= mb;
+      return sendsOk && prosOk && mbOk;
+    });
+    if(!ok.length) return {fits:false};
+    ok.sort(function(a,b){ return planPrice(a) - planPrice(b); });
+    return {fits:true, plan:ok[0]};
+  }
+  function planPrice(p){ return state.annual ? p.annualMonthly : p.monthly; }
+
+  function render(){
+    // sync output labels
+    document.getElementById('volOut').textContent = fmtN(state.vol);
+    document.getElementById('prosOut').textContent = fmtN(state.pros);
+    document.getElementById('epmOut').textContent = state.epm;
+    document.getElementById('daysOut').textContent = state.days;
+    document.getElementById('mbcOut').textContent = '$'+state.mbc.toFixed(2);
+    document.getElementById('mpdOut').textContent = state.mpd;
+
+    var mb = mailboxesNeeded();
+    var domains = Math.ceil(mb / state.mpd);
+    var infra = infraCost(mb);
+
+    var rows = D.tools.map(function(t){
+      var pick = pickPlan(t, mb);
+      if(!pick.fits) return {t:t, fits:false};
+      var sw = planPrice(pick.plan);
+      // database requirement: tool must have a lead DB if user needs one
+      var dbMiss = state.needDb && !t.leadDatabase;
+      return {t:t, fits:true, plan:pick.plan, sw:sw, infra:infra, total:sw+infra, dbMiss:dbMiss};
+    });
+
+    var fitting = rows.filter(function(r){return r.fits && !r.dbMiss;});
+    fitting.sort(function(a,b){return a.total-b.total;});
+    var best = fitting.length ? fitting[0] : null;
+
+    // headline
+    var hl = document.getElementById('headline');
+    if(best){
+      var cheapestSticker = Math.min.apply(null, D.tools.map(function(t){return t.plans[0].monthly;}));
+      hl.innerHTML =
+        '<p class="big">To send <strong>'+fmtN(state.vol)+' emails/month</strong> safely you need about '+
+        '<strong>'+mb+' mailboxes</strong> across <strong>'+domains+' domains</strong>.</p>'+
+        '<div class="gap">Advertised from '+fmt(cheapestSticker)+'/mo → real all-in '+fmt(best.total)+'/mo</div>'+
+        '<p class="mailmath">Best value: <strong style="color:var(--good)">'+best.t.name+' '+best.plan.name+'</strong> '+
+        '— '+fmt(best.sw)+' software + '+fmt(best.infra)+' infrastructure ('+mb+' mailboxes · '+domains+' domains).</p>';
+    } else {
+      hl.innerHTML = '<p class="big">No standard plan covers that configuration — you\'re into enterprise/custom territory. Lower the volume or contact vendors directly.</p>';
+    }
+
+    // results table
+    var tb = document.getElementById('results'); tb.innerHTML='';
+    var rank=0;
+    fitting.forEach(function(r){
+      rank++;
+      var tr=document.createElement('tr');
+      if(r===best) tr.className='best';
+      tr.innerHTML =
+        '<td class="rank">'+rank+'</td>'+
+        '<td><span class="tool">'+r.t.name+'</span>'+(r.t.leadDatabase?'<span class="badge db">lead DB</span>':'')+'</td>'+
+        '<td class="plan">'+r.plan.name+'</td>'+
+        '<td class="breakdown">'+fmt(r.sw)+'</td>'+
+        '<td class="breakdown">'+fmt(r.infra)+'</td>'+
+        '<td class="total">'+fmt(r.total)+'</td>'+
+        '<td><a class="cta" href="'+link(r.t)+'" target="_blank" rel="sponsored noopener">View</a></td>';
+      tb.appendChild(tr);
+    });
+    // non-fitting / db-missing rows
+    rows.filter(function(r){return !r.fits || r.dbMiss;}).forEach(function(r){
+      var tr=document.createElement('tr');
+      var reason = r.dbMiss ? 'no built-in lead DB' : 'needs custom/enterprise plan';
+      tr.innerHTML =
+        '<td class="rank">—</td>'+
+        '<td><span class="tool">'+r.t.name+'</span></td>'+
+        '<td class="plan na" colspan="3">'+reason+'</td>'+
+        '<td class="na">—</td>'+
+        '<td><a class="cta" href="'+link(r.t)+'" target="_blank" rel="sponsored noopener">View</a></td>';
+      tb.appendChild(tr);
+    });
+  }
+
+  // price reference table (static)
+  (function(){
+    var pt=document.getElementById('priceTable');
+    D.tools.forEach(function(t){
+      t.plans.forEach(function(p,i){
+        var tr=document.createElement('tr');
+        tr.innerHTML =
+          '<td>'+(i===0?'<strong>'+t.name+'</strong>':'')+'</td>'+
+          '<td class="plan">'+p.name+'</td>'+
+          '<td class="breakdown">'+fmt(p.monthly)+'</td>'+
+          '<td class="breakdown">'+(p.sends===null?'unlimited':fmtN(p.sends))+'</td>'+
+          '<td class="breakdown">'+(p.prospects===null?'unlimited':fmtN(p.prospects))+'</td>'+
+          '<td class="breakdown">'+(p.maxMailboxes===null?'unlimited':p.maxMailboxes)+'</td>'+
+          '<td class="breakdown">'+(i===0?(t.warmupIncluded?'✓':'—'):'')+'</td>'+
+          '<td class="breakdown">'+(i===0?(t.leadDatabase?'✓':'—'):'')+'</td>';
+        pt.appendChild(tr);
+      });
+    });
+  })();
+
+  // wire inputs
+  function bindRange(id,key,parse){
+    var el=document.getElementById(id);
+    el.addEventListener('input',function(){ state[key]=parse(el.value); render(); });
+  }
+  bindRange('vol','vol',Number); bindRange('pros','pros',Number);
+  bindRange('epm','epm',Number); bindRange('days','days',Number);
+  bindRange('mbc','mbc',Number); bindRange('mpd','mpd',Number);
+  document.getElementById('needDb').addEventListener('change',function(e){state.needDb=e.target.checked;render();});
+  document.getElementById('bMonthly').addEventListener('click',function(){state.annual=false;this.classList.add('on');document.getElementById('bAnnual').classList.remove('on');render();});
+  document.getElementById('bAnnual').addEventListener('click',function(){state.annual=true;this.classList.add('on');document.getElementById('bMonthly').classList.remove('on');render();});
+
+  render();
+})();
+</script>
+</body>
+</html>
