@@ -1,8 +1,8 @@
 const state = {};
 
-const CARD_WIDTH = 360;
+const CARD_WIDTH = 420;
 const CARD_HEIGHT = 176;
-const COLUMN_STEP = 420;
+const COLUMN_STEP = 480;
 const ROW_STEP = 205;
 const LAYOUT = {};
 
