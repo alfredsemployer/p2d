@@ -1,0 +1,52 @@
+{
+  "pass": false,
+  "issues": [
+    {
+      "severity": "error",
+      "code": "active_question_without_terminal_claim",
+      "target_id": "Q1",
+      "message": "Active question Q1 lists terminal claim C1 in its 'roles' field, but C1 is not listed in terminal_claim_ids_by_question for Q1. The terminal claims for Q1 are listed as C2 and C3. This leaves C1 as a non-terminal claim (a premise/hinge) for Q1, but there is no argument recorded that attempts to support C1 from a terminal claim or ground. Therefore, Q1 has an active, load-bearing premise (C1) without a supporting argument, violating the requirement that active questions must have terminal claims that ultimately connect to grounds.",
+      "repair": "Either add C1 to the terminal_claim_ids_by_question for Q1, or record a valid argument (from grounds or another terminal claim) that supports C1. Currently, argument A1 supports C1 directly from grounds, which would make C1 terminal if it were listed as such."
+    },
+    {
+      "severity": "warning",
+      "code": "claim_without_argument_attempt",
+      "target_id": "C1",
+      "message": "Claim C1 is listed as a 'comparative hinge' and 'Q1 capability premise' and is load-bearing. While argument A1 supports it from grounds, C1 is not listed as a terminal claim for any active question (see error above). This creates a structural gap: C1 is a premise for Q1 but lacks a definitive argument linking it to a terminal claim for that question. The graph treats it as an intermediate claim without a clear supporting argument from a terminal claim.",
+      "repair": "Clarify the status of C1. If it is meant to be a terminal claim for Q1, add it to terminal_claim_ids_by_question for Q1. If it is meant to be an intermediate claim, ensure there is an argument from a terminal claim (C2 or C3) to C1, or from grounds via A1 with C1 listed as terminal."
+    },
+    {
+      "severity": "error",
+      "code": "nonexistent_ground_reference",
+      "target_id": "D-C3-1",
+      "message": "Defeater D-C3-1 references ground G-C3-support-1, but this ground ID is not present in the list of KNOWN GROUND IDs. The known grounds for C3 are G-C3-support-1 through G-C3-support-4 and G-C3-challenge-1 through G-C3-challenge-5. However, G-C3-support-1 is listed in KNOWN GROUND IDs, so this may be a mismatch in the provided data. Upon review, G-C3-support-1 is listed in KNOWN GROUND IDs, so this issue may be a false positive if the data is consistent. But based on the provided lists, G-C3-support-1 is present. However, there is a discrepancy: the known grounds list includes G-C3-support-1, but the argument A-C3-support references G-C3-support-1, G-C3-support-2, G-C3-support-3, G-C3-support-4, which are all present. The defeater D-C3-1 references G-C3-support-1, which is present. Therefore, this issue is not valid unless there is a typo. But I'll note it as a potential inconsistency.",
+      "repair": "Verify that all ground IDs referenced in defeaters are present in the KNOWN GROUND IDs list. If G-C3-support-1 is missing, add it. Otherwise, ensure consistency."
+    },
+    {
+      "severity": "warning",
+      "code": "undercutter_misrepresented_as_refutation",
+      "target_id": "D-C1-converted",
+      "message": "Defeater D-C1-converted is labeled as attack_type 'undercutter', but its content and target (argument A1) suggest it undermines the warrant of A1 by challenging the reproducibility and matched-evaluation conditions. This is correctly an undercutter, not a refutation. However, the graph previously converted 'challenge-shaped pseudo-arguments' to defeaters, and this one is appropriately an undercutter. No misrepresentation detected, but ensure that all defeaters are correctly typed.",
+      "repair": "No repair needed for this specific defeater, but review all defeaters to ensure undercutters (attacking the inference) are not mislabeled as rebuttals (attacking the conclusion) or underminers (attacking the premises)."
+    },
+    {
+      "severity": "warning",
+      "code": "argument_assessment_stronger_than_evidence",
+      "target_id": "A-C3-support",
+      "message": "Argument A-C3-support has assessment 'strong', but its warrant_reconstruction indicates defeasibility and exceptions (e.g., 'The evidence does not establish that every model... will fail'). The grounds are empirical generalizations from controlled studies, which are inherently defeasible. A 'strong' assessment may overstate the logical strength given the defeasible nature and the critical questions raised. However, the assessment is subjective and may be acceptable if the evidence is robust. But per the definitions, 'defeasible does not imply weak', so a strong assessment for a defeasible argument is permissible if well-supported. This is a borderline case; consider whether 'moderate' is more appropriate.",
+      "repair": "Re-evaluate the assessment of A-C3-support. If the evidence is robust but still subject to generalization limits, 'moderate' may be more accurate. Otherwise, justify the 'strong' rating despite defeasibility."
+    },
+    {
+      "severity": "warning",
+      "code": "unsuitable_formalization_candidate",
+      "target_id": "A-C6-support",
+      "message": "Argument A-C6-support has formal_candidate.suitable = false, which is appropriate because the argument is a practical conditional inference with unresolved premises (e.g., privacy performance, tested-control effectiveness). The formalization is marked as 'candidate_unvalidated'. This is not a defect per se, but note that many arguments in the graph are marked as unsuitable for formalization, which is consistent with their defeasible, empirical nature.",
+      "repair": "Ensure that formal_candidate reasons are accurately documented. No repair needed unless a formalization is incorrectly deemed suitable."
+    }
+  ],
+  "missing_argument_targets": [],
+  "_provenance": {
+    "model": "deepseek/deepseek-v3.2",
+    "response_id": "gen-1784789613-0kSC2LlPEvM8SNBig0rM"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "suite": "p2d-v0.3-offline-contract",
+  "generated_at": "2026-07-23T17:59:25.346586+00:00",
+  "artifact_id": "p2d:20260723-kimi-k3-v02:v0.3-migration",
+  "contract_checks": {
+    "passed": 12,
+    "total": 12,
+    "results": [
+      {
+        "id": "V03-01",
+        "description": "structural validator reports no errors",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-02",
+        "description": "each claim has one unique stable identity",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-03",
+        "description": "projection cards are exactly the claim vertices",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-04",
+        "description": "arguments and defeaters are never projected as cards",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-05",
+        "description": "every projected direction matches signed valence",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-06",
+        "description": "valence is exactly 2p-1 and preserves assessment provenance",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-07",
+        "description": "coverage and evidence depth are separate complete records",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-08",
+        "description": "every claim has explicit source-dependence scenarios",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-09",
+        "description": "every visible relation has a claim origin",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-10",
+        "description": "formal report distinguishes checked from unsuitable arguments",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-11",
+        "description": "defeasible engine produced one status for every argument",
+        "passed": true,
+        "error": ""
+      },
+      {
+        "id": "V03-12",
+        "description": "all active questions have terminal claims",
+        "passed": true,
+        "error": ""
+      }
+    ]
+  },
+  "formal_solver_regressions": {
+    "passed": 3,
+    "total": 3,
+    "results": [
+      {
+        "id": "modus_ponens",
+        "expected": "proved",
+        "observed": "proved",
+        "passed": true
+      },
+      {
+        "id": "affirming_the_consequent",
+        "expected": "disproved",
+        "observed": "disproved",
+        "passed": true
+      },
+      {
+        "id": "inconsistent_premises",
+        "expected": "inconsistent_premises",
+        "observed": "inconsistent_premises",
+        "passed": true
+      }
+    ]
+  },
+  "overall_pass": true,
+  "limits": [
+    "These checks validate contracts and deterministic behavior, not world truth.",
+    "Legacy migration valences remain uncalibrated pending external labels.",
+    "The Kimi graph contains no suitable strict empirical inference, so its solver coverage is correctly zero."
+  ]
+}

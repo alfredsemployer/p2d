@@ -1,0 +1,3502 @@
+{
+  "source_run": "reasoning_lab/runs/20260723-kimi-k3-v02",
+  "source_artifacts": [
+    "normalized_grounds.json",
+    "claim_assessments.json",
+    "question_portfolio.json"
+  ],
+  "status": "Post-run inferential reconstruction. Uses no new research. New claim assessments require independent review.",
+  "claims": [
+    {
+      "id": "RC1",
+      "version": 1,
+      "proposition": "On several named agentic and knowledge-work evaluations, Kimi K3 matched or exceeded some leading hosted alternatives.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q1",
+        "Q2"
+      ],
+      "roles": [
+        "intermediate empirical summary"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C2"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:59619fb0ca418e6129f9",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.72,
+        "valence": 0.43999999999999995,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC1",
+            "assessment_ids": [
+              "VA-RC1-migration"
+            ],
+            "credence": 0.72,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC1-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.72,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC1",
+            "calibration_state": "legacy_migration",
+            "rationale": "The record contains several scoped evaluation results supporting the bounded comparison, with material protocol limitations.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 9,
+        "distinct_source_urls": 3,
+        "inaccessible_or_missing": [
+          "Primary source report from Artificial Analysis lab for the K3 evaluation.",
+          "Primary source technical report or benchmark details from Moonshot AI for K3."
+        ],
+        "saturation_observations": [
+          "yes",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Grounds are derived from syndicated reports of independent evaluations by Artificial Analysis, which operationalizes performance via specific benchmarks (GDPval v2, AutomationBench-AA, AA-Briefcase, Intelligence Index) relevant to high-value workflows like agentic tasks, SaaS automation, and long-horizon knowledge work. Cost-effectiveness data is also provided. The sources consistently show K3 outperforming models like GPT-5.5 and Opus 4.8 on several key measures, supporting competitiveness without claiming general frontier superiority (as it trails Fable 5 and GPT-5.6 Sol)."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "independent testing lab artificial analysis (cited by the-decoder.com)",
+            "ground_ids": [
+              "G-C2-support-1",
+              "G-C2-support-2",
+              "G-C2-support-3",
+              "G-C2-support-5"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 1,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 4,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 1,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 1,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC2",
+      "version": 1,
+      "proposition": "Kimi K3 is competitive with at least some leading alternatives on at least one high-value workflow.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q1",
+        "Q2",
+        "Q3"
+      ],
+      "roles": [
+        "Q1 terminal",
+        "shared capability premise"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C2"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:428f8e0d0eef27583e31",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.66,
+        "valence": 0.32000000000000006,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC2",
+            "assessment_ids": [
+              "VA-RC2-migration"
+            ],
+            "credence": 0.66,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC2-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.66,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC2",
+            "calibration_state": "legacy_migration",
+            "rationale": "The narrow claim of competitiveness on at least one workflow is more likely than not, but deployment relevance remains uncertain.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 9,
+        "distinct_source_urls": 3,
+        "inaccessible_or_missing": [
+          "Primary source report from Artificial Analysis lab for the K3 evaluation.",
+          "Primary source technical report or benchmark details from Moonshot AI for K3."
+        ],
+        "saturation_observations": [
+          "yes",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Grounds are derived from syndicated reports of independent evaluations by Artificial Analysis, which operationalizes performance via specific benchmarks (GDPval v2, AutomationBench-AA, AA-Briefcase, Intelligence Index) relevant to high-value workflows like agentic tasks, SaaS automation, and long-horizon knowledge work. Cost-effectiveness data is also provided. The sources consistently show K3 outperforming models like GPT-5.5 and Opus 4.8 on several key measures, supporting competitiveness without claiming general frontier superiority (as it trails Fable 5 and GPT-5.6 Sol)."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "independent testing lab artificial analysis (cited by the-decoder.com)",
+            "ground_ids": [
+              "G-C2-support-1",
+              "G-C2-support-2",
+              "G-C2-support-3",
+              "G-C2-support-5"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 1,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 4,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 1,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 1,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC3",
+      "version": 1,
+      "proposition": "Kimi K3's improvement over preceding Kimi models is established by independently reproducible, matched evaluations.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q1"
+      ],
+      "roles": [
+        "comparative hinge"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C1"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:146dc76e12b4d39bb6b0",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.42,
+        "valence": -0.16000000000000003,
+        "valence_sign": "negative",
+        "forced_binary_direction": "unsupported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC3",
+            "assessment_ids": [
+              "VA-RC3-migration"
+            ],
+            "credence": 0.42,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC3-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.42,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC3",
+            "calibration_state": "legacy_migration",
+            "rationale": "Reported gains exist, but the record lacks the independent matched replication required by the proposition.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 10,
+        "distinct_source_urls": 5,
+        "inaccessible_or_missing": [
+          "Primary source technical report or paper from Moonshot AI detailing evaluation methodologies and full results.",
+          "Independent, peer-reviewed replication studies comparing K3 to K2.x across the specified task families.",
+          "Public leaderboard entries (e.g., on Artificial Analysis) showing K2.6/K2.7 scores alongside K3's for direct comparison on the same benchmarks.",
+          "Direct, independently verified, side-by-side benchmark scores comparing Kimi K3 and Kimi K2.6 on identical task suites (e.g., DeepSWE, SWE-bench, Terminal-Bench).",
+          "Confidence intervals or statistical significance measures for any reported performance differences between K3 and its predecessors.",
+          "Replication results from third parties for any vendor-claimed comparisons between K3 and K2.6."
+        ],
+        "saturation_observations": [
+          "unclear",
+          "no"
+        ],
+        "blind_spots": [
+          "Searches retrieved multiple reviews and articles citing benchmark results and first-hand tests. Evidence for a measurable capability difference is found in: 1) Third-party benchmark scores (AA-Omniscience, Artificial Analysis long-horizon Elo), 2) First-hand evaluator tests on long-context retrieval and agentic web research, and 3) Claims of record performance on specific benchmarks (BrowseComp, GPQA Diamond). However, much of the quantitative data is attributed to Moonshot's reporting or specific reviewer tests rather than widely reproduced, public leaderboard comparisons. A direct, matched evaluation comparing K3 to K2.7 on the same coding benchmark (e.g., Kimi Code Bench) with independent verification was not found in the retrieved results.",
+          "The provided search results offer some evidence supporting a capability difference between Kimi K3 and its predecessor, K2.6, primarily through community-based rankings (Text Arena) and a potentially ambiguous report on user preference in frontend tasks. However, the results lack the specific, independently reproducible, and matched evaluations on standardized benchmarks that the claim's operationalization requires. For instance, while K3's scores on coding benchmarks like DeepSWE and FrontierSWE are reported, the corresponding scores for K2.6 on the same harness are not available in the documents. One source explicitly notes that K3 is not yet listed on a public leaderboard where older Kimi versions are present, highlighting the current gap in direct, independent comparison."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 2,
+        "direct_ground_count": 1,
+        "distinct_source_urls": 2,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "nxcode.io",
+            "ground_ids": [
+              "G-C1-challenge-4"
+            ]
+          },
+          {
+            "id": "ECL2",
+            "basis": "origin_path",
+            "origin": "the decoder's reporting cited by awesome agents.",
+            "ground_ids": [
+              "G-C1-support-1"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 2,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 2,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 2,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 2,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC4",
+      "version": 1,
+      "proposition": "Kimi K3 demonstrates broad capability superiority over preceding Kimi models and leading alternatives.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q1"
+      ],
+      "roles": [
+        "Q1 terminal"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C1",
+        "C2"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:7ec7c730be442521cbea",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.31000000000000005,
+        "valence": -0.3799999999999999,
+        "valence_sign": "negative",
+        "forced_binary_direction": "unsupported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC4",
+            "assessment_ids": [
+              "VA-RC4-migration"
+            ],
+            "credence": 0.31,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC4-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.31,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC4",
+            "calibration_state": "legacy_migration",
+            "rationale": "The evidence is too scoped and mixed to make broad capability superiority more likely than not.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge",
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 19,
+        "distinct_source_urls": 8,
+        "inaccessible_or_missing": [
+          "Primary source technical report or paper from Moonshot AI detailing evaluation methodologies and full results.",
+          "Independent, peer-reviewed replication studies comparing K3 to K2.x across the specified task families.",
+          "Public leaderboard entries (e.g., on Artificial Analysis) showing K2.6/K2.7 scores alongside K3's for direct comparison on the same benchmarks.",
+          "Direct, independently verified, side-by-side benchmark scores comparing Kimi K3 and Kimi K2.6 on identical task suites (e.g., DeepSWE, SWE-bench, Terminal-Bench).",
+          "Confidence intervals or statistical significance measures for any reported performance differences between K3 and its predecessors.",
+          "Replication results from third parties for any vendor-claimed comparisons between K3 and K2.6.",
+          "Primary source report from Artificial Analysis lab for the K3 evaluation.",
+          "Primary source technical report or benchmark details from Moonshot AI for K3."
+        ],
+        "saturation_observations": [
+          "unclear",
+          "no",
+          "yes",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Searches retrieved multiple reviews and articles citing benchmark results and first-hand tests. Evidence for a measurable capability difference is found in: 1) Third-party benchmark scores (AA-Omniscience, Artificial Analysis long-horizon Elo), 2) First-hand evaluator tests on long-context retrieval and agentic web research, and 3) Claims of record performance on specific benchmarks (BrowseComp, GPQA Diamond). However, much of the quantitative data is attributed to Moonshot's reporting or specific reviewer tests rather than widely reproduced, public leaderboard comparisons. A direct, matched evaluation comparing K3 to K2.7 on the same coding benchmark (e.g., Kimi Code Bench) with independent verification was not found in the retrieved results.",
+          "The provided search results offer some evidence supporting a capability difference between Kimi K3 and its predecessor, K2.6, primarily through community-based rankings (Text Arena) and a potentially ambiguous report on user preference in frontend tasks. However, the results lack the specific, independently reproducible, and matched evaluations on standardized benchmarks that the claim's operationalization requires. For instance, while K3's scores on coding benchmarks like DeepSWE and FrontierSWE are reported, the corresponding scores for K2.6 on the same harness are not available in the documents. One source explicitly notes that K3 is not yet listed on a public leaderboard where older Kimi versions are present, highlighting the current gap in direct, independent comparison.",
+          "Grounds are derived from syndicated reports of independent evaluations by Artificial Analysis, which operationalizes performance via specific benchmarks (GDPval v2, AutomationBench-AA, AA-Briefcase, Intelligence Index) relevant to high-value workflows like agentic tasks, SaaS automation, and long-horizon knowledge work. Cost-effectiveness data is also provided. The sources consistently show K3 outperforming models like GPT-5.5 and Opus 4.8 on several key measures, supporting competitiveness without claiming general frontier superiority (as it trails Fable 5 and GPT-5.6 Sol)."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 6,
+        "direct_ground_count": 5,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "independent testing lab artificial analysis (cited by the-decoder.com)",
+            "ground_ids": [
+              "G-C2-support-1",
+              "G-C2-support-2",
+              "G-C2-support-3",
+              "G-C2-support-5"
+            ]
+          },
+          {
+            "id": "ECL2",
+            "basis": "origin_path",
+            "origin": "nxcode.io",
+            "ground_ids": [
+              "G-C1-challenge-4"
+            ]
+          },
+          {
+            "id": "ECL3",
+            "basis": "origin_path",
+            "origin": "the decoder's reporting cited by awesome agents.",
+            "ground_ids": [
+              "G-C1-support-1"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 3,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 6,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 3,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 3,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC5",
+      "version": 1,
+      "proposition": "Kimi K3 reliably uses its reported long context for retrieval and reasoning across relevant tasks.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q1"
+      ],
+      "roles": [
+        "Q1 terminal"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C1",
+        "C3"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:2ee55f08799182168945",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.43,
+        "valence": -0.14,
+        "valence_sign": "negative",
+        "forced_binary_direction": "unsupported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC5",
+            "assessment_ids": [
+              "VA-RC5-migration"
+            ],
+            "credence": 0.43,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC5-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.43,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC5",
+            "calibration_state": "legacy_migration",
+            "rationale": "A limited retrieval result does not make cross-task reliable long-context use more likely than not.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge",
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 17,
+        "distinct_source_urls": 8,
+        "inaccessible_or_missing": [
+          "Primary source technical report or paper from Moonshot AI detailing evaluation methodologies and full results.",
+          "Independent, peer-reviewed replication studies comparing K3 to K2.x across the specified task families.",
+          "Public leaderboard entries (e.g., on Artificial Analysis) showing K2.6/K2.7 scores alongside K3's for direct comparison on the same benchmarks.",
+          "Direct, independently verified, side-by-side benchmark scores comparing Kimi K3 and Kimi K2.6 on identical task suites (e.g., DeepSWE, SWE-bench, Terminal-Bench).",
+          "Confidence intervals or statistical significance measures for any reported performance differences between K3 and its predecessors.",
+          "Replication results from third parties for any vendor-claimed comparisons between K3 and K2.6."
+        ],
+        "saturation_observations": [
+          "unclear",
+          "no",
+          "unclear",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Searches retrieved multiple reviews and articles citing benchmark results and first-hand tests. Evidence for a measurable capability difference is found in: 1) Third-party benchmark scores (AA-Omniscience, Artificial Analysis long-horizon Elo), 2) First-hand evaluator tests on long-context retrieval and agentic web research, and 3) Claims of record performance on specific benchmarks (BrowseComp, GPQA Diamond). However, much of the quantitative data is attributed to Moonshot's reporting or specific reviewer tests rather than widely reproduced, public leaderboard comparisons. A direct, matched evaluation comparing K3 to K2.7 on the same coding benchmark (e.g., Kimi Code Bench) with independent verification was not found in the retrieved results.",
+          "The provided search results offer some evidence supporting a capability difference between Kimi K3 and its predecessor, K2.6, primarily through community-based rankings (Text Arena) and a potentially ambiguous report on user preference in frontend tasks. However, the results lack the specific, independently reproducible, and matched evaluations on standardized benchmarks that the claim's operationalization requires. For instance, while K3's scores on coding benchmarks like DeepSWE and FrontierSWE are reported, the corresponding scores for K2.6 on the same harness are not available in the documents. One source explicitly notes that K3 is not yet listed on a public leaderboard where older Kimi versions are present, highlighting the current gap in direct, independent comparison.",
+          "The search results provided strong, direct evidence from a primary research source supporting the claim. The source explicitly measures degradation in reasoning/QA performance with increased context length, independent of retrieval success, addressing core aspects of the operationalization (degradation by context length). Other retrieved documents (NeedleBench, Long Context RAG Performance) were not accessible in full from the provided snippets, but their titles suggest they are relevant to the claim's evaluation criteria."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 2,
+        "segments_total": 5,
+        "label": "limited",
+        "ground_count": 1,
+        "direct_ground_count": 1,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "author's first-hand test reported in the review.",
+            "ground_ids": [
+              "G-C1-support-4"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 1,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 1,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 1,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 1,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC6",
+      "version": 1,
+      "proposition": "Large advertised context capacity does not by itself establish reliable long-context performance.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q1"
+      ],
+      "roles": [
+        "defeater backing",
+        "methodological hinge"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C3"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:605d6143160016b6ed81",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.8,
+        "valence": 0.6000000000000001,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC6",
+            "assessment_ids": [
+              "VA-RC6-migration"
+            ],
+            "credence": 0.8,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC6-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.8,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC6",
+            "calibration_state": "legacy_migration",
+            "rationale": "The cited controlled findings strongly support the methodological distinction between capacity and reliable use.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 7,
+        "distinct_source_urls": 3,
+        "inaccessible_or_missing": [],
+        "saturation_observations": [
+          "unclear",
+          "unclear"
+        ],
+        "blind_spots": [
+          "The search results provided strong, direct evidence from a primary research source supporting the claim. The source explicitly measures degradation in reasoning/QA performance with increased context length, independent of retrieval success, addressing core aspects of the operationalization (degradation by context length). Other retrieved documents (NeedleBench, Long Context RAG Performance) were not accessible in full from the provided snippets, but their titles suggest they are relevant to the claim's evaluation criteria."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "original research paper",
+            "ground_ids": [
+              "G-C3-challenge-3",
+              "G-C3-challenge-4"
+            ]
+          },
+          {
+            "id": "ECL2",
+            "basis": "origin_path",
+            "origin": "primary research paper (findings of emnlp 2025).",
+            "ground_ids": [
+              "G-C3-support-1",
+              "G-C3-support-3"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 2,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 4,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 2,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 2,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC7",
+      "version": 1,
+      "proposition": "Kimi K3 had lower monetary cost than selected comparators on some evaluated tasks.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q2"
+      ],
+      "roles": [
+        "Q2 terminal",
+        "cost premise"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C2",
+        "C4"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:1c5dd956ac6556e3e2cd",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.7299999999999999,
+        "valence": 0.45999999999999974,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC7",
+            "assessment_ids": [
+              "VA-RC7-migration"
+            ],
+            "credence": 0.73,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC7-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.73,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC7",
+            "calibration_state": "legacy_migration",
+            "rationale": "Selected matched task reports support the bounded monetary-cost comparison.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge",
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 19,
+        "distinct_source_urls": 6,
+        "inaccessible_or_missing": [
+          "Primary source report from Artificial Analysis lab for the K3 evaluation.",
+          "Primary source technical report or benchmark details from Moonshot AI for K3.",
+          "Primary Artificial Analysis evaluation report (likely paywalled or not publicly linked)",
+          "Primary Kimi API documentation (pricing cited secondhand)",
+          "Detailed breakdown of 'quality per watt' or 'quality-adjusted human oversight cost' for specific workloads"
+        ],
+        "saturation_observations": [
+          "yes",
+          "unclear",
+          "unclear",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Grounds are derived from syndicated reports of independent evaluations by Artificial Analysis, which operationalizes performance via specific benchmarks (GDPval v2, AutomationBench-AA, AA-Briefcase, Intelligence Index) relevant to high-value workflows like agentic tasks, SaaS automation, and long-horizon knowledge work. Cost-effectiveness data is also provided. The sources consistently show K3 outperforming models like GPT-5.5 and Opus 4.8 on several key measures, supporting competitiveness without claiming general frontier superiority (as it trails Fable 5 and GPT-5.6 Sol).",
+          "Grounds provide direct measurements of Kimi K3's cost per task, latency (time per task), throughput (tokens/sec), quality scores vs. alternatives (Fable 5), and total cost of ownership comparisons (local vs. cloud). Evidence on hardware requirements is indirect (inferred from local build specs). Evidence on human-correction burden is limited to the hallucination rate increase. Operationalization metrics like 'quality per dollar' and 'quality per watt' are not directly calculated but can be inferred from provided data."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 3,
+        "direct_ground_count": 3,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "host",
+            "origin": "awesomeagents.ai",
+            "ground_ids": [
+              "G-C4-challenge-3"
+            ]
+          },
+          {
+            "id": "ECL2",
+            "basis": "host",
+            "origin": "specpicks.com",
+            "ground_ids": [
+              "G-C4-challenge-2"
+            ]
+          },
+          {
+            "id": "ECL3",
+            "basis": "host",
+            "origin": "thenewstack.io",
+            "ground_ids": [
+              "G-C4-challenge-1"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 3,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 3,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 3,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 3,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC8",
+      "version": 1,
+      "proposition": "Kimi K3 has a lower total quality-adjusted cost per successful task across relevant workloads.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q2"
+      ],
+      "roles": [
+        "Q2 terminal"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C4"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:0c0514d5c8e498298b4b",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.36,
+        "valence": -0.28,
+        "valence_sign": "negative",
+        "forced_binary_direction": "unsupported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC8",
+            "assessment_ids": [
+              "VA-RC8-migration"
+            ],
+            "credence": 0.36,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC8-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.36,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC8",
+            "calibration_state": "legacy_migration",
+            "rationale": "The record omits enough latency, reliability, hardware, and correction-cost information that lower total cost is less likely than not established.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 10,
+        "distinct_source_urls": 5,
+        "inaccessible_or_missing": [
+          "Primary Artificial Analysis evaluation report (likely paywalled or not publicly linked)",
+          "Primary Kimi API documentation (pricing cited secondhand)",
+          "Detailed breakdown of 'quality per watt' or 'quality-adjusted human oversight cost' for specific workloads"
+        ],
+        "saturation_observations": [
+          "unclear",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Grounds provide direct measurements of Kimi K3's cost per task, latency (time per task), throughput (tokens/sec), quality scores vs. alternatives (Fable 5), and total cost of ownership comparisons (local vs. cloud). Evidence on hardware requirements is indirect (inferred from local build specs). Evidence on human-correction burden is limited to the hallucination rate increase. Operationalization metrics like 'quality per dollar' and 'quality per watt' are not directly calculated but can be inferred from provided data."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 3,
+        "direct_ground_count": 3,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "host",
+            "origin": "awesomeagents.ai",
+            "ground_ids": [
+              "G-C4-challenge-3"
+            ]
+          },
+          {
+            "id": "ECL2",
+            "basis": "host",
+            "origin": "specpicks.com",
+            "ground_ids": [
+              "G-C4-challenge-2"
+            ]
+          },
+          {
+            "id": "ECL3",
+            "basis": "host",
+            "origin": "thenewstack.io",
+            "ground_ids": [
+              "G-C4-challenge-1"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 3,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 3,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 3,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 3,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC9",
+      "version": 1,
+      "proposition": "Hosted Kimi K3 and any downloadable checkpoint are materially different deployment and governance options.",
+      "modality": "conditional",
+      "question_ids": [
+        "Q2"
+      ],
+      "roles": [
+        "Q2 terminal",
+        "Q3 context"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C5"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:4edc65870244fbbe6d0b",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.8200000000000001,
+        "valence": 0.6400000000000001,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC9",
+            "assessment_ids": [
+              "VA-RC9-migration"
+            ],
+            "credence": 0.82,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC9-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.82,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC9",
+            "calibration_state": "legacy_migration",
+            "rationale": "The deployment and governance differences between hosted access and downloadable weights are directly material.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 10,
+        "distinct_source_urls": 3,
+        "inaccessible_or_missing": [
+          "The official Kimi K3 license document was not accessible at the time of the search, as its release is pending.",
+          "Official, detailed minimum hardware specifications for self-hosting were not found in the searched sources.",
+          "Detailed telemetry or data retention policies for the hosted API were not found in the searched sources.",
+          {
+            "id": "M-C5-1",
+            "description": "The final license terms for the Kimi K3 open-weight model have not yet been published as of the time of the search. While a source mentions Kimi K2 used a permissive license, it explicitly states this is not guaranteed for K3."
+          },
+          {
+            "id": "M-C5-2",
+            "description": "Detailed information on data retention and telemetry for the hosted Kimi K3 API was not found in the provided search results."
+          }
+        ],
+        "saturation_observations": [
+          "yes",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Strong direct support found for differences in availability, data privacy/residency, fine-tuning capability, hardware/deployment complexity, and cost structure. Key limiting factor is the absence of the final, official license, which governs critical aspects like reproducibility and derivative rights. The sources clearly treat the API and open weights as two distinct pathways."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 5,
+        "segments_total": 5,
+        "label": "deep",
+        "ground_count": 6,
+        "direct_ground_count": 6,
+        "distinct_source_urls": 2,
+        "primary_source_count": 2,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "independent evaluator (layer3 labs) analyzing primary source information.",
+            "ground_ids": [
+              "G-C5-support-3",
+              "G-C5-support-4"
+            ]
+          },
+          {
+            "id": "ECL2",
+            "basis": "origin_path",
+            "origin": "independent evaluator (layer3 labs) citing primary source concepts.",
+            "ground_ids": [
+              "G-C5-support-2"
+            ]
+          },
+          {
+            "id": "ECL3",
+            "basis": "origin_path",
+            "origin": "independent evaluator (layer3 labs) summarizing the trade-off.",
+            "ground_ids": [
+              "G-C5-support-6"
+            ]
+          },
+          {
+            "id": "ECL4",
+            "basis": "origin_path",
+            "origin": "primary source (moonshot ai blog)",
+            "ground_ids": [
+              "G-C5-support-1",
+              "G-C5-support-5"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 4,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 6,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 4,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 4,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC10",
+      "version": 1,
+      "proposition": "Kimi K3's latency, correction burden, and deployment costs are material constraints not captured by token price alone.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q1",
+        "Q2"
+      ],
+      "roles": [
+        "defeater backing",
+        "total-cost hinge"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C4"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:7c7fb07122507609d2c5",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.75,
+        "valence": 0.5,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC10",
+            "assessment_ids": [
+              "VA-RC10-migration"
+            ],
+            "credence": 0.75,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC10-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.75,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC10",
+            "calibration_state": "legacy_migration",
+            "rationale": "The record identifies operational burdens that token price alone does not represent.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 10,
+        "distinct_source_urls": 5,
+        "inaccessible_or_missing": [
+          "Primary Artificial Analysis evaluation report (likely paywalled or not publicly linked)",
+          "Primary Kimi API documentation (pricing cited secondhand)",
+          "Detailed breakdown of 'quality per watt' or 'quality-adjusted human oversight cost' for specific workloads"
+        ],
+        "saturation_observations": [
+          "unclear",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Grounds provide direct measurements of Kimi K3's cost per task, latency (time per task), throughput (tokens/sec), quality scores vs. alternatives (Fable 5), and total cost of ownership comparisons (local vs. cloud). Evidence on hardware requirements is indirect (inferred from local build specs). Evidence on human-correction burden is limited to the hallucination rate increase. Operationalization metrics like 'quality per dollar' and 'quality per watt' are not directly calculated but can be inferred from provided data."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 4,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "host",
+            "origin": "awesomeagents.ai",
+            "ground_ids": [
+              "G-C4-challenge-4"
+            ]
+          },
+          {
+            "id": "ECL2",
+            "basis": "host",
+            "origin": "thenewstack.io",
+            "ground_ids": [
+              "G-C4-challenge-1"
+            ]
+          },
+          {
+            "id": "ECL3",
+            "basis": "origin_path",
+            "origin": "artificial analysis (cited by nxcode)",
+            "ground_ids": [
+              "G-C4-support-4"
+            ]
+          },
+          {
+            "id": "ECL4",
+            "basis": "origin_path",
+            "origin": "artificial analysis (cited by the decoder)",
+            "ground_ids": [
+              "G-C4-support-6"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 4,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 4,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 4,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 4,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC11",
+      "version": 1,
+      "proposition": "Available reports identify hallucination, over-initiative, and runtime-instability risks for Kimi K3.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q3"
+      ],
+      "roles": [
+        "defeater backing",
+        "risk premise"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C6"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:cfc895518f4f29ff3ca6",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.7599999999999999,
+        "valence": 0.5199999999999998,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC11",
+            "assessment_ids": [
+              "VA-RC11-migration"
+            ],
+            "credence": 0.76,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC11-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.76,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC11",
+            "calibration_state": "legacy_migration",
+            "rationale": "Multiple available reports identify the stated failure modes as live risks.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 7,
+        "distinct_source_urls": 4,
+        "inaccessible_or_missing": [
+          "The full technical report, license, and weights for K3 are not yet public (per Omid Saffari review).",
+          "Direct, primary source measurements for 'unauthorized actions', 'privacy exposure', 'telemetry', and 'oversight burden' under realistic long-horizon tasks were not found in the retrieved results."
+        ],
+        "saturation_observations": [
+          "unclear",
+          "yes"
+        ],
+        "blind_spots": [
+          "The grounds provide strong direct support for specific cost factors named in the claim: hallucination frequency, over-initiative (unexpected decisions), and failure-recovery conditions (instability from broken history). They also provide indirect support for cost factors via notes on verbosity impacting effective cost. Key measurement details (e.g., hallucination rate on a specific index) are provided, but severity, refusal behavior, and privacy aspects are not covered.",
+          "The search results provide substantial evidence supporting the claim's conditions, highlighting specific risks associated with Kimi K3's use in minimally supervised workflows. The findings cover hallucination rates (G-C6-1), over-initiative/unauthorized actions (G-C6-2), failure recovery/instability (G-C6-3), and governance/privacy risks due to a lack of documentation (G-C6-4). The model's intended use for autonomous coding (G-C6-5) and acknowledged user experience gaps (G-C6-6) further underscore the importance of the claim's cautionary stance. The information comes from the developer's own blog, an independent analysis firm, and a governance-focused institute, providing a well-rounded view of the challenges."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "host",
+            "origin": "aigovernance.com",
+            "ground_ids": [
+              "G-C6-challenge-4"
+            ]
+          },
+          {
+            "id": "ECL2",
+            "basis": "origin_path",
+            "origin": "primary source (model developer)",
+            "ground_ids": [
+              "G-C6-support-1",
+              "G-C6-support-4"
+            ]
+          },
+          {
+            "id": "ECL3",
+            "basis": "origin_path",
+            "origin": "syndicated report citing independent evaluator (artificial analysis)",
+            "ground_ids": [
+              "G-C6-support-2"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 3,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 4,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 3,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 3,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC12",
+      "version": 1,
+      "proposition": "Tested controls keep Kimi K3's operational risks within a deploying institution's tolerance.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q3"
+      ],
+      "roles": [
+        "control-effectiveness premise"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C6"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:a48c3188f5f29b806a0f",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.29000000000000004,
+        "valence": -0.41999999999999993,
+        "valence_sign": "negative",
+        "forced_binary_direction": "unsupported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC12",
+            "assessment_ids": [
+              "VA-RC12-migration"
+            ],
+            "credence": 0.29,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC12-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.29,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC12",
+            "calibration_state": "legacy_migration",
+            "rationale": "No deployment-specific control-effectiveness record establishes that risks fall within institutional tolerance.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 7,
+        "distinct_source_urls": 4,
+        "inaccessible_or_missing": [
+          "The full technical report, license, and weights for K3 are not yet public (per Omid Saffari review).",
+          "Direct, primary source measurements for 'unauthorized actions', 'privacy exposure', 'telemetry', and 'oversight burden' under realistic long-horizon tasks were not found in the retrieved results."
+        ],
+        "saturation_observations": [
+          "unclear",
+          "yes"
+        ],
+        "blind_spots": [
+          "The grounds provide strong direct support for specific cost factors named in the claim: hallucination frequency, over-initiative (unexpected decisions), and failure-recovery conditions (instability from broken history). They also provide indirect support for cost factors via notes on verbosity impacting effective cost. Key measurement details (e.g., hallucination rate on a specific index) are provided, but severity, refusal behavior, and privacy aspects are not covered.",
+          "The search results provide substantial evidence supporting the claim's conditions, highlighting specific risks associated with Kimi K3's use in minimally supervised workflows. The findings cover hallucination rates (G-C6-1), over-initiative/unauthorized actions (G-C6-2), failure recovery/instability (G-C6-3), and governance/privacy risks due to a lack of documentation (G-C6-4). The model's intended use for autonomous coding (G-C6-5) and acknowledged user experience gaps (G-C6-6) further underscore the importance of the claim's cautionary stance. The information comes from the developer's own blog, an independent analysis firm, and a governance-focused institute, providing a well-rounded view of the challenges."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 0,
+        "segments_total": 5,
+        "label": "no",
+        "ground_count": 0,
+        "direct_ground_count": 0,
+        "distinct_source_urls": 0,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 0,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 0,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 0,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 0,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC13",
+      "version": 1,
+      "proposition": "Kimi K3 is suitable for minimally supervised long-horizon workflows.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q3"
+      ],
+      "roles": [
+        "Q3 terminal"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C6"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:db773ca53dad500fb1bb",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.27,
+        "valence": -0.45999999999999996,
+        "valence_sign": "negative",
+        "forced_binary_direction": "unsupported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC13",
+            "assessment_ids": [
+              "VA-RC13-migration"
+            ],
+            "credence": 0.27,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC13-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.27,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC13",
+            "calibration_state": "legacy_migration",
+            "rationale": "Unresolved control effectiveness and operational risks make suitability for minimally supervised long-horizon work less likely than not.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 7,
+        "distinct_source_urls": 4,
+        "inaccessible_or_missing": [
+          "The full technical report, license, and weights for K3 are not yet public (per Omid Saffari review).",
+          "Direct, primary source measurements for 'unauthorized actions', 'privacy exposure', 'telemetry', and 'oversight burden' under realistic long-horizon tasks were not found in the retrieved results."
+        ],
+        "saturation_observations": [
+          "unclear",
+          "yes"
+        ],
+        "blind_spots": [
+          "The grounds provide strong direct support for specific cost factors named in the claim: hallucination frequency, over-initiative (unexpected decisions), and failure-recovery conditions (instability from broken history). They also provide indirect support for cost factors via notes on verbosity impacting effective cost. Key measurement details (e.g., hallucination rate on a specific index) are provided, but severity, refusal behavior, and privacy aspects are not covered.",
+          "The search results provide substantial evidence supporting the claim's conditions, highlighting specific risks associated with Kimi K3's use in minimally supervised workflows. The findings cover hallucination rates (G-C6-1), over-initiative/unauthorized actions (G-C6-2), failure recovery/instability (G-C6-3), and governance/privacy risks due to a lack of documentation (G-C6-4). The model's intended use for autonomous coding (G-C6-5) and acknowledged user experience gaps (G-C6-6) further underscore the importance of the claim's cautionary stance. The information comes from the developer's own blog, an independent analysis firm, and a governance-focused institute, providing a well-rounded view of the challenges."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "independent testing lab artificial analysis (cited by the-decoder.com)",
+            "ground_ids": [
+              "G-C2-support-1",
+              "G-C2-support-2",
+              "G-C2-support-3",
+              "G-C2-support-5"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 1,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 4,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 1,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 1,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC14",
+      "version": 1,
+      "proposition": "The cited evidence does not include a public independent replication of Kimi K3 under a complete matched protocol.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q1"
+      ],
+      "roles": [
+        "defeater backing",
+        "reproducibility constraint"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C1"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:2cef013f797dc4b1e970",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.78,
+        "valence": 0.56,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC14",
+            "assessment_ids": [
+              "VA-RC14-migration"
+            ],
+            "credence": 0.78,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC14-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.78,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC14",
+            "calibration_state": "legacy_migration",
+            "rationale": "The bounded research record does not contain a public independent matched replication.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 10,
+        "distinct_source_urls": 5,
+        "inaccessible_or_missing": [
+          "Primary source technical report or paper from Moonshot AI detailing evaluation methodologies and full results.",
+          "Independent, peer-reviewed replication studies comparing K3 to K2.x across the specified task families.",
+          "Public leaderboard entries (e.g., on Artificial Analysis) showing K2.6/K2.7 scores alongside K3's for direct comparison on the same benchmarks.",
+          "Direct, independently verified, side-by-side benchmark scores comparing Kimi K3 and Kimi K2.6 on identical task suites (e.g., DeepSWE, SWE-bench, Terminal-Bench).",
+          "Confidence intervals or statistical significance measures for any reported performance differences between K3 and its predecessors.",
+          "Replication results from third parties for any vendor-claimed comparisons between K3 and K2.6."
+        ],
+        "saturation_observations": [
+          "unclear",
+          "no"
+        ],
+        "blind_spots": [
+          "Searches retrieved multiple reviews and articles citing benchmark results and first-hand tests. Evidence for a measurable capability difference is found in: 1) Third-party benchmark scores (AA-Omniscience, Artificial Analysis long-horizon Elo), 2) First-hand evaluator tests on long-context retrieval and agentic web research, and 3) Claims of record performance on specific benchmarks (BrowseComp, GPQA Diamond). However, much of the quantitative data is attributed to Moonshot's reporting or specific reviewer tests rather than widely reproduced, public leaderboard comparisons. A direct, matched evaluation comparing K3 to K2.7 on the same coding benchmark (e.g., Kimi Code Bench) with independent verification was not found in the retrieved results.",
+          "The provided search results offer some evidence supporting a capability difference between Kimi K3 and its predecessor, K2.6, primarily through community-based rankings (Text Arena) and a potentially ambiguous report on user preference in frontend tasks. However, the results lack the specific, independently reproducible, and matched evaluations on standardized benchmarks that the claim's operationalization requires. For instance, while K3's scores on coding benchmarks like DeepSWE and FrontierSWE are reported, the corresponding scores for K2.6 on the same harness are not available in the documents. One source explicitly notes that K3 is not yet listed on a public leaderboard where older Kimi versions are present, highlighting the current gap in direct, independent comparison."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 1,
+        "segments_total": 5,
+        "label": "very limited",
+        "ground_count": 1,
+        "direct_ground_count": 0,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "nxcode.io",
+            "ground_ids": [
+              "G-C1-challenge-4"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 1,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 1,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 1,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 1,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC15",
+      "version": 1,
+      "proposition": "The cited evaluations show mixed performance on selected workflows rather than broad capability superiority.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q1"
+      ],
+      "roles": [
+        "defeater backing",
+        "scope constraint"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C2"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:478ec45274606c4562f1",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.72,
+        "valence": 0.43999999999999995,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC15",
+            "assessment_ids": [
+              "VA-RC15-migration"
+            ],
+            "credence": 0.72,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC15-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.72,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC15",
+            "calibration_state": "legacy_migration",
+            "rationale": "The selected evaluations show mixed scoped results rather than broad superiority.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 9,
+        "distinct_source_urls": 3,
+        "inaccessible_or_missing": [
+          "Primary source report from Artificial Analysis lab for the K3 evaluation.",
+          "Primary source technical report or benchmark details from Moonshot AI for K3."
+        ],
+        "saturation_observations": [
+          "yes",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Grounds are derived from syndicated reports of independent evaluations by Artificial Analysis, which operationalizes performance via specific benchmarks (GDPval v2, AutomationBench-AA, AA-Briefcase, Intelligence Index) relevant to high-value workflows like agentic tasks, SaaS automation, and long-horizon knowledge work. Cost-effectiveness data is also provided. The sources consistently show K3 outperforming models like GPT-5.5 and Opus 4.8 on several key measures, supporting competitiveness without claiming general frontier superiority (as it trails Fable 5 and GPT-5.6 Sol)."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 2,
+        "direct_ground_count": 2,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "independent testing lab artificial analysis (cited by the-decoder.com)",
+            "ground_ids": [
+              "G-C2-support-1",
+              "G-C2-support-5"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 1,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 2,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 1,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 1,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    },
+    {
+      "id": "RC16",
+      "version": 1,
+      "proposition": "As of the run date, Kimi K3 checkpoint release and final license terms had not been verified.",
+      "modality": "defeasible",
+      "question_ids": [
+        "Q2"
+      ],
+      "roles": [
+        "defeater backing",
+        "availability constraint"
+      ],
+      "load_bearing": true,
+      "source_research_claim_ids": [
+        "C5"
+      ],
+      "independent_review_status": "pending",
+      "claim_uid": "claim:96f5e499ccdd9e1545c3",
+      "identity_policy": "scoped-proposition-sha256-v1",
+      "epistemic_assessment": {
+        "credence": 0.79,
+        "valence": 0.5800000000000001,
+        "valence_sign": "positive",
+        "forced_binary_direction": "supported",
+        "zero_policy": "zero only at exact epistemic equipoise",
+        "prior_credence": 0.5,
+        "aggregation_policy": "dependence-clustered-log-odds-v1",
+        "calibration_state": "legacy_migration",
+        "clusters": [
+          {
+            "independence_group": "legacy-migration:RC16",
+            "assessment_ids": [
+              "VA-RC16-migration"
+            ],
+            "credence": 0.79,
+            "reliability": 0.5
+          }
+        ],
+        "assessments": [
+          {
+            "id": "VA-RC16-migration",
+            "producer": "legacy-artifact-migration-fixture",
+            "credence": 0.79,
+            "reliability": 0.5,
+            "independence_group": "legacy-migration:RC16",
+            "calibration_state": "legacy_migration",
+            "rationale": "The run-date evidence indicates checkpoint release and final license terms were not yet verified.",
+            "method": "explicit_legacy_migration_decision"
+          }
+        ]
+      },
+      "coverage_record": {
+        "coverage_state": "substantial",
+        "directions_attempted": [
+          "support",
+          "challenge"
+        ],
+        "directions_succeeded": [
+          "challenge",
+          "support"
+        ],
+        "queries_run": 10,
+        "distinct_source_urls": 3,
+        "inaccessible_or_missing": [
+          "The official Kimi K3 license document was not accessible at the time of the search, as its release is pending.",
+          "Official, detailed minimum hardware specifications for self-hosting were not found in the searched sources.",
+          "Detailed telemetry or data retention policies for the hosted API were not found in the searched sources.",
+          {
+            "id": "M-C5-1",
+            "description": "The final license terms for the Kimi K3 open-weight model have not yet been published as of the time of the search. While a source mentions Kimi K2 used a permissive license, it explicitly states this is not guaranteed for K3."
+          },
+          {
+            "id": "M-C5-2",
+            "description": "Detailed information on data retention and telemetry for the hosted Kimi K3 API was not found in the provided search results."
+          }
+        ],
+        "saturation_observations": [
+          "yes",
+          "unclear"
+        ],
+        "blind_spots": [
+          "Strong direct support found for differences in availability, data privacy/residency, fine-tuning capability, hardware/deployment complexity, and cost structure. Key limiting factor is the absence of the final, official license, which governs critical aspects like reproducibility and derivative rights. The sources clearly treat the API and open weights as two distinct pathways."
+        ],
+        "stopping_reason": "bounded_resource_limit",
+        "opposition_sought": true,
+        "harvey_quarters": 3,
+        "scale_quarters": 4,
+        "mapping_version": "research-coverage-harvey-v1",
+        "semantic_note": "Coverage measures search breadth and stopping conditions, not truth, signed valence, or evidential force."
+      },
+      "evidence_depth": {
+        "segments_filled": 5,
+        "segments_total": 5,
+        "label": "deep",
+        "ground_count": 2,
+        "direct_ground_count": 2,
+        "distinct_source_urls": 2,
+        "primary_source_count": 1,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_dependence": {
+        "policy": "origin-path-then-host-v1",
+        "clusters": [
+          {
+            "id": "ECL1",
+            "basis": "origin_path",
+            "origin": "independent evaluator (layer3 labs) analyzing primary source information.",
+            "ground_ids": [
+              "G-C5-support-3"
+            ]
+          },
+          {
+            "id": "ECL2",
+            "basis": "origin_path",
+            "origin": "primary source (moonshot ai blog)",
+            "ground_ids": [
+              "G-C5-support-1"
+            ]
+          }
+        ],
+        "unknown_ground_ids": [],
+        "independence_not_assumed": true,
+        "distinct_clusters": 2,
+        "sensitivity_scenarios": {
+          "optimistic_independence": {
+            "effective_units": 2,
+            "assumption": "each ground is independent"
+          },
+          "origin_clustered": {
+            "effective_units": 2,
+            "assumption": "grounds sharing an identified origin count once"
+          },
+          "strict_unknown_dependence": {
+            "effective_units": 2,
+            "assumption": "all unknown-origin grounds share one dependence cluster"
+          }
+        }
+      }
+    }
+  ],
+  "arguments": [
+    {
+      "id": "RA1",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C2-support-1",
+        "G-C2-support-2",
+        "G-C2-support-3",
+        "G-C2-support-5"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC1",
+      "inference_type": "enumerative_inductive",
+      "scheme": "argument_from_multiple_evaluations",
+      "warrant_reconstruction": "Results on several evaluations designed to sample agentic and knowledge-work tasks are evidence about performance on those evaluated workflows, without establishing general superiority.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA2",
+      "version": 1,
+      "premise_claim_ids": [
+        "RC1"
+      ],
+      "ground_ids": [],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC2",
+      "inference_type": "classificatory",
+      "scheme": "threshold_classification",
+      "warrant_reconstruction": "Matching or exceeding leading alternatives on at least one high-value evaluated workflow is sufficient for the narrow classification 'competitive on at least one workflow'.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [
+        "The evaluations may not represent deployed workflow conditions."
+      ],
+      "critical_questions": [],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA3",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C1-support-1",
+        "G-C1-challenge-4"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC3",
+      "inference_type": "inductive",
+      "scheme": "argument_from_reported_comparison",
+      "warrant_reconstruction": "A reported same-task score difference can support a capability difference only if the protocol and result are independently reproducible under matched conditions.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "weak",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA4",
+      "version": 1,
+      "premise_claim_ids": [
+        "RC2",
+        "RC3"
+      ],
+      "ground_ids": [],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC4",
+      "inference_type": "inductive",
+      "scheme": "generalization_from_comparative_evidence",
+      "warrant_reconstruction": "Workflow-specific competitiveness plus reproducible gains over prior models would support a broader superiority claim only if the evaluations cover the relevant capability profile.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [
+        "The evaluated tasks adequately represent the broader capability profile."
+      ],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "weak",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA5",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C1-support-4"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC5",
+      "inference_type": "inductive",
+      "scheme": "generalization_from_first_hand_test",
+      "warrant_reconstruction": "Accurate retrieval in a large-context test is some evidence of usable long-context behavior, but one test does not establish reliability across tasks and conditions.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "weak",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA6",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C3-support-1",
+        "G-C3-support-3",
+        "G-C3-challenge-3",
+        "G-C3-challenge-4"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC6",
+      "inference_type": "enumerative_inductive",
+      "scheme": "argument_from_controlled_studies",
+      "warrant_reconstruction": "Observed degradation within advertised context limits, including with successful retrieval, shows that nominal capacity alone is not sufficient evidence of reliability.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "strong",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA7",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C4-challenge-1",
+        "G-C4-challenge-2",
+        "G-C4-challenge-3"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC7",
+      "inference_type": "comparative_quantitative",
+      "scheme": "argument_from_observed_task_cost",
+      "warrant_reconstruction": "Lower measured monetary cost on matched selected tasks supports a claim about those tasks, not about all-in cost across workloads.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA8",
+      "version": 1,
+      "premise_claim_ids": [
+        "RC7"
+      ],
+      "ground_ids": [],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC8",
+      "inference_type": "practical",
+      "scheme": "price_to_total_cost",
+      "warrant_reconstruction": "Lower monetary cost on selected tasks would indicate lower quality-adjusted total cost only if latency, reliability, hardware, and correction burdens are also favorable.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "weak",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA9",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C5-support-1",
+        "G-C5-support-2",
+        "G-C5-support-3",
+        "G-C5-support-4",
+        "G-C5-support-5",
+        "G-C5-support-6"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC9",
+      "inference_type": "classificatory",
+      "scheme": "deployment_mode_comparison",
+      "warrant_reconstruction": "Material differences in availability, hardware, data handling, customization, licensing, and cost structure make hosted access and a downloadable checkpoint distinct deployment objects.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA10",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C4-support-4",
+        "G-C4-support-6",
+        "G-C4-challenge-1",
+        "G-C4-challenge-4"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC10",
+      "inference_type": "inductive",
+      "scheme": "argument_from_operational_constraints",
+      "warrant_reconstruction": "Observed latency and hallucination differences, together with unmeasured correction burden, are material to total task cost even when token or task price is lower.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA11",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C6-support-1",
+        "G-C6-support-2",
+        "G-C6-support-4",
+        "G-C6-challenge-4"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC11",
+      "inference_type": "inductive",
+      "scheme": "argument_from_reported_failure_modes",
+      "warrant_reconstruction": "Independent measurements and vendor warnings about fabrication, unexpected actions, and state sensitivity establish that these are live deployment risks requiring evaluation.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA12",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [],
+      "anticipated_ground_kinds": [
+        "deployment-specific red-team results",
+        "control-effectiveness measurements",
+        "institution-specific risk thresholds"
+      ],
+      "conclusion_claim_id": "RC12",
+      "inference_type": "practical",
+      "scheme": "control_effectiveness_assessment",
+      "warrant_reconstruction": "Suitability requires evidence that specified controls reduce observed risks below the deploying institution's thresholds.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "unresolved",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA13",
+      "version": 1,
+      "premise_claim_ids": [
+        "RC2",
+        "RC12"
+      ],
+      "ground_ids": [],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC13",
+      "inference_type": "practical",
+      "scheme": "capability_plus_controlled_risk",
+      "warrant_reconstruction": "A capable model is suitable for minimally supervised long-horizon work only when tested controls keep its operational risks within the institution's tolerance.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "unresolved",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA14",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C1-challenge-4"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC14",
+      "inference_type": "inductive",
+      "scheme": "argument_from_missing_independent_result",
+      "warrant_reconstruction": "The absence of a K3 result from an available independent comparison, together with the run's lack of a complete matched replication, supports the bounded claim that such replication was not present in the cited evidence.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA15",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C2-support-1",
+        "G-C2-support-5"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC15",
+      "inference_type": "inductive",
+      "scheme": "argument_from_mixed_comparative_results",
+      "warrant_reconstruction": "Results that place K3 ahead of some comparators and behind others on selected evaluations support a mixed, scoped performance conclusion rather than broad superiority.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    },
+    {
+      "id": "RA16",
+      "version": 1,
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C5-support-1",
+        "G-C5-support-3"
+      ],
+      "anticipated_ground_kinds": [],
+      "conclusion_claim_id": "RC16",
+      "inference_type": "temporal",
+      "scheme": "argument_from_release_status",
+      "warrant_reconstruction": "A scheduled future weight release and unpublished final license terms establish that checkpoint availability and licensing were not verified as of the run's evidence boundary.",
+      "warrant_fidelity": "plausible_reconstruction",
+      "strictness": "defeasible",
+      "assumptions": [],
+      "exceptions": [],
+      "critical_questions": [],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "This is a defeasible empirical or practical inference, not a strict propositional consequence.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "unsuitable"
+      }
+    }
+  ],
+  "defeaters": [
+    {
+      "id": "RD1",
+      "target_type": "argument",
+      "target_id": "RA2",
+      "attack_type": "undercutter",
+      "premise_claim_ids": [
+        "RC10"
+      ],
+      "ground_ids": [
+        "G-C2-challenge-2"
+      ],
+      "content": "A large latency penalty and differing harnesses can make benchmark parity less informative about practical competitiveness.",
+      "status": "contested"
+    },
+    {
+      "id": "RD2",
+      "target_type": "argument",
+      "target_id": "RA3",
+      "attack_type": "undercutter",
+      "premise_claim_ids": [
+        "RC14"
+      ],
+      "ground_ids": [],
+      "content": "The available evidence does not supply a public independent replication with a complete matched protocol.",
+      "status": "supported"
+    },
+    {
+      "id": "RD3",
+      "target_type": "argument",
+      "target_id": "RA4",
+      "attack_type": "undercutter",
+      "premise_claim_ids": [
+        "RC15"
+      ],
+      "ground_ids": [],
+      "content": "K3 trails leading alternatives on some evaluations, and the sampled workflows do not cover general capability.",
+      "status": "supported"
+    },
+    {
+      "id": "RD4",
+      "target_type": "argument",
+      "target_id": "RA5",
+      "attack_type": "undercutter",
+      "premise_claim_ids": [
+        "RC6"
+      ],
+      "ground_ids": [],
+      "content": "General controlled studies show that long context capacity and successful retrieval can coexist with degraded reasoning.",
+      "status": "supported"
+    },
+    {
+      "id": "RD5",
+      "target_type": "argument",
+      "target_id": "RA8",
+      "attack_type": "undercutter",
+      "premise_claim_ids": [
+        "RC10"
+      ],
+      "ground_ids": [],
+      "content": "Latency, correction burden, and deployment costs block the move from lower selected-task price to lower total cost.",
+      "status": "supported"
+    },
+    {
+      "id": "RD6",
+      "target_type": "argument",
+      "target_id": "RA9",
+      "attack_type": "exception",
+      "premise_claim_ids": [
+        "RC16"
+      ],
+      "ground_ids": [],
+      "content": "As of the run date, checkpoint release and final license terms were not verified; checkpoint-side conclusions remain conditional.",
+      "status": "supported"
+    },
+    {
+      "id": "RD7",
+      "target_type": "argument",
+      "target_id": "RA13",
+      "attack_type": "undercutter",
+      "premise_claim_ids": [
+        "RC11"
+      ],
+      "ground_ids": [],
+      "content": "Reported hallucination, over-initiative, and instability remain unresolved risks for minimally supervised deployment.",
+      "status": "supported"
+    }
+  ],
+  "terminal_claim_ids_by_question": {
+    "Q1": [
+      "RC2",
+      "RC4",
+      "RC5"
+    ],
+    "Q2": [
+      "RC7",
+      "RC8",
+      "RC9"
+    ],
+    "Q3": [
+      "RC13"
+    ]
+  },
+  "migration": {
+    "source_artifact": "argument_graph_reconstructed.json",
+    "valence_decisions": "evals/kimi_v02_valence_migration.json",
+    "warning": "Signed values are explicit, uncalibrated migration fixture decisions. They are not inferred from legacy evidence-state or coverage labels."
+  },
+  "schema_version": "0.3.0",
+  "artifact_id": "p2d:20260723-kimi-k3-v02:v0.3-migration",
+  "compiled_at": "2026-07-23T17:58:02.194282+00:00",
+  "ontology_contract": {
+    "card_vertices": "claims only",
+    "arguments": "supporting inferential hyperedges, never cards",
+    "defeaters": "attacking relations backed by claim premises, never cards",
+    "grounds": "source-backed observations attached to arguments, never cards",
+    "questions": "inquiry metadata and section headings, never cards",
+    "sources": "provenance records for grounds, never cards"
+  },
+  "structural_validation": [],
+  "inferential_reachability": {
+    "claim_dependency_edges": 6,
+    "defeater_backing_edges": 7,
+    "terminal_claims": 7,
+    "claims_reaching_a_terminal": 16,
+    "orphan_nonterminal_claim_ids": [],
+    "terminal_claim_ids_without_argument_attempt": [],
+    "terminal_claim_ids_without_complete_ground_route": [
+      "RC13"
+    ],
+    "maximum_claim_dependency_depth": 3,
+    "structurally_connected": true
+  },
+  "defeasible_evaluation": {
+    "engine": "grounded-defeasible-policy-v1",
+    "semantic_limit": "This establishes policy-governed dialectical acceptance, not world truth and not probability.",
+    "arguments": [
+      {
+        "argument_id": "RA1",
+        "dialectical_status": "accepted",
+        "reason": "argument qualifies and has no active defeater",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA2",
+        "dialectical_status": "undecided",
+        "reason": "an unresolved defeater remains",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": [
+          "RD1"
+        ]
+      },
+      {
+        "argument_id": "RA3",
+        "dialectical_status": "rejected",
+        "reason": "argument strength is below the policy floor",
+        "active_defeater_ids": [
+          "RD2"
+        ],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA4",
+        "dialectical_status": "rejected",
+        "reason": "argument strength is below the policy floor",
+        "active_defeater_ids": [
+          "RD3"
+        ],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA5",
+        "dialectical_status": "rejected",
+        "reason": "argument strength is below the policy floor",
+        "active_defeater_ids": [
+          "RD4"
+        ],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA6",
+        "dialectical_status": "accepted",
+        "reason": "argument qualifies and has no active defeater",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA7",
+        "dialectical_status": "accepted",
+        "reason": "argument qualifies and has no active defeater",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA8",
+        "dialectical_status": "rejected",
+        "reason": "argument strength is below the policy floor",
+        "active_defeater_ids": [
+          "RD5"
+        ],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA9",
+        "dialectical_status": "rejected",
+        "reason": "a supported, claim-backed defeater is active",
+        "active_defeater_ids": [
+          "RD6"
+        ],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA10",
+        "dialectical_status": "accepted",
+        "reason": "argument qualifies and has no active defeater",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA11",
+        "dialectical_status": "accepted",
+        "reason": "argument qualifies and has no active defeater",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA12",
+        "dialectical_status": "rejected",
+        "reason": "argument strength is below the policy floor",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA13",
+        "dialectical_status": "rejected",
+        "reason": "argument strength is below the policy floor",
+        "active_defeater_ids": [
+          "RD7"
+        ],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA14",
+        "dialectical_status": "accepted",
+        "reason": "argument qualifies and has no active defeater",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA15",
+        "dialectical_status": "accepted",
+        "reason": "argument qualifies and has no active defeater",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": []
+      },
+      {
+        "argument_id": "RA16",
+        "dialectical_status": "accepted",
+        "reason": "argument qualifies and has no active defeater",
+        "active_defeater_ids": [],
+        "unresolved_defeater_ids": []
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "RC1",
+        "has_accepted_argument": true,
+        "epistemic_valence_sign": "positive"
+      },
+      {
+        "claim_id": "RC10",
+        "has_accepted_argument": true,
+        "epistemic_valence_sign": "positive"
+      },
+      {
+        "claim_id": "RC11",
+        "has_accepted_argument": true,
+        "epistemic_valence_sign": "positive"
+      },
+      {
+        "claim_id": "RC12",
+        "has_accepted_argument": false,
+        "epistemic_valence_sign": "negative"
+      },
+      {
+        "claim_id": "RC13",
+        "has_accepted_argument": false,
+        "epistemic_valence_sign": "negative"
+      },
+      {
+        "claim_id": "RC14",
+        "has_accepted_argument": true,
+        "epistemic_valence_sign": "positive"
+      },
+      {
+        "claim_id": "RC15",
+        "has_accepted_argument": true,
+        "epistemic_valence_sign": "positive"
+      },
+      {
+        "claim_id": "RC16",
+        "has_accepted_argument": true,
+        "epistemic_valence_sign": "positive"
+      },
+      {
+        "claim_id": "RC2",
+        "has_accepted_argument": false,
+        "epistemic_valence_sign": "positive"
+      },
+      {
+        "claim_id": "RC3",
+        "has_accepted_argument": false,
+        "epistemic_valence_sign": "negative"
+      },
+      {
+        "claim_id": "RC4",
+        "has_accepted_argument": false,
+        "epistemic_valence_sign": "negative"
+      },
+      {
+        "claim_id": "RC5",
+        "has_accepted_argument": false,
+        "epistemic_valence_sign": "negative"
+      },
+      {
+        "claim_id": "RC6",
+        "has_accepted_argument": true,
+        "epistemic_valence_sign": "positive"
+      },
+      {
+        "claim_id": "RC7",
+        "has_accepted_argument": true,
+        "epistemic_valence_sign": "positive"
+      },
+      {
+        "claim_id": "RC8",
+        "has_accepted_argument": false,
+        "epistemic_valence_sign": "negative"
+      },
+      {
+        "claim_id": "RC9",
+        "has_accepted_argument": false,
+        "epistemic_valence_sign": "positive"
+      }
+    ]
+  },
+  "formal_validation": {
+    "engine": "z3-plus-truth-table",
+    "arguments_total": 16,
+    "formal_candidates_checked": 0,
+    "unsuitable_for_strict_formalization": 16,
+    "results": [],
+    "semantic_limit": "Solver results establish consequences of supplied formalizations only. They do not establish formalization fidelity or empirical truth."
+  },
+  "visual_projection": {
+    "projection_version": "visual-card-v1",
+    "cards": [
+      {
+        "claim_id": "RC1",
+        "text": "On several named agentic and knowledge-work evaluations, Kimi K3 matched or exceeded some leading hosted alternatives.",
+        "designation": "support",
+        "valence": 0.43999999999999995,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 3,
+          "segments_total": 5,
+          "label": "moderate",
+          "ground_count": 4,
+          "direct_ground_count": 4,
+          "distinct_source_urls": 1,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC2",
+        "text": "Kimi K3 is competitive with at least some leading alternatives on at least one high-value workflow.",
+        "designation": "answer",
+        "valence": 0.32000000000000006,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 3,
+          "segments_total": 5,
+          "label": "moderate",
+          "ground_count": 4,
+          "direct_ground_count": 4,
+          "distinct_source_urls": 1,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC3",
+        "text": "Kimi K3's improvement over preceding Kimi models is established by independently reproducible, matched evaluations.",
+        "designation": "support",
+        "valence": -0.16000000000000003,
+        "valence_sign": "negative",
+        "direction_label": "unsupported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 3,
+          "segments_total": 5,
+          "label": "moderate",
+          "ground_count": 2,
+          "direct_ground_count": 1,
+          "distinct_source_urls": 2,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC4",
+        "text": "Kimi K3 demonstrates broad capability superiority over preceding Kimi models and leading alternatives.",
+        "designation": "answer",
+        "valence": -0.3799999999999999,
+        "valence_sign": "negative",
+        "direction_label": "unsupported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 4,
+          "segments_total": 5,
+          "label": "substantial",
+          "ground_count": 6,
+          "direct_ground_count": 5,
+          "distinct_source_urls": 3,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC5",
+        "text": "Kimi K3 reliably uses its reported long context for retrieval and reasoning across relevant tasks.",
+        "designation": "answer",
+        "valence": -0.14,
+        "valence_sign": "negative",
+        "direction_label": "unsupported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 2,
+          "segments_total": 5,
+          "label": "limited",
+          "ground_count": 1,
+          "direct_ground_count": 1,
+          "distinct_source_urls": 1,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC6",
+        "text": "Large advertised context capacity does not by itself establish reliable long-context performance.",
+        "designation": "challenge",
+        "valence": 0.6000000000000001,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 4,
+          "segments_total": 5,
+          "label": "substantial",
+          "ground_count": 4,
+          "direct_ground_count": 4,
+          "distinct_source_urls": 3,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC7",
+        "text": "Kimi K3 had lower monetary cost than selected comparators on some evaluated tasks.",
+        "designation": "answer",
+        "valence": 0.45999999999999974,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 4,
+          "segments_total": 5,
+          "label": "substantial",
+          "ground_count": 3,
+          "direct_ground_count": 3,
+          "distinct_source_urls": 3,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC8",
+        "text": "Kimi K3 has a lower total quality-adjusted cost per successful task across relevant workloads.",
+        "designation": "answer",
+        "valence": -0.28,
+        "valence_sign": "negative",
+        "direction_label": "unsupported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 4,
+          "segments_total": 5,
+          "label": "substantial",
+          "ground_count": 3,
+          "direct_ground_count": 3,
+          "distinct_source_urls": 3,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC9",
+        "text": "Hosted Kimi K3 and any downloadable checkpoint are materially different deployment and governance options.",
+        "designation": "answer",
+        "valence": 0.6400000000000001,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 5,
+          "segments_total": 5,
+          "label": "deep",
+          "ground_count": 6,
+          "direct_ground_count": 6,
+          "distinct_source_urls": 2,
+          "primary_source_count": 2,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC10",
+        "text": "Kimi K3's latency, correction burden, and deployment costs are material constraints not captured by token price alone.",
+        "designation": "challenge",
+        "valence": 0.5,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 4,
+          "segments_total": 5,
+          "label": "substantial",
+          "ground_count": 4,
+          "direct_ground_count": 4,
+          "distinct_source_urls": 4,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC11",
+        "text": "Available reports identify hallucination, over-initiative, and runtime-instability risks for Kimi K3.",
+        "designation": "challenge",
+        "valence": 0.5199999999999998,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 4,
+          "segments_total": 5,
+          "label": "substantial",
+          "ground_count": 4,
+          "direct_ground_count": 4,
+          "distinct_source_urls": 3,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC12",
+        "text": "Tested controls keep Kimi K3's operational risks within a deploying institution's tolerance.",
+        "designation": "support",
+        "valence": -0.41999999999999993,
+        "valence_sign": "negative",
+        "direction_label": "unsupported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 0,
+          "segments_total": 5,
+          "label": "no",
+          "ground_count": 0,
+          "direct_ground_count": 0,
+          "distinct_source_urls": 0,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC13",
+        "text": "Kimi K3 is suitable for minimally supervised long-horizon workflows.",
+        "designation": "answer",
+        "valence": -0.45999999999999996,
+        "valence_sign": "negative",
+        "direction_label": "unsupported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 3,
+          "segments_total": 5,
+          "label": "moderate",
+          "ground_count": 4,
+          "direct_ground_count": 4,
+          "distinct_source_urls": 1,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC14",
+        "text": "The cited evidence does not include a public independent replication of Kimi K3 under a complete matched protocol.",
+        "designation": "challenge",
+        "valence": 0.56,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 1,
+          "segments_total": 5,
+          "label": "very limited",
+          "ground_count": 1,
+          "direct_ground_count": 0,
+          "distinct_source_urls": 1,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC15",
+        "text": "The cited evaluations show mixed performance on selected workflows rather than broad capability superiority.",
+        "designation": "challenge",
+        "valence": 0.43999999999999995,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 3,
+          "segments_total": 5,
+          "label": "moderate",
+          "ground_count": 2,
+          "direct_ground_count": 2,
+          "distinct_source_urls": 1,
+          "primary_source_count": 0,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      },
+      {
+        "claim_id": "RC16",
+        "text": "As of the run date, Kimi K3 checkpoint release and final license terms had not been verified.",
+        "designation": "challenge",
+        "valence": 0.5800000000000001,
+        "valence_sign": "positive",
+        "direction_label": "supported",
+        "coverage_state": "substantial",
+        "coverage_harvey_quarters": 3,
+        "evidence_depth": {
+          "segments_filled": 5,
+          "segments_total": 5,
+          "label": "deep",
+          "ground_count": 2,
+          "direct_ground_count": 2,
+          "distinct_source_urls": 2,
+          "primary_source_count": 1,
+          "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+        },
+        "source_fields": {
+          "designation": "topology",
+          "valence": "claim.epistemic_assessment",
+          "coverage": "claim.coverage_record",
+          "evidence_depth": "claim.evidence_depth"
+        }
+      }
+    ],
+    "arguments": [
+      {
+        "argument_id": "RA2",
+        "premise_claim_ids": [
+          "RC1"
+        ],
+        "conclusion_claim_id": "RC2",
+        "relationship": "supports"
+      },
+      {
+        "argument_id": "RA4",
+        "premise_claim_ids": [
+          "RC2",
+          "RC3"
+        ],
+        "conclusion_claim_id": "RC4",
+        "relationship": "supports"
+      },
+      {
+        "argument_id": "RA8",
+        "premise_claim_ids": [
+          "RC7"
+        ],
+        "conclusion_claim_id": "RC8",
+        "relationship": "supports"
+      },
+      {
+        "argument_id": "RA13",
+        "premise_claim_ids": [
+          "RC2",
+          "RC12"
+        ],
+        "conclusion_claim_id": "RC13",
+        "relationship": "supports"
+      }
+    ],
+    "defeaters": [
+      {
+        "defeater_id": "RD1",
+        "premise_claim_ids": [
+          "RC10"
+        ],
+        "target_argument_id": "RA2",
+        "relationship": "undercutter"
+      },
+      {
+        "defeater_id": "RD2",
+        "premise_claim_ids": [
+          "RC14"
+        ],
+        "target_argument_id": "RA3",
+        "relationship": "undercutter"
+      },
+      {
+        "defeater_id": "RD3",
+        "premise_claim_ids": [
+          "RC15"
+        ],
+        "target_argument_id": "RA4",
+        "relationship": "undercutter"
+      },
+      {
+        "defeater_id": "RD4",
+        "premise_claim_ids": [
+          "RC6"
+        ],
+        "target_argument_id": "RA5",
+        "relationship": "undercutter"
+      },
+      {
+        "defeater_id": "RD5",
+        "premise_claim_ids": [
+          "RC10"
+        ],
+        "target_argument_id": "RA8",
+        "relationship": "undercutter"
+      },
+      {
+        "defeater_id": "RD6",
+        "premise_claim_ids": [
+          "RC16"
+        ],
+        "target_argument_id": "RA9",
+        "relationship": "exception"
+      },
+      {
+        "defeater_id": "RD7",
+        "premise_claim_ids": [
+          "RC11"
+        ],
+        "target_argument_id": "RA13",
+        "relationship": "undercutter"
+      }
+    ],
+    "layout_constraints": {
+      "terminal_side": "left",
+      "flow": "right_to_left",
+      "edges": "orthogonal",
+      "node_overlap": "forbidden",
+      "equal_width_within_section": true
+    }
+  },
+  "interaction_contract": {
+    "record_types": [
+      "challenge",
+      "deepen",
+      "explain",
+      "trust_preference"
+    ],
+    "mutation_policy": "Interactions append records and may create a new artifact version; they never silently mutate this artifact."
+  }
+}

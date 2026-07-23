@@ -1,0 +1,522 @@
+{
+  "projection_version": "visual-card-v1",
+  "cards": [
+    {
+      "claim_id": "RC1",
+      "text": "On several named agentic and knowledge-work evaluations, Kimi K3 matched or exceeded some leading hosted alternatives.",
+      "designation": "support",
+      "valence": 0.43999999999999995,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC2",
+      "text": "Kimi K3 is competitive with at least some leading alternatives on at least one high-value workflow.",
+      "designation": "answer",
+      "valence": 0.32000000000000006,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC3",
+      "text": "Kimi K3's improvement over preceding Kimi models is established by independently reproducible, matched evaluations.",
+      "designation": "support",
+      "valence": -0.16000000000000003,
+      "valence_sign": "negative",
+      "direction_label": "unsupported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 2,
+        "direct_ground_count": 1,
+        "distinct_source_urls": 2,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC4",
+      "text": "Kimi K3 demonstrates broad capability superiority over preceding Kimi models and leading alternatives.",
+      "designation": "answer",
+      "valence": -0.3799999999999999,
+      "valence_sign": "negative",
+      "direction_label": "unsupported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 6,
+        "direct_ground_count": 5,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC5",
+      "text": "Kimi K3 reliably uses its reported long context for retrieval and reasoning across relevant tasks.",
+      "designation": "answer",
+      "valence": -0.14,
+      "valence_sign": "negative",
+      "direction_label": "unsupported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 2,
+        "segments_total": 5,
+        "label": "limited",
+        "ground_count": 1,
+        "direct_ground_count": 1,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC6",
+      "text": "Large advertised context capacity does not by itself establish reliable long-context performance.",
+      "designation": "challenge",
+      "valence": 0.6000000000000001,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC7",
+      "text": "Kimi K3 had lower monetary cost than selected comparators on some evaluated tasks.",
+      "designation": "answer",
+      "valence": 0.45999999999999974,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 3,
+        "direct_ground_count": 3,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC8",
+      "text": "Kimi K3 has a lower total quality-adjusted cost per successful task across relevant workloads.",
+      "designation": "answer",
+      "valence": -0.28,
+      "valence_sign": "negative",
+      "direction_label": "unsupported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 3,
+        "direct_ground_count": 3,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC9",
+      "text": "Hosted Kimi K3 and any downloadable checkpoint are materially different deployment and governance options.",
+      "designation": "answer",
+      "valence": 0.6400000000000001,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 5,
+        "segments_total": 5,
+        "label": "deep",
+        "ground_count": 6,
+        "direct_ground_count": 6,
+        "distinct_source_urls": 2,
+        "primary_source_count": 2,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC10",
+      "text": "Kimi K3's latency, correction burden, and deployment costs are material constraints not captured by token price alone.",
+      "designation": "challenge",
+      "valence": 0.5,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 4,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC11",
+      "text": "Available reports identify hallucination, over-initiative, and runtime-instability risks for Kimi K3.",
+      "designation": "challenge",
+      "valence": 0.5199999999999998,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 4,
+        "segments_total": 5,
+        "label": "substantial",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 3,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC12",
+      "text": "Tested controls keep Kimi K3's operational risks within a deploying institution's tolerance.",
+      "designation": "support",
+      "valence": -0.41999999999999993,
+      "valence_sign": "negative",
+      "direction_label": "unsupported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 0,
+        "segments_total": 5,
+        "label": "no",
+        "ground_count": 0,
+        "direct_ground_count": 0,
+        "distinct_source_urls": 0,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC13",
+      "text": "Kimi K3 is suitable for minimally supervised long-horizon workflows.",
+      "designation": "answer",
+      "valence": -0.45999999999999996,
+      "valence_sign": "negative",
+      "direction_label": "unsupported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 4,
+        "direct_ground_count": 4,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC14",
+      "text": "The cited evidence does not include a public independent replication of Kimi K3 under a complete matched protocol.",
+      "designation": "challenge",
+      "valence": 0.56,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 1,
+        "segments_total": 5,
+        "label": "very limited",
+        "ground_count": 1,
+        "direct_ground_count": 0,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC15",
+      "text": "The cited evaluations show mixed performance on selected workflows rather than broad capability superiority.",
+      "designation": "challenge",
+      "valence": 0.43999999999999995,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 3,
+        "segments_total": 5,
+        "label": "moderate",
+        "ground_count": 2,
+        "direct_ground_count": 2,
+        "distinct_source_urls": 1,
+        "primary_source_count": 0,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    },
+    {
+      "claim_id": "RC16",
+      "text": "As of the run date, Kimi K3 checkpoint release and final license terms had not been verified.",
+      "designation": "challenge",
+      "valence": 0.5800000000000001,
+      "valence_sign": "positive",
+      "direction_label": "supported",
+      "coverage_state": "substantial",
+      "coverage_harvey_quarters": 3,
+      "evidence_depth": {
+        "segments_filled": 5,
+        "segments_total": 5,
+        "label": "deep",
+        "ground_count": 2,
+        "direct_ground_count": 2,
+        "distinct_source_urls": 2,
+        "primary_source_count": 1,
+        "semantic_note": "Evidence depth summarizes the record's depth; valence and confidence are assessed separately."
+      },
+      "source_fields": {
+        "designation": "topology",
+        "valence": "claim.epistemic_assessment",
+        "coverage": "claim.coverage_record",
+        "evidence_depth": "claim.evidence_depth"
+      }
+    }
+  ],
+  "arguments": [
+    {
+      "argument_id": "RA2",
+      "premise_claim_ids": [
+        "RC1"
+      ],
+      "conclusion_claim_id": "RC2",
+      "relationship": "supports"
+    },
+    {
+      "argument_id": "RA4",
+      "premise_claim_ids": [
+        "RC2",
+        "RC3"
+      ],
+      "conclusion_claim_id": "RC4",
+      "relationship": "supports"
+    },
+    {
+      "argument_id": "RA8",
+      "premise_claim_ids": [
+        "RC7"
+      ],
+      "conclusion_claim_id": "RC8",
+      "relationship": "supports"
+    },
+    {
+      "argument_id": "RA13",
+      "premise_claim_ids": [
+        "RC2",
+        "RC12"
+      ],
+      "conclusion_claim_id": "RC13",
+      "relationship": "supports"
+    }
+  ],
+  "defeaters": [
+    {
+      "defeater_id": "RD1",
+      "premise_claim_ids": [
+        "RC10"
+      ],
+      "target_argument_id": "RA2",
+      "relationship": "undercutter"
+    },
+    {
+      "defeater_id": "RD2",
+      "premise_claim_ids": [
+        "RC14"
+      ],
+      "target_argument_id": "RA3",
+      "relationship": "undercutter"
+    },
+    {
+      "defeater_id": "RD3",
+      "premise_claim_ids": [
+        "RC15"
+      ],
+      "target_argument_id": "RA4",
+      "relationship": "undercutter"
+    },
+    {
+      "defeater_id": "RD4",
+      "premise_claim_ids": [
+        "RC6"
+      ],
+      "target_argument_id": "RA5",
+      "relationship": "undercutter"
+    },
+    {
+      "defeater_id": "RD5",
+      "premise_claim_ids": [
+        "RC10"
+      ],
+      "target_argument_id": "RA8",
+      "relationship": "undercutter"
+    },
+    {
+      "defeater_id": "RD6",
+      "premise_claim_ids": [
+        "RC16"
+      ],
+      "target_argument_id": "RA9",
+      "relationship": "exception"
+    },
+    {
+      "defeater_id": "RD7",
+      "premise_claim_ids": [
+        "RC11"
+      ],
+      "target_argument_id": "RA13",
+      "relationship": "undercutter"
+    }
+  ],
+  "layout_constraints": {
+    "terminal_side": "left",
+    "flow": "right_to_left",
+    "edges": "orthogonal",
+    "node_overlap": "forbidden",
+    "equal_width_within_section": true
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {"claim_id":"RC1","credence":0.72,"rationale":"The record contains several scoped evaluation results supporting the bounded comparison, with material protocol limitations."},
+  {"claim_id":"RC2","credence":0.66,"rationale":"The narrow claim of competitiveness on at least one workflow is more likely than not, but deployment relevance remains uncertain."},
+  {"claim_id":"RC3","credence":0.42,"rationale":"Reported gains exist, but the record lacks the independent matched replication required by the proposition."},
+  {"claim_id":"RC4","credence":0.31,"rationale":"The evidence is too scoped and mixed to make broad capability superiority more likely than not."},
+  {"claim_id":"RC5","credence":0.43,"rationale":"A limited retrieval result does not make cross-task reliable long-context use more likely than not."},
+  {"claim_id":"RC6","credence":0.80,"rationale":"The cited controlled findings strongly support the methodological distinction between capacity and reliable use."},
+  {"claim_id":"RC7","credence":0.73,"rationale":"Selected matched task reports support the bounded monetary-cost comparison."},
+  {"claim_id":"RC8","credence":0.36,"rationale":"The record omits enough latency, reliability, hardware, and correction-cost information that lower total cost is less likely than not established."},
+  {"claim_id":"RC9","credence":0.82,"rationale":"The deployment and governance differences between hosted access and downloadable weights are directly material."},
+  {"claim_id":"RC10","credence":0.75,"rationale":"The record identifies operational burdens that token price alone does not represent."},
+  {"claim_id":"RC11","credence":0.76,"rationale":"Multiple available reports identify the stated failure modes as live risks."},
+  {"claim_id":"RC12","credence":0.29,"rationale":"No deployment-specific control-effectiveness record establishes that risks fall within institutional tolerance."},
+  {"claim_id":"RC13","credence":0.27,"rationale":"Unresolved control effectiveness and operational risks make suitability for minimally supervised long-horizon work less likely than not."},
+  {"claim_id":"RC14","credence":0.78,"rationale":"The bounded research record does not contain a public independent matched replication."},
+  {"claim_id":"RC15","credence":0.72,"rationale":"The selected evaluations show mixed scoped results rather than broad superiority."},
+  {"claim_id":"RC16","credence":0.79,"rationale":"The run-date evidence indicates checkpoint release and final license terms were not yet verified."}
+]

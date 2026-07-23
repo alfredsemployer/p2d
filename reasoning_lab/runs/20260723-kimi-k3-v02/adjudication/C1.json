@@ -1,0 +1,82 @@
+{
+  "claim_id": "C1",
+  "claim": "On independently reproducible, matched evaluations, Kimi K3 demonstrates a measurable capability difference from Moonshot AI's preceding Kimi models on at least one decision-relevant task family.",
+  "verifier": {
+    "exact_proposition_established": "No. The grounds support a reported measurable improvement of Kimi K3 over K2.6 on at least one evaluation, especially AA-Omniscience (46% versus 33%), but they do not establish that the comparison is independently reproducible under matched evaluation conditions.",
+    "holds": false,
+    "ground_strength": "moderate",
+    "argument_strength": "weak",
+    "warrant_reconstruction": "If an independent evaluator reports scores for K3 and a preceding Kimi model on the same task family and evaluation protocol, with enough methodological information for the comparison to be reproduced, then a substantial score difference would establish the claim. G-C1-1 supplies the clearest matched quantitative comparison, and the Text Arena comparison supplies another reported difference, but the grounds do not provide replication details, full protocols, or independently reproducible underlying data. The first-hand tests demonstrate K3 capabilities but lack matched comparisons to preceding Kimi models.",
+    "unresolved_undercutters": [
+      "The AA-Omniscience quotation does not provide task composition, prompting and sampling procedures, model settings, sample sizes, uncertainty, or replication evidence.",
+      "The reported AA-Omniscience comparison comes through a review citing third-party reporting; the grounds do not show an independently reproduced result.",
+      "The private long-horizon evaluation is explicitly not shown to be independently reproducible.",
+      "The Text Arena comparison is dynamic and community-driven rather than a standardized, reproducible matched evaluation.",
+      "The frontend pairwise-vote evidence is ambiguous about whether the stated 76% figure is being compared with K2.6 and does not disclose enough underlying data for independent reproduction.",
+      "The first-hand long-context and BrowseComp tests lack same-task results for a preceding Kimi model.",
+      "Moonshot's claimed efficiency improvement is not a measured task-performance comparison.",
+      "The supplied FrontierSWE evidence indicates that K3 had not been independently posted on that benchmark, reinforcing the absence of an independently verified matched evaluation."
+    ],
+    "rationale": "There is meaningful evidence of capability differences: the 13-point AA-Omniscience increase is a direct, quantitative K3-versus-K2.6 comparison, and other grounds report large ranking or score differences. However, the claim specifically requires independently reproducible, matched evaluations. The evidence does not establish that requirement. Because the most relevant result lacks reproducibility details and the other comparisons are either nonstandard, ambiguous, vendor-reported, private, or unmatched, the exact claim remains unproven."
+  },
+  "falsifier": {
+    "exact_proposition_opposed": "On independently reproducible, matched evaluations, Kimi K3 demonstrates a measurable capability difference from Moonshot AI's preceding Kimi models on at least one decision-relevant task family.",
+    "holds": false,
+    "ground_strength": "moderate",
+    "argument_strength": "moderate",
+    "attack_type": "underminer",
+    "alternative_explanations": [
+      "Reported performance gains are from vendor claims or non-reproducible private/qualitative tests, not independent matched evaluations.",
+      "Comparisons are often made against other vendors' models or lack a direct, matched baseline from a preceding Kimi model on the same exact task.",
+      "Some apparent improvements may be due to new capabilities (e.g., long context) not present in predecessors, which is an architectural difference, not a measured difference on a task both could attempt."
+    ],
+    "rationale": "The claim's core requirement is 'independently reproducible, matched evaluations.' The provided grounds collectively fail to meet this standard for a direct K3 vs. preceding Kimi model comparison on a specific task family. Key weaknesses: 1) Several grounds (G-C1-2, G-C1-3, G-C1-6 from the second set) rely on vendor claims or aggregated reporting without independent verification. 2) The most direct comparative data (G-C1-1: AA-Omniscience; G-C1-2 from first set: Text Arena rank) either lacks detail on task composition/reproducibility or uses a non-standard, subjective platform (Text Arena). 3) Grounds demonstrating K3's prowess (G-C1-4, G-C1-5) are qualitative, first-hand tests with no matched evaluation against a prior Kimi model. 4) Ground G-C1-4 from the second set explicitly highlights the absence of an independent leaderboard result for a key coding benchmark. While the grounds suggest K3 is likely more capable, they do not constitute the specific type of evidence demanded by the claim—rigorous, independently reproducible, and matched evaluations. The inference from the grounds to the claim is undermined by the lack of methodological rigor and independent verification in the presented data."
+  },
+  "comparator": {
+    "well_formed": true,
+    "conflation_detected": false,
+    "split_proposals": [],
+    "support_route": {
+      "qualifies": false,
+      "ground_strength": "moderate",
+      "argument_strength": "weak",
+      "unresolved_undercutter": true
+    },
+    "opposition_route": {
+      "qualifies": true,
+      "ground_strength": "moderate",
+      "argument_strength": "moderate",
+      "attack_is_direct_rebuttal": false
+    },
+    "warrant_fidelity": "plausible_reconstruction",
+    "source_dependence": "material",
+    "rationale": "Both sides agree that the claim is not established by the grounds, and I concur. The claim sets a high bar: 'independently reproducible, matched evaluations.' The VERIFIER and FALSIFIER correctly identify that while the grounds provide evidence of a likely capability difference (e.g., the AA-Omniscience score jump in G-C1-1, the Text Arena rank change in G-C1-2), they fail to meet the standard of independent reproducibility. The grounds consist of vendor claims, qualitative first-hand tests without matched comparisons, and third-party reporting that lacks the methodological detail required for independent reproduction. The FALSIFIER's 'underminer' attack is successful because it correctly targets the inferential leap from 'reported score difference' to 'independently reproducible evaluation,' which the grounds do not support. The VERIFIER's argument is weak precisely because it cannot overcome the same set of unresolved undercutters that the FALSIFIER highlights. Therefore, the opposition route is the more compelling one."
+  },
+  "derived_verdict": {
+    "evidential_state": "insufficient",
+    "coverage_state": "limited",
+    "terminal_allowed": false,
+    "qualifying_support_routes": [],
+    "qualifying_opposition_routes": [],
+    "policy_id": "descriptive-v0.2",
+    "policy_version": "0.2.0"
+  },
+  "provenance": {
+    "verifier": {
+      "model": "openai/gpt-5.6-luna",
+      "response_id": "gen-1784788806-ftqhsLmBJJMyVneV4kr9"
+    },
+    "falsifier": {
+      "model": "deepseek/deepseek-v3.2",
+      "response_id": "gen-1784788812-5xJolbNSthq0xC9XApWO"
+    },
+    "comparator": {
+      "model": "google/gemini-2.5-pro",
+      "response_id": "gen-1784788839-YynQsFkIl8XWEXWnTKFj"
+    },
+    "passes_blind_to_each_other": {
+      "verifier_vs_falsifier": true,
+      "comparator_saw_both": true
+    }
+  }
+}

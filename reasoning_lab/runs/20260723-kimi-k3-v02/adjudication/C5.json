@@ -1,0 +1,75 @@
+{
+  "claim_id": "C5",
+  "claim": "The hosted/API Kimi K3 offering and any downloadable open-weight checkpoint constitute materially different accessibility, reproducibility, privacy, governance, and deployment objects.",
+  "verifier": {
+    "exact_proposition_established": "The hosted/API Kimi K3 offering and a downloadable open-weight checkpoint are materially different objects: the API is an account- and payment-gated remote service requiring no user hardware, while the checkpoint is a downloadable asset intended for self-hosted execution, with substantially different requirements and consequences for accessibility, privacy, customization/reproducibility, governance, cost, and deployment.",
+    "holds": true,
+    "ground_strength": "strong",
+    "argument_strength": "strong",
+    "warrant_reconstruction": "An offering is materially different when users obtain and operate it through different mechanisms and when that difference changes control, dependencies, risks, and feasible uses. The API is immediately accessible through vendor platforms, requires payment, sends prompts to Moonshot infrastructure, and has published per-token pricing. A downloadable checkpoint instead permits local execution and fine-tuning, keeps data within infrastructure controlled by the user, and shifts costs and operational responsibility to hardware, power, and engineering. The two also have different governance objects: API access is governed by service-account and payment terms, whereas checkpoint use, modification, and redistribution are governed by a model license. Their deployment contexts therefore differ materially even if they derive from the same underlying model.",
+    "unresolved_undercutters": [
+      "The full open-weight release is described as planned for July 27, 2026, so the evidence does not establish that a downloadable checkpoint is currently available.",
+      "The final Kimi K3 license had not been published, so the precise governance, modification, and redistribution rights remain uncertain.",
+      "The evidence supports local control and fine-tuning more directly than strict scientific or bit-for-bit reproducibility; runtimes, code, quantization, hardware, and serving configurations may still differ.",
+      "Self-hosting hardware requirements and total costs are partly inferred rather than established by official minimum specifications.",
+      "The privacy comparison describes the hosted API as sending prompts to servers in China and self-hosting as retaining data locally, but does not independently verify all vendor data-handling, retention, or security practices."
+    ],
+    "rationale": "The grounds directly establish distinct access modes, deployment requirements, data locations, customization capabilities, payment and cost structures, and governance regimes. The API can be"
+  },
+  "falsifier": {
+    "exact_proposition_opposed": "The hosted/API Kimi K3 offering and any downloadable open-weight checkpoint constitute materially different accessibility, reproducibility, privacy, governance, and deployment objects.",
+    "holds": true,
+    "ground_strength": "strong",
+    "argument_strength": "strong",
+    "attack_type": "none",
+    "alternative_explanations": [],
+    "rationale": "The grounds provided directly and strongly support the claim. They establish clear, material differences across all five dimensions specified: 1) **Accessibility**: API is available now via payment (G-C5-5, G-C5-6), while open weights are a future, free download requiring massive hardware (G-C5-4, G-C5-2). 2) **Reproducibility**: Open weights allow for fine-tuning and adaptation (G-C5-3), which the API does not. 3) **Privacy**: API sends data to servers in China (G-C5-2, G-C5-1), while self-hosting keeps data within user-controlled infrastructure. 4) **Governance**: API use is governed by service terms; open weights will be governed by a separate license dictating modification and redistribution rights (G-C5-4, G-C5-3). 5) **Deployment Objects**: The offerings are framed as distinct choices for different needs—API for speed/low cost vs. self-hosting for control/data residency (G-C5-6). The grounds are consistent, come from both primary and independent evaluator sources, and directly address the claim's components. No grounds weaken the claim; all support it. Therefore, a faithful case against the claim cannot be built. The strongest reading of the claim is that the two offerings are materially different in the listed aspects, and the evidence decisively confirms this."
+  },
+  "comparator": {
+    "well_formed": true,
+    "conflation_detected": false,
+    "split_proposals": [],
+    "support_route": {
+      "qualifies": true,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "unresolved_undercutter": true
+    },
+    "opposition_route": {
+      "qualifies": true,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "attack_is_direct_rebuttal": false
+    },
+    "warrant_fidelity": "faithful",
+    "source_dependence": "low",
+    "rationale": "Both sides correctly recognize that the provided grounds overwhelmingly support the claim. The evidence clearly establishes material differences between a hosted API and a self-hosted open-weight model across all five specified dimensions: accessibility (payment-gated service vs. free download requiring massive hardware), reproducibility (closed API vs. fine-tunable weights), privacy (data sent to vendor vs. data kept in-house), governance (terms of service vs. model license), and deployment (remote service vs. local asset). The Falsifier correctly notes that a case against the claim cannot be built from the grounds and essentially concedes. The Verifier also builds a strong case for the claim, but appropriately lists several unresolved undercutters, such as the fact that the open-weight model is not yet released and its license is not yet published. These undercutters do not refute the claim but correctly qualify its certainty based on the evidence. Since both sides agree on the conclusion and the Falsifier's position is not a genuine opposition, the adjudication confirms the claim is strongly supported."
+  },
+  "derived_verdict": {
+    "evidential_state": "insufficient",
+    "coverage_state": "limited",
+    "terminal_allowed": false,
+    "qualifying_support_routes": [],
+    "qualifying_opposition_routes": [],
+    "policy_id": "descriptive-v0.2",
+    "policy_version": "0.2.0"
+  },
+  "provenance": {
+    "verifier": {
+      "model": "openai/gpt-5.6-luna",
+      "response_id": "gen-1784788935-b0HXKzMXrKc4YezJn3xI"
+    },
+    "falsifier": {
+      "model": "deepseek/deepseek-v3.2",
+      "response_id": "gen-1784788943-grpuhaaFSHDcPsud4rJ3"
+    },
+    "comparator": {
+      "model": "google/gemini-2.5-pro",
+      "response_id": "gen-1784788958-gwn54MaDHpwPi8jrLkFe"
+    },
+    "passes_blind_to_each_other": {
+      "verifier_vs_falsifier": true,
+      "comparator_saw_both": true
+    }
+  }
+}

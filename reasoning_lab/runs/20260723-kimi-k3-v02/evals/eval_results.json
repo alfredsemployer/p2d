@@ -1,0 +1,1374 @@
+{
+  "run_at": "2026-07-23T07:00:16.192901+00:00",
+  "suites": 5,
+  "completed_suites": 5,
+  "mean_accuracy": 1.0,
+  "budget": {
+    "limit_usd": 3.0,
+    "spent_usd": 0.912689538,
+    "remaining_usd": 2.087310462
+  },
+  "results": {
+    "formal_entailment": {
+      "name": "formal_entailment",
+      "cases": 15,
+      "accuracy": 1.0,
+      "cross_backend_agreement": 1.0,
+      "failures": [],
+      "results": [
+        {
+          "id": "F01",
+          "expected": "proved",
+          "observed": "proved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "proved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "P",
+                "Q"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "No model satisfies every premise while falsifying the conclusion.",
+              "artifact": {
+                "premises_smt2": [
+                  "(=> P Q)",
+                  "P"
+                ],
+                "negated_conclusion_smt2": "(not Q)"
+              }
+            },
+            "truth_table": {
+              "entailed": true,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F02",
+          "expected": "disproved",
+          "observed": "disproved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "disproved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "P",
+                "Q"
+              ],
+              "countermodel": {
+                "P": false,
+                "Q": true
+              },
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "A countermodel satisfies every premise and falsifies the conclusion.",
+              "artifact": {}
+            },
+            "truth_table": {
+              "entailed": false,
+              "countermodel": {
+                "P": false,
+                "Q": true
+              }
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F03",
+          "expected": "proved",
+          "observed": "proved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "proved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "P",
+                "Q"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "No model satisfies every premise while falsifying the conclusion.",
+              "artifact": {
+                "premises_smt2": [
+                  "(or P Q)",
+                  "(not P)"
+                ],
+                "negated_conclusion_smt2": "(not Q)"
+              }
+            },
+            "truth_table": {
+              "entailed": true,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F04",
+          "expected": "proved",
+          "observed": "proved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "proved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "No model satisfies every premise while falsifying the conclusion.",
+              "artifact": {
+                "premises_smt2": [
+                  "(=> P Q)",
+                  "(=> Q R)"
+                ],
+                "negated_conclusion_smt2": "(not (=> P R))"
+              }
+            },
+            "truth_table": {
+              "entailed": true,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F05",
+          "expected": "inconsistent_premises",
+          "observed": "inconsistent_premises",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "inconsistent_premises",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "P",
+                "Q"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [
+                "premise_0",
+                "premise_1"
+              ],
+              "assertions_checked": 2,
+              "message": "The premises are inconsistent; vacuous entailment is not accepted as a usable proof.",
+              "artifact": {}
+            },
+            "truth_table": {
+              "entailed": null,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F06",
+          "expected": "disproved",
+          "observed": "disproved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "disproved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "P",
+                "Q"
+              ],
+              "countermodel": {
+                "P": false,
+                "Q": true
+              },
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 2,
+              "message": "A countermodel satisfies every premise and falsifies the conclusion.",
+              "artifact": {}
+            },
+            "truth_table": {
+              "entailed": false,
+              "countermodel": {
+                "P": false,
+                "Q": true
+              }
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F07",
+          "expected": "proved",
+          "observed": "proved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "proved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "P",
+                "Q"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "No model satisfies every premise while falsifying the conclusion.",
+              "artifact": {
+                "premises_smt2": [
+                  "(= P Q)",
+                  "P"
+                ],
+                "negated_conclusion_smt2": "(not Q)"
+              }
+            },
+            "truth_table": {
+              "entailed": true,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F08",
+          "expected": "proved",
+          "observed": "proved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "proved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "P",
+                "Q"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "No model satisfies every premise while falsifying the conclusion.",
+              "artifact": {
+                "premises_smt2": [
+                  "(xor P Q)",
+                  "P"
+                ],
+                "negated_conclusion_smt2": "(not (not Q))"
+              }
+            },
+            "truth_table": {
+              "entailed": true,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F09",
+          "expected": "disproved",
+          "observed": "disproved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "disproved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "partial",
+              "symbols": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "countermodel": {
+                "P": true,
+                "Q": false,
+                "R": false
+              },
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "A countermodel satisfies every premise and falsifies the conclusion.",
+              "artifact": {}
+            },
+            "truth_table": {
+              "entailed": false,
+              "countermodel": {
+                "P": true,
+                "Q": false,
+                "R": false
+              }
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F10",
+          "expected": "proved",
+          "observed": "proved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "proved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "P",
+                "Q"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "No model satisfies every premise while falsifying the conclusion.",
+              "artifact": {
+                "premises_smt2": [
+                  "(=> P Q)",
+                  "(=> (not P) Q)"
+                ],
+                "negated_conclusion_smt2": "(not Q)"
+              }
+            },
+            "truth_table": {
+              "entailed": true,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F11",
+          "expected": "proved",
+          "observed": "proved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "proved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "LimitedCoverage",
+                "TerminalAllowed"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "No model satisfies every premise while falsifying the conclusion.",
+              "artifact": {
+                "premises_smt2": [
+                  "LimitedCoverage",
+                  "(=> LimitedCoverage (not TerminalAllowed))"
+                ],
+                "negated_conclusion_smt2": "(not (not TerminalAllowed))"
+              }
+            },
+            "truth_table": {
+              "entailed": true,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F12",
+          "expected": "disproved",
+          "observed": "disproved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "disproved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "ClaimTrue",
+                "Established",
+                "FailedSupportRoute"
+              ],
+              "countermodel": {
+                "ClaimTrue": true,
+                "Established": false,
+                "FailedSupportRoute": true
+              },
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "A countermodel satisfies every premise and falsifies the conclusion.",
+              "artifact": {}
+            },
+            "truth_table": {
+              "entailed": false,
+              "countermodel": {
+                "ClaimTrue": true,
+                "Established": false,
+                "FailedSupportRoute": true
+              }
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F13",
+          "expected": "proved",
+          "observed": "proved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "proved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "LimitedCoverage",
+                "Provisional",
+                "Supported"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 4,
+              "message": "No model satisfies every premise while falsifying the conclusion.",
+              "artifact": {
+                "premises_smt2": [
+                  "Supported",
+                  "LimitedCoverage",
+                  "(=> (and Supported LimitedCoverage) Provisional)"
+                ],
+                "negated_conclusion_smt2": "(not Provisional)"
+              }
+            },
+            "truth_table": {
+              "entailed": true,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F14",
+          "expected": "inconsistent_premises",
+          "observed": "inconsistent_premises",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "inconsistent_premises",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "QualifiedSupport",
+                "Supported",
+                "UnresolvedUndercutter"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [
+                "premise_1",
+                "premise_2",
+                "premise_0"
+              ],
+              "assertions_checked": 3,
+              "message": "The premises are inconsistent; vacuous entailment is not accepted as a usable proof.",
+              "artifact": {}
+            },
+            "truth_table": {
+              "entailed": null,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        },
+        {
+          "id": "F15",
+          "expected": "proved",
+          "observed": "proved",
+          "correct": true,
+          "backend_agreement": true,
+          "result": {
+            "z3": {
+              "status": "proved",
+              "backend": "z3",
+              "backend_version": "4.16.0",
+              "formalization_fidelity": "exact_for_stated_scope",
+              "symbols": [
+                "QualifiedRoute",
+                "Undercutter"
+              ],
+              "countermodel": null,
+              "model": null,
+              "unsat_core": [],
+              "assertions_checked": 3,
+              "message": "No model satisfies every premise while falsifying the conclusion.",
+              "artifact": {
+                "premises_smt2": [
+                  "Undercutter",
+                  "(=> Undercutter (not QualifiedRoute))"
+                ],
+                "negated_conclusion_smt2": "(not (not QualifiedRoute))"
+              }
+            },
+            "truth_table": {
+              "entailed": true,
+              "countermodel": null
+            },
+            "agreement": true
+          }
+        }
+      ]
+    },
+    "verdict_policy": {
+      "name": "verdict_policy",
+      "cases": 6,
+      "accuracy": 1.0,
+      "failures": [],
+      "results": [
+        {
+          "id": "VP01",
+          "expected": [
+            "supported",
+            true
+          ],
+          "observed": [
+            "supported",
+            true
+          ],
+          "correct": true,
+          "result": {
+            "evidential_state": "supported",
+            "coverage_state": "adequate",
+            "terminal_allowed": true,
+            "qualifying_support_routes": [
+              "s"
+            ],
+            "qualifying_opposition_routes": [],
+            "policy_id": "descriptive-v0.2",
+            "policy_version": "0.2.0"
+          }
+        },
+        {
+          "id": "VP02",
+          "expected": [
+            "supported",
+            false
+          ],
+          "observed": [
+            "supported",
+            false
+          ],
+          "correct": true,
+          "result": {
+            "evidential_state": "supported",
+            "coverage_state": "limited",
+            "terminal_allowed": false,
+            "qualifying_support_routes": [
+              "s"
+            ],
+            "qualifying_opposition_routes": [],
+            "policy_id": "descriptive-v0.2",
+            "policy_version": "0.2.0"
+          }
+        },
+        {
+          "id": "VP03",
+          "expected": [
+            "contested",
+            true
+          ],
+          "observed": [
+            "contested",
+            true
+          ],
+          "correct": true,
+          "result": {
+            "evidential_state": "contested",
+            "coverage_state": "adequate",
+            "terminal_allowed": true,
+            "qualifying_support_routes": [
+              "s"
+            ],
+            "qualifying_opposition_routes": [
+              "o"
+            ],
+            "policy_id": "descriptive-v0.2",
+            "policy_version": "0.2.0"
+          }
+        },
+        {
+          "id": "VP04",
+          "expected": [
+            "insufficient",
+            true
+          ],
+          "observed": [
+            "insufficient",
+            true
+          ],
+          "correct": true,
+          "result": {
+            "evidential_state": "insufficient",
+            "coverage_state": "adequate",
+            "terminal_allowed": true,
+            "qualifying_support_routes": [],
+            "qualifying_opposition_routes": [],
+            "policy_id": "descriptive-v0.2",
+            "policy_version": "0.2.0"
+          }
+        },
+        {
+          "id": "VP05",
+          "expected": [
+            "insufficient",
+            true
+          ],
+          "observed": [
+            "insufficient",
+            true
+          ],
+          "correct": true,
+          "result": {
+            "evidential_state": "insufficient",
+            "coverage_state": "adequate",
+            "terminal_allowed": true,
+            "qualifying_support_routes": [],
+            "qualifying_opposition_routes": [],
+            "policy_id": "descriptive-v0.2",
+            "policy_version": "0.2.0"
+          }
+        },
+        {
+          "id": "VP06",
+          "expected": [
+            "insufficient",
+            true
+          ],
+          "observed": [
+            "insufficient",
+            true
+          ],
+          "correct": true,
+          "result": {
+            "evidential_state": "insufficient",
+            "coverage_state": "adequate",
+            "terminal_allowed": true,
+            "qualifying_support_routes": [],
+            "qualifying_opposition_routes": [],
+            "policy_id": "descriptive-v0.2",
+            "policy_version": "0.2.0"
+          }
+        }
+      ]
+    },
+    "graph_structure": {
+      "name": "graph_structure",
+      "cases": 2,
+      "accuracy": 1.0,
+      "false_pass_rate": 0.0,
+      "failures": [],
+      "results": [
+        {
+          "id": "GS01",
+          "artifact": "argument_graph_skeleton.json",
+          "expected_valid": false,
+          "observed_valid": false,
+          "correct": true,
+          "errors": [
+            {
+              "severity": "error",
+              "code": "no_arguments",
+              "message": "Graph contains claims but no inferential hyperedges.",
+              "target_id": ""
+            },
+            {
+              "severity": "error",
+              "code": "claim_without_argument_attempt",
+              "message": "Claim has no supporting argument attempt.",
+              "target_id": "C3"
+            },
+            {
+              "severity": "error",
+              "code": "claim_without_argument_attempt",
+              "message": "Claim has no supporting argument attempt.",
+              "target_id": "C6"
+            },
+            {
+              "severity": "error",
+              "code": "claim_without_argument_attempt",
+              "message": "Claim has no supporting argument attempt.",
+              "target_id": "C5"
+            },
+            {
+              "severity": "error",
+              "code": "claim_without_argument_attempt",
+              "message": "Claim has no supporting argument attempt.",
+              "target_id": "C1"
+            },
+            {
+              "severity": "error",
+              "code": "claim_without_argument_attempt",
+              "message": "Claim has no supporting argument attempt.",
+              "target_id": "C2"
+            },
+            {
+              "severity": "error",
+              "code": "claim_without_argument_attempt",
+              "message": "Claim has no supporting argument attempt.",
+              "target_id": "C4"
+            },
+            {
+              "severity": "error",
+              "code": "question_without_terminal",
+              "message": "Active question has no terminal claim.",
+              "target_id": "Q2"
+            },
+            {
+              "severity": "error",
+              "code": "question_without_terminal",
+              "message": "Active question has no terminal claim.",
+              "target_id": "Q3"
+            },
+            {
+              "severity": "error",
+              "code": "question_without_terminal",
+              "message": "Active question has no terminal claim.",
+              "target_id": "Q1"
+            }
+          ]
+        },
+        {
+          "id": "GS02",
+          "artifact": "argument_graph_completed.json",
+          "expected_valid": true,
+          "observed_valid": true,
+          "correct": true,
+          "errors": []
+        }
+      ]
+    },
+    "claim_correspondence": {
+      "name": "claim_correspondence",
+      "model": "openai/gpt-5.6-luna",
+      "response_id": "gen-1784789993-PlhGSAE4QLoyy2hLLnqW",
+      "cases": 24,
+      "accuracy": 1.0,
+      "false_merge_rate": 0.0,
+      "missed_merge_rate": 0.0,
+      "weighted_error": 0.0,
+      "failures": [],
+      "results": [
+        {
+          "id": "CC01",
+          "a": "OpenAI released a new multimodal model.",
+          "b": "A new multimodal model was released by OpenAI.",
+          "expected": "equivalent",
+          "observed": "equivalent",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Both state that OpenAI released a new multimodal model.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC02",
+          "a": "The policy reduced emissions by 20% in 2025.",
+          "b": "In 2025, emissions fell 20% because of the policy.",
+          "expected": "equivalent",
+          "observed": "equivalent",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Both attribute a 20% emissions reduction in 2025 to the policy.",
+          "confidence": 0.98
+        },
+        {
+          "id": "CC03",
+          "a": "K3 is cheaper per output token than Model X.",
+          "b": "Model X has a higher output-token price than K3.",
+          "expected": "equivalent",
+          "observed": "equivalent",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "A lower output-token price for K3 is the same as a higher output-token price for Model X.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC04",
+          "a": "Every audited division met the safety standard.",
+          "b": "The audited finance division met the safety standard.",
+          "expected": "entails",
+          "observed": "entails",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "If every audited division met the standard, the audited finance division did as well.",
+          "confidence": 0.99
+        },
+        {
+          "id": "CC05",
+          "a": "K3 scored at least 50 on benchmark S.",
+          "b": "K3 scored above 40 on benchmark S.",
+          "expected": "entails",
+          "observed": "entails",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "A score of at least 50 necessarily exceeds 40.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC06",
+          "a": "The device is safe for all adult users under labeled conditions.",
+          "b": "The device is safe for adult users with no conditions.",
+          "expected": "same_topic_distinct_proposition",
+          "observed": "same_topic_distinct_proposition",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "The first claim is conditional on labeled conditions; the second asserts safety without conditions.",
+          "confidence": 0.99
+        },
+        {
+          "id": "CC07",
+          "a": "The trial found a correlation between sleep and memory.",
+          "b": "Sleep improvements caused memory improvements.",
+          "expected": "same_topic_distinct_proposition",
+          "observed": "same_topic_distinct_proposition",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "A correlation does not assert that sleep improvements caused memory improvements.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC08",
+          "a": "A customer complained about the update.",
+          "b": "Customers commonly complain about the update.",
+          "expected": "overlapping_scope",
+          "observed": "overlapping_scope",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Both concern complaints about the update, but one reports a complaint and the other asserts commonness.",
+          "confidence": 0.98
+        },
+        {
+          "id": "CC09",
+          "a": "When tested at room temperature, the material was flexible.",
+          "b": "The material is flexible at all temperatures.",
+          "expected": "overlapping_scope",
+          "observed": "overlapping_scope",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Both concern temperature-dependent flexibility, but one is limited to room temperature while the other covers all temperatures.",
+          "confidence": 0.95
+        },
+        {
+          "id": "CC10",
+          "a": "The company's revenue increased last year.",
+          "b": "The company's profit increased last year.",
+          "expected": "same_topic_distinct_proposition",
+          "observed": "same_topic_distinct_proposition",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Revenue and profit are distinct financial measures.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC11",
+          "a": "The battery lasts 20 hours in the video test.",
+          "b": "The battery has a capacity of 5,000 mAh.",
+          "expected": "same_topic_distinct_proposition",
+          "observed": "same_topic_distinct_proposition",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Battery runtime and battery capacity are related but materially different properties.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC12",
+          "a": "The treatment cures the disease in 95% of observed cases.",
+          "b": "The treatment always cures the disease.",
+          "expected": "same_topic_distinct_proposition",
+          "observed": "same_topic_distinct_proposition",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "A 95% observed cure rate is distinct from an unconditional claim of always curing the disease.",
+          "confidence": 0.99
+        },
+        {
+          "id": "CC13",
+          "a": "The law applies to businesses with 50 or more employees.",
+          "b": "The law applies to businesses with more than 50 employees.",
+          "expected": "overlapping_scope",
+          "observed": "overlapping_scope",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "The thresholds overlap for businesses with more than 50 employees, but differ over businesses with exactly 50.",
+          "confidence": 0.98
+        },
+        {
+          "id": "CC14",
+          "a": "K3 is frontier-adjacent on benchmark S.",
+          "b": "K3 is superior to every open-weight model on all real-world tasks.",
+          "expected": "overlapping_scope",
+          "observed": "overlapping_scope",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Both concern K3's comparative position in AI performance, but one is a benchmark-relative characterization and the other is a sweeping all-task comparison.",
+          "confidence": 0.96
+        },
+        {
+          "id": "CC15",
+          "a": "K3 has a lower listed token price.",
+          "b": "K3 has a lower total cost per successful task.",
+          "expected": "same_topic_distinct_proposition",
+          "observed": "same_topic_distinct_proposition",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Listed token price differs from total cost per successful task, which includes other factors.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC16",
+          "a": "Moonshot published K3's weights.",
+          "b": "K3 is open source under an OSI-approved license.",
+          "expected": "same_topic_distinct_proposition",
+          "observed": "same_topic_distinct_proposition",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Publishing weights does not establish open-source status or an OSI-approved license.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC17",
+          "a": "Independent evaluator E ranked K3 fourth.",
+          "b": "Moonshot's launch benchmark was independently reproduced.",
+          "expected": "same_topic_distinct_proposition",
+          "observed": "same_topic_distinct_proposition",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "An evaluator's ranking is distinct from independent reproduction of a launch benchmark.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC18",
+          "a": "The CEO said the project is a priority.",
+          "b": "The CEO said the project is her top priority.",
+          "expected": "overlapping_scope",
+          "observed": "overlapping_scope",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Being a priority is broader than being the CEO's top priority; the claims concern related but different priority levels.",
+          "confidence": 0.98
+        },
+        {
+          "id": "CC19",
+          "a": "Revenue grew in every quarter of 2025.",
+          "b": "Revenue grew in Q1 2025.",
+          "expected": "entails",
+          "observed": "entails",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Growth in every quarter of 2025 includes growth in Q1.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC20",
+          "a": "Revenue grew in Q1 2025.",
+          "b": "Revenue grew in every quarter of 2025.",
+          "expected": "entailed_by",
+          "observed": "entailed_by",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Growth in Q1 alone does not establish growth in every quarter, while the latter entails the former.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC21",
+          "a": "The new chip is 20% faster.",
+          "b": "Apple released a new smartphone.",
+          "expected": "unrelated",
+          "observed": "unrelated",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "The claims concern chip performance and smartphone release, with no stated propositional connection.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC22",
+          "a": "Exercise lowers blood pressure.",
+          "b": "The stock market closed higher today.",
+          "expected": "unrelated",
+          "observed": "unrelated",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "The claims concern exercise and blood pressure versus stock-market movement.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC23",
+          "a": "The merger will finalize in June.",
+          "b": "Rainfall this month is above average.",
+          "expected": "unrelated",
+          "observed": "unrelated",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "The claims concern merger timing and rainfall, with no material relationship.",
+          "confidence": 1.0
+        },
+        {
+          "id": "CC24",
+          "a": "K3 narrows the benchmark gap with proprietary models.",
+          "b": "K3 changes the geopolitical balance of AI power.",
+          "expected": "same_topic_distinct_proposition",
+          "observed": "same_topic_distinct_proposition",
+          "correct": true,
+          "false_merge": false,
+          "missed_merge": false,
+          "model_reason": "Narrowing a benchmark gap is distinct from changing the geopolitical balance of AI power.",
+          "confidence": 0.99
+        }
+      ]
+    },
+    "answer_entailment": {
+      "name": "answer_entailment",
+      "model": "openai/gpt-5.6-luna",
+      "response_id": "gen-1784790008-aVzOcQuh6sqQIBNVXg7y",
+      "cases": 24,
+      "accuracy": 1.0,
+      "false_pass_rate": 0.0,
+      "failures": [],
+      "results": [
+        {
+          "id": "AE01",
+          "claims": [
+            "K3 ranked fourth on benchmark S as of July 23.",
+            "Benchmark S samples coding and reasoning tasks."
+          ],
+          "sentence": "K3 ranked fourth on benchmark S as of July 23.",
+          "expected": "entailed",
+          "observed": "entailed",
+          "correct": true,
+          "model_reason": "The sentence directly restates the claim that K3 ranked fourth on benchmark S as of July 23."
+        },
+        {
+          "id": "AE02",
+          "claims": [
+            "K3 ranked fourth on benchmark S."
+          ],
+          "sentence": "K3 is the fourth-best model in the world.",
+          "expected": "unsupported_strengthening",
+          "observed": "unsupported_strengthening",
+          "correct": true,
+          "model_reason": "A fourth-place ranking on one benchmark does not establish that K3 is the fourth-best model in the world."
+        },
+        {
+          "id": "AE03",
+          "claims": [
+            "K3 has a lower listed output-token price than X."
+          ],
+          "sentence": "K3 has a lower total cost per successful task than X.",
+          "expected": "unsupported_strengthening",
+          "observed": "unsupported_strengthening",
+          "correct": true,
+          "model_reason": "Lower listed token price does not establish lower total cost per successful task, which also depends on usage, success rates, and other costs."
+        },
+        {
+          "id": "AE04",
+          "claims": [
+            "The weights are scheduled for release next week."
+          ],
+          "sentence": "K3 is fully open source.",
+          "expected": "unsupported_strengthening",
+          "observed": "unsupported_strengthening",
+          "correct": true,
+          "model_reason": "A scheduled weight release does not establish that K3 is already fully open source."
+        },
+        {
+          "id": "AE05",
+          "claims": [
+            "A support route failed because one premise was unresolved."
+          ],
+          "sentence": "The conclusion is false.",
+          "expected": "failure_to_false",
+          "observed": "failure_to_false",
+          "correct": true,
+          "model_reason": "An unresolved premise in an argument does not show that the argument's conclusion is false."
+        },
+        {
+          "id": "AE06",
+          "claims": [
+            "K3 performed well on benchmark S under harness H."
+          ],
+          "sentence": "K3 performs well on all real-world tasks.",
+          "expected": "scope_drift",
+          "observed": "scope_drift",
+          "correct": true,
+          "model_reason": "Performance under one benchmark harness does not establish strong performance on all real-world tasks."
+        },
+        {
+          "id": "AE07",
+          "claims": [
+            "Evidence is mixed on total task cost."
+          ],
+          "sentence": "Whether K3 lowers total task cost remains contested.",
+          "expected": "entailed",
+          "observed": "entailed",
+          "correct": true,
+          "model_reason": "Mixed evidence supports describing whether K3 lowers total task cost as contested."
+        },
+        {
+          "id": "AE08",
+          "claims": [
+            "No independent reproduction of Moonshot's coding result was found in the bounded search."
+          ],
+          "sentence": "Moonshot's coding result has never been independently reproduced.",
+          "expected": "scope_drift",
+          "observed": "scope_drift",
+          "correct": true,
+          "model_reason": "Failure to find an independent reproduction in a bounded search does not establish that the result has never been reproduced."
+        },
+        {
+          "id": "AE09",
+          "claims": [
+            "Two independent studies support C; two independent studies oppose C."
+          ],
+          "sentence": "The evidence on C is contested.",
+          "expected": "entailed",
+          "observed": "entailed",
+          "correct": true,
+          "model_reason": "Independent support and opposition directly make the evidence on C contested."
+        },
+        {
+          "id": "AE10",
+          "claims": [
+            "The current search coverage is limited."
+          ],
+          "sentence": "There is no evidence for the claim.",
+          "expected": "unsupported_strengthening",
+          "observed": "unsupported_strengthening",
+          "correct": true,
+          "model_reason": "Limited search coverage does not entail that there is no evidence for the claim."
+        },
+        {
+          "id": "AE11",
+          "claims": [
+            "The price is $0.50 per million tokens as of July 23."
+          ],
+          "sentence": "The price is roughly $0.50 per million tokens as of July 23.",
+          "expected": "entailed",
+          "observed": "entailed",
+          "correct": true,
+          "model_reason": "A price of $0.50 per million tokens can accurately be described as roughly $0.50 per million tokens."
+        },
+        {
+          "id": "AE12",
+          "claims": [
+            "K3 may narrow the gap on evaluated coding tasks."
+          ],
+          "sentence": "K3 definitively closes the frontier gap.",
+          "expected": "modality_drift",
+          "observed": "modality_drift",
+          "correct": true,
+          "model_reason": "A possibility that K3 may narrow a gap does not support the definitive claim that it closes the gap."
+        },
+        {
+          "id": "AE13",
+          "claims": [
+            "C2 has evidential state supported.",
+            "Coverage for C2 is limited."
+          ],
+          "sentence": "Current evidence supports C2, though the coverage remains limited.",
+          "expected": "entailed",
+          "observed": "entailed",
+          "correct": true,
+          "model_reason": "The sentence accurately combines the supported evidential state with the stated limitation on coverage."
+        },
+        {
+          "id": "AE14",
+          "claims": [
+            "K3 is competitive with at least some leading alternatives on at least one high-value workflow."
+          ],
+          "sentence": "K3 appears competitive with some leading alternatives on at least one high-value workflow.",
+          "expected": "entailed",
+          "observed": "entailed",
+          "correct": true,
+          "model_reason": "The hedge 'appears' preserves the claim that K3 is competitive with some leading alternatives on at least one high-value workflow."
+        },
+        {
+          "id": "AE15",
+          "claims": [
+            "The available grounds are insufficient to establish C1."
+          ],
+          "sentence": "C1 is not established by the current evidence.",
+          "expected": "entailed",
+          "observed": "entailed",
+          "correct": true,
+          "model_reason": "Insufficient grounds to establish C1 supports saying that current evidence does not establish C1."
+        },
+        {
+          "id": "AE16",
+          "claims": [
+            "The available grounds are insufficient to establish C1."
+          ],
+          "sentence": "C1 is false.",
+          "expected": "failure_to_false",
+          "observed": "failure_to_false",
+          "correct": true,
+          "model_reason": "Failure to establish C1 does not entail that C1 is false."
+        },
+        {
+          "id": "AE17",
+          "claims": [
+            "K3 is competitive on at least one high-value workflow.",
+            "Hosted K3 and a downloadable checkpoint would differ in accessibility and governance."
+          ],
+          "sentence": "K3 creates a meaningful new workflow-and-access frontier.",
+          "expected": "unsupported_synthesis",
+          "observed": "unsupported_synthesis",
+          "correct": true,
+          "model_reason": "The claims support competitiveness and differences in accessibility and governance, but not the synthesized notion of a meaningful new workflow-and-access frontier."
+        },
+        {
+          "id": "AE18",
+          "claims": [
+            "K3 has a quality-adjusted cost advantage only if task quality, latency, throughput, hardware requirements, and correction burden jointly outperform alternatives."
+          ],
+          "sentence": "K3 has a quality-adjusted cost advantage.",
+          "expected": "unsupported_strengthening",
+          "observed": "unsupported_strengthening",
+          "correct": true,
+          "model_reason": "The claim states a condition for a quality-adjusted cost advantage, not that the condition has been satisfied."
+        },
+        {
+          "id": "AE19",
+          "claims": [
+            "K3 could improve completion rates under tested controls."
+          ],
+          "sentence": "K3 will improve completion rates.",
+          "expected": "modality_drift",
+          "observed": "modality_drift",
+          "correct": true,
+          "model_reason": "Could improve under tested controls does not entail that K3 will improve completion rates."
+        },
+        {
+          "id": "AE20",
+          "claims": [
+            "K3 scored 46% and K2.6 scored 33% on AA-Omniscience under one reported evaluation."
+          ],
+          "sentence": "K3 is 39% more capable than K2.6 overall.",
+          "expected": "precision_drift",
+          "observed": "precision_drift",
+          "correct": true,
+          "model_reason": "The scores imply roughly a 39% relative difference on one reported evaluation, but do not establish that K3 is 39% more capable overall."
+        },
+        {
+          "id": "AE21",
+          "claims": [
+            "K3 is competitive with at least some leading alternatives on at least one high-value workflow."
+          ],
+          "sentence": "K3 outperforms most open-weight models overall.",
+          "expected": "scope_drift",
+          "observed": "scope_drift",
+          "correct": true,
+          "model_reason": "Competitiveness on at least one workflow does not support outperforming most open-weight models overall."
+        },
+        {
+          "id": "AE22",
+          "claims": [
+            "No independent reproduction was found in the evidence reviewed through July 23."
+          ],
+          "sentence": "The evidence reviewed through July 23 contains no independent reproduction.",
+          "expected": "entailed",
+          "observed": "entailed",
+          "correct": true,
+          "model_reason": "The sentence accurately restates that no independent reproduction was found in the evidence reviewed through July 23."
+        },
+        {
+          "id": "AE23",
+          "claims": [
+            "Evidence is insufficient to decide whether K3 has a quality-adjusted cost advantage."
+          ],
+          "sentence": "Whether K3 has a quality-adjusted cost advantage remains unresolved.",
+          "expected": "entailed",
+          "observed": "entailed",
+          "correct": true,
+          "model_reason": "Evidence insufficient to decide the issue supports describing it as unresolved."
+        },
+        {
+          "id": "AE24",
+          "claims": [
+            "A large advertised context capacity does not by itself establish reliable long-context reasoning."
+          ],
+          "sentence": "Models with large context windows are unreliable.",
+          "expected": "unsupported_strengthening",
+          "observed": "unsupported_strengthening",
+          "correct": true,
+          "model_reason": "The fact that large context capacity alone does not establish reliable reasoning does not entail that models with large context windows are unreliable."
+        }
+      ]
+    }
+  }
+}

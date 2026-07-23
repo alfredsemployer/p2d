@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "p2d-reasoning-lab"
+version = "0.3.0"
+description = "Budgeted reasoning-pipeline experiments, evaluations, and formal validators."
+requires-python = ">=3.12"
+dependencies = [
+  "json-repair>=0.44,<1",
+  "z3-solver>=4.13,<5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+p2d-lab = "p2d_reasoning_lab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["p2d_reasoning_lab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -194,7 +194,7 @@ footer {
 }
 
 .claim-node[data-acceptance="supported"] { border-left-color: var(--green); }
-.claim-node[data-acceptance="not_supported"] { border-left-color: var(--red); }
+.claim-node[data-acceptance="unsupported"] { border-left-color: var(--red); }
 
 .claim-node--answer {
   border-left: 0;
@@ -253,7 +253,7 @@ footer {
 }
 
 .valence-icon[data-valence="supported"] { background: var(--green); }
-.valence-icon[data-valence="not_supported"] { background: var(--red); }
+.valence-icon[data-valence="unsupported"] { background: var(--red); }
 
 .coverage-icon {
   border: 1px solid #65655e;

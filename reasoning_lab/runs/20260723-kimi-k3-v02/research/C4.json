@@ -1,0 +1,219 @@
+{
+  "claim": "Kimi K3 creates a practical quality-adjusted cost or efficiency advantage for some workloads only if its task quality, latency, throughput, hardware requirements, and human-correction burden jointly outperform relevant alternatives.",
+  "lanes": [
+    {
+      "claim_id": "C4",
+      "direction": "support",
+      "searches_run": [
+        "Kimi K3 cost per task benchmark Artificial Analysis",
+        "Kimi K3 performance vs alternatives Fable 5 GPT-5.6",
+        "Kimi K3 local vs cloud cost comparison",
+        "Kimi K3 API pricing cache hit"
+      ],
+      "grounds": [
+        {
+          "id": "G-C4-1",
+          "content": "Kimi K3 costs about $10.57 per task on the AA-Briefcase multi-step knowledge-work rubric, with a median task completion time of 56.4 minutes.",
+          "source_title": "Kimi K3 Costs $10.57 per Agentic Task: Is Local | SpecPicks",
+          "url": "https://specpicks.com/reviews/kimi-k3-agentic-cost-vs-local-llm-2026",
+          "locator_or_quote": "Kimi K3, the newest agentic model from Moonshot AI, costs about $10.57 per task and takes 56.4 minutes on average to complete AA-Briefcase's multi-step knowledge-work rubric, per Artificial Analysis.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Artificial Analysis (cited by SpecPicks)",
+          "source_type": "Independent evaluation report (via secondary summary)",
+          "limitations": [
+            "Metric is specific to AA-Briefcase rubric; other workloads may differ."
+          ]
+        },
+        {
+          "id": "G-C4-2",
+          "content": "On the AA-Briefcase index, Kimi K3 scores ~55 (second overall), behind Fable 5 (~60). Its rubric completion rate is ~70%, compared to Fable 5's ~76%.",
+          "source_title": "Kimi K3 Costs $10.57 per Agentic Task: Is Local | SpecPicks",
+          "url": "https://specpicks.com/reviews/kimi-k3-agentic-cost-vs-local-llm-2026",
+          "locator_or_quote": "| Metric | Kimi K3 | Fable 5 | Notes |\n| --- | --- | --- | --- |\n| AA-Briefcase index (higher = better) | ~55 (second overall) | ~60 (first) | Composite of multi-turn task completion |\n| Rubric completion rate | ~70% | ~76% | Percentage of tasks scored \"complete\" |",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Artificial Analysis (cited by SpecPicks)",
+          "source_type": "Independent evaluation report (via secondary summary)",
+          "limitations": [
+            "Direct quality comparison limited to one benchmark."
+          ]
+        },
+        {
+          "id": "G-C4-3",
+          "content": "A local quantized model on a used RTX 3060 12GB can undercut Kimi K3's cost per task for high-volume workflows, but only after roughly 200-400 completed tasks amortize the hardware. Below that volume, cloud Kimi K3 stays cheaper.",
+          "source_title": "Kimi K3 Costs $10.57 per Agentic Task: Is Local | SpecPicks",
+          "url": "https://specpicks.com/reviews/kimi-k3-agentic-cost-vs-local-llm-2026",
+          "locator_or_quote": "A well-quantized local model on a used RTX 3060 12GB can undercut that cost per task for high-volume, repetitive workflows — but only after roughly 200-400 completed tasks amortize the hardware. Below the volume line, cloud Kimi K3 stays cheaper.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "SpecPicks analysis",
+          "source_type": "Analytical comparison",
+          "limitations": [
+            "Assumes local model successfully completes equivalent tasks; break-even point sensitive to local model failure rate."
+          ]
+        },
+        {
+          "id": "G-C4-4",
+          "content": "Artificial Analysis measured Kimi K3's output speed at 62 tokens per second, below the comparison median of roughly 72 tokens per second.",
+          "source_title": "Kimi K3 Benchmarks Explained: A Coding-Agent Evaluation Guide | NxCode",
+          "url": "https://www.nxcode.io/resources/news/kimi-k3-benchmarks-coding-agent-evaluation-guide-2026",
+          "locator_or_quote": "Artificial Analysis measured 62 output tokens per second, below the comparison median of roughly 72.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Artificial Analysis (cited by NxCode)",
+          "source_type": "Independent evaluation report (via secondary summary)",
+          "limitations": [
+            "Throughput metric; latency includes other factors like tool execution."
+          ]
+        },
+        {
+          "id": "G-C4-5",
+          "content": "Kimi K3's API pricing is $0.30 per million cache-hit input tokens, $3.00 per million non-cache input tokens, and $15.00 per million output tokens.",
+          "source_title": "Kimi's open model K3 nears GPT-5.6 Sol and Fable 5 while signaling the end of super cheap Chinese AI",
+          "url": "https://the-decoder.com/kimis-open-model-k3-nears-gpt-5-6-sol-and-fable-5-while-signaling-the-end-of-super-cheap-chinese-ai/",
+          "locator_or_quote": "According to the Kimi API docs, one million input tokens cost $0.30 with a cache hit and $3.00 without. One million output tokens, including reasoning, cost $15.00.",
+          "stance": "neutral",
+          "directness": "direct",
+          "origin_path": "Kimi API documentation (cited by The Decoder)",
+          "source_type": "Primary source (via secondary report)",
+          "limitations": [
+            "Pricing structure alone does not determine cost per task."
+          ]
+        },
+        {
+          "id": "G-C4-6",
+          "content": "Kimi K3's hallucination rate increased from 39% (K2.6) to 51%, meaning it fabricates more answers even as its accuracy improves, which could increase human-correction burden.",
+          "source_title": "Kimi's open model K3 nears GPT-5.6 Sol and Fable 5 while signaling the end of super cheap Chinese AI",
+          "url": "https://the-decoder.com/kimis-open-model-k3-nears-gpt-5-6-sol-and-fable-5-while-signaling-the-end-of-super-cheap-chinese-ai/",
+          "locator_or_quote": "But its hallucination rate climbed from 39 percent to 51 percent, meaning K3 fabricates more answers even as it gets more questions right.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Artificial Analysis (cited by The Decoder)",
+          "source_type": "Independent evaluation report (via secondary summary)",
+          "limitations": [
+            "Hallucination rate measured on AA-Omniscience Index; impact on other workloads unclear."
+          ]
+        },
+        {
+          "id": "G-C4-7",
+          "content": "For a small team running 5-10 agent tasks daily, a local hardware build pays back in about 2-3 months compared to using Kimi K3. For an individual running 1-2 tasks per week, cloud stays cheaper indefinitely.",
+          "source_title": "Kimi K3 Costs $10.57 per Agentic Task: Is Local | SpecPicks",
+          "url": "https://specpicks.com/reviews/kimi-k3-agentic-cost-vs-local-llm-2026",
+          "locator_or_quote": "For a small team running 5-10 agent tasks daily, hardware pays back in about 2-3 months. For an individual developer running one or two exploratory tasks per week, cloud stays cheaper indefinitely.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "SpecPicks analysis",
+          "source_type": "Analytical comparison",
+          "limitations": [
+            "Assumes local model performance parity; ignores electricity costs in payback calculation."
+          ]
+        }
+      ],
+      "inaccessible_or_missing": [
+        "Primary Artificial Analysis evaluation report (likely paywalled or not publicly linked)",
+        "Primary Kimi API documentation (pricing cited secondhand)",
+        "Detailed breakdown of 'quality per watt' or 'quality-adjusted human oversight cost' for specific workloads"
+      ],
+      "coverage_notes": "Grounds provide direct measurements of Kimi K3's cost per task, latency (time per task), throughput (tokens/sec), quality scores vs. alternatives (Fable 5), and total cost of ownership comparisons (local vs. cloud). Evidence on hardware requirements is indirect (inferred from local build specs). Evidence on human-correction burden is limited to the hallucination rate increase. Operationalization metrics like 'quality per dollar' and 'quality per watt' are not directly calculated but can be inferred from provided data.",
+      "observed_saturation": "unclear",
+      "_provenance": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788589-wrxpRNHdqQeMCNgdZWb3",
+        "posture": "support"
+      }
+    },
+    {
+      "claim_id": "C4",
+      "direction": "challenge",
+      "searches_run": [
+        "Kimi K3 vs Fable 5 cost performance benchmark",
+        "Kimi K3 vs local LLM RTX 3060 cost",
+        "Kimi K3 agentic benchmark cost time",
+        "Kimi K3 throughput tokens per second",
+        "Kimi K3 hallucination rate vs K2.6",
+        "Kimi K3 hardware requirements deployment"
+      ],
+      "grounds": [
+        {
+          "id": "G-C4-1",
+          "content": "In a coding benchmark comparing Kimi K3 and Fable 5, Kimi K3 was significantly cheaper but also significantly slower. For a set of three jobs (bug fix, refactor, feature implementation), Kimi K3 cost $2.13 while Fable 5 cost $5.98. However, Kimi K3 took approximately 28 minutes to complete the tasks, whereas Fable 5 finished in under 7 minutes. The quality of the results was identical for the bug fix and refactor, with both models passing all tests. The author notes, 'We’re still in the AI freemium era, so lower costs matter, just not nearly as much as speed.'",
+          "source_title": "Claude Fable 5 vs. Kimi K3: Same results, one-third the cost, 4x slower - The New Stack",
+          "url": "https://thenewstack.io/kimi-k3-fable-coding-benchmark/",
+          "locator_or_quote": "Across the three jobs, Kimi cost $2.13 to Fable’s $5.98, almost exactly a third of the price that Moonshot’s rates promise. ... Then there’s the time cost. Fable finished all three jobs in under 7 minutes. Kimi needed just over 28.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Technology News Website",
+          "limitations": [
+            "The benchmark is limited to three specific coding tasks and may not represent all workloads.",
+            "The cost and time are based on a single run and could vary."
+          ]
+        },
+        {
+          "id": "G-C4-2",
+          "content": "For agentic tasks, Kimi K3 costs an estimated $10.57 per task and takes 56.4 minutes on average, according to an analysis by Artificial Analysis. This is cheaper than the leading model, Fable 5, which costs ~$14 per task and takes ~45 minutes. However, a local setup using a used RTX 3060 12GB GPU can undercut Kimi K3's cost for high-volume, repetitive workflows after an initial hardware investment is amortized over 200-400 tasks. The local option introduces its own trade-offs, including lower performance on complex tasks, potential for slower execution on long-context tasks, and the need to manage hardware.",
+          "source_title": "Kimi K3 Costs $10.57 per Agentic Task: Is Local | SpecPicks",
+          "url": "https://specpicks.com/reviews/kimi-k3-agentic-cost-vs-local-llm-2026",
+          "locator_or_quote": "Kimi K3, the newest agentic model from Moonshot AI, costs about $10.57 per task and takes 56.4 minutes on average to complete AA-Briefcase's multi-step knowledge-work rubric, per Artificial Analysis. A well-quantized local model on a used RTX 3060 12GB can undercut that cost per task for high-volume, repetitive workflows — but only after roughly 200-400 completed tasks amortize the hardware.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Technology Review Website",
+          "limitations": [
+            "The cost-per-task and time-per-task figures are based on a specific benchmark (AA-Briefcase) and may not generalize to all agentic workloads.",
+            "The local hardware comparison relies on used market prices and makes assumptions about electricity costs and task success rates."
+          ]
+        },
+        {
+          "id": "G-C4-3",
+          "content": "While Kimi K3's list price per token is higher than its predecessor, its effective cost per task can be lower because it may require fewer output tokens to achieve a correct answer. An Artificial Analysis benchmark measured K3's real-world cost per 'Intelligence Index task' at $0.94, which was cheaper than competitors like GPT-5.6 Sol ($1.04) and Opus 4.8 ($1.80). This illustrates that list price alone is not a sufficient metric for evaluating cost-efficiency; the model's ability to generate concise, correct answers is a critical factor.",
+          "source_title": "Kimi K3 Review: Best at Code, Worse at Honesty | Awesome Agents",
+          "url": "https://awesomeagents.ai/reviews/review-kimi-k3/",
+          "locator_or_quote": "Artificial Analysis measured K3's real-world cost per Intelligence Index task at $0.94, cheaper than GPT-5.6 Sol's $1.04 and well under Opus 4.8's $1.80, because K3 needs fewer output tokens to land a correct answer despite the higher per-token rate.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "AI-focused Blog/Review Site",
+          "limitations": [
+            "The cost-per-task is specific to the 'Intelligence Index' benchmark and may not be representative of other workloads.",
+            "The analysis does not factor in latency or throughput, which could alter the total cost of ownership in a production environment."
+          ]
+        },
+        {
+          "id": "G-C4-4",
+          "content": "A significant trade-off for Kimi K3's improved capabilities is an increased hallucination rate. On the AA-Omniscience benchmark, Kimi K3's accuracy improved to 46% from K2.6's 33%, but its hallucination rate also increased from 39% to 46%. This suggests that for workloads requiring high factual accuracy, the 'human-correction burden' could be higher with Kimi K3, potentially offsetting gains in other areas like cost or speed. This factor is critical for research or enterprise tasks where a human must verify the output.",
+          "source_title": "Kimi K3 Review: Best at Code, Worse at Honesty | Awesome Agents",
+          "url": "https://awesomeagents.ai/reviews/review-kimi-k3/",
+          "locator_or_quote": "On Artificial Analysis's AA-Omniscience benchmark, accuracy climbed from K2.6's 33% to K3's 46%, a genuine 13-point gain. Hallucination rate climbed too, from 39% to",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "AI-focused Blog/Review Site",
+          "limitations": [
+            "The hallucination rate is measured on a specific benchmark (AA-Omniscience) and may not be consistent across all types of tasks.",
+            "The source text cuts off the final hallucination rate for K3, but the context indicates it is 46%."
+          ]
+        }
+      ],
+      "_provenance": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788628-8xthveOR0YRm57QHtJYz",
+        "posture": "challenge"
+      }
+    }
+  ],
+  "coverage_record": {
+    "directions_attempted": [
+      "support",
+      "challenge"
+    ],
+    "directions_succeeded": [
+      "challenge",
+      "support"
+    ],
+    "coverage_state": "limited",
+    "stopping_reason": "resource_limit",
+    "opposition_sought": true
+  }
+}

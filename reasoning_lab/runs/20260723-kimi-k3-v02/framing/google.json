@@ -1,0 +1,119 @@
+{
+  "answer_contract": {
+    "referent": "The AI model Kimi K3, released by Moonshot AI.",
+    "time_boundary": "As of its launch and initial evaluations in July 2026.",
+    "comparison_classes": [
+      "Previous Kimi models (e.g., K2, K2.6)",
+      "Contemporary proprietary frontier models (e.g., GPT-5.6 Sol, Claude Fable 5)",
+      "Other open-weight models (e.g., GLM-5.2)"
+    ],
+    "dimensions": [
+      "Performance on benchmark tests (e.g., Artificial Analysis Intelligence Index, GDPval v2)",
+      "Technical architecture and scale (e.g., parameter count, MoE, KDA)",
+      "Agentic capabilities, especially in long-horizon coding and knowledge work",
+      "Market impact (e.g., pricing, open vs. closed model competition)",
+      "Model behavior (e.g., hallucination rate, proactiveness)"
+    ],
+    "exclusions": [
+      "Long-term societal impact beyond the immediate AI industry.",
+      "Speculation on unannounced future Kimi models (e.g., K4).",
+      "Hardware manufacturing details beyond deployment recommendations."
+    ],
+    "ambiguities": [
+      "The definition of 'open model' when full weights are released but the model requires massive, specialized hardware clusters to run.",
+      "The practical impact of a high hallucination rate when paired with high accuracy on complex tasks."
+    ]
+  },
+  "questions": [
+    {
+      "question": "To what extent does Kimi K3's release as a 2.8T parameter open-weight model fundamentally alter the competitive landscape between open and proprietary AI development?",
+      "type": "explanatory",
+      "why_it_matters": "K3 is presented as the first open model to approach the scale and performance of top-tier closed models, potentially disrupting the existing market dynamic and enterprise adoption strategies. [i-scoop.eu](https://www.i-scoop.eu/kimi-k3/)",
+      "resolution_criteria": [
+        "Analysis of enterprise AI adoption trends post-K3 release.",
+        "Comparison of fine-tuning and deployment costs of K3 vs. API costs of proprietary models.",
+        "Statements from major AI labs and cloud providers on their strategy in response to K3."
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "How does Kimi K3's architectural design (KDA, AttnRes, MoE) contribute to its claimed 2.5x improvement in scaling efficiency compared to Kimi K2?",
+      "type": "causal",
+      "why_it_matters": "Understanding the source of efficiency gains is crucial for the AI research community to replicate and build upon these advances, validating whether these are fundamental breakthroughs in model architecture. [kimi.com](https://www.kimi.com/blog/kimi-k3)",
+      "resolution_criteria": [
+        "Ablation studies isolating the performance impact of KDA, AttnRes, and the MoE framework.",
+        "Third-party replication of the scaling laws observed by Kimi.",
+        "Technical analysis of the interaction between these components."
+      ],
+      "answerability": "low",
+      "suggested_disposition": "requires_specialized_pipeline"
+    },
+    {
+      "question": "What are the practical trade-offs of Kimi K3's increased accuracy and its concurrently higher hallucination rate (51%) for its intended use case of long-horizon software development?",
+      "type": "interpretive",
+      "why_it_matters": "The model's primary value proposition is autonomous coding, but a high fabrication rate could introduce subtle, hard-to-detect bugs, undermining its reliability. [the-decoder.com](https://the-decoder.com/kimis-open-model-k3-nears-gpt-5-6-sol-and-fable-5-while-signaling-the-end-of-super-cheap-chinese-ai/)",
+      "resolution_criteria": [
+        "Case studies of complex projects built with K3, detailing the nature and frequency of hallucinations encountered.",
+        "Comparison of total human-hours required for debugging K3-generated code vs. code from models with lower hallucination rates.",
+        "Analysis of the types of tasks where hallucinations are most prevalent and most costly."
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "Does Kimi K3's performance on complex, long-horizon tasks like building a GPU compiler or designing a chip represent a qualitative leap in agentic reasoning or an incremental improvement in executing complex prompts?",
+      "type": "comparative",
+      "why_it_matters": "This distinguishes between a model that is simply better at following a very detailed plan and one that can perform genuine, sustained engineering with minimal oversight, a key milestone for AGI. [i-scoop.eu](https://www.i-scoop.eu/kimi-k3/)",
+      "resolution_criteria": [
+        "Replication of the 'MiniTriton' and chip design tasks with detailed analysis of the model's intermediate steps and decision-making.",
+        "Performance comparison on a standardized suite of long-horizon agentic tasks against other frontier models.",
+        "Evaluation of the model's ability to recover from errors and adapt its plan without human intervention."
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "How will Kimi K3's pricing model—particularly the high cost of cache-miss inputs and outputs—affect its adoption for novel tasks versus repetitive, cache-friendly workloads?",
+      "type": "predictive",
+      "why_it_matters": "The pricing structure may inadvertently steer usage towards specific applications (like analyzing a large, static codebase) and away from others (like open-ended, creative chat), influencing its perceived capabilities and market niche. [the-decoder.com](https://the-decoder.com/kimis-open-model-k3-nears-gpt-5-6-sol-and-fable-5-while-signaling-the-end-of-super-cheap-chinese-ai/)",
+      "resolution_criteria": [
+        "Analysis of Kimi API usage data, segmented by task type and cache hit rate.",
+        "Total cost of ownership (TCO) models for different use cases comparing K3's API to self-hosting or competitor APIs.",
+        "Surveys of developers on how pricing influenced their application design."
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "What is the demonstrated value of Kimi K3's 'Vision in the Loop' capability for real-world UI design and game development workflows?",
+      "type": "descriptive_magnitude",
+      "why_it_matters": "This feature, which pairs code generation with visual feedback, is positioned as a key innovation. Its practical utility needs to be quantified beyond conceptual examples. [the-decoder.com](https://the-decoder.com/kimis-open-model-k3-nears-gpt-5-6-sol-and-fable-5-while-signaling-the-end-of-super-cheap-chinese-ai/)",
+      "resolution_criteria": [
+        "Time-to-completion metrics for standardized UI/UX tasks comparing K3 with Vision in the Loop to other models or human designers.",
+        "Qualitative assessments from professional designers and developers who have integrated the tool into their workflow.",
+        "Analysis of the complexity and quality of artifacts produced using this feature."
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "Given K3's proactiveness and tendency to make decisions on behalf of the user, what governance and prompting strategies are most effective for ensuring it operates within strict guardrails for enterprise applications?",
+      "type": "normative",
+      "why_it_matters": "For enterprise use, especially in regulated industries, unpredictable or overly autonomous AI behavior is a significant risk. Defining best practices for controlling K3 is essential for its safe deployment. [i-scoop.eu](https://www.i-scoop.eu/kimi-k3/)",
+      "resolution_criteria": [
+        "Development of a best-practice guide for system prompts and `AGENTS.md` files for K3.",
+        "Red-teaming reports testing the robustness of different guardrail techniques.",
+        "Comparative analysis of K3's adherence to instructions versus other frontier models under ambiguous conditions."
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    }
+  ],
+  "_provenance": {
+    "framer": "google",
+    "model": "google/gemini-2.5-pro",
+    "response_id": "gen-1784788210-4l59plu8vWKhawS2H0wu",
+    "blind": true
+  }
+}

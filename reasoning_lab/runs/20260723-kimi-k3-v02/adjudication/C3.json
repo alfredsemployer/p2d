@@ -1,0 +1,75 @@
+{
+  "claim_id": "C3",
+  "claim": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+  "verifier": {
+    "exact_proposition_established": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+    "holds": true,
+    "ground_strength": "strong",
+    "argument_strength": "strong",
+    "warrant_reconstruction": "If models can possess large stated context windows or context-oriented mechanisms while still showing substantial performance degradation with longer inputs, positional sensitivity, or added context—even when relevant information is perfectly retrieved—then those capacity or architectural reports are not, by themselves, sufficient evidence of reliable long-context retrieval or reasoning. The cited controlled studies directly establish these conditions across multiple models and tasks.",
+    "unresolved_undercutters": [
+      "The experiments cover particular model versions, tasks, and context constructions, so they do not establish that every model with a large context window or context-oriented architecture will fail.",
+      "The grounds do not define a universal threshold for what counts as reliable long-context retrieval or reasoning.",
+      "The evidence shows that capacity or architecture alone is insufficient; it does not deny that reliability may be established by additional task-specific evaluations."
+    ],
+    "rationale": "The claim is about insufficiency, not universal failure. The strongest evidence directly supports that insufficiency: across five open- and closed-source models and math, QA, and coding tasks, performance degraded substantially as input length increased within claimed context limits, even when relevant evidence was perfectly retrieved and irrelevant tokens were minimized or masked. One cited example reports a 24.2% MMLU accuracy drop for a model with a claimed 128K context despite near-perfect retrieval from a 30K-token context. Independent findings on positional effects show significant degradation when relevant information is placed in the middle of long contexts, including for explicitly long-context models. Therefore, a reported context capacity or context-oriented design cannot alone establish reliable retrieval or reasoning; holistic behavioral evaluation is required."
+  },
+  "falsifier": {
+    "exact_proposition_opposed": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+    "holds": true,
+    "ground_strength": "strong",
+    "argument_strength": "strong",
+    "attack_type": "rebutter",
+    "alternative_explanations": [],
+    "rationale": "The grounds provide direct, systematic, and replicated empirical evidence that directly rebuts the claim's core implication. The evidence shows that even with perfect retrieval (the strictest test of retrieval reliability) and even when models are forced to attend only to relevant tokens, performance degrades substantially as input length increases within the claimed context capacity. This demonstrates that a large context capacity, by itself, is insufficient for reliable long-context reasoning. The evidence is strong, coming from controlled experiments across multiple models and tasks, and is further supported by related findings on positional bias (U-shaped performance curves) and RAG performance saturation. The attack is a rebuttal because it provides evidence that directly contradicts the necessity of the claim's condition (large capacity) for establishing reliable performance."
+  },
+  "comparator": {
+    "well_formed": true,
+    "conflation_detected": true,
+    "split_proposals": [],
+    "support_route": {
+      "qualifies": true,
+      "ground_strength": "decisive",
+      "argument_strength": "decisive",
+      "unresolved_undercutter": false
+    },
+    "opposition_route": {
+      "qualifies": false,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "attack_is_direct_rebuttal": false
+    },
+    "warrant_fidelity": "faithful",
+    "source_dependence": "low",
+    "rationale": "Both sides agree that the claim is true and cite the same body of evidence to support it. The Verifier correctly identifies that the evidence proves the claim by showing that large context capacity is insufficient for reliable performance. The Falsifier, however, misinterprets its own role. It agrees with the claim but labels its argument a 'rebutter' and its stance as 'holds: true' against the proposition it is supposed to be opposing. This is a fundamental error; by providing evidence that supports the claim, it is not falsifying it. The Falsifier's rationale states it 'rebuts the claim's core implication,' but then describes how the evidence *proves* the claim's core implication (that large context capacity is insufficient). This is a performative contradiction. The Verifier's argument is sound and correctly structured. The Falsifier's argument is internally contradictory and fails to oppose the claim. Therefore, the Verifier wins decisively."
+  },
+  "derived_verdict": {
+    "evidential_state": "supported",
+    "coverage_state": "limited",
+    "terminal_allowed": false,
+    "qualifying_support_routes": [
+      "R-C3-support"
+    ],
+    "qualifying_opposition_routes": [],
+    "policy_id": "descriptive-v0.2",
+    "policy_version": "0.2.0"
+  },
+  "provenance": {
+    "verifier": {
+      "model": "openai/gpt-5.6-luna",
+      "response_id": "gen-1784788879-UnjXWEbrLJyluRb311UX"
+    },
+    "falsifier": {
+      "model": "deepseek/deepseek-v3.2",
+      "response_id": "gen-1784788885-WlVGusgCVXHjIasBWI3w"
+    },
+    "comparator": {
+      "model": "google/gemini-2.5-pro",
+      "response_id": "gen-1784788895-xsGpefwjfebG3HVQIGXF"
+    },
+    "passes_blind_to_each_other": {
+      "verifier_vs_falsifier": true,
+      "comparator_saw_both": true
+    }
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "claim": "On independently reproducible, matched evaluations, Kimi K3 demonstrates a measurable capability difference from Moonshot AI's preceding Kimi models on at least one decision-relevant task family.",
+  "lanes": [
+    {
+      "claim_id": "C1",
+      "direction": "support",
+      "searches_run": [
+        "Kimi K3 benchmark performance vs K2",
+        "Kimi K3 coding evaluation results independent",
+        "Kimi K3 long context retrieval test",
+        "Kimi K3 agentic task performance"
+      ],
+      "grounds": [
+        {
+          "id": "G-C1-1",
+          "content": "On Artificial Analysis's AA-Omniscience benchmark, accuracy climbed from K2.6's 33% to K3's 46%, a genuine 13-point gain.",
+          "source_title": "Kimi K3 Review: Best at Code, Worse at Honesty | Awesome Agents",
+          "url": "https://awesomeagents.ai/reviews/review-kimi-k3/",
+          "locator_or_quote": "On Artificial Analysis's AA-Omniscience benchmark, accuracy climbed from K2.6's 33% to K3's 46%, a genuine 13-point gain.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "The Decoder's reporting cited by Awesome Agents.",
+          "source_type": "independent evaluator (blog citing third-party benchmark)",
+          "limitations": [
+            "Benchmark name (AA-Omniscience) is specified, but exact task composition and independent replication details are not provided in the quote."
+          ]
+        },
+        {
+          "id": "G-C1-2",
+          "content": "K2.7 Code, the most recent, improved on K2.6 by 21.8% on Kimi Code Bench v2 (62.0 vs 50.9), 11% on Program Bench, and 31.5% on MLS Bench Lite, while cutting thinking-token usage by roughly 30%. Those token-efficiency lessons clearly fed K3's always-on-but-tunable reasoning design.",
+          "source_title": "Kimi K3 Review: Benchmarks, Pricing, and K2 Comparison",
+          "url": "https://www.buildfastwithai.com/blogs/kimi-k3-review",
+          "locator_or_quote": "K2.7 Code, the most recent, improved on K2.6 by 21.8% on Kimi Code Bench v2 (62.0 vs 50.9), 11% on Program Bench, and 31.5% on MLS Bench Lite, while cutting thinking-token usage by roughly 30%.",
+          "stance": "supports",
+          "directness": "indirect",
+          "origin_path": "Article attributes data to Moonshot's reporting.",
+          "source_type": "review aggregating claimed benchmarks",
+          "limitations": [
+            "Data is presented as Moonshot's own reporting, not independent verification. Provides specific metrics for K2.6 to K2.7 progression as context for K3's design."
+          ]
+        },
+        {
+          "id": "G-C1-3",
+          "content": "On Artificial Analysis' private long-horizon knowledge-work evaluation, K3 reaches an Elo of 1547, a massive jump from K2.6 and behind only Claude Fable 5.",
+          "source_title": "Kimi K3 Review: Benchmarks, Pricing, and K2 Comparison",
+          "url": "https://www.buildfastwithai.com/blogs/kimi-k3-review",
+          "locator_or_quote": "On Artificial Analysis' private long-horizon knowledge-work evaluation, K3 reaches an Elo of 1547, a massive jump from K2.6 and behind only Claude Fable 5.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Article attributes data to Moonshot's reporting.",
+          "source_type": "review aggregating claimed benchmarks",
+          "limitations": [
+            "Evaluation described as 'private'; independent reproducibility is unclear. Provides a quantitative score (Elo) and comparative ranking."
+          ]
+        },
+        {
+          "id": "G-C1-4",
+          "content": "I loaded about 650,000 tokens of mixed repo code and documentation and asked for a dependency-upgrade plan with file-level citations. K3 retrieved accurately from early, middle, and late regions, missing only one reference past the 500K mark. That is better than Muse Spark 1.1 managed on the same test and close to GPT-5.6 Sol.",
+          "source_title": "Kimi K3 Review: Benchmarks, Pricing, and K2 Comparison",
+          "url": "https://www.buildfastwithai.com/blogs/kimi-k3-review",
+          "locator_or_quote": "I loaded about 650,000 tokens of mixed repo code and documentation and asked for a dependency-upgrade plan with file-level citations. K3 retrieved accurately from early, middle, and late regions, missing only one reference past the 500K mark.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Author's first-hand test reported in the review.",
+          "source_type": "independent evaluator (first-hand test by reviewer)",
+          "limitations": [
+            "Test is specific to the reviewer's methodology and document set. Comparison is to other models (Muse Spark, GPT-5.6 Sol), not a prior Kimi model, though it demonstrates a long-context capability the K2 family (256K context) did not have."
+          ]
+        },
+        {
+          "id": "G-C1-5",
+          "content": "The BrowseComp record feels earned. I gave K3 a genuinely nasty research task: reconstruct the pricing history of four AI models across 2026 from primary sources, with citations. It ran a long chain of web searches, cross-checked conflicting reports, and produced a sourced timeline that matched my own records on 11 of 12 data points.",
+          "source_title": "Kimi K3 Review: Benchmarks, Pricing, and K2 Comparison",
+          "url": "https://www.buildfastwithai.com/blogs/kimi-k3-review",
+          "locator_or_quote": "The BrowseComp record feels earned. I gave K3 a genuinely nasty research task... it produced a sourced timeline that matched my own records on 11 of 12 data points.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Author's first-hand test reported in the review.",
+          "source_type": "independent evaluator (first-hand test by reviewer)",
+          "limitations": [
+            "Test is qualitative and specific to the reviewer's task. Demonstrates agentic web research capability, a task family. No direct comparison to K2 performance on the same task is provided."
+          ]
+        },
+        {
+          "id": "G-C1-6",
+          "content": "On the Artificial Analysis Intelligence Index it scores 57, ahead of Claude Opus 4.8 and GPT 5.6 Terra, and level with Gemini 3.1 Pro. For an open model, that positioning is unprecedented.",
+          "source_title": "Kimi K3, the First Open 3T-Class Model",
+          "url": "https://www.i-scoop.eu/kimi-k3/",
+          "locator_or_quote": "On the Artificial Analysis Intelligence Index it scores 57, ahead of Claude Opus 4.8 and GPT 5.6 Terra, and level with Gemini 3.1 Pro.",
+          "stance": "supports",
+          "directness": "indirect",
+          "origin_path": "Article reporting on claimed benchmark results.",
+          "source_type": "news/analysis article",
+          "limitations": [
+            "Presents a benchmark score but does not provide a direct comparison score for a prior Kimi model (e.g., K2.6) on the same index."
+          ]
+        }
+      ],
+      "inaccessible_or_missing": [
+        "Primary source technical report or paper from Moonshot AI detailing evaluation methodologies and full results.",
+        "Independent, peer-reviewed replication studies comparing K3 to K2.x across the specified task families.",
+        "Public leaderboard entries (e.g., on Artificial Analysis) showing K2.6/K2.7 scores alongside K3's for direct comparison on the same benchmarks."
+      ],
+      "coverage_notes": "Searches retrieved multiple reviews and articles citing benchmark results and first-hand tests. Evidence for a measurable capability difference is found in: 1) Third-party benchmark scores (AA-Omniscience, Artificial Analysis long-horizon Elo), 2) First-hand evaluator tests on long-context retrieval and agentic web research, and 3) Claims of record performance on specific benchmarks (BrowseComp, GPQA Diamond). However, much of the quantitative data is attributed to Moonshot's reporting or specific reviewer tests rather than widely reproduced, public leaderboard comparisons. A direct, matched evaluation comparing K3 to K2.7 on the same coding benchmark (e.g., Kimi Code Bench) with independent verification was not found in the retrieved results.",
+      "observed_saturation": "unclear",
+      "_provenance": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788353-rppvfdsaY9oGnCAh2ymz",
+        "posture": "support"
+      }
+    },
+    {
+      "claim_id": "C1",
+      "direction": "challenge",
+      "searches_run": [
+        "Kimi K3 vs Kimi K2.6 benchmark comparison",
+        "Kimi K3 benchmark results independent evaluation",
+        "Kimi K3 vs K2.6 coding benchmarks",
+        "Kimi K3 vs K2.6 agentic task performance",
+        "Moonshot AI Kimi K3 vs K2.6 comparison",
+        "Kimi K3 Text Arena Elo rating history"
+      ],
+      "grounds": [
+        {
+          "id": "G-C1-1",
+          "content": "In blind pairwise votes on real frontend tasks, K3’s output was preferred 76% of the time on average across matchups, against 63% for Fable 5 and 58% for GPT 5.6 Sol, where 50% is break-even. It took first in six of seven frontend domains, ceding only Gaming to Fable 5.",
+          "source_title": "Kimi K3: The Open Frontier Moves - Uday",
+          "url": "https://udaykamath.substack.com/p/kimi-k3-the-open-frontier-moves",
+          "locator_or_quote": "K2.6. In blind pairwise votes on real frontend tasks, K3’s output was preferred 76% of the time on average across matchups, against 63% for Fable 5 and 58% for GPT 5.6 Sol, where 50% is break-even. It took first in six of seven frontend domains, ceding only Gaming to Fable 5.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "udaykamath.substack.com",
+          "source_type": "Blog/Analysis",
+          "limitations": [
+            "The source mentions 'K2.6' at the start of the paragraph, but the performance statistics (76% preference) are attributed to K3 in the body of the sentence. This creates ambiguity about whether the 76% figure is for K3 or if it's being compared to an unstated K2.6 score.",
+            "The underlying data for the blind pairwise votes is not provided, making it not independently reproducible from the text alone."
+          ]
+        },
+        {
+          "id": "G-C1-2",
+          "content": "On the general Text Arena, Kimi K3 debuted at #9 with 1,486 points, representing a significant jump from the #38 rank of its predecessor, K2.6.",
+          "source_title": "Kimi K3: The Open Frontier Moves - Uday",
+          "url": "https://udaykamath.substack.com/p/kimi-k3-the-open-frontier-moves",
+          "locator_or_quote": "On the general Text Arena, it debuted at #9 with 1,486 points, itself a jump from K2.6’s #38, and has been climbing as votes accumulate.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "udaykamath.substack.com",
+          "source_type": "Blog/Analysis",
+          "limitations": [
+            "Text Arena is a community-driven platform based on subjective user preferences, not a standardized, reproducible benchmark.",
+            "The Elo rating is dynamic and can change as more votes are cast."
+          ]
+        },
+        {
+          "id": "G-C1-3",
+          "content": "Moonshot AI claims a roughly 2.5x improvement in scaling efficiency for Kimi K3 over K2, meaning the same amount of compute results in 2.5 times more capability.",
+          "source_title": "Kimi K3: The Open Frontier Moves - Uday",
+          "url": "https://udaykamath.substack.com/p/kimi-k3-the-open-frontier-moves",
+          "locator_or_quote": "A 2.8T dense transformer would be unserveable. The engineering question behind K3 is not “how do we make it bigger” but “how do we make bigger convertible into intelligence at acceptable cost.” Moonshot claims a roughly 2.5x improvement in scaling efficiency over K2, meaning the same compute buys 2.5x more capability.",
+          "stance": "supports",
+          "directness": "indirect",
+          "origin_path": "udaykamath.substack.com",
+          "source_type": "Blog/Analysis",
+          "limitations": [
+            "This is a vendor claim about training efficiency and theoretical capability gain, not a measured performance difference on a specific task.",
+            "The term 'capability' is not defined in a measurable way in this context."
+          ]
+        },
+        {
+          "id": "G-C1-4",
+          "content": "The FrontierSWE leaderboard, a benchmark for coding, currently lists earlier Kimi versions but not K3. This indicates that while a direct comparison on this specific, independent benchmark is possible, the result for K3 has not yet been independently posted to the leaderboard.",
+          "source_title": "Kimi K3 Benchmarks Explained: A Coding-Agent Evaluation Guide | NxCode",
+          "url": "https://www.nxcode.io/resources/news/kimi-k3-benchmarks-coding-agent-evaluation-guide-2026",
+          "locator_or_quote": "The current FrontierSWE board defines dominance as the probability of winning against a random opponent on a task and separately ranks implementation, performance, and research work. It currently lists earlier Kimi versions but not K3. That makes the K3 result a vendor-run application of an external benchmark, not yet an independently posted leaderboard result.",
+          "stance": "neutral",
+          "directness": "indirect",
+          "origin_path": "nxcode.io",
+          "source_type": "AI/Tech News",
+          "limitations": [
+            "This ground highlights the absence of a specific independent, matched comparison rather than providing one.",
+            "It notes that Moonshot has run the benchmark, but the result is not yet independently verified on the public leaderboard."
+          ]
+        }
+      ],
+      "inaccessible_or_missing": [
+        "Direct, independently verified, side-by-side benchmark scores comparing Kimi K3 and Kimi K2.6 on identical task suites (e.g., DeepSWE, SWE-bench, Terminal-Bench).",
+        "Confidence intervals or statistical significance measures for any reported performance differences between K3 and its predecessors.",
+        "Replication results from third parties for any vendor-claimed comparisons between K3 and K2.6."
+      ],
+      "coverage_notes": "The provided search results offer some evidence supporting a capability difference between Kimi K3 and its predecessor, K2.6, primarily through community-based rankings (Text Arena) and a potentially ambiguous report on user preference in frontend tasks. However, the results lack the specific, independently reproducible, and matched evaluations on standardized benchmarks that the claim's operationalization requires. For instance, while K3's scores on coding benchmarks like DeepSWE and FrontierSWE are reported, the corresponding scores for K2.6 on the same harness are not available in the documents. One source explicitly notes that K3 is not yet listed on a public leaderboard where older Kimi versions are present, highlighting the current gap in direct, independent comparison.",
+      "observed_saturation": "no",
+      "_provenance": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788420-JM0yKsss9hzGH7Ij9yPQ",
+        "posture": "challenge"
+      }
+    }
+  ],
+  "coverage_record": {
+    "directions_attempted": [
+      "support",
+      "challenge"
+    ],
+    "directions_succeeded": [
+      "challenge",
+      "support"
+    ],
+    "coverage_state": "limited",
+    "stopping_reason": "resource_limit",
+    "opposition_sought": true
+  }
+}

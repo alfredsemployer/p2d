@@ -1,0 +1,46 @@
+{
+  "pipeline_version": "0.2.0",
+  "spec_version": "0.2",
+  "question": "What is the significance of Kimi K3?",
+  "as_of": "2026-07-23",
+  "started_at": "2026-07-23T06:29:38.085555+00:00",
+  "budget": {
+    "limit_usd": 3.0,
+    "spent_usd": 0.588864494,
+    "remaining_usd": 2.411135506
+  },
+  "models": {
+    "framers": {
+      "openai": "openai/gpt-5.6-luna",
+      "google": "google/gemini-2.5-pro",
+      "deepseek": "deepseek/deepseek-v3.2"
+    },
+    "merger": "openai/gpt-5.6-luna",
+    "decomposer": "openai/gpt-5.6-luna",
+    "support_researcher": "deepseek/deepseek-v3.2",
+    "challenge_researcher": "google/gemini-2.5-pro",
+    "verifier": "openai/gpt-5.6-luna",
+    "falsifier": "deepseek/deepseek-v3.2",
+    "comparator": "google/gemini-2.5-pro",
+    "writer": "openai/gpt-5.6-luna",
+    "prose_auditor": "deepseek/deepseek-v3.2"
+  },
+  "verdict_policy": {
+    "id": "descriptive-v0.2",
+    "version": "0.2.0",
+    "ground_floor": "moderate",
+    "argument_floor": "moderate",
+    "require_adequate_coverage_for_terminal": true,
+    "unresolved_undercutter_blocks_route": true,
+    "normalization_required_for_cross_estimate": true
+  },
+  "completed_at": "2026-07-23T06:44:11.321194+00:00",
+  "artifact_counts": {
+    "framings": 3,
+    "questions": 4,
+    "active_questions": 3,
+    "claims": 6,
+    "arguments": 0,
+    "claim_assessments": 6
+  }
+}

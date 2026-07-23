@@ -1,0 +1,171 @@
+{
+  "answer_contract": {
+    "referent": "Kimi K3, the AI model and associated services released by Beijing-based Moonshot AI. The hosted/API offering must be distinguished from any downloadable open-weight checkpoint.",
+    "time_boundary": "Evidence available through July 23, 2026. Treat reported service availability on July 16, 2026 and the reportedly scheduled open-weight release on July 27, 2026 as separate milestones; do not assume the latter occurred.",
+    "comparison_classes": [
+      "Moonshot AI's preceding Kimi models, especially K2, K2.5, and K2.6",
+      "Open-weight frontier models from Chinese and other developers",
+      "Hosted frontier models from OpenAI, Anthropic, Google, and other providers",
+      "Large mixture-of-experts, long-context, multimodal, and agentic models",
+      "Models evaluated in real-world coding, research, design, and automation workflows"
+    ],
+    "dimensions": [
+      "Capability and benchmark validity",
+      "Long-context reliability",
+      "Coding, multimodal, tool-use, and agentic performance",
+      "Open-weight accessibility, licensing, and reproducibility",
+      "Inference cost, hardware demands, latency, and efficiency",
+      "Reliability, hallucination, proactiveness, and human oversight",
+      "Safety, governance, censorship, privacy, telemetry, and provenance",
+      "Commercial, developer, industrial, and geopolitical effects"
+    ],
+    "exclusions": [
+      "Treating company claims, selected benchmarks, or media enthusiasm as established evidence",
+      "Equating total parameter count with effective capability",
+      "Assessing the Kia K3 or unrelated uses of K3",
+      "Making definitive long-term forecasts from launch-week reactions",
+      "Inferring national technological superiority from one model release",
+      "Assuming that open weights imply permissive licensing, reproducible training, affordable deployment, or unrestricted use"
+    ],
+    "ambiguities_to_preserve": [
+      "Whether significance means technical, economic, geopolitical, social, institutional, or symbolic significance",
+      "Whether K3 refers to the hosted product, API model, checkpoint, or broader launch strategy",
+      "Whether open means downloadable weights, permissive licensing, reproducible training, or unrestricted deployment",
+      "Whether comparisons should rely on company-selected benchmarks, independent evaluations, or user experience",
+      "Whether reported architectural features such as KDA, AttnRes, and Stable LatentMoE account for observed gains",
+      "Whether reported hallucination and proactiveness measures generalize beyond their originating evaluations",
+      "Whether long-context capacity translates into reliable retrieval and reasoning",
+      "Whether July 27, 2026 open-weight availability occurs and under what license and technical conditions",
+      "Whether high accuracy and high hallucination can coexist acceptably in long-horizon workflows",
+      "Whether 'proactiveness' is an intended autonomy feature or an alignment and control problem"
+    ]
+  },
+  "questions": [
+    {
+      "id": "Q1",
+      "question": "On independently reproducible evaluations, what capability profile does Kimi K3 demonstrate relative to Kimi K2/K2.5/K2.6, leading hosted models, and comparable open-weight models across reasoning, coding, multimodal understanding, long-context retrieval, tool use, and agentic task completion?",
+      "type": "comparative",
+      "disposition": "active",
+      "disposition_reason": "This is the highest-leverage way to separate substantive capability from launch claims and benchmark selection. It incorporates long-context, multimodal, coding, and agentic frames without presupposing that any reported ranking is valid.",
+      "resolution_criteria": [
+        "Independent or transparently documented evaluations using matched prompts, tools, context lengths, and inference budgets",
+        "Replication across multiple languages, domains, and task types",
+        "Long-context retrieval and reasoning tests with distractors, contradictions, and varying context lengths",
+        "Verification of claimed long-horizon coding or engineering outputs rather than reliance on demonstrations",
+        "Confidence intervals, failure analysis, and contamination or benchmark-optimization checks",
+        "Separate results for hosted/API access and any downloadable checkpoint"
+      ],
+      "ranking": {
+        "relevance": 5,
+        "importance": 5,
+        "leverage": 5,
+        "answerability": 3,
+        "novelty": 3,
+        "diversity": 5,
+        "cost": 2
+      },
+      "framer_provenance": [
+        "openai: comparative capability evaluation",
+        "google: qualitative-leap and long-horizon agentic evaluation",
+        "deepseek: benchmark specialization and integrated-engineering frames"
+      ]
+    },
+    {
+      "id": "Q2",
+      "question": "What practical capability, cost, accessibility, and deployment frontier does Kimi K3 create relative to preceding Kimi models and competing hosted and open-weight systems, for distinct user and institutional workloads?",
+      "type": "decision",
+      "disposition": "active",
+      "disposition_reason": "Significance depends on usable quality per dollar, watt, unit of hardware, and unit of human oversight, not only benchmark performance. This question merges pricing, caching, self-hosting, open-weight access, enterprise fit, and market implications while retaining hosted-versus-checkpoint ambiguity.",
+      "resolution_criteria": [
+        "Quality-per-dollar, quality-per-watt, latency, throughput, and hardware-normalized measurements",
+        "Separate total-cost-of-ownership models for API use, cached and cache-miss workloads, self-hosting, fine-tuning, and derivatives",
+        "Representative profiles for individual developers, enterprises, regulated institutions, and research users",
+        "Sensitivity analysis for prices, context lengths, hardware availability, licensing, and regional access",
+        "Evidence about actual weight availability, license restrictions, deployment requirements, and reproducibility",
+        "Observed developer integration, downloads, fine-tunes, procurement, and usage where available",
+        "Explicit privacy, jurisdictional, telemetry, and vendor-lock-in constraints"
+      ],
+      "ranking": {
+        "relevance": 5,
+        "importance": 5,
+        "leverage": 5,
+        "answerability": 3,
+        "novelty": 3,
+        "diversity": 4,
+        "cost": 3
+      },
+      "framer_provenance": [
+        "openai: practical capability and cost frontier",
+        "google: pricing, adoption, and enterprise preference",
+        "deepseek: open-versus-proprietary competitive dynamics and Chinese market positioning"
+      ]
+    },
+    {
+      "id": "Q3",
+      "question": "What reliability, autonomy, and governance trade-offs would Kimi K3 present in long-running coding, research, automation, and other enterprise workflows, given reported hallucination, proactiveness, tool-use, and potentially downloadable-weight behavior?",
+      "type": "interpretive",
+      "disposition": "active",
+      "disposition_reason": "A model can be strategically significant while being unsuitable for minimally supervised or regulated use. This preserves the minority concern that higher capability may be paired with costly fabrication or over-initiative, and connects behavior to deployment controls without presuming the reported rates generalize.",
+      "resolution_criteria": [
+        "Independent reliability testing on long-horizon tasks with verifiable outputs and explicit human-oversight conditions",
+        "Measurement of hallucination frequency, severity, recoverability, and debugging cost rather than a single aggregate rate",
+        "Tests of behavior under ambiguous instructions, conflicting goals, sensitive topics, and tool failures",
+        "Comparison of guardrails, instruction adherence, refusal behavior, privacy, data retention, telemetry, and provenance with competing systems",
+        "Red-team evaluation of hosted services and any downloadable weights separately",
+        "Assessment of whether system prompts, agent configuration, sandboxing, review gates, and tool permissions mitigate observed risks",
+        "Clear distinction between intended proactiveness, useful initiative, and unauthorized decision-making"
+      ],
+      "ranking": {
+        "relevance": 5,
+        "importance": 5,
+        "leverage": 4,
+        "answerability": 3,
+        "novelty": 4,
+        "diversity": 5,
+        "cost": 2
+      },
+      "framer_provenance": [
+        "google: hallucination, proactiveness, and enterprise guardrail frames",
+        "deepseek: autonomy trade-off and governance implications",
+        "openai: safety, governance, censorship, privacy, and provenance dimensions"
+      ]
+    },
+    {
+      "id": "Q4",
+      "question": "How much of Kimi K3's reported performance and efficiency is attributable to architecture, scale, data, post-training, inference-time reasoning, or benchmark optimization?",
+      "type": "explanatory",
+      "disposition": "requires_specialized_pipeline",
+      "disposition_reason": "The question requires technical disclosures, ablations, matched-scale models, compute accounting, and likely access to internal training evidence that is not yet assured.",
+      "resolution_criteria": [
+        "Technical report with architecture and training details",
+        "Ablations of KDA, AttnRes, Stable LatentMoE, and other claimed components",
+        "Matched compute and scale comparisons with preceding Kimi models",
+        "Evaluation with and without extended reasoning or inference-time search",
+        "Training-data, contamination, and benchmark-optimization analysis"
+      ],
+      "ranking": {
+        "relevance": 4,
+        "importance": 4,
+        "leverage": 5,
+        "answerability": 1,
+        "novelty": 5,
+        "diversity": 4,
+        "cost": 1
+      },
+      "framer_provenance": [
+        "openai: architecture-versus-scale explanatory frame",
+        "google: KDA, AttnRes, and MoE attribution",
+        "deepseek: architectural-breakthrough hypothesis"
+      ]
+    }
+  ],
+  "_provenance": {
+    "model": "openai/gpt-5.6-luna",
+    "response_id": "gen-1784788295-dm4XMGc10u27P7DSrglU",
+    "saw_framings": [
+      "openai",
+      "google",
+      "deepseek"
+    ]
+  }
+}

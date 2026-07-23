@@ -1,0 +1,17 @@
+[
+  {"id":"F01","premises":["implies(P, Q)","P"],"conclusion":"Q","expected":"proved","fidelity":"exact_for_stated_scope"},
+  {"id":"F02","premises":["implies(P, Q)","Q"],"conclusion":"P","expected":"disproved","fidelity":"exact_for_stated_scope"},
+  {"id":"F03","premises":["P or Q","not P"],"conclusion":"Q","expected":"proved","fidelity":"exact_for_stated_scope"},
+  {"id":"F04","premises":["implies(P, Q)","implies(Q, R)"],"conclusion":"implies(P, R)","expected":"proved","fidelity":"exact_for_stated_scope"},
+  {"id":"F05","premises":["P","not P"],"conclusion":"Q","expected":"inconsistent_premises","fidelity":"exact_for_stated_scope"},
+  {"id":"F06","premises":["P or Q"],"conclusion":"P","expected":"disproved","fidelity":"exact_for_stated_scope"},
+  {"id":"F07","premises":["iff(P, Q)","P"],"conclusion":"Q","expected":"proved","fidelity":"exact_for_stated_scope"},
+  {"id":"F08","premises":["xor(P, Q)","P"],"conclusion":"not Q","expected":"proved","fidelity":"exact_for_stated_scope"},
+  {"id":"F09","premises":["implies(P and Q, R)","P"],"conclusion":"R","expected":"disproved","fidelity":"partial"},
+  {"id":"F10","premises":["implies(P, Q)","implies(not P, Q)"],"conclusion":"Q","expected":"proved","fidelity":"exact_for_stated_scope"},
+  {"id":"F11","premises":["LimitedCoverage","implies(LimitedCoverage, not TerminalAllowed)"],"conclusion":"not TerminalAllowed","expected":"proved","fidelity":"exact_for_stated_scope"},
+  {"id":"F12","premises":["FailedSupportRoute","implies(FailedSupportRoute, not Established)"],"conclusion":"not ClaimTrue","expected":"disproved","fidelity":"exact_for_stated_scope"},
+  {"id":"F13","premises":["Supported","LimitedCoverage","implies(Supported and LimitedCoverage, Provisional)"],"conclusion":"Provisional","expected":"proved","fidelity":"exact_for_stated_scope"},
+  {"id":"F14","premises":["QualifiedSupport","UnresolvedUndercutter","implies(UnresolvedUndercutter, not QualifiedSupport)"],"conclusion":"Supported","expected":"inconsistent_premises","fidelity":"exact_for_stated_scope"},
+  {"id":"F15","premises":["Undercutter","implies(Undercutter, not QualifiedRoute)"],"conclusion":"not QualifiedRoute","expected":"proved","fidelity":"exact_for_stated_scope"}
+]

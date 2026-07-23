@@ -1,0 +1,166 @@
+{
+  "claim": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+  "lanes": [
+    {
+      "claim_id": "C3",
+      "direction": "support",
+      "searches_run": [
+        "long context LLM performance degradation retrieval",
+        "LLM long context reasoning evaluation benchmarks",
+        "context length hurts LLM performance independent of retrieval"
+      ],
+      "grounds": [
+        {
+          "id": "G-C3-1",
+          "content": "A systematic study across 5 open- and closed-source LLMs on math, QA, and coding tasks reveals that even when models can perfectly retrieve all relevant information, their performance degrades substantially (13.9%–85%) as input length increases, well within the models' claimed context lengths. This occurs even when irrelevant tokens are replaced with minimally distracting whitespace or masked, forcing the model to attend only to relevant tokens.",
+          "source_title": "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval",
+          "url": "https://aclanthology.org/anthology-files/pdf/findings/2025.findings-emnlp.1264.pdf",
+          "locator_or_quote": "Our systematic experiments across 5 open- and closed source LLMs on math, question answering, and coding tasks reveal that, even when models can perfectly retrieve all relevant information...their performance still degrades substantially (13.9%–85%) as input length increases but remains well within the models’ claimed lengths. This failure occurs even when the irrelevant tokens are replaced with minimally distracting whitespace, and, more surprisingly, when they are all masked and the models are forced to attend only to the relevant tokens.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Primary research paper (Findings of EMNLP 2025).",
+          "source_type": "primary research",
+          "limitations": [
+            "Specific model versions and tasks used are not detailed in the provided excerpt."
+          ]
+        },
+        {
+          "id": "G-C3-2",
+          "content": "The findings reveal a previously unrealized limitation: the sheer length of the input alone can hurt LLM performance, independent of retrieval quality and without any distraction. This indicates that a large context capacity does not establish reliable long-context reasoning, as performance degrades with length even when retrieval is perfect.",
+          "source_title": "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval",
+          "url": "https://aclanthology.org/anthology-files/pdf/findings/2025.findings-emnlp.1264.pdf",
+          "locator_or_quote": "Our findings reveal a previously unrealized limitation: the sheer length of the input alone can hurt LLM performance, independent of retrieval quality and without any distraction.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Primary research paper (Findings of EMNLP 2025).",
+          "source_type": "primary research",
+          "limitations": []
+        },
+        {
+          "id": "G-C3-3",
+          "content": "The paper notes that benchmarks isolating retrieval as a standalone capability might be misleading, and that long-context capabilities should be evaluated holistically, as improvements in retrieval alone do not necessarily translate into better long-context performance.",
+          "source_title": "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval",
+          "url": "https://aclanthology.org/anthology-files/pdf/findings/2025.findings-emnlp.1264.pdf",
+          "locator_or_quote": "These results call for a rethinking of how long-context capabilities are evaluated. In particular, benchmarks that isolate retrieval as a standalone capability might...progress, as improvements in retrieval alone do not necessarily translate into better long context performance; instead long-context capabilities should be evaluated holistically.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Primary research paper (Findings of EMNLP 2025).",
+          "source_type": "primary research",
+          "limitations": []
+        },
+        {
+          "id": "G-C3-4",
+          "content": "The work provides evidence challenging the premise that if retrieval is perfect, model performance should be the same on long and short inputs, showing that performance drops even with perfect retrieval.",
+          "source_title": "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval",
+          "url": "https://aclanthology.org/anthology-files/pdf/findings/2025.findings-emnlp.1264.pdf",
+          "locator_or_quote": "This work provides evidence that calls this premise...into question.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Primary research paper (Findings of EMNLP 2025).",
+          "source_type": "primary research",
+          "limitations": [
+            "The excerpt is fragmented; the full premise referenced is implied from surrounding context."
+          ]
+        }
+      ],
+      "inaccessible_or_missing": [],
+      "coverage_notes": "The search results provided strong, direct evidence from a primary research source supporting the claim. The source explicitly measures degradation in reasoning/QA performance with increased context length, independent of retrieval success, addressing core aspects of the operationalization (degradation by context length). Other retrieved documents (NeedleBench, Long Context RAG Performance) were not accessible in full from the provided snippets, but their titles suggest they are relevant to the claim's evaluation criteria.",
+      "observed_saturation": "unclear",
+      "_provenance": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788528-DwSSm943FHLyzRkde4jR",
+        "posture": "support"
+      }
+    },
+    {
+      "claim_id": "C3",
+      "direction": "challenge",
+      "searches_run": [
+        "LLM long context performance not degraded by length",
+        "\"lost in the middle\" LLM solved or mitigated",
+        "LLM performance improves with more context documents",
+        "long context LLM robust to information position"
+      ],
+      "grounds": [
+        {
+          "id": "G-C3-1",
+          "content": "Systematic, controlled experiments across 5 open- and closed-source models on math, question answering, and code generation tasks show that even when a model can perfectly retrieve all the evidence—in the strictest possible sense, reciting all tokens with 100% exact match—its performance still degrades substantially as input length increases.",
+          "source_title": "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval",
+          "url": "https://arxiv.org/html/2510.05381v1",
+          "locator_or_quote": "Systematic, controlled experiments across 5 open- and closed-source models on math, question answering, and code generation tasks show that even when a model can perfectly retrieve all the evidence—in the strictest possible sense, reciting all tokens with 100% exact match—its performance still degrades substantially as input length increases (§ 3).",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Original research paper",
+          "source_type": "Preprint server (arXiv)",
+          "limitations": []
+        },
+        {
+          "id": "G-C3-2",
+          "content": "A study found that the sheer length of an input context can harm a Large Language Model's performance, regardless of retrieval quality. This degradation occurs even when irrelevant tokens are replaced with whitespace or when the model is forced to only attend to the relevant tokens.",
+          "source_title": "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval",
+          "url": "https://aclanthology.org/anthology-files/pdf/findings/2025.findings-emnlp.1264.pdf",
+          "locator_or_quote": "Our findings reveal a previously-unrealized limitation: the sheer length of the input alone can hurt LLM performance, independent of retrieval quality and without any distraction. ... This failure occurs even when the irrelevant tokens in the long context consist of minimally distracting whitespace (Fig.˜1; § 4.1), and even when the evidence is placed immediately before the question. Surprisingly, in a separate experiment, we observe a similar performance drop even when all irrelevant tokens are masked and the model attends only to the evidence and the question—identical to those in the short-context setting except for the longer distance between the evidence and the question (§ 4.1).",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Original research paper",
+          "source_type": "Conference proceedings (ACL Anthology)",
+          "limitations": []
+        },
+        {
+          "id": "G-C3-3",
+          "content": "Despite having a 128K context length and achieving near-perfect retrieval of evidence from a 30k token context, the Llama-3.1-8B Instruct model's accuracy on the MMLU benchmark dropped by 24.2% compared to its performance on the same problems in a short-context setting.",
+          "source_title": "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval",
+          "url": "https://arxiv.org/html/2510.05381v1",
+          "locator_or_quote": "For example, Llama-3.1-8B Instruct, with a claimed 128K context length, is able to retrieve all evidence with exact matches for 970 of 1000 MMLU problems Hendrycks et al. (2021b) extended to 30k tokens with irrelevant tokens — matching its retrieval performance on the same problems presented in the original form with shorter contexts. However, despite this robustness in retrieval, its accuracy drops by 24.2% compared to the short-context case.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Original research paper",
+          "source_type": "Preprint server (arXiv)",
+          "limitations": []
+        },
+        {
+          "id": "G-C3-4",
+          "content": "Research into how language models use long contexts found that performance is often highest when relevant information is at the beginning or end of the input, and degrades significantly when the model must access information in the middle, creating a U-shaped performance curve.",
+          "source_title": "Lost in the Middle: How Language Models Use Long Contexts",
+          "url": "https://aclanthology.org/2024.tacl-1.9.pdf",
+          "locator_or_quote": "We find that performance can degrade significantly when changing the position of relevant information, indicating that current language models do not robustly make use of information in long in put contexts. In particular, we observe that performance is often highest when relevant in formation occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models. Our analysis provides a better understanding of how language mod [...] use information in long input contexts. Furthermore, we observe a distinctive U-shaped performance curve (Figure 1);",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Original research paper",
+          "source_type": "Conference proceedings (ACL Anthology)",
+          "limitations": []
+        },
+        {
+          "id": "G-C3-5",
+          "content": "Recent findings show that performance in Retrieval-Augmented Generation (RAG) can saturate or even degrade as more documents are added to the context, which aligns with the hypothesis that sheer context length, rather than just retrieval quality, can negatively impact LLM performance.",
+          "source_title": "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval",
+          "url": "https://arxiv.org/html/2510.05381v1",
+          "locator_or_quote": "They offer a potential explanation for a recurring observation in retrieval-augmented generation (RAG) that performance often saturates or even degrades as more documents are added to the context (Cuconasu et al., 2024; Jin et al., 2024; Yu et al., 2024, inter alia), and for recent findings that long CoTs can sometimes hurt the performance (Zeng et al., 2025).",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Original research paper",
+          "source_type": "Preprint server (arXiv)",
+          "limitations": []
+        }
+      ],
+      "_provenance": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788569-LRERhn8JcYPIVwfWddx1",
+        "posture": "challenge"
+      }
+    }
+  ],
+  "coverage_record": {
+    "directions_attempted": [
+      "support",
+      "challenge"
+    ],
+    "directions_succeeded": [
+      "challenge",
+      "support"
+    ],
+    "coverage_state": "limited",
+    "stopping_reason": "resource_limit",
+    "opposition_sought": true
+  }
+}

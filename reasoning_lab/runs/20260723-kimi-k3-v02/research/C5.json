@@ -1,0 +1,227 @@
+{
+  "claim": "The hosted/API Kimi K3 offering and any downloadable open-weight checkpoint constitute materially different accessibility, reproducibility, privacy, governance, and deployment objects.",
+  "lanes": [
+    {
+      "claim_id": "C5",
+      "direction": "support",
+      "searches_run": [
+        "Kimi K3 availability API open weights",
+        "Kimi K3 self-hosting vs hosted API data residency",
+        "Kimi K3 license fine-tuning commercial use",
+        "Kimi K3 hardware requirements deployment"
+      ],
+      "grounds": [
+        {
+          "id": "G-C5-1",
+          "content": "The hosted Kimi API is available for immediate use on various platforms, while the full open model weights are scheduled for a separate release by July 27, 2026.",
+          "source_title": "Kimi K3 Tech Blog: Open Frontier Intelligence",
+          "url": "https://www.kimi.com/en/blog/kimi-k3",
+          "locator_or_quote": "Kimi K3 is available today on Kimi.com, Kimi Work, Kimi Code, and the Kimi API... The full model weights will be released by July 27, 2026.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Primary source (Moonshot AI blog)",
+          "source_type": "primary",
+          "limitations": [
+            "The blog is a promotional source from the model creator."
+          ]
+        },
+        {
+          "id": "G-C5-2",
+          "content": "Using the hosted API means prompts are sent to Moonshot's servers in China, raising data residency concerns. Self-hosting the open weights keeps all data within a user's own environment.",
+          "source_title": "Kimi K3 Open Weights: Guide for Regulated Business",
+          "url": "https://www.layer3labs.io/open-weights/kimi-k3-open-weights-guide",
+          "locator_or_quote": "The hosted API lets you test Kimi K3 in days with no hardware. But your prompts travel to Moonshot's servers, which are in China, raising real data-residency questions for regulated firms... Self-hosting Kimi K3 keeps your data on infrastructure you control, which is the main benefit for regulated businesses.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Independent evaluator (Layer3 Labs) citing primary source concepts.",
+          "source_type": "independent_evaluator",
+          "limitations": [
+            "The guide interprets and summarizes implications; it is not the official API or license documentation."
+          ]
+        },
+        {
+          "id": "G-C5-3",
+          "content": "The open weights allow for fine-tuning on a user's own data, which is typically not possible with a closed API. However, the final license terms for Kimi K3 were not published at the time of writing, creating uncertainty over derivative rights.",
+          "source_title": "Kimi K3 Open Weights: Guide for Regulated Business",
+          "url": "https://www.layer3labs.io/open-weights/kimi-k3-open-weights-guide",
+          "locator_or_quote": "Yes, open weights let you fine-tune Kimi K3 on your own data, which a closed API rarely allows... Confirm the license permits the training and use you plan... Moonshot had not published the final K3 license terms at the time of writing.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Independent evaluator (Layer3 Labs) analyzing primary source information.",
+          "source_type": "independent_evaluator",
+          "limitations": [
+            "Based on general practice and predecessor model (K2), but official K3 license is pending."
+          ]
+        },
+        {
+          "id": "G-C5-4",
+          "content": "Self-hosting the 2.8-trillion parameter Kimi K3 model requires a large multi-GPU server infrastructure with high-bandwidth networking, which is a serious engineering project. In contrast, the hosted API requires no user hardware.",
+          "source_title": "Kimi K3 Open Weights: Guide for Regulated Business",
+          "url": "https://www.layer3labs.io/open-weights/kimi-k3-open-weights-guide",
+          "locator_or_quote": "Self-hosting Kimi K3 is possible, but it is a serious server project, not a laptop download. A 2.8-trillion-parameter model needs a large multi-GPU footprint to run... The hosted API lets you test Kimi K3 in days with no hardware.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Independent evaluator (Layer3 Labs) analyzing primary source information.",
+          "source_type": "independent_evaluator",
+          "limitations": [
+            "Hardware estimates are based on model scale and common practice, not official minimum specs."
+          ]
+        },
+        {
+          "id": "G-C5-5",
+          "content": "The cost structure differs: the hosted API has a clear per-token price, while the cost of self-hosting is 'compute plus engineering' for hardware, power, and personnel, with the open weights themselves being free.",
+          "source_title": "Kimi K3 Tech Blog: Open Frontier Intelligence",
+          "url": "https://www.kimi.com/en/blog/kimi-k3",
+          "locator_or_quote": "Pricing is $0.30/MTok for cache-hit input, $3.00/MTok for cache-miss input, and $15.00/MTok for output.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Primary source (Moonshot AI blog)",
+          "source_type": "primary",
+          "limitations": [
+            "API pricing is stated; self-hosting cost analysis is inferred from other sources."
+          ]
+        },
+        {
+          "id": "G-C5-6",
+          "content": "The guide explicitly frames the choice as between the hosted API for speed and low cost, and self-hosting for control and data residency, indicating they are distinct deployment objects serving different needs.",
+          "source_title": "Kimi K3 Open Weights: Guide for Regulated Business",
+          "url": "https://www.layer3labs.io/open-weights/kimi-k3-open-weights-guide",
+          "locator_or_quote": "Choose the hosted Kimi API for speed and low upfront cost, and self-hosting for control and data residency.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Independent evaluator (Layer3 Labs) summarizing the trade-off.",
+          "source_type": "independent_evaluator",
+          "limitations": [
+            "This is an analytical conclusion, not a direct statement from Moonshot."
+          ]
+        }
+      ],
+      "inaccessible_or_missing": [
+        "The official Kimi K3 license document was not accessible at the time of the search, as its release is pending.",
+        "Official, detailed minimum hardware specifications for self-hosting were not found in the searched sources.",
+        "Detailed telemetry or data retention policies for the hosted API were not found in the searched sources."
+      ],
+      "coverage_notes": "Strong direct support found for differences in availability, data privacy/residency, fine-tuning capability, hardware/deployment complexity, and cost structure. Key limiting factor is the absence of the final, official license, which governs critical aspects like reproducibility and derivative rights. The sources clearly treat the API and open weights as two distinct pathways.",
+      "observed_saturation": "yes",
+      "_provenance": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788651-tsMLfDGEXvRLU4RSzYEi",
+        "posture": "support"
+      }
+    },
+    {
+      "claim_id": "C5",
+      "direction": "challenge",
+      "searches_run": [
+        "Kimi K3 open weights vs API",
+        "Kimi K3 license terms",
+        "Kimi K3 self-hosting requirements",
+        "Kimi K3 API data privacy policy",
+        "Moonshot AI Kimi K3 open source release date",
+        "fine-tuning Kimi K3 open weights"
+      ],
+      "grounds": [
+        {
+          "id": "G-C5-1",
+          "content": "The hosted Kimi K3 API and the self-hosted open-weight model present a fundamental trade-off between data privacy and cost/complexity. Using the API means data is sent to Moonshot's servers in China, which raises data residency concerns for regulated industries. Self-hosting the open weights provides full data control by keeping prompts and outputs within the user's own environment, but requires significant investment in hardware and ML engineering.",
+          "source_title": "Kimi K3 Open Weights: Guide for Regulated Business",
+          "url": "https://www.layer3labs.io/open-weights/kimi-k3-open-weights-guide",
+          "locator_or_quote": "The hosted API lets you test Kimi K3 in days with no hardware. But your prompts travel to Moonshot's servers, which are in China, raising real data-residency questions for regulated firms. [...] Self-hosting Kimi K3 keeps your data on infrastructure you control, which is the main benefit for regulated businesses. No prompts or customer data leave your boundary.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Independent Guide",
+          "limitations": []
+        },
+        {
+          "id": "G-C5-2",
+          "content": "The hardware requirements for using the Kimi K3 API versus self-hosting the open weights are vastly different. The API can be accessed from standard applications with no specialized hardware. In contrast, self-hosting the 2.8-trillion-parameter model is described as a \"serious server project\" requiring a large multi-GPU cluster with high-bandwidth networking, making it infeasible for a single consumer GPU or laptop.",
+          "source_title": "Kimi K3 Open Weights: Guide for Regulated Business",
+          "url": "https://www.layer3labs.io/open-weights/kimi-k3-open-weights-guide",
+          "locator_or_quote": "Self-hosting Kimi K3 is possible, but it is a serious server project, not a laptop download. A 2.8-trillion-parameter model needs a large multi-GPU footprint to run. [...] The memory math is the whole story: a frontier MoE needs hundreds of gigabytes of memory even at 4-bit quantization... That is why no single consumer GPU (24–32GB) or laptop can host the full model",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Independent Guide",
+          "limitations": []
+        },
+        {
+          "id": "G-C5-3",
+          "content": "The ability to modify and create derivatives of Kimi K3 is exclusive to the open-weight version. The open weights allow for fine-tuning on proprietary data using methods like LoRA to adapt the model to specific domains. This level of customization is not possible with the closed API.",
+          "source_title": "Kimi K3 Open Weights: Guide for Regulated Business",
+          "url": "https://www.layer3labs.io/open-weights/kimi-k3-open-weights-guide",
+          "locator_or_quote": "Yes, open weights let you fine-tune Kimi K3 on your own data, which a closed API rarely allows. This can sharpen the model on your domain, tone, and workflows.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Independent Guide",
+          "limitations": []
+        },
+        {
+          "id": "G-C5-4",
+          "content": "There is a clear distinction in availability and governance between the two offerings. The full model weights are planned for release by July 27, 2026, making them a downloadable asset. The API is a service with access tied to an account and payment. The license terms for the open weights were unconfirmed at the time of writing but will govern modification and redistribution rights, a concept that does not apply to the API service.",
+          "source_title": "Kimi K3 Open Weights: Guide for Regulated Business",
+          "url": "https://www.layer3labs.io/open-weights/kimi-k3-open-weights-guide",
+          "locator_or_quote": "Moonshot plans to release the full Kimi K3 model weights, free to download and adapt, by late July 2026. This is a true open-weights release, not just an API. [...] Confirm the exact Kimi K3 license before any commercial use. Moonshot had not published the final K3 license terms at the time of writing, so we will not guess a license name.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Independent Guide",
+          "limitations": []
+        },
+        {
+          "id": "G-C5-5",
+          "content": "Accessibility to the Kimi K3 API is gated by payment, requiring a minimum top-up of $1 to unlock the flagship model. In contrast, the open weights are stated to be free to download, with costs shifting from access fees to hardware and operational expenditure.",
+          "source_title": "Kimi K3",
+          "url": "https://platform.kimi.ai/docs/guide/kimi-k3-quickstart",
+          "locator_or_quote": "Kimi K3 is a flagship model: it is unlocked after a successful top-up (minimum $1).",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Primary Source (Vendor Documentation)",
+          "limitations": []
+        },
+        {
+          "id": "G-C5-6",
+          "content": "The Kimi K3 model is available through multiple distinct channels provided by the vendor, each with a different deployment context: a consumer-facing web/mobile app, a desktop app for work, a command-line tool for code, a commercial API, and an enterprise offering. The open-weight release, planned for July 27, 2026, represents another separate deployment object intended for self-hosting.",
+          "source_title": "An Open 3T-Class Model",
+          "url": "https://www.kimi.com/en/blog/kimi-k3",
+          "locator_or_quote": "Kimi K3 is available today on Kimi.com, Kimi Work, Kimi Code, and the Kimi API. [...] The full model weights will be released by July 27, 2026.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Primary Source (Vendor Blog)",
+          "limitations": []
+        }
+      ],
+      "inaccessible_or_missing": [
+        {
+          "id": "M-C5-1",
+          "description": "The final license terms for the Kimi K3 open-weight model have not yet been published as of the time of the search. While a source mentions Kimi K2 used a permissive license, it explicitly states this is not guaranteed for K3."
+        },
+        {
+          "id": "M-C5-2",
+          "description": "Detailed information on data retention and telemetry for the hosted Kimi K3 API was not found in the provided search results."
+        }
+      ],
+      "_provenance": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788724-D5iwPp5942TcVzTYwbid",
+        "posture": "challenge"
+      }
+    }
+  ],
+  "coverage_record": {
+    "directions_attempted": [
+      "support",
+      "challenge"
+    ],
+    "directions_succeeded": [
+      "challenge",
+      "support"
+    ],
+    "coverage_state": "limited",
+    "stopping_reason": "resource_limit",
+    "opposition_sought": true
+  }
+}

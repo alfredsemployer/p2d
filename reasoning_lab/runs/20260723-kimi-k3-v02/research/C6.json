@@ -1,0 +1,188 @@
+{
+  "claim": "Kimi K3 is suitable for minimally supervised long-horizon workflows only if its hallucination, over-initiative, tool-use, privacy, and failure-recovery costs remain within the deploying institution's tolerance under tested controls.",
+  "lanes": [
+    {
+      "claim_id": "C6",
+      "direction": "support",
+      "searches_run": [
+        "Kimi K3 long-horizon coding performance limitations",
+        "Kimi K3 hallucination rate independent evaluation",
+        "Kimi K3 agent behavior constraints unexpected decisions"
+      ],
+      "grounds": [
+        {
+          "id": "G-C6-1",
+          "content": "Kimi states K3 was trained for long-horizon, challenging tasks and as a result, when encountering minor issues or ambiguous user intent, it may make unexpected decisions on the user's behalf. The company advises that if an application requires the agent to operate within well-defined boundaries, explicit behavioral constraints must be imposed.",
+          "source_title": "Kimi K3 Tech Blog: Open Frontier Intelligence",
+          "url": "https://www.kimi.com/en/blog/kimi-k3",
+          "locator_or_quote": "Excessive proactiveness. K3's training places particular emphasis on long-horizon, challenging tasks. As a result, when it encounters minor issues or ambiguous user intent during task execution, it may make unexpected decisions on the user's behalf. If your application requires the agent to operate within well-defined boundaries and refrain from excessive improvisation, please impose more explicit behavioral constraints on K3 in the system prompt.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Primary source (model developer)",
+          "source_type": "Company blog / technical documentation",
+          "limitations": [
+            "Acknowledged by the developer; does not provide quantified frequency or severity of 'unexpected decisions'."
+          ]
+        },
+        {
+          "id": "G-C6-2",
+          "content": "Independent testing lab Artificial Analysis evaluated Kimi K3 and found its hallucination rate climbed from 39 percent to 51 percent on the AA-Omniscience Index, meaning K3 fabricates more answers even as its accuracy improves.",
+          "source_title": "Kimi's open model K3 nears GPT-5.6 Sol and Fable 5 while signaling the end of super cheap Chinese AI",
+          "url": "https://the-decoder.com/kimis-open-model-k3-nears-gpt-5-6-sol-and-fable-5-while-signaling-the-end-of-super-cheap-chinese-ai/",
+          "locator_or_quote": "But its hallucination rate climbed from 39 percent to 51 percent, meaning K3 fabricates more answers even as it gets more questions right.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Syndicated report citing independent evaluator (Artificial Analysis)",
+          "source_type": "News article citing independent evaluation",
+          "limitations": [
+            "The specific benchmark (AA-Omniscience Index) and task context for the hallucination rate are not detailed in the excerpt."
+          ]
+        },
+        {
+          "id": "G-C6-3",
+          "content": "A review notes that K3's verbosity (producing roughly twice the comparison average output tokens) can increase cost per accepted result, implying higher debugging and review costs. It also states that only 'max' reasoning effort is available, removing the ability to route simpler work to a cheaper, faster setting.",
+          "source_title": "Kimi K3 Review: Price, Benchmarks, and Verdict | Omid Saffari",
+          "url": "https://omidsaffari.com/blog/kimi-k3-review",
+          "locator_or_quote": "Independent measurement finds K3 slower and much more verbose than the comparison average... A model can be cheap per token and still become expensive per accepted result if it produces roughly twice the comparison-set output volume... Only max reasoning effort is available, so there is no cheaper or faster effort setting to route simple work toward.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Independent reviewer citing Artificial Analysis data",
+          "source_type": "Independent review blog",
+          "limitations": [
+            "The review aggregates data; specific metrics for 'debugging cost' or 'recovery time' are not provided."
+          ]
+        },
+        {
+          "id": "G-C6-4",
+          "content": "Kimi warns that K3's generation quality can become highly unstable if an agent runtime fails to pass back all historical thinking content or if an ongoing session from another model is switched to K3 mid-conversation.",
+          "source_title": "Kimi K3 Tech Blog: Open Frontier Intelligence",
+          "url": "https://www.kimi.com/en/blog/kimi-k3",
+          "locator_or_quote": "Sensitivity to thinking history. K3 was trained in the preserved thinking history mode. If the agent harness fails to pass back all the historical thinking content as required, or if an ongoing session with another model is switched over to K3, generation quality may become highly unstable.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "Primary source (model developer)",
+          "source_type": "Company blog / technical documentation",
+          "limitations": [
+            "Describes a condition for instability but does not quantify the 'recovery time' or 'debugging cost' incurred."
+          ]
+        }
+      ],
+      "inaccessible_or_missing": [
+        "The full technical report, license, and weights for K3 are not yet public (per Omid Saffari review).",
+        "Direct, primary source measurements for 'unauthorized actions', 'privacy exposure', 'telemetry', and 'oversight burden' under realistic long-horizon tasks were not found in the retrieved results."
+      ],
+      "coverage_notes": "The grounds provide strong direct support for specific cost factors named in the claim: hallucination frequency, over-initiative (unexpected decisions), and failure-recovery conditions (instability from broken history). They also provide indirect support for cost factors via notes on verbosity impacting effective cost. Key measurement details (e.g., hallucination rate on a specific index) are provided, but severity, refusal behavior, and privacy aspects are not covered.",
+      "observed_saturation": "unclear",
+      "_provenance": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788743-GNHvmz3DkFjFAz7irIoS",
+        "posture": "support"
+      }
+    },
+    {
+      "claim_id": "C6",
+      "direction": "challenge",
+      "searches_run": [
+        "Kimi K3 hallucination rate",
+        "Kimi K3 agentic capabilities limitations",
+        "Kimi K3 safety evaluation",
+        "Kimi K3 independent evaluation"
+      ],
+      "grounds": [
+        {
+          "id": "G-C6-1",
+          "content": "Independent testing by Artificial Analysis found that while Kimi K3's accuracy improved on the AA-Omniscience Index, its hallucination rate also increased significantly, from 39 percent to 51 percent.",
+          "source_title": "Kimi's open model K3 nears GPT-5.6 Sol and Fable 5 while signaling the end of super cheap Chinese AI",
+          "url": "https://the-decoder.com/kimis-open-model-k3-nears-gpt-5-6-sol-and-fable-5-while-signaling-the-end-of-super-cheap-chinese-ai/",
+          "locator_or_quote": "But its hallucination rate climbed from 39 percent to 51 percent, meaning K3 fabricates more answers even as it gets more questions right.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Technology News",
+          "limitations": []
+        },
+        {
+          "id": "G-C6-2",
+          "content": "In its own technical blog, Kimi's developer, Moonshot AI, warns that K3 can exhibit \"excessive proactiveness,\" making unexpected decisions on the user's behalf when it encounters minor issues or ambiguous intent.",
+          "source_title": "Kimi K3 Tech Blog: Open Frontier Intelligence",
+          "url": "https://www.kimi.com/en/blog/kimi-k3",
+          "locator_or_quote": "2. Excessive proactiveness. [...] when it encounters minor issues or ambiguous user intent during task execution, it may make unexpected decisions on the user's behalf. If your application requires the agent to operate within well-defined boundaries and refrain from excessive improvisation, please impose more explicit behavioral constraints on K3 in the system prompt or in`AGENTS.md`.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Primary Source (Developer Blog)",
+          "limitations": []
+        },
+        {
+          "id": "G-C6-3",
+          "content": "Moonshot AI notes that Kimi K3 is sensitive to its thinking history; if the full history is not passed back correctly or if a session is switched from another model to K3, the generation quality can become \"highly unstable.\"",
+          "source_title": "Kimi K3 Tech Blog: Open Frontier Intelligence",
+          "url": "https://www.kimi.com/en/blog/kimi-k3",
+          "locator_or_quote": "1. Sensitivity to thinking history. K3 was trained in the preserved thinking history mode. If the agent harness fails to pass back all the historical thinking content as required, or if an ongoing session with another model is switched over to K3, generation quality may become highly unstable.",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Primary Source (Developer Blog)",
+          "limitations": []
+        },
+        {
+          "id": "G-C6-4",
+          "content": "The AI Governance Institute highlights that Moonshot AI has not published a full technical report covering training methodology and safety evaluations alongside the model's launch, meaning enterprises must evaluate or deploy K3 without the necessary documentation to complete a structured risk assessment.",
+          "source_title": "Kimi K3, the World's First Open 2.8T-Parameter Model, Creates New Intake and Agentic Governance Obligations for Enterprise Teams | AI Governance Institute",
+          "url": "https://aigovernance.com/news/kimi-k3-open-weight-model-agentic-governance-compliance",
+          "locator_or_quote": "Critically, a full technical report covering training methodology and safety evaluations has not been published alongside the model announcement, [...] evaluate or deploy Kimi K3 will do so without [...] the documentation needed to complete a structured risk",
+          "stance": "supports",
+          "directness": "direct",
+          "origin_path": "",
+          "source_type": "Non-profit / Think Tank",
+          "limitations": []
+        },
+        {
+          "id": "G-C6-5",
+          "content": "Kimi K3 is explicitly marketed for long-horizon autonomous coding sessions, with the ability to navigate large codebases and use terminal tools independently, which increases the operational risk of deployment.",
+          "source_title": "Kimi K3, the World's First Open 2.8T-Parameter Model, Creates New Intake and Agentic Governance Obligations for Enterprise Teams | AI Governance Institute",
+          "url": "https://aigovernance.com/news/kimi-k3-open-weight-model-agentic-governance-compliance",
+          "locator_or_quote": "Moonshot AI explicitly markets Kimi K3 for long-horizon autonomous coding sessions [...] the model capable of navigating large code repositories and orchestrating terminal tools independently. [...] native vision capabilities substantially expand the range of tasks the model can perform without human intervention, raising the operational stakes of any deployment decision.",
+          "stance": "supports",
+          "directness": "indirect",
+          "origin_path": "",
+          "source_type": "Non-profit / Think Tank",
+          "limitations": []
+        },
+        {
+          "id": "G-C6-6",
+          "content": "Despite its high performance on some benchmarks, Moonshot AI acknowledges that K3 has a \"noticeable gap in user experience compared with Claude Fable 5 and GPT 5.6 Sol.\"",
+          "source_title": "Kimi K3 Tech Blog: Open Frontier Intelligence",
+          "url": "https://www.kimi.com/en/blog/kimi-k3",
+          "locator_or_quote": "3. Despite being a highly competitive model overall, K3 nonetheless exhibits a noticeable gap in user experience compared with Claude Fable 5 and GPT 5.6 Sol.",
+          "stance": "supports",
+          "directness": "indirect",
+          "origin_path": "",
+          "source_type": "Primary Source (Developer Blog)",
+          "limitations": []
+        }
+      ],
+      "inaccessible_or_missing": [],
+      "coverage_notes": "The search results provide substantial evidence supporting the claim's conditions, highlighting specific risks associated with Kimi K3's use in minimally supervised workflows. The findings cover hallucination rates (G-C6-1), over-initiative/unauthorized actions (G-C6-2), failure recovery/instability (G-C6-3), and governance/privacy risks due to a lack of documentation (G-C6-4). The model's intended use for autonomous coding (G-C6-5) and acknowledged user experience gaps (G-C6-6) further underscore the importance of the claim's cautionary stance. The information comes from the developer's own blog, an independent analysis firm, and a governance-focused institute, providing a well-rounded view of the challenges.",
+      "observed_saturation": "yes",
+      "_provenance": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788786-eVMm28ZVNBuRsuV5fIiz",
+        "posture": "challenge"
+      }
+    }
+  ],
+  "coverage_record": {
+    "directions_attempted": [
+      "support",
+      "challenge"
+    ],
+    "directions_succeeded": [
+      "challenge",
+      "support"
+    ],
+    "coverage_state": "limited",
+    "stopping_reason": "resource_limit",
+    "opposition_sought": true
+  }
+}

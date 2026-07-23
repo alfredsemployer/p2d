@@ -1,0 +1,80 @@
+{
+  "claim_id": "C2",
+  "claim": "Kimi K3 is competitive with at least some leading hosted or open-weight alternatives on at least one high-value workflow, without implying general frontier superiority.",
+  "verifier": {
+    "exact_proposition_established": "Kimi K3 is competitive with at least some leading hosted alternatives on specific high-value agentic workflows, including GDPval v2, AutomationBench-AA, AA-Briefcase, and a small direct coding comparison with Claude Fable 5. The evidence does not establish general frontier superiority.",
+    "holds": true,
+    "ground_strength": "strong",
+    "argument_strength": "strong",
+    "warrant_reconstruction": "If an AI model matches or exceeds leading alternatives on evaluations of economically valuable agentic, SaaS-automation, long-horizon knowledge-work, or practical coding tasks, then it is competitive with those alternatives on at least some high-value workflows. Artificial Analysis results place K3 above GPT-5.5, GLM-5.2, and Claude Opus 4.8 on GDPval v2, first on AutomationBench-AA, and second only to Fable 5 on AA-Briefcase. A separate coding comparison found K3 and Fable 5 produced equally correct outcomes on three tasks. These results support the narrower claim of workflow-specific competitiveness, while K3's lower scores than Fable 5 on some evaluations and its much slower coding performance prevent an inference of broad superiority.",
+    "unresolved_undercutters": [
+      "The benchmark results are task- and evaluation-specific and may not generalize to all high-value workflows.",
+      "Some comparisons used different agent or CLI systems and were not conducted under fully identical conditions.",
+      "The direct coding comparison involved only three tasks and found K3 roughly four times slower than Fable 5.",
+      "AA-Briefcase is private, so its tasks and scoring methodology cannot be independently assessed from the grounds."
+    ],
+    "rationale": "The claim is deliberately modest and is directly supported. GDPval v2 is described as measuring realistic, economically valuable tasks, and K3's 1,668 Elo exceeds GPT-5.5, GLM-5.2, and Opus 4.8 while remaining below Fable 5. AutomationBench-AA directly concerns SaaS workflow automation, where K3 reportedly ranked first, and AA-Briefcase places it behind only Fable 5 in long-horizon knowledge work. The coding comparison further indicates parity in outcomes on a limited practical workflow, despite a substantial speed disadvantage. Thus the evidence establishes competitiveness with leading hosted alternatives on at least some high-value workflows, but not general frontier superiority."
+  },
+  "falsifier": {
+    "exact_proposition_opposed": "Kimi K3 is competitive with at least some leading hosted or open-weight alternatives on at least one high-value workflow, without implying general frontier superiority.",
+    "holds": false,
+    "ground_strength": "strong",
+    "argument_strength": "moderate",
+    "attack_type": "undercutter",
+    "alternative_explanations": [
+      "The evidence for competitiveness is based on specific, narrow benchmarks that may not represent a 'high-value workflow' in a practical, real-world sense. The claim's inference from benchmark performance to workflow competitiveness is weak.",
+      "The performance parity observed (e.g., on three coding tasks) is offset by a critical operational deficiency (4x slower latency), which fundamentally undermines competitiveness for any time-sensitive high-value workflow.",
+      "The benchmarks showing strong performance (GDPval v2, AutomationBench-AA) use different evaluation systems for different models, introducing confounding variables that break the inference to a direct model-vs-model comparison."
+    ],
+    "rationale": "The grounds provide strong evidence that K3 performs well on specific, narrow benchmarks (GDPval v2, AutomationBench-AA, three coding tasks) and is cost-effective. However, the argument against the claim is a moderate-strength undercutter that attacks the inference from this benchmark data to the conclusion of being 'competitive... on at least one high-value workflow.' First, the benchmarks themselves are limited proxies for real-world workflows (G-C2-1, G-C2-2, G-C2-3 limitations). Second, and decisively, a direct test on a plausible high-value workflow (coding) shows that while K3 achieved correct results, it was 'roughly four times slower' than Fable 5 (G-C2-2). For a high-value workflow, latency is often a critical component of competitiveness; a 4x slowdown is a severe practical handicap that undermines the utility of equivalent correctness. Therefore, the grounds supporting performance are undercut by evidence showing a fatal flaw in a key dimension (speed) for workflow applicability. The claim's core term 'competitive' is not satisfied if matching output quality comes with drastically worse latency, as this would not be considered competitive in a practical deployment scenario."
+  },
+  "comparator": {
+    "well_formed": true,
+    "conflation_detected": false,
+    "split_proposals": [],
+    "support_route": {
+      "qualifies": true,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "unresolved_undercutter": false
+    },
+    "opposition_route": {
+      "qualifies": true,
+      "ground_strength": "strong",
+      "argument_strength": "moderate",
+      "attack_is_direct_rebuttal": false
+    },
+    "warrant_fidelity": "faithful",
+    "source_dependence": "low",
+    "rationale": "The claim is deliberately modest: K3 is competitive on 'at least one high-value workflow' with 'at least some' leading models, without claiming general superiority. The Verifier correctly argues that the grounds strongly support this. K3 ranks first on AutomationBench-AA (a SaaS workflow evaluation) and second only to Fable 5 on AA-Briefcase (long-horizon knowledge work), beating models like Opus 4.8 and GPT-5.5 (G-C2-2, G-C2-3, G-C2-4). These benchmarks are explicitly designed to measure high-value workflows, making K3's performance on them direct evidence of competitiveness.\n\nThe Falsifier raises a valid point about the 4x slower speed in a specific coding test (G-C2-2), arguing this undermines competitiveness. However, this is an undercutter, not a direct refutation. While speed is a critical factor in many workflows, the claim only requires competitiveness on 'at least one' workflow. The strong performance on AutomationBench-AA and AA-Briefcase is sufficient to satisfy the claim, even if K3 is not competitive on time-sensitive coding tasks. The Falsifier's argument that 'competitive' must include speed is a reasonable interpretation, but not the only one, and it doesn't negate the clear evidence of competitiveness on other high-value workflows presented in the grounds. Therefore, the Verifier's case is stronger as it directly proves the modest claim as stated."
+  },
+  "derived_verdict": {
+    "evidential_state": "supported",
+    "coverage_state": "limited",
+    "terminal_allowed": false,
+    "qualifying_support_routes": [
+      "R-C2-support"
+    ],
+    "qualifying_opposition_routes": [],
+    "policy_id": "descriptive-v0.2",
+    "policy_version": "0.2.0"
+  },
+  "provenance": {
+    "verifier": {
+      "model": "openai/gpt-5.6-luna",
+      "response_id": "gen-1784788845-n2XuPDFpbxrozb1yd9Dv"
+    },
+    "falsifier": {
+      "model": "deepseek/deepseek-v3.2",
+      "response_id": "gen-1784788852-3OqWhuERLN2mC4GS3da7"
+    },
+    "comparator": {
+      "model": "google/gemini-2.5-pro",
+      "response_id": "gen-1784788873-VB9pqz4jRpOEMwKHFPao"
+    },
+    "passes_blind_to_each_other": {
+      "verifier_vs_falsifier": true,
+      "comparator_saw_both": true
+    }
+  }
+}

@@ -1,0 +1,481 @@
+{
+  "C1": {
+    "claim_id": "C1",
+    "claim": "On independently reproducible, matched evaluations, Kimi K3 demonstrates a measurable capability difference from Moonshot AI's preceding Kimi models on at least one decision-relevant task family.",
+    "verifier": {
+      "exact_proposition_established": "No. The grounds support a reported measurable improvement of Kimi K3 over K2.6 on at least one evaluation, especially AA-Omniscience (46% versus 33%), but they do not establish that the comparison is independently reproducible under matched evaluation conditions.",
+      "holds": false,
+      "ground_strength": "moderate",
+      "argument_strength": "weak",
+      "warrant_reconstruction": "If an independent evaluator reports scores for K3 and a preceding Kimi model on the same task family and evaluation protocol, with enough methodological information for the comparison to be reproduced, then a substantial score difference would establish the claim. G-C1-1 supplies the clearest matched quantitative comparison, and the Text Arena comparison supplies another reported difference, but the grounds do not provide replication details, full protocols, or independently reproducible underlying data. The first-hand tests demonstrate K3 capabilities but lack matched comparisons to preceding Kimi models.",
+      "unresolved_undercutters": [
+        "The AA-Omniscience quotation does not provide task composition, prompting and sampling procedures, model settings, sample sizes, uncertainty, or replication evidence.",
+        "The reported AA-Omniscience comparison comes through a review citing third-party reporting; the grounds do not show an independently reproduced result.",
+        "The private long-horizon evaluation is explicitly not shown to be independently reproducible.",
+        "The Text Arena comparison is dynamic and community-driven rather than a standardized, reproducible matched evaluation.",
+        "The frontend pairwise-vote evidence is ambiguous about whether the stated 76% figure is being compared with K2.6 and does not disclose enough underlying data for independent reproduction.",
+        "The first-hand long-context and BrowseComp tests lack same-task results for a preceding Kimi model.",
+        "Moonshot's claimed efficiency improvement is not a measured task-performance comparison.",
+        "The supplied FrontierSWE evidence indicates that K3 had not been independently posted on that benchmark, reinforcing the absence of an independently verified matched evaluation."
+      ],
+      "rationale": "There is meaningful evidence of capability differences: the 13-point AA-Omniscience increase is a direct, quantitative K3-versus-K2.6 comparison, and other grounds report large ranking or score differences. However, the claim specifically requires independently reproducible, matched evaluations. The evidence does not establish that requirement. Because the most relevant result lacks reproducibility details and the other comparisons are either nonstandard, ambiguous, vendor-reported, private, or unmatched, the exact claim remains unproven."
+    },
+    "falsifier": {
+      "exact_proposition_opposed": "On independently reproducible, matched evaluations, Kimi K3 demonstrates a measurable capability difference from Moonshot AI's preceding Kimi models on at least one decision-relevant task family.",
+      "holds": false,
+      "ground_strength": "moderate",
+      "argument_strength": "moderate",
+      "attack_type": "underminer",
+      "alternative_explanations": [
+        "Reported performance gains are from vendor claims or non-reproducible private/qualitative tests, not independent matched evaluations.",
+        "Comparisons are often made against other vendors' models or lack a direct, matched baseline from a preceding Kimi model on the same exact task.",
+        "Some apparent improvements may be due to new capabilities (e.g., long context) not present in predecessors, which is an architectural difference, not a measured difference on a task both could attempt."
+      ],
+      "rationale": "The claim's core requirement is 'independently reproducible, matched evaluations.' The provided grounds collectively fail to meet this standard for a direct K3 vs. preceding Kimi model comparison on a specific task family. Key weaknesses: 1) Several grounds (G-C1-2, G-C1-3, G-C1-6 from the second set) rely on vendor claims or aggregated reporting without independent verification. 2) The most direct comparative data (G-C1-1: AA-Omniscience; G-C1-2 from first set: Text Arena rank) either lacks detail on task composition/reproducibility or uses a non-standard, subjective platform (Text Arena). 3) Grounds demonstrating K3's prowess (G-C1-4, G-C1-5) are qualitative, first-hand tests with no matched evaluation against a prior Kimi model. 4) Ground G-C1-4 from the second set explicitly highlights the absence of an independent leaderboard result for a key coding benchmark. While the grounds suggest K3 is likely more capable, they do not constitute the specific type of evidence demanded by the claim—rigorous, independently reproducible, and matched evaluations. The inference from the grounds to the claim is undermined by the lack of methodological rigor and independent verification in the presented data."
+    },
+    "comparator": {
+      "well_formed": true,
+      "conflation_detected": false,
+      "split_proposals": [],
+      "support_route": {
+        "qualifies": false,
+        "ground_strength": "moderate",
+        "argument_strength": "weak",
+        "unresolved_undercutter": true
+      },
+      "opposition_route": {
+        "qualifies": true,
+        "ground_strength": "moderate",
+        "argument_strength": "moderate",
+        "attack_is_direct_rebuttal": false
+      },
+      "warrant_fidelity": "plausible_reconstruction",
+      "source_dependence": "material",
+      "rationale": "Both sides agree that the claim is not established by the grounds, and I concur. The claim sets a high bar: 'independently reproducible, matched evaluations.' The VERIFIER and FALSIFIER correctly identify that while the grounds provide evidence of a likely capability difference (e.g., the AA-Omniscience score jump in G-C1-1, the Text Arena rank change in G-C1-2), they fail to meet the standard of independent reproducibility. The grounds consist of vendor claims, qualitative first-hand tests without matched comparisons, and third-party reporting that lacks the methodological detail required for independent reproduction. The FALSIFIER's 'underminer' attack is successful because it correctly targets the inferential leap from 'reported score difference' to 'independently reproducible evaluation,' which the grounds do not support. The VERIFIER's argument is weak precisely because it cannot overcome the same set of unresolved undercutters that the FALSIFIER highlights. Therefore, the opposition route is the more compelling one."
+    },
+    "derived_verdict": {
+      "evidential_state": "insufficient",
+      "coverage_state": "limited",
+      "terminal_allowed": false,
+      "qualifying_support_routes": [],
+      "qualifying_opposition_routes": [],
+      "policy_id": "descriptive-v0.2",
+      "policy_version": "0.2.0"
+    },
+    "provenance": {
+      "verifier": {
+        "model": "openai/gpt-5.6-luna",
+        "response_id": "gen-1784788806-ftqhsLmBJJMyVneV4kr9"
+      },
+      "falsifier": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788812-5xJolbNSthq0xC9XApWO"
+      },
+      "comparator": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788839-YynQsFkIl8XWEXWnTKFj"
+      },
+      "passes_blind_to_each_other": {
+        "verifier_vs_falsifier": true,
+        "comparator_saw_both": true
+      }
+    }
+  },
+  "C2": {
+    "claim_id": "C2",
+    "claim": "Kimi K3 is competitive with at least some leading hosted or open-weight alternatives on at least one high-value workflow, without implying general frontier superiority.",
+    "verifier": {
+      "exact_proposition_established": "Kimi K3 is competitive with at least some leading hosted alternatives on specific high-value agentic workflows, including GDPval v2, AutomationBench-AA, AA-Briefcase, and a small direct coding comparison with Claude Fable 5. The evidence does not establish general frontier superiority.",
+      "holds": true,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "warrant_reconstruction": "If an AI model matches or exceeds leading alternatives on evaluations of economically valuable agentic, SaaS-automation, long-horizon knowledge-work, or practical coding tasks, then it is competitive with those alternatives on at least some high-value workflows. Artificial Analysis results place K3 above GPT-5.5, GLM-5.2, and Claude Opus 4.8 on GDPval v2, first on AutomationBench-AA, and second only to Fable 5 on AA-Briefcase. A separate coding comparison found K3 and Fable 5 produced equally correct outcomes on three tasks. These results support the narrower claim of workflow-specific competitiveness, while K3's lower scores than Fable 5 on some evaluations and its much slower coding performance prevent an inference of broad superiority.",
+      "unresolved_undercutters": [
+        "The benchmark results are task- and evaluation-specific and may not generalize to all high-value workflows.",
+        "Some comparisons used different agent or CLI systems and were not conducted under fully identical conditions.",
+        "The direct coding comparison involved only three tasks and found K3 roughly four times slower than Fable 5.",
+        "AA-Briefcase is private, so its tasks and scoring methodology cannot be independently assessed from the grounds."
+      ],
+      "rationale": "The claim is deliberately modest and is directly supported. GDPval v2 is described as measuring realistic, economically valuable tasks, and K3's 1,668 Elo exceeds GPT-5.5, GLM-5.2, and Opus 4.8 while remaining below Fable 5. AutomationBench-AA directly concerns SaaS workflow automation, where K3 reportedly ranked first, and AA-Briefcase places it behind only Fable 5 in long-horizon knowledge work. The coding comparison further indicates parity in outcomes on a limited practical workflow, despite a substantial speed disadvantage. Thus the evidence establishes competitiveness with leading hosted alternatives on at least some high-value workflows, but not general frontier superiority."
+    },
+    "falsifier": {
+      "exact_proposition_opposed": "Kimi K3 is competitive with at least some leading hosted or open-weight alternatives on at least one high-value workflow, without implying general frontier superiority.",
+      "holds": false,
+      "ground_strength": "strong",
+      "argument_strength": "moderate",
+      "attack_type": "undercutter",
+      "alternative_explanations": [
+        "The evidence for competitiveness is based on specific, narrow benchmarks that may not represent a 'high-value workflow' in a practical, real-world sense. The claim's inference from benchmark performance to workflow competitiveness is weak.",
+        "The performance parity observed (e.g., on three coding tasks) is offset by a critical operational deficiency (4x slower latency), which fundamentally undermines competitiveness for any time-sensitive high-value workflow.",
+        "The benchmarks showing strong performance (GDPval v2, AutomationBench-AA) use different evaluation systems for different models, introducing confounding variables that break the inference to a direct model-vs-model comparison."
+      ],
+      "rationale": "The grounds provide strong evidence that K3 performs well on specific, narrow benchmarks (GDPval v2, AutomationBench-AA, three coding tasks) and is cost-effective. However, the argument against the claim is a moderate-strength undercutter that attacks the inference from this benchmark data to the conclusion of being 'competitive... on at least one high-value workflow.' First, the benchmarks themselves are limited proxies for real-world workflows (G-C2-1, G-C2-2, G-C2-3 limitations). Second, and decisively, a direct test on a plausible high-value workflow (coding) shows that while K3 achieved correct results, it was 'roughly four times slower' than Fable 5 (G-C2-2). For a high-value workflow, latency is often a critical component of competitiveness; a 4x slowdown is a severe practical handicap that undermines the utility of equivalent correctness. Therefore, the grounds supporting performance are undercut by evidence showing a fatal flaw in a key dimension (speed) for workflow applicability. The claim's core term 'competitive' is not satisfied if matching output quality comes with drastically worse latency, as this would not be considered competitive in a practical deployment scenario."
+    },
+    "comparator": {
+      "well_formed": true,
+      "conflation_detected": false,
+      "split_proposals": [],
+      "support_route": {
+        "qualifies": true,
+        "ground_strength": "strong",
+        "argument_strength": "strong",
+        "unresolved_undercutter": false
+      },
+      "opposition_route": {
+        "qualifies": true,
+        "ground_strength": "strong",
+        "argument_strength": "moderate",
+        "attack_is_direct_rebuttal": false
+      },
+      "warrant_fidelity": "faithful",
+      "source_dependence": "low",
+      "rationale": "The claim is deliberately modest: K3 is competitive on 'at least one high-value workflow' with 'at least some' leading models, without claiming general superiority. The Verifier correctly argues that the grounds strongly support this. K3 ranks first on AutomationBench-AA (a SaaS workflow evaluation) and second only to Fable 5 on AA-Briefcase (long-horizon knowledge work), beating models like Opus 4.8 and GPT-5.5 (G-C2-2, G-C2-3, G-C2-4). These benchmarks are explicitly designed to measure high-value workflows, making K3's performance on them direct evidence of competitiveness.\n\nThe Falsifier raises a valid point about the 4x slower speed in a specific coding test (G-C2-2), arguing this undermines competitiveness. However, this is an undercutter, not a direct refutation. While speed is a critical factor in many workflows, the claim only requires competitiveness on 'at least one' workflow. The strong performance on AutomationBench-AA and AA-Briefcase is sufficient to satisfy the claim, even if K3 is not competitive on time-sensitive coding tasks. The Falsifier's argument that 'competitive' must include speed is a reasonable interpretation, but not the only one, and it doesn't negate the clear evidence of competitiveness on other high-value workflows presented in the grounds. Therefore, the Verifier's case is stronger as it directly proves the modest claim as stated."
+    },
+    "derived_verdict": {
+      "evidential_state": "supported",
+      "coverage_state": "limited",
+      "terminal_allowed": false,
+      "qualifying_support_routes": [
+        "R-C2-support"
+      ],
+      "qualifying_opposition_routes": [],
+      "policy_id": "descriptive-v0.2",
+      "policy_version": "0.2.0"
+    },
+    "provenance": {
+      "verifier": {
+        "model": "openai/gpt-5.6-luna",
+        "response_id": "gen-1784788845-n2XuPDFpbxrozb1yd9Dv"
+      },
+      "falsifier": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788852-3OqWhuERLN2mC4GS3da7"
+      },
+      "comparator": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788873-VB9pqz4jRpOEMwKHFPao"
+      },
+      "passes_blind_to_each_other": {
+        "verifier_vs_falsifier": true,
+        "comparator_saw_both": true
+      }
+    }
+  },
+  "C3": {
+    "claim_id": "C3",
+    "claim": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+    "verifier": {
+      "exact_proposition_established": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+      "holds": true,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "warrant_reconstruction": "If models can possess large stated context windows or context-oriented mechanisms while still showing substantial performance degradation with longer inputs, positional sensitivity, or added context—even when relevant information is perfectly retrieved—then those capacity or architectural reports are not, by themselves, sufficient evidence of reliable long-context retrieval or reasoning. The cited controlled studies directly establish these conditions across multiple models and tasks.",
+      "unresolved_undercutters": [
+        "The experiments cover particular model versions, tasks, and context constructions, so they do not establish that every model with a large context window or context-oriented architecture will fail.",
+        "The grounds do not define a universal threshold for what counts as reliable long-context retrieval or reasoning.",
+        "The evidence shows that capacity or architecture alone is insufficient; it does not deny that reliability may be established by additional task-specific evaluations."
+      ],
+      "rationale": "The claim is about insufficiency, not universal failure. The strongest evidence directly supports that insufficiency: across five open- and closed-source models and math, QA, and coding tasks, performance degraded substantially as input length increased within claimed context limits, even when relevant evidence was perfectly retrieved and irrelevant tokens were minimized or masked. One cited example reports a 24.2% MMLU accuracy drop for a model with a claimed 128K context despite near-perfect retrieval from a 30K-token context. Independent findings on positional effects show significant degradation when relevant information is placed in the middle of long contexts, including for explicitly long-context models. Therefore, a reported context capacity or context-oriented design cannot alone establish reliable retrieval or reasoning; holistic behavioral evaluation is required."
+    },
+    "falsifier": {
+      "exact_proposition_opposed": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+      "holds": true,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "attack_type": "rebutter",
+      "alternative_explanations": [],
+      "rationale": "The grounds provide direct, systematic, and replicated empirical evidence that directly rebuts the claim's core implication. The evidence shows that even with perfect retrieval (the strictest test of retrieval reliability) and even when models are forced to attend only to relevant tokens, performance degrades substantially as input length increases within the claimed context capacity. This demonstrates that a large context capacity, by itself, is insufficient for reliable long-context reasoning. The evidence is strong, coming from controlled experiments across multiple models and tasks, and is further supported by related findings on positional bias (U-shaped performance curves) and RAG performance saturation. The attack is a rebuttal because it provides evidence that directly contradicts the necessity of the claim's condition (large capacity) for establishing reliable performance."
+    },
+    "comparator": {
+      "well_formed": true,
+      "conflation_detected": true,
+      "split_proposals": [],
+      "support_route": {
+        "qualifies": true,
+        "ground_strength": "decisive",
+        "argument_strength": "decisive",
+        "unresolved_undercutter": false
+      },
+      "opposition_route": {
+        "qualifies": false,
+        "ground_strength": "strong",
+        "argument_strength": "strong",
+        "attack_is_direct_rebuttal": false
+      },
+      "warrant_fidelity": "faithful",
+      "source_dependence": "low",
+      "rationale": "Both sides agree that the claim is true and cite the same body of evidence to support it. The Verifier correctly identifies that the evidence proves the claim by showing that large context capacity is insufficient for reliable performance. The Falsifier, however, misinterprets its own role. It agrees with the claim but labels its argument a 'rebutter' and its stance as 'holds: true' against the proposition it is supposed to be opposing. This is a fundamental error; by providing evidence that supports the claim, it is not falsifying it. The Falsifier's rationale states it 'rebuts the claim's core implication,' but then describes how the evidence *proves* the claim's core implication (that large context capacity is insufficient). This is a performative contradiction. The Verifier's argument is sound and correctly structured. The Falsifier's argument is internally contradictory and fails to oppose the claim. Therefore, the Verifier wins decisively."
+    },
+    "derived_verdict": {
+      "evidential_state": "supported",
+      "coverage_state": "limited",
+      "terminal_allowed": false,
+      "qualifying_support_routes": [
+        "R-C3-support"
+      ],
+      "qualifying_opposition_routes": [],
+      "policy_id": "descriptive-v0.2",
+      "policy_version": "0.2.0"
+    },
+    "provenance": {
+      "verifier": {
+        "model": "openai/gpt-5.6-luna",
+        "response_id": "gen-1784788879-UnjXWEbrLJyluRb311UX"
+      },
+      "falsifier": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788885-WlVGusgCVXHjIasBWI3w"
+      },
+      "comparator": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788895-xsGpefwjfebG3HVQIGXF"
+      },
+      "passes_blind_to_each_other": {
+        "verifier_vs_falsifier": true,
+        "comparator_saw_both": true
+      }
+    }
+  },
+  "C4": {
+    "claim_id": "C4",
+    "claim": "Kimi K3 creates a practical quality-adjusted cost or efficiency advantage for some workloads only if its task quality, latency, throughput, hardware requirements, and human-correction burden jointly outperform relevant alternatives.",
+    "verifier": {
+      "exact_proposition_established": "Kimi K3 can constitute a practical quality-adjusted cost or efficiency advantage for a workload only when, relative to relevant alternatives, its task quality, latency, throughput, hardware requirements, and human-correction burden jointly produce a better overall outcome. The grounds support this as a necessary multi-factor condition, but do not establish that Kimi K3 actually satisfies it for any particular workload.",
+      "holds": true,
+      "ground_strength": "moderate",
+      "argument_strength": "moderate",
+      "warrant_reconstruction": "A practical efficiency advantage is not determined by token price or nominal cost alone. The comparison must account for completed-task cost, output quality, speed and throughput, hardware and amortization requirements, and the labor needed to detect and correct errors. The grounds show why this joint assessment is necessary: Kimi K3 is cheaper than Fable 5 in cited coding and agentic benchmarks, but substantially slower; its quality is competitive on some benchmarks but not uniformly superior; local alternatives may become cheaper after hardware amortization; and elevated hallucination rates may increase correction work. Therefore, a K3 advantage exists only where its benefits across these dimensions outweigh its disadvantages against the relevant alternative.",
+      "unresolved_undercutters": [
+        "No ground directly measures total human-correction time or establishes how hallucination rates translate into workload-specific labor costs.",
+        "The evidence does not provide a complete, workload-specific comparison of throughput, end-to-end latency, and concurrency.",
+        "Hardware requirements and local-versus-cloud comparisons depend on assumptions about electricity, utilization, maintenance, model parity, and failure rates.",
+        "The cited benchmarks are narrow, include a single three-task coding comparison, and may not generalize to other workloads.",
+        "The grounds do not identify the relevant alternative for every workload or demonstrate a workload in which Kimi K3 jointly outperforms that alternative on all listed dimensions."
+      ],
+      "rationale": "The evidence directly supports the claim's evaluative standard: Kimi K3 has lower cited task costs and can match quality on some coding tasks, but it is slower, may impose different hardware trade-offs, and may require more correction because of hallucinations. These trade-offs show that cost alone cannot establish a practical quality-adjusted advantage. However, the evidence is insufficient to prove an actual joint outperformance for a specific workload, so the claim is established only as a conditional criterion, not as a demonstrated realized advantage."
+    },
+    "falsifier": {
+      "exact_proposition_opposed": "Kimi K3 creates a practical quality-adjusted cost or efficiency advantage for some workloads only if its task quality, latency, throughput, hardware requirements, and human-correction burden jointly outperform relevant alternatives.",
+      "holds": false,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "attack_type": "rebutter",
+      "alternative_explanations": [
+        "Kimi K3 does not jointly outperform relevant alternatives across all required dimensions for any workload, as it is consistently outperformed in at least one critical dimension (e.g., latency, hallucination rate, or throughput) by a relevant alternative for each workload type discussed."
+      ],
+      "rationale": "The grounds provide strong evidence that Kimi K3 fails to jointly outperform relevant alternatives across the five specified dimensions for any workload, thus rebutting the claim. For agentic knowledge-work (AA-Briefcase), while K3 is cheaper than Fable 5 ($10.57 vs ~$14), it is significantly slower (56.4 min vs ~45 min) and has lower task quality (AA-Briefcase index ~55 vs ~60, completion rate ~70% vs ~76%). Its hallucination rate is also higher (51% vs likely lower for Fable 5, though not explicitly stated), increasing human-correction burden. For coding tasks, K3 is cheaper ($2.13 vs $5.98) and matched quality on specific tasks, but is 4x slower (28 min vs 7 min), failing the latency condition. For local comparison, a quantized local model on used hardware can eventually undercut K3's cost per task for high-volume workflows, but this introduces different hardware requirements and management burden, and K3 does not 'jointly outperform' this alternative on all dimensions from the start. Furthermore, K3's throughput (62 tokens/sec) is below the median (72 tokens/sec). Therefore, for every workload and alternative presented, K3 is deficient in at least one of quality, latency, throughput, or human-correction burden, preventing it from achieving the joint superiority required by the claim."
+    },
+    "comparator": {
+      "well_formed": true,
+      "conflation_detected": true,
+      "split_proposals": [
+        {
+          "claim": "To establish a practical quality-adjusted cost or efficiency advantage for Kimi K3 on a given workload, one must demonstrate that its performance across task quality, latency, throughput, hardware requirements, and human-correction burden is jointly superior to that of relevant alternatives.",
+          "reason": "The original claim's 'only if' structure is ambiguous. This version clarifies the claim as establishing a necessary multi-factor evaluative standard, which the Verifier correctly identifies and supports. The grounds show that simple cost comparisons are insufficient due to trade-offs in speed, quality, and hallucination rates, thus necessitating a joint evaluation."
+        },
+        {
+          "claim": "For some workloads, Kimi K3 achieves a practical quality-adjusted cost or efficiency advantage by jointly outperforming relevant alternatives across task quality, latency, throughput, hardware requirements, and human-correction burden.",
+          "reason": "This version interprets the claim as an assertion that Kimi K3 actually meets the specified conditions for at least one workload. The Falsifier correctly addresses and rebuts this reading, using the grounds to show that for every discussed workload, Kimi K3 is deficient in at least one critical dimension (e.g., latency, quality, hallucination rate) compared to its alternatives."
+        }
+      ],
+      "support_route": null,
+      "opposition_route": null,
+      "warrant_fidelity": null,
+      "source_dependence": null,
+      "rationale": "The Verifier and Falsifier interpret the claim differently, leading to a conflation. The claim is: \"Kimi K3 creates a practical...advantage...**only if** its...factors...**jointly outperform** relevant alternatives.\" \n\nThe Verifier interprets this as establishing a necessary *evaluative standard*. It argues the grounds support this standard by showing that simple cost comparisons are insufficient due to trade-offs in speed (G-C4-1, G-C4-2), quality (G-C4-2), and human-correction burden (G-C4-6). On this reading, the Verifier's argument is sound; the grounds prove that a multi-factor analysis is required.\n\nThe Falsifier interprets the claim as an assertion that Kimi K3 *actually meets* this standard for some workload. It argues that the grounds rebut this by showing that for every workload discussed (agentic tasks, coding), Kimi K3 fails to 'jointly outperform' its alternatives. For example, it is cheaper but slower and lower quality than Fable 5 for agentic tasks (G-C4-1, G-C4-2), and cheaper but much slower for coding (G-C4-1). On this reading, the Falsifier's argument is also sound.\n\nBecause both sides win based on different, plausible interpretations of the ambiguous 'only if' phrasing, the claim is conflated. One side proves the *necessity of the test*, while the other proves the *failure of the test*. The dispute cannot be resolved without splitting the claim into two distinct propositions."
+    },
+    "derived_verdict": {
+      "evidential_state": "insufficient",
+      "coverage_state": "limited",
+      "terminal_allowed": false,
+      "qualifying_support_routes": [],
+      "qualifying_opposition_routes": [],
+      "policy_id": "descriptive-v0.2",
+      "policy_version": "0.2.0"
+    },
+    "provenance": {
+      "verifier": {
+        "model": "openai/gpt-5.6-luna",
+        "response_id": "gen-1784788900-ol5kH8s0Gwg8TCmxJEuq"
+      },
+      "falsifier": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788909-rCk1JCgUv9qWDL91d98b"
+      },
+      "comparator": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788927-jUNhElnNNrF0o9dKNmzf"
+      },
+      "passes_blind_to_each_other": {
+        "verifier_vs_falsifier": true,
+        "comparator_saw_both": true
+      }
+    }
+  },
+  "C5": {
+    "claim_id": "C5",
+    "claim": "The hosted/API Kimi K3 offering and any downloadable open-weight checkpoint constitute materially different accessibility, reproducibility, privacy, governance, and deployment objects.",
+    "verifier": {
+      "exact_proposition_established": "The hosted/API Kimi K3 offering and a downloadable open-weight checkpoint are materially different objects: the API is an account- and payment-gated remote service requiring no user hardware, while the checkpoint is a downloadable asset intended for self-hosted execution, with substantially different requirements and consequences for accessibility, privacy, customization/reproducibility, governance, cost, and deployment.",
+      "holds": true,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "warrant_reconstruction": "An offering is materially different when users obtain and operate it through different mechanisms and when that difference changes control, dependencies, risks, and feasible uses. The API is immediately accessible through vendor platforms, requires payment, sends prompts to Moonshot infrastructure, and has published per-token pricing. A downloadable checkpoint instead permits local execution and fine-tuning, keeps data within infrastructure controlled by the user, and shifts costs and operational responsibility to hardware, power, and engineering. The two also have different governance objects: API access is governed by service-account and payment terms, whereas checkpoint use, modification, and redistribution are governed by a model license. Their deployment contexts therefore differ materially even if they derive from the same underlying model.",
+      "unresolved_undercutters": [
+        "The full open-weight release is described as planned for July 27, 2026, so the evidence does not establish that a downloadable checkpoint is currently available.",
+        "The final Kimi K3 license had not been published, so the precise governance, modification, and redistribution rights remain uncertain.",
+        "The evidence supports local control and fine-tuning more directly than strict scientific or bit-for-bit reproducibility; runtimes, code, quantization, hardware, and serving configurations may still differ.",
+        "Self-hosting hardware requirements and total costs are partly inferred rather than established by official minimum specifications.",
+        "The privacy comparison describes the hosted API as sending prompts to servers in China and self-hosting as retaining data locally, but does not independently verify all vendor data-handling, retention, or security practices."
+      ],
+      "rationale": "The grounds directly establish distinct access modes, deployment requirements, data locations, customization capabilities, payment and cost structures, and governance regimes. The API can be"
+    },
+    "falsifier": {
+      "exact_proposition_opposed": "The hosted/API Kimi K3 offering and any downloadable open-weight checkpoint constitute materially different accessibility, reproducibility, privacy, governance, and deployment objects.",
+      "holds": true,
+      "ground_strength": "strong",
+      "argument_strength": "strong",
+      "attack_type": "none",
+      "alternative_explanations": [],
+      "rationale": "The grounds provided directly and strongly support the claim. They establish clear, material differences across all five dimensions specified: 1) **Accessibility**: API is available now via payment (G-C5-5, G-C5-6), while open weights are a future, free download requiring massive hardware (G-C5-4, G-C5-2). 2) **Reproducibility**: Open weights allow for fine-tuning and adaptation (G-C5-3), which the API does not. 3) **Privacy**: API sends data to servers in China (G-C5-2, G-C5-1), while self-hosting keeps data within user-controlled infrastructure. 4) **Governance**: API use is governed by service terms; open weights will be governed by a separate license dictating modification and redistribution rights (G-C5-4, G-C5-3). 5) **Deployment Objects**: The offerings are framed as distinct choices for different needs—API for speed/low cost vs. self-hosting for control/data residency (G-C5-6). The grounds are consistent, come from both primary and independent evaluator sources, and directly address the claim's components. No grounds weaken the claim; all support it. Therefore, a faithful case against the claim cannot be built. The strongest reading of the claim is that the two offerings are materially different in the listed aspects, and the evidence decisively confirms this."
+    },
+    "comparator": {
+      "well_formed": true,
+      "conflation_detected": false,
+      "split_proposals": [],
+      "support_route": {
+        "qualifies": true,
+        "ground_strength": "strong",
+        "argument_strength": "strong",
+        "unresolved_undercutter": true
+      },
+      "opposition_route": {
+        "qualifies": true,
+        "ground_strength": "strong",
+        "argument_strength": "strong",
+        "attack_is_direct_rebuttal": false
+      },
+      "warrant_fidelity": "faithful",
+      "source_dependence": "low",
+      "rationale": "Both sides correctly recognize that the provided grounds overwhelmingly support the claim. The evidence clearly establishes material differences between a hosted API and a self-hosted open-weight model across all five specified dimensions: accessibility (payment-gated service vs. free download requiring massive hardware), reproducibility (closed API vs. fine-tunable weights), privacy (data sent to vendor vs. data kept in-house), governance (terms of service vs. model license), and deployment (remote service vs. local asset). The Falsifier correctly notes that a case against the claim cannot be built from the grounds and essentially concedes. The Verifier also builds a strong case for the claim, but appropriately lists several unresolved undercutters, such as the fact that the open-weight model is not yet released and its license is not yet published. These undercutters do not refute the claim but correctly qualify its certainty based on the evidence. Since both sides agree on the conclusion and the Falsifier's position is not a genuine opposition, the adjudication confirms the claim is strongly supported."
+    },
+    "derived_verdict": {
+      "evidential_state": "insufficient",
+      "coverage_state": "limited",
+      "terminal_allowed": false,
+      "qualifying_support_routes": [],
+      "qualifying_opposition_routes": [],
+      "policy_id": "descriptive-v0.2",
+      "policy_version": "0.2.0"
+    },
+    "provenance": {
+      "verifier": {
+        "model": "openai/gpt-5.6-luna",
+        "response_id": "gen-1784788935-b0HXKzMXrKc4YezJn3xI"
+      },
+      "falsifier": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788943-grpuhaaFSHDcPsud4rJ3"
+      },
+      "comparator": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784788958-gwn54MaDHpwPi8jrLkFe"
+      },
+      "passes_blind_to_each_other": {
+        "verifier_vs_falsifier": true,
+        "comparator_saw_both": true
+      }
+    }
+  },
+  "C6": {
+    "claim_id": "C6",
+    "claim": "Kimi K3 is suitable for minimally supervised long-horizon workflows only if its hallucination, over-initiative, tool-use, privacy, and failure-recovery costs remain within the deploying institution's tolerance under tested controls.",
+    "verifier": {
+      "exact_proposition_established": "Not fully established. The grounds support the narrower proposition that Kimi K3 should be considered suitable for minimally supervised, long-horizon workflows only after deployment-specific controls and tolerance thresholds address its documented hallucination, excessive-initiative, tool/runtime, instability, and operational-cost risks. They do not establish the claim's specific privacy condition or demonstrate that tested controls keep all listed costs within an institution's tolerance.",
+      "holds": false,
+      "ground_strength": "moderate",
+      "argument_strength": "moderate",
+      "warrant_reconstruction": "Minimally supervised long-horizon workflows expose an institution to consequences from autonomous decisions, fabricated outputs, tool use, runtime failures, and costly review or recovery. Kimi's developer warns that K3 may make unexpected decisions under ambiguity and recommends explicit behavioral constraints; independent evaluation reports a 39% to 51% hallucination rate on the cited index; and the developer warns that incomplete thinking-history handoffs or model switching can make generation highly unstable. Its long-horizon autonomous coding and terminal-tool positioning increases the relevance of these risks, while high verbosity may increase cost per accepted result. Therefore, suitability cannot be inferred from capability or benchmark performance alone and should be conditional on deployment-specific testing, controls, and institutional risk tolerance.",
+      "unresolved_undercutters": [
+        "No ground addresses privacy costs, privacy safeguards, data handling, or institutional privacy tolerance.",
+        "No ground shows that any proposed controls were actually tested or that they reliably contain hallucination, initiative, tool-use, privacy, or failure-recovery costs.",
+        "The grounds do not define the deploying institution's tolerance thresholds or establish that the relevant costs remain within them.",
+        "The hallucination figures are tied to the AA-Omniscience Index, whose task context is not detailed, so their applicability to the claimed workflows is uncertain.",
+        "The grounds identify instability and possible debugging or recovery burdens but do not quantify failure frequency, severity, recovery time, or cost.",
+        "The tool-use risk is partly inferred from K3's marketed autonomous coding and terminal capabilities rather than directly demonstrated in the supplied grounds."
+      ],
+      "rationale": "The evidence directly supports several necessary cautions: K3 may improvise on the user's behalf, has a reported high hallucination rate, can become unstable when thinking history is mishandled or sessions are switched, and may impose elevated review or acceptance costs. These grounds make a conditional, deployment-specific suitability standard reasonable and substantially supported. However, the exact claim expressly includes privacy costs and tested controls, neither of which is established. Because the supplied evidence supports the risk-based condition but not every named risk or the efficacy of tested controls, the exact proposition is not established."
+    },
+    "falsifier": {
+      "exact_proposition_opposed": "Kimi K3 is suitable for minimally supervised long-horizon workflows only if its hallucination, over-initiative, tool-use, privacy, and failure-recovery costs remain within the deploying institution's tolerance under tested controls.",
+      "holds": true,
+      "ground_strength": "strong",
+      "argument_strength": "moderate",
+      "attack_type": "rebutter",
+      "alternative_explanations": [
+        "The grounds suggest K3's inherent characteristics (high hallucination rate, excessive proactiveness, instability, high verbosity, lack of safety documentation) are likely to exceed typical institutional tolerance thresholds for minimally supervised use, even with tested controls.",
+        "The grounds indicate that the costs and risks (e.g., from unexpected decisions, debugging verbose outputs, managing instability) are intrinsic to the model's design and training, making them difficult to contain within acceptable bounds through controls alone."
+      ],
+      "rationale": "The grounds provide a strong, direct case against the claim's condition. G-C6-2 shows a high and increasing hallucination rate (51%), a core risk for unsupervised workflows. G-C6-1 and its duplicate (G-C6-2 in the second set) document 'excessive proactiveness' leading to 'unexpected decisions,' directly challenging the 'over-initiative' and 'tool-use' cost condition. G-C6-3 indicates high 'failure-recovery costs' due to verbosity and lack of cheaper reasoning modes. G-C6-4 and its duplicate (G-C6-3 in the second set) show the model is fragile ('highly unstable') under common operational scenarios, increasing failure risks. G-C6-4 from the second set (AI Governance Institute) argues a lack of safety documentation prevents a structured risk assessment, undermining the 'tested controls' premise. G-C6-5 confirms the model is marketed for high-stakes autonomous tasks, raising the stakes. Collectively, these grounds rebut the claim by showing the model's documented flaws are severe and likely to exceed reasonable tolerance levels for minimally supervised use, even with controls. The argument strength is 'moderate' because, while the grounds are strong, they do not provide specific evidence that these costs *will* exceed tolerance for *all* institutions—only that they pose a high, documented risk that challenges the claim's conditional."
+    },
+    "comparator": {
+      "well_formed": true,
+      "conflation_detected": true,
+      "split_proposals": [
+        {
+          "claim_text": "The documented risks of Kimi K3 (including hallucination, over-initiative, instability, and high verbosity) are significant enough to warrant a conditional suitability standard for minimally supervised, long-horizon workflows, requiring deployment-specific controls and institutional risk tolerance assessment.",
+          "winning_side": "verifier"
+        },
+        {
+          "claim_text": "The documented risks of Kimi K3 (including a >50% hallucination rate, excessive proactiveness, and high instability) are so severe that they are unlikely to be contained within a typical institution's tolerance for minimally supervised workflows, even with controls.",
+          "winning_side": "falsifier"
+        }
+      ],
+      "support_route": {
+        "qualifies": true,
+        "ground_strength": "moderate",
+        "argument_strength": "moderate",
+        "unresolved_undercutter": true
+      },
+      "opposition_route": {
+        "qualifies": true,
+        "ground_strength": "strong",
+        "argument_strength": "moderate",
+        "attack_is_direct_rebuttal": false
+      },
+      "warrant_fidelity": {
+        "verifier": "faithful",
+        "falsifier": "plausible_reconstruction"
+      },
+      "source_dependence": "material",
+      "rationale": "Both sides address the same core claim but interpret it differently, leading to a conflation. The claim is a conditional statement: 'K3 is suitable ONLY IF [conditions are met]'.\n\nThe Verifier correctly interprets this as a claim about what conditions are necessary for suitability. It argues that the grounds (high hallucination, over-initiative, instability) support the need for such conditions, but correctly notes that the evidence does not cover every specific condition listed in the claim (e.g., 'privacy costs' and 'tested controls'). Therefore, the Verifier rightly concludes the exact proposition is not fully established. This is a sound, direct analysis of the claim's logical structure.\n\nThe Falsifier misinterprets the claim. Instead of evaluating the necessity of the condition, it argues that the condition can likely never be met. It presents strong evidence (G-C6-2's 51% hallucination rate, G-C6-1's 'excessive proactiveness', G-C6-4's instability) to argue that K3's flaws are too severe to fall within a reasonable institutional tolerance. While this is a powerful argument against deploying K3, it is not a direct rebuttal of the claim's logic. The claim is about what *must be true* for suitability, not whether it *can be true*. The Falsifier's argument is an undercutter, suggesting the 'if' clause is practically impossible to satisfy, thereby making the whole proposition moot, rather than false.\n\nBecause the Verifier correctly analyzes the claim as stated, while the Falsifier attacks a different, more practical question about whether the conditions can be met, the two sides are arguing past each other. The Verifier wins on the literal reading of the claim's logic, while the Falsifier wins on a pragmatic reading of the evidence's implications."
+    },
+    "derived_verdict": {
+      "evidential_state": "insufficient",
+      "coverage_state": "limited",
+      "terminal_allowed": false,
+      "qualifying_support_routes": [],
+      "qualifying_opposition_routes": [],
+      "policy_id": "descriptive-v0.2",
+      "policy_version": "0.2.0"
+    },
+    "provenance": {
+      "verifier": {
+        "model": "openai/gpt-5.6-luna",
+        "response_id": "gen-1784788963-5ngL4zcWnPCUcJgULxel"
+      },
+      "falsifier": {
+        "model": "deepseek/deepseek-v3.2",
+        "response_id": "gen-1784788970-IDTS59msD0w6P0wJWNOU"
+      },
+      "comparator": {
+        "model": "google/gemini-2.5-pro",
+        "response_id": "gen-1784789002-TfLAYd67iA039UuXTlxw"
+      },
+      "passes_blind_to_each_other": {
+        "verifier_vs_falsifier": true,
+        "comparator_saw_both": true
+      }
+    }
+  }
+}

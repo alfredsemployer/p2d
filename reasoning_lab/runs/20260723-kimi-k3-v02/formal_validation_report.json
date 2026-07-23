@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-07-23T06:54:42.681013+00:00",
+  "principle": "Solver results establish consequences of supplied formalizations; formalization fidelity remains a separate assessment.",
+  "backend": "Z3 plus independent exhaustive truth table for <=12 symbols",
+  "arguments_scanned": 6,
+  "formal_candidates_checked": 0,
+  "results": [
+    {
+      "argument_id": "A1",
+      "status": "not_formalized",
+      "reason": "The conclusion depends on empirical quality and reproducibility conditions rather than a strict propositional step."
+    },
+    {
+      "argument_id": "A3",
+      "status": "not_formalized",
+      "reason": "The inference generalizes from benchmark results to workflow competitiveness and is defeasible."
+    },
+    {
+      "argument_id": "A-C3-support",
+      "status": "not_formalized",
+      "reason": "The support is a defeasible empirical generalization from ground-level observations rather than a deductive argument with proposition-valued premises; formalization would risk overstating its scope."
+    },
+    {
+      "argument_id": "A-C4-support",
+      "status": "not_formalized",
+      "reason": "The grounds provide heterogeneous benchmark and pricing observations, while the claim requires a workload-specific, multi-factor comparison involving quality-adjusted human labor and deployment costs. No validated common scale, threshold, or complete set of comparable measurements is supplied for formal deduction."
+    },
+    {
+      "argument_id": "A-C5-support",
+      "status": "not_formalized",
+      "reason": "The claim is conditional and multidimensional, while the available grounds establish comparative differences but leave checkpoint availability, licensing, reproducibility details, and some operational requirements unresolved."
+    },
+    {
+      "argument_id": "A-C6-support",
+      "status": "not_formalized",
+      "reason": "The grounds support a conditional deployment standard but do not establish the exact proposition because they do not demonstrate privacy performance, tested-control effectiveness, or that all relevant costs remain within a particular institution's tolerance."
+    }
+  ]
+}

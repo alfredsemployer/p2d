@@ -1,0 +1,205 @@
+{
+  "answer_contract": {
+    "referent": "Kimi K3, the AI model and associated services released by Beijing-based Moonshot AI; distinguish the hosted/API product from the promised open-weight release.",
+    "time_boundary": "Evidence available through July 23, 2026. Treat July 16, 2026 service availability and the reportedly scheduled July 27, 2026 open-weight release as separate milestones.",
+    "comparison_classes": [
+      "Moonshot AI's preceding Kimi models, especially K2 and K2.5",
+      "Open-weight frontier models from Chinese developers",
+      "Hosted frontier models from OpenAI, Anthropic, Google, and other U.S. providers",
+      "Large mixture-of-experts models with long-context or agentic capabilities",
+      "AI models evaluated in real-world coding, research, and automation workflows"
+    ],
+    "dimensions": [
+      "Capability and benchmark validity",
+      "Open-weight accessibility and reproducibility",
+      "Inference cost, hardware demands, and efficiency",
+      "Long-context reliability",
+      "Multimodal and agentic performance",
+      "Geopolitical and industrial significance",
+      "Safety, governance, censorship, and provenance",
+      "Commercial and ecosystem effects"
+    ],
+    "exclusions": [
+      "Treating company claims or media enthusiasm as established evidence",
+      "Equating total parameter count with effective capability",
+      "Assessing the Kia K3 or unrelated uses of 'K3'",
+      "Making a definitive long-term forecast from launch-week reactions",
+      "Inferring national technological superiority from one model release"
+    ],
+    "ambiguities": [
+      "Whether 'significance' means technical, economic, geopolitical, social, or symbolic significance",
+      "Whether Kimi K3 refers to the hosted product, API model, checkpoint, or entire launch strategy",
+      "Whether 'open' means downloadable weights, permissive licensing, reproducible training, or unrestricted deployment",
+      "Whether comparisons use company-selected benchmarks, independent evaluations, or user experience",
+      "Whether the July 27 open-weight date is fulfilled and under what license and technical conditions"
+    ]
+  },
+  "questions": [
+    {
+      "question": "On independently reproducible evaluations, how does Kimi K3 compare with leading hosted and open-weight models across reasoning, coding, multimodal understanding, long-context retrieval, tool use, and agentic task completion?",
+      "type": "comparative",
+      "why_it_matters": "This separates substantive capability from launch narratives and benchmark selection effects.",
+      "resolution_criteria": [
+        "Pre-registered or transparently documented test sets",
+        "Matched prompting, inference budgets, and tool access",
+        "Results replicated by independent evaluators",
+        "Confidence intervals or error analysis rather than rank alone"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "requires_specialized_pipeline"
+    },
+    {
+      "question": "What practical capability or cost frontier does Kimi K3 change relative to Kimi K2.5 and comparable models?",
+      "type": "descriptive_magnitude",
+      "why_it_matters": "Significance depends on the size and usability of the improvement, not merely on model scale.",
+      "resolution_criteria": [
+        "Quality-per-dollar and quality-per-watt measurements",
+        "Latency and throughput at realistic context lengths",
+        "Performance on representative workloads",
+        "Separate hosted-service and self-hosted results"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "Does Kimi K3 demonstrate that open-weight models can reach frontier-level performance without access to the largest U.S. compute ecosystems?",
+      "type": "proposition",
+      "why_it_matters": "This tests the strongest strategic interpretation of the release while avoiding reliance on nationality alone.",
+      "resolution_criteria": [
+        "Independent frontier comparisons",
+        "Verified information about training and inference resources",
+        "Assessment of licensing and actual weight availability",
+        "Controls for hidden proprietary infrastructure or post-training assistance"
+      ],
+      "answerability": "low",
+      "suggested_disposition": "deferred"
+    },
+    {
+      "question": "How much of Kimi K3's reported performance is attributable to architectural innovations, scale, data, post-training, inference-time reasoning, or benchmark optimization?",
+      "type": "explanatory",
+      "why_it_matters": "It identifies whether K3 is a general research advance or primarily an effective engineering combination.",
+      "resolution_criteria": [
+        "Technical report and ablation studies",
+        "Matched smaller-scale variants",
+        "Evaluation with and without extended reasoning",
+        "Training-data and contamination analysis where possible"
+      ],
+      "answerability": "low",
+      "suggested_disposition": "requires_specialized_pipeline"
+    },
+    {
+      "question": "Does the one-million-token context window produce reliable benefits on genuinely long documents, repositories, and multi-step workflows, or mainly improve headline capacity?",
+      "type": "descriptive_magnitude",
+      "why_it_matters": "Long context is strategically important only if retrieval, reasoning, and instruction following remain reliable at scale.",
+      "resolution_criteria": [
+        "Needle-in-a-haystack and compositional retrieval tests",
+        "Long-document summarization and contradiction detection",
+        "Context-length versus accuracy and latency curves",
+        "Evaluation against distractors and adversarial placement"
+      ],
+      "answerability": "high",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "What causal mechanisms explain the market, developer, and policy reaction to Kimi K3?",
+      "type": "causal",
+      "why_it_matters": "Observed reactions may reflect expectations, investor positioning, geopolitical anxiety, or genuine capability changes.",
+      "resolution_criteria": [
+        "Event-study analysis around announcement and access milestones",
+        "Separation of K3-specific effects from broader AI-market movements",
+        "Developer adoption and API-usage data",
+        "Contemporaneous statements by investors, labs, and policymakers"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "Will Kimi K3 materially accelerate adoption of Chinese open-weight models outside China over the next 12 to 24 months?",
+      "type": "predictive",
+      "why_it_matters": "International ecosystem adoption may be more consequential than launch-week benchmark rankings.",
+      "resolution_criteria": [
+        "Download, deployment, fine-tuning, and derivative-model activity",
+        "Enterprise and developer integration data",
+        "Regional usage and procurement evidence",
+        "Comparison with adoption trajectories of DeepSeek, K2, and Qwen"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "deferred"
+    },
+    {
+      "question": "What risks and governance trade-offs arise when a highly capable Chinese model is offered through both hosted services and potentially downloadable weights?",
+      "type": "interpretive",
+      "why_it_matters": "The significance may lie as much in control, censorship, privacy, security, and supply-chain questions as in capability.",
+      "resolution_criteria": [
+        "Model behavior testing across politically sensitive and safety-critical prompts",
+        "Terms of service, license, data-retention, and telemetry review",
+        "Cybersecurity and misuse evaluations",
+        "Comparison with governance practices of major Western and Chinese models"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "requires_specialized_pipeline"
+    },
+    {
+      "question": "For which users or institutions, if any, should Kimi K3 be preferred over competing models, given capability, cost, privacy, infrastructure, legal, and geopolitical constraints?",
+      "type": "decision",
+      "why_it_matters": "A significance assessment should identify consequential choices rather than stop at descriptive comparison.",
+      "resolution_criteria": [
+        "Explicit user and workload profiles",
+        "Total-cost-of-ownership analysis",
+        "Reliability and safety thresholds",
+        "Data-governance and jurisdictional requirements",
+        "Sensitivity analysis for changing prices and access conditions"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    }
+  ],
+  "hypotheses": [
+    {
+      "claim": "Kimi K3 is strategically significant because it narrows the perceived capability gap between leading Chinese open-weight models and U.S. frontier systems.",
+      "falsifiers": [
+        "Independent matched evaluations show a persistent large gap on consequential tasks",
+        "Reported strength is confined to selected benchmarks or languages"
+      ],
+      "alternatives": [
+        "The main significance is symbolic or financial rather than technical",
+        "K3 mainly advances Moonshot's commercial position"
+      ],
+      "necessary_auxiliaries": [
+        "Reliable independent benchmark replication",
+        "Comparable inference budgets and tool access",
+        "Clear distinction between hosted and downloadable versions"
+      ],
+      "discriminating_observations": [
+        "Third-party evaluations place K3 near frontier models across diverse tasks",
+        "Developers adopt K3 for workloads previously requiring closed models"
+      ]
+    },
+    {
+      "claim": "Kimi K3's largest contribution is an efficiency and systems advance, not simply its 2.8-trillion-parameter headline.",
+      "falsifiers": [
+        "Inference cost and throughput are materially worse than smaller competitors",
+        "Ablations show little benefit from its architectural choices"
+      ],
+      "alternatives": [
+        "Scale and training data account for most gains",
+        "Post-training and inference-time reasoning dominate"
+      ],
+      "necessary_auxiliaries": [
+        "Verified architecture details",
+        "Hardware-normalized throughput measurements",
+        "Ablation or matched-model evidence"
+      ],
+      "discriminating_observations": [
+        "K3 maintains high quality at long context with favorable memory and latency curves",
+        "Smaller derivatives retain much of the claimed advantage"
+      ]
+    }
+  ],
+  "_provenance": {
+    "framer": "openai",
+    "model": "openai/gpt-5.6-luna",
+    "response_id": "gen-1784788178-Td0oJ1TRUEeiHvxnsHND",
+    "blind": true
+  }
+}

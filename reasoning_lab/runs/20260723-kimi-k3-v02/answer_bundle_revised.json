@@ -1,0 +1,97 @@
+{
+  "question_verdicts": [
+    {
+      "question_id": "Q1",
+      "one_line_verdict": "Provisional: Kimi K3 is supported as competitive with at least some leading alternatives on selected high-value workflows, and a reported large context capacity or context-oriented architecture does not by itself establish reliable long-context retrieval or reasoning; however, the claim of independently reproducible, matched comparative evidence against preceding Kimi models is not established by the current evidence.",
+      "claim_ids": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "evidential_state": "insufficient",
+      "coverage_state": "limited",
+      "strongest_support": "Reported results place K3 ahead of several leading hosted models on GDPval v2 and first on AutomationBench-AA, with additional evidence of competitiveness on AA-Briefcase and limited coding tasks.",
+      "strongest_challenge": "The direct K3-versus-preceding-Kimi comparisons are vendor-reported, nonstandard, private, ambiguous, or insufficiently documented for independent reproduction; some favorable workflow results are narrow and task-specific.",
+      "load_bearing_uncertainties": [
+        "Matched prompts, tools, context lengths, inference budgets, protocols, sample sizes, and uncertainty are not fully disclosed.",
+        "Independent replication and contamination or benchmark-optimization checks are absent from the supplied evidence.",
+        "The reported coding parity involved only three tasks and was accompanied by a substantial speed disadvantage.",
+        "Long-context capacity or architecture reports do not establish reliable retrieval or reasoning without task-specific behavioral evaluation."
+      ]
+    },
+    {
+      "question_id": "Q2",
+      "one_line_verdict": "Provisional: Kimi K3 is supported as competitive on selected high-value workflows, but the evidence does not establish a realized quality-adjusted cost or efficiency advantage for a particular workload; hosted/API access and any downloadable checkpoint require separate assessment, with checkpoint availability and licensing unresolved.",
+      "claim_ids": [
+        "C2",
+        "C4",
+        "C5"
+      ],
+      "evidential_state": "insufficient",
+      "coverage_state": "limited",
+      "strongest_support": "K3 is reported as competitive on selected high-value workflows, while the grounds report material differences between hosted API access and a potential self-hosted open-weight checkpoint in access, control, privacy, governance, customization, and deployment requirements.",
+      "strongest_challenge": "Cost comparisons are incomplete: lower cited task prices can be offset by latency, throughput, hardware, quality, and human-correction burdens, and the downloadable checkpoint was not yet established as available with a published final license.",
+      "load_bearing_uncertainties": [
+        "No complete workload-specific total-cost-of-ownership comparison is supplied.",
+        "Throughput, end-to-end latency, hardware requirements, and human-correction time are not jointly measured across representative workloads.",
+        "The availability, final license, and operational requirements of the downloadable checkpoint remain unresolved.",
+        "Privacy, data handling, retention, telemetry, and jurisdictional implications are not independently verified in full."
+      ]
+    },
+    {
+      "question_id": "Q3",
+      "one_line_verdict": "Provisional: Kimi K3's suitability for minimally supervised long-horizon enterprise workflows is not established by the current evidence; reported hallucination, over-initiative, instability, and recovery risks support deployment-specific controls and tolerance testing.",
+      "claim_ids": [
+        "C6"
+      ],
+      "evidential_state": "insufficient",
+      "coverage_state": "limited",
+      "strongest_support": "The supplied evidence reports substantial hallucination and excessive-proactivity concerns, warns of instability under certain operational conditions, and supports treating suitability as conditional on tested controls and institutional tolerance.",
+      "strongest_challenge": "The evidence does not establish privacy costs, demonstrate that controls were tested and effective, or show that the listed risks exceed the tolerance of every deploying institution.",
+      "load_bearing_uncertainties": [
+        "The applicability of the reported hallucination figures to specific long-horizon workflows is uncertain.",
+        "Failure frequency, severity, recovery time, and debugging cost are not quantified.",
+        "Tool-use risks are partly inferred from the model's positioning rather than directly demonstrated in the supplied grounds.",
+        "Hosted-service and downloadable-weight behavior require separate red-team and governance evaluation."
+      ]
+    }
+  ],
+  "overall_synthesis": "Provisional overall assessment: The supplied evidence supports reported competitiveness on selected high-value workflows and supports the proposition that reported context capacity or context-oriented architecture is insufficient by itself to establish reliable long-context retrieval or reasoning. It does not establish independently reproducible, matched comparative evidence against preceding Kimi models, a realized workload-specific quality-adjusted efficiency advantage, or suitability for minimally supervised long-horizon enterprise workflows. Hosted/API access and any downloadable checkpoint should be assessed separately, while reproducibility, operational, reliability, privacy, licensing, and governance questions remain unresolved. Coverage is limited.",
+  "scope_and_exclusions": [
+    "Verdicts are limited to the supplied engine records and do not re-decide their underlying factual claims.",
+    "No conclusion is drawn about general frontier superiority.",
+    "No realized workload-specific quality-adjusted cost advantage is established.",
+    "The hosted/API offering and any downloadable checkpoint are treated separately; current checkpoint availability and final licensing remain uncertain.",
+    "Question Q4 on attributing performance to architecture, scale, data, post-training, inference-time reasoning, or benchmark optimization is deferred because it requires a specialized pipeline."
+  ],
+  "unresolved_questions": [
+    "Can Kimi K3's comparisons with preceding Kimi models be independently reproduced under matched evaluation conditions?",
+    "How does K3 perform across the full capability profile in Q1 under replicated, contamination-checked evaluations?",
+    "For which specific workloads, if any, does K3 jointly outperform relevant alternatives after accounting for quality, latency, throughput, hardware, and correction burden?",
+    "What are the final availability, license, deployment requirements, and privacy characteristics of any downloadable checkpoint?",
+    "Do tested controls keep hallucination, over-initiative, tool-use, privacy, and failure-recovery costs within the tolerance of particular institutions?"
+  ],
+  "inquiry_frontier": [
+    "Independent matched evaluations against Kimi K2, K2.5, and K2.6 and leading hosted and open-weight alternatives.",
+    "Replicated long-context retrieval and reasoning tests with distractors, contradictions, varying context lengths, and positional variation.",
+    "Verified long-horizon coding, research, automation, and agentic-task evaluations with disclosed tools, budgets, latency, throughput, and failure analysis.",
+    "Workload-specific total-cost-of-ownership studies covering API, caching, self-hosting, fine-tuning, hardware, power, and human correction.",
+    "Separate red-team, privacy, governance, and reproducibility assessments for hosted access and downloadable weights.",
+    "Specialized architectural and training attribution studies, including ablations, matched-compute comparisons, inference-time reasoning controls, and contamination analysis."
+  ],
+  "as_of": "2026-07-23",
+  "verdict_policy": {
+    "id": "descriptive-v0.2",
+    "version": "0.2.0",
+    "ground_floor": "moderate",
+    "argument_floor": "moderate",
+    "require_adequate_coverage_for_terminal": true,
+    "unresolved_undercutter_blocks_route": true,
+    "normalization_required_for_cross_estimate": true
+  },
+  "_provenance": {
+    "model": "openai/gpt-5.6-luna",
+    "response_id": "gen-1784789936-0dlDkP3ArUAODD0B2gaK",
+    "revision_of": "gen-1784789011-2DH0m1Df5RJh1EeGgRPD"
+  }
+}

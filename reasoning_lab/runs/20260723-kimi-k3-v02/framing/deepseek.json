@@ -1,0 +1,235 @@
+{
+  "answer_contract": {
+    "referent": "Kimi K3 (the 2.8 trillion parameter open model released by Moonshot AI)",
+    "time_boundary": "As of July 2026, at and following its public release",
+    "comparison_classes": [
+      "Proprietary frontier models (GPT-5.6 Sol, Claude Fable 5, Claude Opus 4.8)",
+      "Previous Kimi models (K2, K2.6)",
+      "Other open models",
+      "Chinese AI models (e.g., GLM-5.2)"
+    ],
+    "dimensions": [
+      "Architectural significance (KDA, AttnRes, Stable LatentMoE)",
+      "Performance benchmarks (AA-Omniscience, GDPval v2, AutomationBench-AA)",
+      "Economic impact (scaling efficiency, token pricing, open-weight availability)",
+      "Capability profile (long-horizon coding, agentic workflows, vision-in-the-loop)",
+      "Market positioning (gap to frontier, enterprise implications)"
+    ],
+    "exclusions": [
+      "Detailed technical specifications of KDA/AttnRes beyond published descriptions",
+      "Internal corporate strategy of Moonshot AI",
+      "Future unreleased models beyond K3"
+    ],
+    "ambiguities": [
+      "Definition of 'open model' (weights vs. API access)",
+      "Precise meaning of 'scaling efficiency' improvement (2.5×)",
+      "Extent of 'hallucination rate' increase operational impact",
+      "Interpretation of 'proactiveness' as a feature or bug"
+    ]
+  },
+  "questions": [
+    {
+      "question": "Does Kimi K3's release, as the first open 3T-class model, fundamentally alter the competitive dynamics between open and proprietary frontier AI?",
+      "type": "interpretive",
+      "why_it_matters": "It tests the hypothesis that open-weight access to near-frontier capabilities collapses the traditional performance vs. control trade-off, potentially reshaping enterprise adoption and vendor lock-in.",
+      "resolution_criteria": [
+        "Market share shifts in enterprise AI adoption post-release",
+        "Changes in proprietary model pricing or licensing terms",
+        "Rate of third-party fine-tunes and deployments of K3 weights"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "Is K3's reported ~2.5× improvement in scaling efficiency a genuine architectural breakthrough or primarily a result of refined training/data recipes?",
+      "type": "explanatory",
+      "why_it_matters": "Distinguishes between incremental engineering improvements and novel architectural contributions (KDA/AttnRes) that could inform future model scaling laws.",
+      "resolution_criteria": [
+        "Independent replication of scaling curves using K3 architecture",
+        "Ablation studies on KDA/AttnRes components",
+        "Comparative analysis of compute budgets for K3 vs. K2 for equivalent performance"
+      ],
+      "answerability": "low",
+      "suggested_disposition": "requires_specialized_pipeline"
+    },
+    {
+      "question": "To what extent does K3's increased hallucination rate (51% vs. 39%) undermine its utility in its primary intended use case of long-running software development with minimal oversight?",
+      "type": "proposition",
+      "why_it_matters": "Evaluates the real-world trade-off between improved accuracy and reliability in autonomous, high-stakes agentic applications.",
+      "resolution_criteria": [
+        "Success/failure rates on long-horizon coding benchmarks with verifiable outputs",
+        "User-reported error rates in production coding agents",
+        "Comparative analysis of hallucination impact on task completion vs. raw accuracy"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "Does K3's performance profile—leading on AutomationBench-AA and GDPval v2 but trailing on presentation quality—indicate a specialization in 'back-end' reasoning over 'front-end' polish?",
+      "type": "interpretive",
+      "why_it_matters": "Helps map the evolving capability landscape of frontier models, suggesting divergent specialization paths (e.g., raw problem-solving vs. user experience).",
+      "resolution_criteria": [
+        "Correlation analysis across multiple benchmark categories",
+        "Qualitative analysis of output styles across models",
+        "User preference studies for different task types"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "Will K3's pricing model ($15/million output tokens) and caching strategy make it economically viable for the long-context, agentic workflows it is designed for, compared to cheaper predecessors?",
+      "type": "predictive",
+      "why_it_matters": "Determines the practical accessibility of K3's advanced capabilities for developers and enterprises, impacting its adoption despite technical performance.",
+      "resolution_criteria": [
+        "Total cost analyses for representative long-horizon tasks vs. K2.6",
+        "Observed cache-hit rates in production API usage",
+        "Market response and pricing adjustments post-launch"
+      ],
+      "answerability": "high",
+      "suggested_disposition": "active"
+    },
+    {
+      "question": "Is K3's 'proactiveness' (making decisions under ambiguity) a deliberate feature for autonomy or an uncontrolled side effect of training on long-horizon tasks?",
+      "type": "explanatory",
+      "why_it_matters": "Informs safe deployment and prompt engineering requirements, distinguishing between a designed capability and an alignment shortcoming.",
+      "resolution_criteria": [
+        "Ablation of training data/tuning for proactiveness",
+        "Systematic evaluation of decision boundaries under ambiguous prompts",
+        "Developer documentation and guidance from Moonshot AI"
+      ],
+      "answerability": "low",
+      "suggested_disposition": "deferred"
+    },
+    {
+      "question": "Does K3's demonstrated ability to produce coherent, multi-component systems (MiniTriton compiler, chip design) represent a qualitative leap in AI's capacity for integrated engineering, beyond generating code snippets?",
+      "type": "proposition",
+      "why_it_matters": "Tests the frontier of AI as a tool for end-to-end system design and complex, multi-step creation, with implications for R&D and automation.",
+      "resolution_criteria": [
+        "Independent verification of MiniTriton compiler functionality and performance",
+        "Expert review of the chip design's coherence and novelty",
+        "Replication studies on similar integrated engineering tasks"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "requires_specialized_pipeline"
+    },
+    {
+      "question": "How does the 'Vision in the Loop' capability alter the potential application space for K3 compared to text/code-only models, particularly for UI design, game dev, and CAD?",
+      "type": "comparative",
+      "why_it_matters": "Maps the expansion of AI capabilities into multimodal feedback loops, a key step towards more general tool-use and world interaction.",
+      "resolution_criteria": [
+        "Benchmark performance on vision-augmented coding/design tasks vs. text-only baselines",
+        "Case studies of project completion using the feature",
+        "Developer adoption and tooling built around Vision in the Loop"
+      ],
+      "answerability": "medium",
+      "suggested_disposition": "active"
+    }
+  ],
+  "hypotheses": [
+    {
+      "claim": "K3's architectural innovations (KDA, AttnRes) primarily drive its scaling efficiency gains, not just larger scale or better data.",
+      "falsifiers": [
+        "Ablated versions of K3 without KDA/AttnRes show similar scaling curves",
+        "Other models achieve comparable efficiency with similar parameter count using conventional architectures"
+      ],
+      "alternatives": [
+        "The efficiency gains are attributable to the Stable LatentMoE framework and expert scaling",
+        "Gains are primarily from advanced training techniques and data curation"
+      ],
+      "necessary_auxiliaries": [
+        "The published descriptions of KDA/AttnRes are accurate and complete",
+        "Scaling efficiency is measurable and comparable across different model families"
+      ],
+      "discriminating_observations": [
+        "Performance of K3 components ported to other model architectures",
+        "Detailed computational graphs and training dynamics released by Moonshot"
+      ]
+    },
+    {
+      "claim": "K3's release marks the end of an era of 'super cheap' Chinese AI, shifting the regional market focus from cost leadership to frontier capability competition.",
+      "falsifiers": [
+        "Subsequent Chinese model releases undercut K3's price/performance significantly",
+        "K3 sees minimal adoption in China due to cost, with cheaper local alternatives dominating"
+      ],
+      "alternatives": [
+        "K3 is an outlier; the broader Chinese AI market continues to compete primarily on cost",
+        "The price shift is temporary and driven by launch pricing, not a structural change"
+      ],
+      "necessary_auxiliaries": [
+        "K3's pricing is representative of its cost structure, not a temporary premium",
+        "Chinese enterprise buyers prioritize capability over cost at the frontier"
+      ],
+      "discriminating_observations": [
+        "Pricing trends for subsequent Chinese frontier models",
+        "Enterprise procurement patterns in China post-K3 release",
+        "Analysis of K3's inference cost structure"
+      ]
+    },
+    {
+      "claim": "K3's high hallucination rate is a direct consequence of its training for long-horizon proactiveness and is an inherent trade-off for its autonomous capability.",
+      "falsifiers": [
+        "A fine-tuned version of K3 significantly reduces hallucinations without degrading long-horizon performance",
+        "Other models achieve similar long-horizon performance with much lower hallucination rates"
+      ],
+      "alternatives": [
+        "The high hallucination rate is a correctable flaw in K3's training or alignment process",
+        "It is an artifact of the specific benchmark (AA-Omniscience) and not generalizable"
+      ],
+      "necessary_auxiliaries": [
+        "The reported hallucination rate is accurate and generalizes to real tasks",
+        "Hallucination is correlated with \"proactiveness\" in model behavior"
+      ],
+      "discriminating_observations": [
+        "Fine-tuning results on hallucination-specific datasets",
+        "Correlation analysis between hallucination metrics and autonomy scores across models"
+      ]
+    },
+    {
+      "claim": "The primary significance of K3 is its demonstration of sustained, coherent multi-hour engineering (chip design, compiler creation) without human intervention, a new paradigm for AI-augmented R&D.",
+      "falsifiers": [
+        "The demonstrated projects are cherry-picked and not replicable for other complex tasks",
+        "Human oversight and correction were required but not reported",
+        "The outputs are superficially coherent but functionally flawed upon expert inspection"
+      ],
+      "alternatives": [
+        "K3's significance is its general benchmark performance and open-weight availability",
+        "Its significance is its efficient scaling, making large models more accessible"
+      ],
+      "necessary_auxiliaries": [
+        "Moonshot's reports of the chip design and compiler projects are accurate and complete",
+        "The tasks represent a meaningful leap in complexity from previous AI-assisted engineering"
+      ],
+      "discriminating_observations": [
+        "Independent replication of the 48-hour chip design task",
+        "Expert audits of the MiniTriton compiler's codebase and performance",
+        "Success rates on a battery of similar long-horizon engineering tasks"
+      ]
+    },
+    {
+      "claim": "K3's performance on agentic workflow benchmarks (AutomationBench-AA) signals a shift where open models will first achieve dominance in specialized, tool-using automation before general reasoning.",
+      "falsifiers": [
+        "Proprietary models maintain or extend their lead on agentic benchmarks in subsequent releases",
+        "K3's agentic advantage is limited to a few benchmarks and does not generalize"
+      ],
+      "alternatives": [
+        "Agentic performance is tightly coupled with general reasoning; no decoupling is occurring",
+        "The advantage is due to specific tuning for these benchmarks, not a fundamental capability shift"
+      ],
+      "necessary_auxiliaries": [
+        "AutomationBench-AA is a valid measure of real-world agentic capability",
+        "The gap on this benchmark is significant and persistent"
+      ],
+      "discriminating_observations": [
+        "Performance on new, unseen agentic evaluations",
+        "Analysis of the skills (tool choice, planning) driving K3's high scores",
+        "Progress of other open models on similar benchmarks"
+      ]
+    }
+  ],
+  "_provenance": {
+    "framer": "deepseek",
+    "model": "deepseek/deepseek-v3.2",
+    "response_id": "gen-1784788236-6sXdst4HMLL8a83FSmRg",
+    "blind": true
+  }
+}

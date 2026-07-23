@@ -1,0 +1,91 @@
+{
+  "claim_id": "C6",
+  "claim": "Kimi K3 is suitable for minimally supervised long-horizon workflows only if its hallucination, over-initiative, tool-use, privacy, and failure-recovery costs remain within the deploying institution's tolerance under tested controls.",
+  "verifier": {
+    "exact_proposition_established": "Not fully established. The grounds support the narrower proposition that Kimi K3 should be considered suitable for minimally supervised, long-horizon workflows only after deployment-specific controls and tolerance thresholds address its documented hallucination, excessive-initiative, tool/runtime, instability, and operational-cost risks. They do not establish the claim's specific privacy condition or demonstrate that tested controls keep all listed costs within an institution's tolerance.",
+    "holds": false,
+    "ground_strength": "moderate",
+    "argument_strength": "moderate",
+    "warrant_reconstruction": "Minimally supervised long-horizon workflows expose an institution to consequences from autonomous decisions, fabricated outputs, tool use, runtime failures, and costly review or recovery. Kimi's developer warns that K3 may make unexpected decisions under ambiguity and recommends explicit behavioral constraints; independent evaluation reports a 39% to 51% hallucination rate on the cited index; and the developer warns that incomplete thinking-history handoffs or model switching can make generation highly unstable. Its long-horizon autonomous coding and terminal-tool positioning increases the relevance of these risks, while high verbosity may increase cost per accepted result. Therefore, suitability cannot be inferred from capability or benchmark performance alone and should be conditional on deployment-specific testing, controls, and institutional risk tolerance.",
+    "unresolved_undercutters": [
+      "No ground addresses privacy costs, privacy safeguards, data handling, or institutional privacy tolerance.",
+      "No ground shows that any proposed controls were actually tested or that they reliably contain hallucination, initiative, tool-use, privacy, or failure-recovery costs.",
+      "The grounds do not define the deploying institution's tolerance thresholds or establish that the relevant costs remain within them.",
+      "The hallucination figures are tied to the AA-Omniscience Index, whose task context is not detailed, so their applicability to the claimed workflows is uncertain.",
+      "The grounds identify instability and possible debugging or recovery burdens but do not quantify failure frequency, severity, recovery time, or cost.",
+      "The tool-use risk is partly inferred from K3's marketed autonomous coding and terminal capabilities rather than directly demonstrated in the supplied grounds."
+    ],
+    "rationale": "The evidence directly supports several necessary cautions: K3 may improvise on the user's behalf, has a reported high hallucination rate, can become unstable when thinking history is mishandled or sessions are switched, and may impose elevated review or acceptance costs. These grounds make a conditional, deployment-specific suitability standard reasonable and substantially supported. However, the exact claim expressly includes privacy costs and tested controls, neither of which is established. Because the supplied evidence supports the risk-based condition but not every named risk or the efficacy of tested controls, the exact proposition is not established."
+  },
+  "falsifier": {
+    "exact_proposition_opposed": "Kimi K3 is suitable for minimally supervised long-horizon workflows only if its hallucination, over-initiative, tool-use, privacy, and failure-recovery costs remain within the deploying institution's tolerance under tested controls.",
+    "holds": true,
+    "ground_strength": "strong",
+    "argument_strength": "moderate",
+    "attack_type": "rebutter",
+    "alternative_explanations": [
+      "The grounds suggest K3's inherent characteristics (high hallucination rate, excessive proactiveness, instability, high verbosity, lack of safety documentation) are likely to exceed typical institutional tolerance thresholds for minimally supervised use, even with tested controls.",
+      "The grounds indicate that the costs and risks (e.g., from unexpected decisions, debugging verbose outputs, managing instability) are intrinsic to the model's design and training, making them difficult to contain within acceptable bounds through controls alone."
+    ],
+    "rationale": "The grounds provide a strong, direct case against the claim's condition. G-C6-2 shows a high and increasing hallucination rate (51%), a core risk for unsupervised workflows. G-C6-1 and its duplicate (G-C6-2 in the second set) document 'excessive proactiveness' leading to 'unexpected decisions,' directly challenging the 'over-initiative' and 'tool-use' cost condition. G-C6-3 indicates high 'failure-recovery costs' due to verbosity and lack of cheaper reasoning modes. G-C6-4 and its duplicate (G-C6-3 in the second set) show the model is fragile ('highly unstable') under common operational scenarios, increasing failure risks. G-C6-4 from the second set (AI Governance Institute) argues a lack of safety documentation prevents a structured risk assessment, undermining the 'tested controls' premise. G-C6-5 confirms the model is marketed for high-stakes autonomous tasks, raising the stakes. Collectively, these grounds rebut the claim by showing the model's documented flaws are severe and likely to exceed reasonable tolerance levels for minimally supervised use, even with controls. The argument strength is 'moderate' because, while the grounds are strong, they do not provide specific evidence that these costs *will* exceed tolerance for *all* institutions—only that they pose a high, documented risk that challenges the claim's conditional."
+  },
+  "comparator": {
+    "well_formed": true,
+    "conflation_detected": true,
+    "split_proposals": [
+      {
+        "claim_text": "The documented risks of Kimi K3 (including hallucination, over-initiative, instability, and high verbosity) are significant enough to warrant a conditional suitability standard for minimally supervised, long-horizon workflows, requiring deployment-specific controls and institutional risk tolerance assessment.",
+        "winning_side": "verifier"
+      },
+      {
+        "claim_text": "The documented risks of Kimi K3 (including a >50% hallucination rate, excessive proactiveness, and high instability) are so severe that they are unlikely to be contained within a typical institution's tolerance for minimally supervised workflows, even with controls.",
+        "winning_side": "falsifier"
+      }
+    ],
+    "support_route": {
+      "qualifies": true,
+      "ground_strength": "moderate",
+      "argument_strength": "moderate",
+      "unresolved_undercutter": true
+    },
+    "opposition_route": {
+      "qualifies": true,
+      "ground_strength": "strong",
+      "argument_strength": "moderate",
+      "attack_is_direct_rebuttal": false
+    },
+    "warrant_fidelity": {
+      "verifier": "faithful",
+      "falsifier": "plausible_reconstruction"
+    },
+    "source_dependence": "material",
+    "rationale": "Both sides address the same core claim but interpret it differently, leading to a conflation. The claim is a conditional statement: 'K3 is suitable ONLY IF [conditions are met]'.\n\nThe Verifier correctly interprets this as a claim about what conditions are necessary for suitability. It argues that the grounds (high hallucination, over-initiative, instability) support the need for such conditions, but correctly notes that the evidence does not cover every specific condition listed in the claim (e.g., 'privacy costs' and 'tested controls'). Therefore, the Verifier rightly concludes the exact proposition is not fully established. This is a sound, direct analysis of the claim's logical structure.\n\nThe Falsifier misinterprets the claim. Instead of evaluating the necessity of the condition, it argues that the condition can likely never be met. It presents strong evidence (G-C6-2's 51% hallucination rate, G-C6-1's 'excessive proactiveness', G-C6-4's instability) to argue that K3's flaws are too severe to fall within a reasonable institutional tolerance. While this is a powerful argument against deploying K3, it is not a direct rebuttal of the claim's logic. The claim is about what *must be true* for suitability, not whether it *can be true*. The Falsifier's argument is an undercutter, suggesting the 'if' clause is practically impossible to satisfy, thereby making the whole proposition moot, rather than false.\n\nBecause the Verifier correctly analyzes the claim as stated, while the Falsifier attacks a different, more practical question about whether the conditions can be met, the two sides are arguing past each other. The Verifier wins on the literal reading of the claim's logic, while the Falsifier wins on a pragmatic reading of the evidence's implications."
+  },
+  "derived_verdict": {
+    "evidential_state": "insufficient",
+    "coverage_state": "limited",
+    "terminal_allowed": false,
+    "qualifying_support_routes": [],
+    "qualifying_opposition_routes": [],
+    "policy_id": "descriptive-v0.2",
+    "policy_version": "0.2.0"
+  },
+  "provenance": {
+    "verifier": {
+      "model": "openai/gpt-5.6-luna",
+      "response_id": "gen-1784788963-5ngL4zcWnPCUcJgULxel"
+    },
+    "falsifier": {
+      "model": "deepseek/deepseek-v3.2",
+      "response_id": "gen-1784788970-IDTS59msD0w6P0wJWNOU"
+    },
+    "comparator": {
+      "model": "google/gemini-2.5-pro",
+      "response_id": "gen-1784789002-TfLAYd67iA039UuXTlxw"
+    },
+    "passes_blind_to_each_other": {
+      "verifier_vs_falsifier": true,
+      "comparator_saw_both": true
+    }
+  }
+}

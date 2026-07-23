@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "issues": [],
+  "calibration_notes": [
+    "The audit confirms that the AnswerBundle accurately reflects the evidential state and uncertainties detailed in the claim assessments. The verdicts of 'insufficient' evidence are correctly carried through to the top-level summaries, and the specific reasons for those verdicts (e.g., lack of reproducibility for C1, incomplete cost analysis for C4, unresolved risks for C6) are faithfully represented in the 'strongest_challenge' and 'load_bearing_uncertainties' sections. The synthesis correctly combines supported claims (C2, C3) with unsupported ones (C1, C4, C6) without creating new, unsupported conclusions."
+  ],
+  "_provenance": {
+    "model": "google/gemini-2.5-pro",
+    "response_id": "gen-1784789951-TV79PDAHa1cfZu9lDyEV"
+  }
+}

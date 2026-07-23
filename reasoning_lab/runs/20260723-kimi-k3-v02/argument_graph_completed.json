@@ -1,0 +1,660 @@
+{
+  "claims": [
+    {
+      "id": "C1",
+      "proposition": "On independently reproducible, matched evaluations, Kimi K3 demonstrates a measurable capability difference from Moonshot AI's preceding Kimi models on at least one decision-relevant task family.",
+      "polarity": "positive",
+      "modality": "tentative",
+      "conditions": [
+        "Prompts, tools, context lengths, inference budgets, and model access conditions are matched",
+        "The evaluation is independent or transparently documented",
+        "The comparison separates hosted/API behavior from any downloadable checkpoint"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Moonshot AI's preceding Kimi models, especially K2, K2.5, and K2.6",
+      "operationalization": "Compare effect sizes, confidence intervals, failure modes, and replication results across reasoning, coding, multimodal understanding, long-context retrieval, tool use, and agentic tasks.",
+      "claim_type": "comparative_capability",
+      "roles": [
+        "Q1 capability premise",
+        "comparative hinge"
+      ],
+      "question_ids": [
+        "Q1"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "Matched independent evaluations find no statistically or practically meaningful improvement over the preceding models",
+        "Reported improvements disappear under different prompts, inference budgets, languages, or task distributions",
+        "The apparent difference is explained by benchmark contamination, tool access, or evaluation artifacts"
+      ]
+    },
+    {
+      "id": "C2",
+      "proposition": "Kimi K3 is competitive with at least some leading hosted or open-weight alternatives on at least one high-value workflow, without implying general frontier superiority.",
+      "polarity": "positive",
+      "modality": "tentative",
+      "conditions": [
+        "The workflow has verifiable outputs and a defined success criterion",
+        "Competing systems receive comparable tools, context, budgets, and opportunities for correction",
+        "Results are replicated across more than one task distribution"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Open-weight frontier models and hosted frontier models from OpenAI, Anthropic, Google, and other providers",
+      "operationalization": "Measure success rate, task completion, quality, latency, failure severity, and human correction burden in coding, research, design, automation, and multimodal workflows.",
+      "claim_type": "comparative_workflow_capability",
+      "roles": [
+        "Q1 terminal",
+        "Q2 capability premise"
+      ],
+      "question_ids": [
+        "Q1",
+        "Q2"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "Independent workflow evaluations show K3 is not competitive with relevant alternatives on any high-value task",
+        "Apparent competitiveness depends on unmatched tools, cherry-picked tasks, or unverified demonstrations",
+        "K3's advantage disappears when human correction and failure costs are included"
+      ]
+    },
+    {
+      "id": "C3",
+      "proposition": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+      "polarity": "positive",
+      "modality": "defeasible",
+      "conditions": [
+        "Reliability is assessed separately from nominal context-window size",
+        "Tests include distractors, contradictions, varying context lengths, and multi-step reasoning",
+        "The evaluation distinguishes retrieval accuracy from fluent but unsupported answers"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Large-context and long-context frontier models",
+      "operationalization": "Evaluate retrieval precision and recall, reasoning consistency, degradation by context length, sensitivity to document position, contradiction handling, and citation or provenance accuracy.",
+      "claim_type": "methodological_capability",
+      "roles": [
+        "Q1 terminal",
+        "interpretive constraint"
+      ],
+      "question_ids": [
+        "Q1"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "Repeated controlled evaluations show that the reported context capacity reliably supports retrieval and reasoning across relevant context lengths",
+        "Independent tests find no meaningful gap between nominal context capacity and usable long-context performance"
+      ]
+    },
+    {
+      "id": "C4",
+      "proposition": "Kimi K3 creates a practical quality-adjusted cost or efficiency advantage for some workloads only if its task quality, latency, throughput, hardware requirements, and human-correction burden jointly outperform relevant alternatives.",
+      "polarity": "positive",
+      "modality": "conditional",
+      "conditions": [
+        "Hosted/API pricing and any self-hosted deployment economics are analyzed separately",
+        "Cache-hit and cache-miss workloads are distinguished where applicable",
+        "Hardware, energy, latency, fine-tuning, monitoring, and failure-recovery costs are included"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Hosted frontier models, open-weight frontier models, and large mixture-of-experts systems",
+      "operationalization": "Calculate quality per dollar, quality per watt, throughput, latency, total cost of ownership, and quality-adjusted human oversight cost for representative developer, enterprise, regulated, and research workloads.",
+      "claim_type": "economic_deployment",
+      "roles": [
+        "Q2 terminal",
+        "practical-significance hinge"
+      ],
+      "question_ids": [
+        "Q2"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "K3's apparent price advantage is erased by hardware, latency, context, support, monitoring, or correction costs",
+        "Comparable systems deliver equal or better quality-adjusted economics across the relevant workloads",
+        "The required deployment conditions are unavailable or impractical for intended users"
+      ]
+    },
+    {
+      "id": "C5",
+      "proposition": "The hosted/API Kimi K3 offering and any downloadable open-weight checkpoint constitute materially different accessibility, reproducibility, privacy, governance, and deployment objects.",
+      "polarity": "positive",
+      "modality": "conditional",
+      "conditions": [
+        "A downloadable checkpoint is actually made available; the reportedly scheduled July 27, 2026 release is not presumed to have occurred",
+        "License terms, weight completeness, technical documentation, and deployment requirements are verified",
+        "Hosted-service data handling, telemetry, jurisdiction, and access restrictions are assessed separately from checkpoint properties"
+      ],
+      "temporal_scope": "Hosted availability reported for July 16, 2026; checkpoint status assessed only through July 23, 2026",
+      "comparison_class": "Hosted frontier models and open-weight frontier models from Chinese and other developers",
+      "operationalization": "Compare actual weight availability, license permissions, reproducibility, fine-tuning and derivative rights, hardware requirements, data retention, telemetry, regional access, and vendor dependence.",
+      "claim_type": "access_governance",
+      "roles": [
+        "Q2 terminal",
+        "Q3 governance premise",
+        "hosted-versus-checkpoint hinge"
+      ],
+      "question_ids": [
+        "Q2",
+        "Q3"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "No material difference exists between hosted and checkpoint deployment conditions",
+        "The checkpoint is unavailable by the time of evaluation",
+        "Licensing, missing components, hardware demands, or service restrictions prevent the purported accessibility or reproducibility benefit"
+      ]
+    },
+    {
+      "id": "C6",
+      "proposition": "Kimi K3 is suitable for minimally supervised long-horizon workflows only if its hallucination, over-initiative, tool-use, privacy, and failure-recovery costs remain within the deploying institution's tolerance under tested controls.",
+      "polarity": "positive",
+      "modality": "conditional",
+      "conditions": [
+        "Reliability is measured on verifiable long-running coding, research, automation, or enterprise tasks",
+        "Hosted services and any downloadable weights are red-teamed separately",
+        "Human review gates, sandboxing, system prompts, and tool permissions are explicitly specified"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Models evaluated in real-world coding, research, design, and automation workflows",
+      "operationalization": "Measure hallucination frequency and severity, unauthorized actions, recovery time, debugging cost, instruction adherence, refusal behavior, privacy exposure, telemetry, and oversight burden under realistic task horizons.",
+      "claim_type": "reliability_governance",
+      "roles": [
+        "Q3 terminal",
+        "deployment decision hinge"
+      ],
+      "question_ids": [
+        "Q3"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "Independent long-horizon testing shows acceptable failure and oversight costs under specified controls",
+        "Observed proactiveness improves completion without materially increasing unauthorized or harmful actions",
+        "Reliability and governance performance remain unacceptable even with reasonable deployment controls"
+      ]
+    }
+  ],
+  "arguments": [
+    {
+      "id": "A1",
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C1-support-1",
+        "G-C1-support-4",
+        "G-C1-support-5"
+      ],
+      "conclusion_claim_id": "C1",
+      "inference_type": "inductive",
+      "scheme": "comparative_evidence",
+      "warrant_reconstruction": "If reported evaluations compare K3 with a preceding Kimi model on the same task family and show a measurable difference, those reports provide some support for a capability difference. The supplied grounds indicate such reported differences, but do not establish independent reproducibility or fully matched conditions.",
+      "warrant_fidelity": "faithful",
+      "strictness": "defeasible",
+      "assumptions": [
+        "The cited score and first-hand evaluation reports accurately describe the underlying tests",
+        "The compared results concern relevant capability differences rather than artifacts"
+      ],
+      "exceptions": [
+        "The comparison is not independently replicated",
+        "The evaluation protocol, sampling, and uncertainty may be insufficiently disclosed"
+      ],
+      "critical_questions": [
+        "Were prompts, tools, budgets, and model access conditions matched?",
+        "Can the evaluation be independently reproduced?",
+        "Could contamination or benchmark optimization explain the difference?"
+      ],
+      "assessment": "weak",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "The conclusion depends on empirical quality and reproducibility conditions rather than a strict propositional step.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "candidate_unvalidated"
+      }
+    },
+    {
+      "id": "A3",
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C2-support-1",
+        "G-C2-support-2",
+        "G-C2-support-3",
+        "G-C2-support-5"
+      ],
+      "conclusion_claim_id": "C2",
+      "inference_type": "inductive",
+      "scheme": "workflow_comparison",
+      "warrant_reconstruction": "If K3 matches or exceeds leading alternatives on evaluations directed at economically valuable agentic, automation, or long-horizon knowledge-work tasks, then it is competitive with those alternatives on at least some high-value workflows. The cited results support this narrower conclusion without establishing general superiority.",
+      "warrant_fidelity": "faithful",
+      "strictness": "defeasible",
+      "assumptions": [
+        "The benchmark tasks are reasonable proxies for high-value workflows",
+        "The reported scores and rankings are accurately attributed"
+      ],
+      "exceptions": [
+        "Private or differently configured evaluations may not generalize",
+        "A workflow may value latency or correction burden differently from the benchmark"
+      ],
+      "critical_questions": [
+        "Were competing systems evaluated with comparable tools and budgets?",
+        "Are the tasks and scoring methods inspectable?",
+        "Does performance persist outside these benchmarks?"
+      ],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "The inference generalizes from benchmark results to workflow competitiveness and is defeasible.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "candidate_unvalidated"
+      }
+    },
+    {
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C3-support-1",
+        "G-C3-support-2",
+        "G-C3-support-3",
+        "G-C3-support-4"
+      ],
+      "inference_type": "empirical generalization",
+      "scheme": "argument from controlled performance evidence",
+      "warrant_reconstruction": "If multiple controlled evaluations show substantial degradation in reasoning or overall task performance as context length increases within a model's claimed context window, including when relevant information is perfectly retrieved or irrelevant material is minimized or masked, then the reported context capacity or context-oriented architecture is insufficient, by itself, to establish reliable long-context retrieval or reasoning. The cited studies report these conditions across multiple models and task types and therefore support the claim's insufficiency conclusion.",
+      "warrant_fidelity": "faithful",
+      "strictness": "defeasible",
+      "assumptions": [
+        "Performance degradation under the tested long-context conditions is relevant to the reliability of long-context reasoning.",
+        "Evidence from the evaluated models and tasks is probative of the broader comparison class of large-context and long-context frontier models.",
+        "Perfect retrieval of relevant information does not itself guarantee successful reasoning over that information."
+      ],
+      "exceptions": [
+        "The evidence does not establish that every model with a large context window or context-oriented architecture will fail.",
+        "Additional task-specific evaluations may establish reliability even though nominal capacity or architecture alone does not.",
+        "The evidence does not supply a universal threshold for reliable long-context retrieval or reasoning."
+      ],
+      "critical_questions": [
+        "Were the evaluated model versions, tasks, and context constructions representative of the models under assessment?",
+        "How large and practically meaningful were the observed performance degradations across the tested conditions?",
+        "Were retrieval accuracy and reasoning accuracy measured separately?",
+        "Do the results generalize across context lengths, document positions, distractors, contradictions, and multi-step reasoning tasks?",
+        "What threshold distinguishes reliable from unreliable long-context performance?"
+      ],
+      "assessment": "strong",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "The support is a defeasible empirical generalization from ground-level observations rather than a deductive argument with proposition-valued premises; formalization would risk overstating its scope.",
+        "premises": [],
+        "conclusion": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+        "fidelity": "candidate_unvalidated"
+      },
+      "id": "A-C3-support",
+      "conclusion_claim_id": "C3"
+    },
+    {
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C4-support-1",
+        "G-C4-support-2",
+        "G-C4-support-3",
+        "G-C4-support-4",
+        "G-C4-support-5",
+        "G-C4-support-6",
+        "G-C4-support-7"
+      ],
+      "inference_type": "defeasible comparative evaluation",
+      "scheme": "quality-adjusted cost-benefit comparison",
+      "warrant_reconstruction": "A practical quality-adjusted cost or efficiency advantage cannot be established from token price or nominal task cost alone. It requires comparing completed-task quality, latency, throughput, deployment and hardware requirements, and the human effort required to detect and correct failures against the relevant alternative. The grounds indicate that Kimi K3 can have lower cited task or token costs and can be competitive on some quality measures, while also being slower than some alternatives, having lower measured throughput, creating different local-deployment economics, and exhibiting hallucination rates that may increase correction work. Therefore, any genuine advantage for some workload is conditional on jointly outperforming relevant alternatives across the specified dimensions.",
+      "warrant_fidelity": "faithful",
+      "strictness": "defeasible",
+      "assumptions": [
+        "The cited task-cost, quality, speed, and hallucination measurements are relevant indicators of practical deployment economics.",
+        "A quality-adjusted comparison should include both direct computational costs and material human-correction costs.",
+        "The relevant alternative may differ by workload and deployment mode.",
+        "Lower cost on one metric does not compensate automatically for materially worse quality, latency, throughput, hardware requirements, or correction burden."
+      ],
+      "exceptions": [
+        "A workload may tolerate higher latency or hallucination-related review effort if those costs do not materially affect its total outcome.",
+        "A local deployment may become economically preferable after sufficient utilization and hardware amortization.",
+        "Cache-hit and cache-miss pricing can produce materially different API economics."
+      ],
+      "critical_questions": [
+        "What specific alternative is relevant for each workload and deployment mode?",
+        "Does Kimi K3 match or exceed the alternative's task quality after accounting for failed or corrected outputs?",
+        "Are end-to-end latency, tool-execution time, concurrency, and throughput measured rather than output-token speed alone?",
+        "Are hardware purchase, electricity, maintenance, monitoring, fine-tuning, support, and failure-recovery costs included?",
+        "How does the measured hallucination rate translate into workload-specific human-correction time and cost?",
+        "Are cache-hit and cache-miss workloads analyzed separately?",
+        "Do the cited benchmark results generalize to representative developer, enterprise, regulated, and research workloads?"
+      ],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "The grounds provide heterogeneous benchmark and pricing observations, while the claim requires a workload-specific, multi-factor comparison involving quality-adjusted human labor and deployment costs. No validated common scale, threshold, or complete set of comparable measurements is supplied for formal deduction.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "candidate_unvalidated"
+      },
+      "id": "A-C4-support",
+      "conclusion_claim_id": "C4"
+    },
+    {
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C5-support-1",
+        "G-C5-support-2",
+        "G-C5-support-3",
+        "G-C5-support-4",
+        "G-C5-support-5",
+        "G-C5-support-6"
+      ],
+      "inference_type": "comparative defeasible inference",
+      "scheme": "argument from material difference in access, control, governance, and deployment conditions",
+      "warrant_reconstruction": "If two offerings are acquired and operated through materially different mechanisms, and those mechanisms produce different levels of user control, vendor dependence, privacy exposure, customization or reproducibility capacity, governance requirements, costs, and deployment requirements, then the offerings constitute materially different objects even if they derive from the same underlying model. The grounds indicate that the hosted Kimi API is an immediately accessible, payment-gated remote service requiring no user hardware, while a downloadable checkpoint is intended for local execution, fine-tuning, and user-controlled data handling, with different hardware, engineering, cost, and licensing implications.",
+      "warrant_fidelity": "faithful",
+      "strictness": "defeasible",
+      "assumptions": [
+        "The reported distinction between hosted API access and a downloadable checkpoint corresponds to distinct deployment and governance conditions.",
+        "Differences in control, data location, customization, cost structure, and hardware requirements are material to accessibility, reproducibility, privacy, governance, and deployment."
+      ],
+      "exceptions": [
+        "A checkpoint that is unavailable, incomplete, unusable, or subject to restrictive terms may not provide the asserted accessibility, reproducibility, or governance benefits.",
+        "The evidence does not establish that local execution provides strict scientific or bit-for-bit reproducibility.",
+        "The evidence does not independently verify all hosted-service retention, telemetry, security, or jurisdictional practices."
+      ],
+      "critical_questions": [
+        "Was a complete downloadable checkpoint actually released by the evaluation date?",
+        "What are the verified license permissions for use, fine-tuning, modification, and redistribution?",
+        "Are all required weights, code, runtimes, and technical components available?",
+        "What hardware and engineering resources are actually required for deployment?",
+        "What are the hosted API's verified data-retention, telemetry, security, jurisdiction, and access restrictions?",
+        "Do the available checkpoint materials support reproducible execution beyond permitting local fine-tuning?"
+      ],
+      "assessment": "strong",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "The claim is conditional and multidimensional, while the available grounds establish comparative differences but leave checkpoint availability, licensing, reproducibility details, and some operational requirements unresolved.",
+        "premises": [],
+        "conclusion": "",
+        "fidelity": "candidate_unvalidated"
+      },
+      "id": "A-C5-support",
+      "conclusion_claim_id": "C5"
+    },
+    {
+      "premise_claim_ids": [],
+      "ground_ids": [
+        "G-C6-support-1",
+        "G-C6-support-2",
+        "G-C6-support-3",
+        "G-C6-support-4"
+      ],
+      "inference_type": "practical conditional inference",
+      "scheme": "risk-based argument for conditional deployment suitability",
+      "warrant_reconstruction": "If a model used in minimally supervised, long-horizon workflows is documented as prone to hallucination, unexpected decisions under ambiguity, instability from runtime or session-handling failures, and elevated review or acceptance costs, then suitability should be conditional on deployment-specific testing, explicit controls, and the deploying institution's tolerance for those costs. The supplied grounds support imposing such a conditional suitability requirement, but do not by themselves establish that every listed cost is within tolerance under tested controls.",
+      "warrant_fidelity": "faithful",
+      "strictness": "defeasible",
+      "assumptions": [
+        "The cited hallucination result is relevant enough to inform risk assessment for the comparison class described in the claim.",
+        "The documented risks are relevant to minimally supervised long-horizon workflows.",
+        "Deployment-specific controls and institutional tolerance are appropriate criteria for a suitability decision."
+      ],
+      "exceptions": [
+        "A deployment may be unsuitable if testing shows that the relevant costs exceed institutional tolerance even with controls.",
+        "The conditional conclusion does not establish that privacy costs, tool-use costs, or failure-recovery costs have been measured or contained."
+      ],
+      "critical_questions": [
+        "Were hallucination, over-initiative, tool-use, privacy, and failure-recovery costs tested on verifiable long-running tasks?",
+        "Were hosted services and downloadable weights red-teamed separately?",
+        "Were human review gates, sandboxing, system prompts, and tool permissions explicitly specified and tested?",
+        "Do the observed costs remain within the deploying institution's defined tolerance thresholds?",
+        "How applicable is the cited AA-Omniscience Index result to the claimed workflow types?"
+      ],
+      "assessment": "moderate",
+      "formal_candidate": {
+        "suitable": false,
+        "reason": "The grounds support a conditional deployment standard but do not establish the exact proposition because they do not demonstrate privacy performance, tested-control effectiveness, or that all relevant costs remain within a particular institution's tolerance.",
+        "premises": [
+          "G-C6-support-1",
+          "G-C6-support-2",
+          "G-C6-support-3",
+          "G-C6-support-4"
+        ],
+        "conclusion": "Kimi K3 is suitable for minimally supervised long-horizon workflows only if its hallucination, over-initiative, tool-use, privacy, and failure-recovery costs remain within the deploying institution's tolerance under tested controls.",
+        "fidelity": "candidate_unvalidated"
+      },
+      "id": "A-C6-support",
+      "conclusion_claim_id": "C6"
+    }
+  ],
+  "_provenance": {
+    "model": "openai/gpt-5.6-luna",
+    "response_id": "gen-1784789305-e8P3LjkMHopvS8uGVe2B",
+    "revision_of": "gen-1784789233-z8KlsGg5SC0ViQYBQBm7"
+  },
+  "structural_validation": [],
+  "defeaters": [
+    {
+      "id": "D-C1-converted",
+      "target_type": "argument",
+      "target_id": "A1",
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C1-challenge-1",
+        "G-C1-challenge-2",
+        "G-C1-challenge-4"
+      ],
+      "content": "If the reported comparisons are ambiguous, dynamic, nonstandard, or not independently posted, then they do not establish the independent reproducibility and matched-evaluation conditions required by C1.",
+      "status": "supported"
+    },
+    {
+      "id": "D-C2-converted",
+      "target_type": "argument",
+      "target_id": "A3",
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C2-challenge-1",
+        "G-C2-challenge-2",
+        "G-C2-challenge-3"
+      ],
+      "content": "If apparent parity with a leading model is obtained only on a very small task sample, with different agent systems, or with substantially worse latency, then the evidence weakens the inference from benchmark parity to practical workflow competitiveness.",
+      "status": "supported"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C3-support-1"
+      ],
+      "content": "The experiments cover particular model versions, tasks, and context constructions, so their results may not generalize to every model with a large context window or context-oriented architecture.",
+      "status": "unresolved",
+      "id": "D-C3-1",
+      "target_type": "argument",
+      "target_id": "A-C3-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [],
+      "content": "The available grounds do not define a universal threshold for what counts as reliable long-context retrieval or reasoning, which limits the precision of the argument's conclusion.",
+      "status": "unresolved",
+      "id": "D-C3-2",
+      "target_type": "argument",
+      "target_id": "A-C3-support"
+    },
+    {
+      "attack_type": "exception",
+      "ground_ids": [
+        "G-C3-support-3"
+      ],
+      "content": "The evidence indicates that retrieval improvements alone do not necessarily translate into better long-context performance, but it does not exclude reliability being established through additional holistic, task-specific evaluations.",
+      "status": "supported",
+      "id": "D-C3-3",
+      "target_type": "argument",
+      "target_id": "A-C3-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C4-support-1",
+        "G-C4-support-2",
+        "G-C4-support-4",
+        "G-C4-support-6",
+        "G-C4-challenge-1",
+        "G-C4-challenge-2",
+        "G-C4-challenge-3",
+        "G-C4-challenge-4"
+      ],
+      "content": "The cited evidence is narrow and heterogeneous: it covers particular agentic, coding, Intelligence Index, or AA-Omniscience benchmarks rather than a complete workload-specific comparison. The coding comparison uses only three jobs, and the reported task-cost and latency figures may not generalize to other workloads. Consequently, these observations support the need for a joint evaluation but do not by themselves establish that the required comparison has been completed for any particular workload.",
+      "status": "supported",
+      "id": "D-C4-1",
+      "target_type": "argument",
+      "target_id": "A-C4-support"
+    },
+    {
+      "attack_type": "underminer",
+      "ground_ids": [
+        "G-C4-support-3",
+        "G-C4-support-7",
+        "G-C4-challenge-2"
+      ],
+      "content": "The local-versus-cloud economic comparison depends on assumptions about hardware prices, electricity, utilization, model performance parity, task success rates, execution speed, and hardware management. The reported amortization thresholds therefore cannot independently establish total cost of ownership or a quality-adjusted advantage.",
+      "status": "supported",
+      "id": "D-C4-2",
+      "target_type": "argument",
+      "target_id": "A-C4-support"
+    },
+    {
+      "attack_type": "underminer",
+      "ground_ids": [
+        "G-C4-support-5",
+        "G-C4-support-6",
+        "G-C4-challenge-4"
+      ],
+      "content": "The grounds do not directly measure workload-specific human-correction time or convert hallucination rates into labor costs. API pricing and benchmark hallucination rates therefore leave an important component of the proposed quality-adjusted comparison unresolved.",
+      "status": "supported",
+      "id": "D-C4-3",
+      "target_type": "argument",
+      "target_id": "A-C4-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C4-challenge-1",
+        "G-C4-challenge-2",
+        "G-C4-support-4"
+      ],
+      "content": "In the cited comparisons, Kimi K3 is cheaper but slower than Fable 5, and its measured output speed is below the comparison median. These observations challenge any stronger reading that Kimi K3 has already demonstrated an overall practical efficiency advantage, even though they do not defeat the conditional requirement stated in the claim.",
+      "status": "supported",
+      "id": "D-C4-4",
+      "target_type": "argument",
+      "target_id": "A-C4-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C5-support-1"
+      ],
+      "content": "The evidence reports that the full model weights were scheduled for release by July 27, 2026, but does not establish that a downloadable checkpoint was actually available by the evaluation date. This limits the argument's ability to establish a present comparison involving an actual checkpoint.",
+      "status": "supported",
+      "id": "D-C5-1",
+      "target_type": "argument",
+      "target_id": "A-C5-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C5-support-3"
+      ],
+      "content": "The final Kimi K3 license had not been published at the time of writing. Consequently, the argument establishes that checkpoint governance would differ in kind from API governance, but does not establish the precise modification, commercial-use, or redistribution rights.",
+      "status": "supported",
+      "id": "D-C5-2",
+      "target_type": "argument",
+      "target_id": "A-C5-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C5-support-3"
+      ],
+      "content": "The evidence supports fine-tuning and local adaptation more directly than strict reproducibility. It does not establish that the checkpoint, runtime, quantization, hardware, and serving configuration would yield scientifically or bit-for-bit reproducible results.",
+      "status": "unresolved",
+      "id": "D-C5-3",
+      "target_type": "argument",
+      "target_id": "A-C5-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C5-support-4"
+      ],
+      "content": "The self-hosting hardware and engineering requirements are described using estimates based on model scale and common practice rather than verified official minimum specifications. This weakens the precision of the deployment and cost comparison without eliminating the reported distinction.",
+      "status": "unresolved",
+      "id": "D-C5-4",
+      "target_type": "argument",
+      "target_id": "A-C5-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C5-support-2"
+      ],
+      "content": "The privacy comparison reports that API prompts travel to Moonshot servers in China and that self-hosting keeps data within user-controlled infrastructure, but the source does not independently verify all hosted-service data handling, retention, telemetry, jurisdictional, or security practices.",
+      "status": "unresolved",
+      "id": "D-C5-5",
+      "target_type": "argument",
+      "target_id": "A-C5-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C6-support-1",
+        "G-C6-support-2",
+        "G-C6-support-3",
+        "G-C6-support-4",
+        "G-C6-challenge-4"
+      ],
+      "content": "The supplied evidence documents several relevant risks and the absence of a full published technical and safety report, but it does not show that the proposed controls were tested or that they reliably contain the risks. It also does not establish the privacy condition or the deploying institution's tolerance thresholds, so the inference from documented risk to the exact conditional suitability proposition remains incomplete.",
+      "status": "supported",
+      "id": "D-C6-1",
+      "target_type": "argument",
+      "target_id": "A-C6-support"
+    },
+    {
+      "attack_type": "underminer",
+      "ground_ids": [
+        "G-C6-support-2"
+      ],
+      "content": "The reported 39 percent to 51 percent hallucination figures come from the AA-Omniscience Index, whose task context is not detailed in the supplied evidence. Their applicability to verifiable long-horizon coding, research, automation, or enterprise workflows is therefore uncertain.",
+      "status": "unresolved",
+      "id": "D-C6-2",
+      "target_type": "argument",
+      "target_id": "A-C6-support"
+    },
+    {
+      "attack_type": "undercutter",
+      "ground_ids": [
+        "G-C6-support-1",
+        "G-C6-support-3",
+        "G-C6-support-4",
+        "G-C6-challenge-5"
+      ],
+      "content": "The grounds identify possible unexpected decisions, elevated review or acceptance costs, runtime-related instability, and autonomous terminal-tool use, but do not quantify failure frequency, severity, unauthorized actions, recovery time, debugging cost, or tool-use cost under realistic task horizons. Their ability to establish the operational threshold in the claim is consequently limited.",
+      "status": "supported",
+      "id": "D-C6-3",
+      "target_type": "argument",
+      "target_id": "A-C6-support"
+    }
+  ],
+  "terminal_claim_ids_by_question": {
+    "Q1": [
+      "C2",
+      "C3"
+    ],
+    "Q2": [
+      "C4",
+      "C5"
+    ],
+    "Q3": [
+      "C6"
+    ]
+  },
+  "completion_provenance": [],
+  "completion_notes": [
+    "Challenge-shaped pseudo-arguments were converted to Defeater relations.",
+    "Challenge-shaped pseudo-arguments were converted to Defeater relations."
+  ]
+}

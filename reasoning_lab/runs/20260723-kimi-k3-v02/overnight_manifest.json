@@ -1,0 +1,45 @@
+{
+  "objective": "Rerun the reasoning pipeline, create and conduct evaluations, and add initial formal-logic validation.",
+  "question": "What is the significance of Kimi K3?",
+  "as_of": "2026-07-23",
+  "budget": {
+    "limit_usd": 3.0,
+    "spent_usd": 0.912689538,
+    "remaining_usd": 2.087310462
+  },
+  "original_pipeline_result": {
+    "claims": 6,
+    "arguments": 0,
+    "structural_status": "failed"
+  },
+  "repaired_graph": {
+    "claims": 6,
+    "arguments": 6,
+    "defeaters": 17,
+    "structural_errors": 0
+  },
+  "evaluations": {
+    "models": [
+      "openai/gpt-5.6-luna",
+      "google/gemini-2.5-pro"
+    ],
+    "cases_per_report": 71,
+    "formal_cases": 15,
+    "verdict_policy_cases": 6,
+    "graph_structure_cases": 2,
+    "claim_correspondence_cases": 24,
+    "answer_entailment_cases": 24,
+    "mean_accuracy_each_report": 1.0
+  },
+  "formal_validation": {
+    "backend": "Z3 4.16.0",
+    "independent_cross_check": "exhaustive truth table for up to 12 symbols",
+    "empirical_graph_formal_candidates": 0,
+    "formalization_fidelity_separate": true
+  },
+  "revised_answer_independent_audit": {
+    "model": "google/gemini-2.5-pro",
+    "pass": true,
+    "issues": 0
+  }
+}

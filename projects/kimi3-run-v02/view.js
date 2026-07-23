@@ -20,25 +20,35 @@ function argumentById(id) {
   return state.graph.arguments.find(argument => argument.id === id);
 }
 
+function formalResultFor(argumentId) {
+  return state.graph.formal_validation?.results?.find(
+    item => item.argument_id === argumentId
+  );
+}
+
 function groundById(id) {
   return state.grounds.find(ground => ground.id === id);
 }
 
 function evidenceState(claimId) {
-  return claimById(claimId)?.display_assessment?.evidential_state || "unassessed";
+  return claimById(claimId)?.epistemic_assessment?.valence_sign || "unassessed";
 }
 
 function acceptanceStatus(claimId) {
-  return claimById(claimId)?.display_assessment?.acceptance_status || "not_supported";
+  return claimById(claimId)?.epistemic_assessment
+    ?.forced_binary_direction || "unsupported";
 }
 
 function coverageState(claimId) {
-  return claimById(claimId)?.display_assessment?.coverage_state || "not_assessed";
+  return claimById(claimId)?.coverage_record?.coverage_state || "not_assessed";
 }
 
-function coverageQuarters(claimId) {
-  return claimById(claimId)?.display_assessment
-    ?.coverage_display?.harvey_quarters ?? 0;
+function evidenceDepth(claimId) {
+  return claimById(claimId)?.evidence_depth || {
+    label: "no",
+    segments_filled: 0,
+    segments_total: 5
+  };
 }
 
 function terminalFor(questionId, claimId) {
@@ -213,7 +223,9 @@ function readableLabel(value) {
 }
 
 function renderEngineStamp() {
-  const generated = new Date(state.graph.generated_at);
+  const generated = new Date(
+    state.graph.compiled_at || state.graph.generated_at || state.manifest.as_of
+  );
   const timestamp = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/New_York",
     month: "short",
@@ -246,8 +258,8 @@ function renderClaimNode(canvas, questionId, claimId, gridPosition) {
   const terminal = terminalFor(questionId, claimId);
   const acceptance = acceptanceStatus(claim.id);
   const designation = designationFor(questionId, claim.id);
-  const coverage = coverageState(claim.id);
-  const quarters = coverageQuarters(claim.id);
+  const depth = evidenceDepth(claim.id);
+  const depthTurn = depth.segments_filled / depth.segments_total;
   const node = document.createElement("button");
   node.type = "button";
   node.className = `claim-node${terminal ? " claim-node--answer" : ""}`;
@@ -264,8 +276,8 @@ function renderClaimNode(canvas, questionId, claimId, gridPosition) {
         <span>${esc(readableLabel(acceptance))}</span>
       </span>
       <span class="assessment-row">
-        <i class="coverage-icon" style="--coverage-turn:${quarters / 4}turn"></i>
-        <span>${esc(readableLabel(coverage))} coverage</span>
+        <i class="coverage-icon" style="--coverage-turn:${depthTurn}turn"></i>
+        <span>${esc(readableLabel(depth.label))} evidence</span>
       </span>
     </span>`;
   node.addEventListener("click", () => openClaim(claim.id, questionId));
@@ -470,7 +482,7 @@ function metricPills(items) {
 }
 
 function sourceAssessmentFor(claim) {
-  const sourceIds = claim.display_assessment?.source_claim_assessment_ids || [];
+  const sourceIds = claim.source_research_claim_ids || [];
   return sourceIds.map(id => state.assessments[id]).find(Boolean);
 }
 
@@ -490,14 +502,18 @@ function openClaim(claimId, questionId) {
   const argument = argumentsFor(claimId)[0];
   const grounds = (argument?.ground_ids || []).map(groundById).filter(Boolean);
   const terminal = terminalFor(questionId, claimId);
+  const epistemic = claim.epistemic_assessment || {};
+  const depth = claim.evidence_depth || {};
   showDialog(`
     <article class="inspector">
       <div class="inspector__eyebrow">${esc(readableLabel(designationFor(questionId, claimId)))} claim</div>
       <h3>${esc(claim.proposition)}</h3>
       ${metricPills([
-        [readableLabel(acceptanceStatus(claimId)), "acceptance"],
-        [readableEvidentialState(evidenceState(claimId)), "evidential state"],
-        [readableLabel(coverageState(claimId)), "research coverage"]
+        [readableLabel(acceptanceStatus(claimId)), "direction"],
+        [Number(epistemic.valence || 0).toFixed(2), "signed valence"],
+        [`${depth.segments_filled || 0}/${depth.segments_total || 5}`, "evidence depth"],
+        [readableLabel(coverageState(claimId)), "research coverage"],
+        [readableLabel(epistemic.calibration_state || "uncalibrated"), "calibration"]
       ])}
       <section class="inspector__section">
         <h4>Why this follows</h4>
@@ -506,9 +522,10 @@ function openClaim(claimId, questionId) {
       <section class="inspector__section">
         <h4>Assessment</h4>
         <p>${esc(
+          epistemic.assessments?.[0]?.rationale ||
           sourceAssessment?.comparator?.rationale ||
           sourceAssessment?.verifier?.rationale ||
-          "This reconstructed claim has not yet received an independent assessment."
+          "No assessment rationale was recorded."
         )}</p>
       </section>
       ${grounds.length ? `
@@ -521,6 +538,7 @@ function openClaim(claimId, questionId) {
 
 function openArgument(argumentId, questionId, focusDefeaters = false) {
   const argument = argumentById(argumentId);
+  const formal = formalResultFor(argumentId);
   const conclusion = claimById(argument.conclusion_claim_id);
   const grounds = argument.ground_ids.map(groundById).filter(Boolean);
   const defeaters = defeatersFor(argument.id);
@@ -556,8 +574,8 @@ function openArgument(argumentId, questionId, focusDefeaters = false) {
       </section>
       <section class="inspector__section">
         <h4>Deterministic logic check</h4>
-        <p>${argument.formal_candidate?.suitable
-          ? "This relation was marked as suitable for solver validation."
+        <p>${formal
+          ? `Z3 result: ${esc(formal.result.z3.status)}. Independent truth-table agreement: ${formal.result.agreement ? "yes" : "no"}. Formalization fidelity: ${esc(formal.result.z3.formalization_fidelity)}.`
           : `Not checked by a formal solver: ${esc(argument.formal_candidate?.reason || "this is not a strict deductive inference.")}`}</p>
       </section>
     </article>`);

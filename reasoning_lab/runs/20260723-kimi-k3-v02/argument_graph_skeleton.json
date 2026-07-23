@@ -1,0 +1,178 @@
+{
+  "claims": [
+    {
+      "id": "C1",
+      "proposition": "On independently reproducible, matched evaluations, Kimi K3 demonstrates a measurable capability difference from Moonshot AI's preceding Kimi models on at least one decision-relevant task family.",
+      "polarity": "positive",
+      "modality": "tentative",
+      "conditions": [
+        "Prompts, tools, context lengths, inference budgets, and model access conditions are matched",
+        "The evaluation is independent or transparently documented",
+        "The comparison separates hosted/API behavior from any downloadable checkpoint"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Moonshot AI's preceding Kimi models, especially K2, K2.5, and K2.6",
+      "operationalization": "Compare effect sizes, confidence intervals, failure modes, and replication results across reasoning, coding, multimodal understanding, long-context retrieval, tool use, and agentic tasks.",
+      "claim_type": "comparative_capability",
+      "roles": [
+        "Q1 capability premise",
+        "comparative hinge"
+      ],
+      "question_ids": [
+        "Q1"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "Matched independent evaluations find no statistically or practically meaningful improvement over the preceding models",
+        "Reported improvements disappear under different prompts, inference budgets, languages, or task distributions",
+        "The apparent difference is explained by benchmark contamination, tool access, or evaluation artifacts"
+      ]
+    },
+    {
+      "id": "C2",
+      "proposition": "Kimi K3 is competitive with at least some leading hosted or open-weight alternatives on at least one high-value workflow, without implying general frontier superiority.",
+      "polarity": "positive",
+      "modality": "tentative",
+      "conditions": [
+        "The workflow has verifiable outputs and a defined success criterion",
+        "Competing systems receive comparable tools, context, budgets, and opportunities for correction",
+        "Results are replicated across more than one task distribution"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Open-weight frontier models and hosted frontier models from OpenAI, Anthropic, Google, and other providers",
+      "operationalization": "Measure success rate, task completion, quality, latency, failure severity, and human correction burden in coding, research, design, automation, and multimodal workflows.",
+      "claim_type": "comparative_workflow_capability",
+      "roles": [
+        "Q1 terminal",
+        "Q2 capability premise"
+      ],
+      "question_ids": [
+        "Q1",
+        "Q2"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "Independent workflow evaluations show K3 is not competitive with relevant alternatives on any high-value task",
+        "Apparent competitiveness depends on unmatched tools, cherry-picked tasks, or unverified demonstrations",
+        "K3's advantage disappears when human correction and failure costs are included"
+      ]
+    },
+    {
+      "id": "C3",
+      "proposition": "A reported large context capacity or context-oriented architecture does not, by itself, establish reliable long-context retrieval or reasoning.",
+      "polarity": "positive",
+      "modality": "defeasible",
+      "conditions": [
+        "Reliability is assessed separately from nominal context-window size",
+        "Tests include distractors, contradictions, varying context lengths, and multi-step reasoning",
+        "The evaluation distinguishes retrieval accuracy from fluent but unsupported answers"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Large-context and long-context frontier models",
+      "operationalization": "Evaluate retrieval precision and recall, reasoning consistency, degradation by context length, sensitivity to document position, contradiction handling, and citation or provenance accuracy.",
+      "claim_type": "methodological_capability",
+      "roles": [
+        "Q1 terminal",
+        "interpretive constraint"
+      ],
+      "question_ids": [
+        "Q1"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "Repeated controlled evaluations show that the reported context capacity reliably supports retrieval and reasoning across relevant context lengths",
+        "Independent tests find no meaningful gap between nominal context capacity and usable long-context performance"
+      ]
+    },
+    {
+      "id": "C4",
+      "proposition": "Kimi K3 creates a practical quality-adjusted cost or efficiency advantage for some workloads only if its task quality, latency, throughput, hardware requirements, and human-correction burden jointly outperform relevant alternatives.",
+      "polarity": "positive",
+      "modality": "conditional",
+      "conditions": [
+        "Hosted/API pricing and any self-hosted deployment economics are analyzed separately",
+        "Cache-hit and cache-miss workloads are distinguished where applicable",
+        "Hardware, energy, latency, fine-tuning, monitoring, and failure-recovery costs are included"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Hosted frontier models, open-weight frontier models, and large mixture-of-experts systems",
+      "operationalization": "Calculate quality per dollar, quality per watt, throughput, latency, total cost of ownership, and quality-adjusted human oversight cost for representative developer, enterprise, regulated, and research workloads.",
+      "claim_type": "economic_deployment",
+      "roles": [
+        "Q2 terminal",
+        "practical-significance hinge"
+      ],
+      "question_ids": [
+        "Q2"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "K3's apparent price advantage is erased by hardware, latency, context, support, monitoring, or correction costs",
+        "Comparable systems deliver equal or better quality-adjusted economics across the relevant workloads",
+        "The required deployment conditions are unavailable or impractical for intended users"
+      ]
+    },
+    {
+      "id": "C5",
+      "proposition": "The hosted/API Kimi K3 offering and any downloadable open-weight checkpoint constitute materially different accessibility, reproducibility, privacy, governance, and deployment objects.",
+      "polarity": "positive",
+      "modality": "conditional",
+      "conditions": [
+        "A downloadable checkpoint is actually made available; the reportedly scheduled July 27, 2026 release is not presumed to have occurred",
+        "License terms, weight completeness, technical documentation, and deployment requirements are verified",
+        "Hosted-service data handling, telemetry, jurisdiction, and access restrictions are assessed separately from checkpoint properties"
+      ],
+      "temporal_scope": "Hosted availability reported for July 16, 2026; checkpoint status assessed only through July 23, 2026",
+      "comparison_class": "Hosted frontier models and open-weight frontier models from Chinese and other developers",
+      "operationalization": "Compare actual weight availability, license permissions, reproducibility, fine-tuning and derivative rights, hardware requirements, data retention, telemetry, regional access, and vendor dependence.",
+      "claim_type": "access_governance",
+      "roles": [
+        "Q2 terminal",
+        "Q3 governance premise",
+        "hosted-versus-checkpoint hinge"
+      ],
+      "question_ids": [
+        "Q2",
+        "Q3"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "No material difference exists between hosted and checkpoint deployment conditions",
+        "The checkpoint is unavailable by the time of evaluation",
+        "Licensing, missing components, hardware demands, or service restrictions prevent the purported accessibility or reproducibility benefit"
+      ]
+    },
+    {
+      "id": "C6",
+      "proposition": "Kimi K3 is suitable for minimally supervised long-horizon workflows only if its hallucination, over-initiative, tool-use, privacy, and failure-recovery costs remain within the deploying institution's tolerance under tested controls.",
+      "polarity": "positive",
+      "modality": "conditional",
+      "conditions": [
+        "Reliability is measured on verifiable long-running coding, research, automation, or enterprise tasks",
+        "Hosted services and any downloadable weights are red-teamed separately",
+        "Human review gates, sandboxing, system prompts, and tool permissions are explicitly specified"
+      ],
+      "temporal_scope": "Evidence available through July 23, 2026",
+      "comparison_class": "Models evaluated in real-world coding, research, design, and automation workflows",
+      "operationalization": "Measure hallucination frequency and severity, unauthorized actions, recovery time, debugging cost, instruction adherence, refusal behavior, privacy exposure, telemetry, and oversight burden under realistic task horizons.",
+      "claim_type": "reliability_governance",
+      "roles": [
+        "Q3 terminal",
+        "deployment decision hinge"
+      ],
+      "question_ids": [
+        "Q3"
+      ],
+      "load_bearing": true,
+      "conceivable_falsifiers": [
+        "Independent long-horizon testing shows acceptable failure and oversight costs under specified controls",
+        "Observed proactiveness improves completion without materially increasing unauthorized or harmful actions",
+        "Reliability and governance performance remain unacceptable even with reasonable deployment controls"
+      ]
+    }
+  ],
+  "_provenance": {
+    "model": "openai/gpt-5.6-luna",
+    "response_id": "gen-1784788316-gXhLQ6Wnei9ypq83JtN7"
+  }
+}
