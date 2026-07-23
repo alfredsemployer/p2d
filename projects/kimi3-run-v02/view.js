@@ -4,7 +4,7 @@ const COLUMN_X = [20, 440, 860];
 const ROW_Y = [20, 205, 390, 575, 760];
 const LAYOUT = {
   Q1: {
-    width: 820,
+    width: 1240,
     height: 930,
     claims: {
       RC2: [0, 0],
@@ -13,7 +13,9 @@ const LAYOUT = {
       RC1: [1, 0],
       RC10: [1, 1],
       RC3: [1, 2],
-      RC6: [1, 3]
+      RC6: [1, 3],
+      RC15: [2, 1],
+      RC14: [2, 2]
     }
   },
   Q2: {
@@ -23,7 +25,8 @@ const LAYOUT = {
       RC7: [0, 0],
       RC8: [0, 1],
       RC9: [0, 2],
-      RC10: [1, 1]
+      RC10: [1, 1],
+      RC16: [1, 2]
     }
   },
   Q3: {
@@ -197,6 +200,13 @@ function verticalPath(x1, y1, x2, y2) {
   return `M ${x1} ${y1} V ${elbow} H ${x2} V ${y2}`;
 }
 
+function defeaterPath(backing, target) {
+  const flowsLeft = target.x < backing.x;
+  const x1 = flowsLeft ? backing.left - 7 : backing.right + 7;
+  const channel = flowsLeft ? backing.left - 30 : backing.right + 30;
+  return `M ${x1} ${backing.y} H ${channel} V ${target.y} H ${target.x}`;
+}
+
 function svgPath(svg, d, className, marker = "") {
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("d", d);
@@ -296,26 +306,21 @@ function drawLaneRoutes(lane) {
     if (!targetArgument || !visible.has(targetArgument.conclusion_claim_id)) return;
     const target = routeGeometry.get(defeater.target_id);
     if (!target) return;
-    const backingId = (defeater.premise_claim_ids || []).find(id => visible.has(id));
-    let d;
-
-    if (backingId) {
+    const backingIds = (defeater.premise_claim_ids || [])
+      .filter(id => visible.has(id));
+    backingIds.forEach(backingId => {
       const backingNode = lane.querySelector(`[data-claim="${backingId}"]`);
       const backing = center(backingNode.getBoundingClientRect(), canvasRect);
-      const x1 = target.x < backing.x ? backing.left - 7 : backing.right + 7;
-      d = orthogonalPath(x1, backing.y, target.x, target.y);
-    } else {
-      d = orthogonalPath(target.x + 42, target.y, target.x, target.y);
-    }
-
-    clickableRoute(
-      svg,
-      d,
-      "defeater-path",
-      `url(#attack-${questionId})`,
-      `Open challenge: ${defeater.content}`,
-      () => openArgument(defeater.target_id, questionId, true)
-    );
+      const d = defeaterPath(backing, target);
+      clickableRoute(
+        svg,
+        d,
+        "defeater-path",
+        `url(#attack-${questionId})`,
+        `Open challenge: ${defeater.content}`,
+        () => openArgument(defeater.target_id, questionId, true)
+      );
+    });
   });
 }
 
