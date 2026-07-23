@@ -4,69 +4,62 @@
 <style>
 @property --fill{syntax:'<percentage>';inherits:false;initial-value:0%}
 :root{--ink:#f6f6f2;--mut:rgba(246,246,242,.5);--faint:rgba(246,246,242,.24);--ghost:#6e6e68;
- --yel:#ffd60a;--yelg:rgba(255,214,10,.55);--sb:392px}
+ --yel:#ffd60a;--sb:392px}
 *{margin:0;box-sizing:border-box}
 html,body{height:100%;background:#070706;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:0;background:radial-gradient(820px 560px at 60% 46%,rgba(255,214,10,.045),transparent 62%),#070706}
-body::after{content:"";position:fixed;inset:0;z-index:0;opacity:.36;background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:32px 32px;-webkit-mask-image:radial-gradient(74% 74% at 46% 46%,#000,transparent 78%);mask-image:radial-gradient(74% 74% at 46% 46%,#000,transparent 78%)}
-/* header + animated title */
-.hdr{position:fixed;top:0;left:0;right:var(--sb);z-index:7;padding:20px 28px 12px;background:linear-gradient(#070706,#070706bb,transparent)}
+body::before{content:"";position:fixed;inset:0;z-index:0;background:radial-gradient(820px 560px at 60% 46%,rgba(255,214,10,.04),transparent 62%),#070706}
+body::after{content:"";position:fixed;inset:0;z-index:0;opacity:.34;background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:32px 32px;-webkit-mask-image:radial-gradient(74% 74% at 46% 46%,#000,transparent 78%);mask-image:radial-gradient(74% 74% at 46% 46%,#000,transparent 78%)}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:7;padding:19px 28px 0}
 .hdr .ask{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);font-weight:600;margin-bottom:6px}
-.qwrap{display:inline-block;position:relative}
-.q{font-size:23px;font-weight:640;letter-spacing:-.02em;white-space:nowrap;
+.q{display:inline-block;font-size:23px;font-weight:640;letter-spacing:-.02em;white-space:nowrap;
  background:linear-gradient(90deg,#fff calc(var(--fill) - 7%),var(--ghost) calc(var(--fill) + 7%));
- -webkit-background-clip:text;background-clip:text;color:transparent;
- animation:fill 2.7s cubic-bezier(.45,0,.2,1) .25s forwards}
+ -webkit-background-clip:text;background-clip:text;color:transparent;animation:fill 2.7s cubic-bezier(.45,0,.2,1) .25s forwards}
 @keyframes fill{from{--fill:-4%}to{--fill:116%}}
-.ul{position:relative;height:2px;width:100%;margin-top:10px;background:rgba(255,255,255,.09);border-radius:2px;overflow:visible}
-.ul::after{content:"";position:absolute;top:-1px;height:4px;width:96px;left:-96px;border-radius:4px;
- background:linear-gradient(90deg,transparent,#fff 45%,#fff 55%,transparent);box-shadow:0 0 14px 2px rgba(255,255,255,.55),0 0 26px 6px var(--yelg);
- animation:sweep 2.7s cubic-bezier(.45,0,.2,1) .25s forwards}
-@keyframes sweep{from{left:-96px}to{left:100%}}
-.toggle{position:fixed;top:22px;right:calc(var(--sb) + 20px);z-index:8;display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--mut);cursor:pointer;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:999px;padding:6px 12px;transition:.3s;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+/* full-screen white underline */
+.ul{position:fixed;left:0;right:0;top:74px;height:1.5px;background:rgba(255,255,255,.08);z-index:10;overflow:hidden}
+.ul::after{content:"";position:absolute;top:0;height:1.5px;width:130px;left:-130px;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 11px 1px rgba(255,255,255,.6);animation:sweep 2.7s cubic-bezier(.45,0,.2,1) .25s forwards}
+@keyframes sweep{from{left:-130px}to{left:100%}}
+.toggle{position:fixed;top:22px;right:calc(var(--sb) + 20px);z-index:8;display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--mut);cursor:pointer;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);padding:6px 12px;transition:.3s;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .toggle.on{color:var(--yel);border-color:rgba(255,214,10,.45);box-shadow:0 0 22px -7px var(--yel)}
 .toggle .sw{width:24px;height:14px;border-radius:999px;background:rgba(255,255,255,.14);position:relative;transition:.3s}
 .toggle.on .sw{background:var(--yel)}.toggle .sw::after{content:"";position:absolute;top:2px;left:2px;width:10px;height:10px;border-radius:50%;background:#fff;transition:.3s}.toggle.on .sw::after{left:12px}
-/* stage */
 .graph{position:fixed;left:0;top:0;bottom:0;right:var(--sb);z-index:2}
 .stage{position:absolute;top:0;left:0;width:1150px;height:620px;transform-origin:0 0;transition:transform .5s cubic-bezier(.4,.1,.2,1)}
 svg.edges{position:absolute;inset:0;width:1150px;height:620px;overflow:visible}
 svg.edges path{transition:opacity .45s,stroke .45s,stroke-width .45s}
-.node{position:absolute;border-radius:16px;padding:12px 15px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);-webkit-backdrop-filter:blur(12px) saturate(1.15);backdrop-filter:blur(12px) saturate(1.15);box-shadow:0 16px 44px -22px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.07);transition:opacity .45s,filter .45s,transform .45s,box-shadow .45s,border-color .45s;cursor:pointer;z-index:3}
+.node{position:absolute;padding:12px 15px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);-webkit-backdrop-filter:blur(12px) saturate(1.15);backdrop-filter:blur(12px) saturate(1.15);box-shadow:0 16px 44px -22px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.06);transition:opacity .45s,filter .45s,transform .45s,box-shadow .45s,border-color .45s;cursor:pointer;z-index:3}
 .node .kind{display:flex;align-items:center;gap:6px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:var(--mut);margin-bottom:7px}
 .node .kind .vd{color:var(--faint)}
-.node .title{font-size:14.5px;font-weight:530;letter-spacing:-.005em;line-height:1.28}
-.node.evidence{width:212px;min-height:54px;padding:10px 13px;border-radius:13px;background:rgba(255,255,255,.028)}
-.node.evidence .src{font-size:9px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--faint);margin-bottom:5px}
-.node.evidence .quote{font-size:12px;line-height:1.35;color:rgba(246,246,242,.8)}
-.node.pillar{width:290px;min-height:94px}
-.node.answer{width:410px;min-height:196px;padding:19px 22px;border-color:rgba(255,214,10,.24);box-shadow:0 22px 68px -20px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.1),0 0 72px -24px var(--yel)}
-.node.answer .title{font-size:21px;font-weight:600;line-height:1.22;margin:3px 0 2px}
+.node .title{font-size:14px;font-weight:530;letter-spacing:-.003em;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.node.evidence{width:214px;height:88px;padding:11px 13px}
+.node.evidence .title{font-size:13px}
+.node.pillar{width:290px;height:96px}
+.node.answer{width:410px;height:190px;padding:19px 22px;border-color:rgba(255,214,10,.24);box-shadow:0 22px 68px -20px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.09),0 0 72px -24px var(--yel)}
+.node.answer .title{font-size:21px;font-weight:600;line-height:1.22;margin:2px 0 2px;-webkit-line-clamp:3}
 .node.answer .verdict{font-size:11px;color:var(--mut);margin-top:8px}
 .node .cb{margin-top:10px}
-.lb{display:inline-flex;align-items:center;gap:4px;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--yel);background:rgba(255,214,10,.11);border:1px solid rgba(255,214,10,.3);border-radius:999px;padding:2px 7px;margin-top:8px}
+.lb{display:inline-flex;align-items:center;gap:4px;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--yel);background:rgba(255,214,10,.11);border:1px solid rgba(255,214,10,.3);padding:2px 7px;margin-top:8px}
 .node.lbn{border-color:rgba(255,214,10,.28)}
-.node.lbn::before{content:"";position:absolute;inset:-1px;border-radius:16px;border:1px solid rgba(255,214,10,.3);animation:ring 3.6s ease-in-out infinite;pointer-events:none}
+.node.lbn::before{content:"";position:absolute;inset:-1px;border:1px solid rgba(255,214,10,.3);animation:ring 3.6s ease-in-out infinite;pointer-events:none}
 @keyframes ring{0%,100%{opacity:.18}50%{opacity:.55}}
-.stage.mode .node.dim{opacity:.16;filter:blur(1.4px)}
-.stage.mode .node.sel{border-color:var(--yel);box-shadow:0 20px 56px -20px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.1),0 0 0 1.5px var(--yel),0 0 48px -14px var(--yel)}
-/* the one confidence bar */
-.seg{display:flex;gap:4px;align-items:center}.seg i{width:14px;height:7px;border-radius:2px;background:rgba(255,255,255,.11);transition:.3s}.seg .l{font-size:9px;color:var(--faint);margin-left:6px;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
-/* sidebar */
+.stage.mode .node.dim{opacity:.15;filter:blur(1.4px)}
+.stage.mode .node.sel{border-color:var(--yel);box-shadow:0 20px 56px -20px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.09),0 0 0 1.5px var(--yel),0 0 48px -14px var(--yel)}
+.seg{display:flex;gap:4px;align-items:center}.seg i{width:14px;height:7px;background:rgba(255,255,255,.11);transition:.3s}.seg .l{font-size:9px;color:var(--faint);margin-left:6px;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
 .side{position:fixed;top:0;right:0;bottom:0;width:var(--sb);z-index:9;padding:22px 22px 26px;overflow:auto;background:linear-gradient(180deg,rgba(17,17,15,.72),rgba(9,9,8,.88));border-left:1px solid rgba(255,255,255,.08);-webkit-backdrop-filter:blur(24px) saturate(1.2);backdrop-filter:blur(24px) saturate(1.2)}
 .side .sk{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--mut);margin-bottom:8px}
-.side h2{font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.24}
+.side h2{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.26}
 .side .row{margin-top:17px}.side .rl{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:600;margin-bottom:8px}
 .side .why{font-size:13.5px;line-height:1.5;color:rgba(246,246,242,.85)}
-.ev{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:11px 13px;margin-bottom:8px;transition:.3s;cursor:pointer}
+.ev{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);padding:11px 13px;margin-bottom:8px;transition:.3s;cursor:pointer}
 .ev:hover{border-color:rgba(255,214,10,.35);background:rgba(255,255,255,.05)}
 .ev .q{font-size:12.5px;line-height:1.46;color:rgba(246,246,242,.9)}
 .ev .s{display:flex;align-items:center;justify-content:space-between;margin-top:8px;font-size:10.5px;color:var(--mut)}.ev .s a{color:var(--yel);text-decoration:none;opacity:.85}
-.flip{font-size:12.5px;color:var(--yel);line-height:1.46;background:rgba(255,214,10,.055);border:1px solid rgba(255,214,10,.18);border-radius:11px;padding:10px 12px}
+.flip{font-size:12.5px;color:var(--yel);line-height:1.46;background:rgba(255,214,10,.055);border:1px solid rgba(255,214,10,.18);padding:10px 12px}
 .hint{position:fixed;bottom:16px;left:26px;z-index:6;font-size:11px;color:var(--faint)}
-@media(max-width:820px){:root{--sb:0px}.side{top:auto;bottom:0;width:100%;height:44%;border-left:0;border-top:1px solid rgba(255,255,255,.08)}.graph{bottom:44%}.toggle{right:16px}.hdr{right:0}.q{font-size:19px}}
+@media(max-width:820px){:root{--sb:0px}.side{top:auto;bottom:0;width:100%;height:44%;border-left:0;border-top:1px solid rgba(255,255,255,.08)}.graph{bottom:44%}.toggle{right:16px}.q{font-size:18px}}
 </style></head><body>
-<div class="hdr"><div class="ask">You asked</div><div class="qwrap"><div class="q">What is the significance of Kimi 3?</div><div class="ul"></div></div></div>
+<div class="hdr"><div class="ask">You asked</div><div class="q">What is the significance of Kimi 3?</div></div>
+<div class="ul"></div>
 <div class="toggle" id="tg" onclick="toggleSpot(event)"><span class="sw"></span> load-bearing</div>
 <div class="graph" id="graph"><div class="stage" id="stage">
  <svg class="edges" viewBox="0 0 1150 620"><defs>
@@ -79,54 +72,55 @@ svg.edges path{transition:opacity .45s,stroke .45s,stroke-width .45s}
 <div class="hint">click any box → its evidence & the answer light up · click empty space to reset</div>
 <script>
 const Y='#ffd60a';
-const EV={
- e_aa:{src:'Artificial Analysis',q:'K3 scores 57 on the Intelligence Index — #3 overall, comparable to Opus 4.8 and GPT-5.5.',u:'artificialanalysis.ai'},
- e_ar:{src:'Arena',q:'Independent blind community voting places K3 on the WebDev arena leaderboard.',u:'arena.ai'},
- e_th:{src:'Tom’s Hardware',q:'Every published K3 number is Moonshot-reported or drawn from its own API.',u:'tomshardware.com'},
- e_ki:{src:'Kili Technology',q:'Agent-harness choice alone swings scores dramatically — a 17-point gap.',u:'kili-technology.com'},
- e_or:{src:'OpenRouter',q:'Listed at $3 / $15 per million tokens — materially below comparable US models.',u:'openrouter.ai'},
- e_wa:{src:'Release notes',q:'Open weights promised on Hugging Face “by July 27”; license terms still TBD.',u:''},
- e_no:{src:'—',q:'No independent analysis separates architecture efficiency from raw scale. Too early.',u:''},
-};
 const N=[
- {id:'e_aa',cls:'evidence',x:16,y:26},{id:'e_ar',cls:'evidence',x:16,y:92},
- {id:'e_th',cls:'evidence',x:16,y:152},{id:'e_ki',cls:'evidence',x:16,y:218},
- {id:'e_or',cls:'evidence',x:16,y:300},{id:'e_wa',cls:'evidence',x:16,y:402},{id:'e_no',cls:'evidence',x:16,y:520},
- {id:'P1',cls:'pillar',x:300,y:36,kind:'Proposition',vd:'supported',conf:4,lb:true,title:'Independently ranked ~#3, Opus-4.8 level',
-   why:'What makes “credible / near-frontier” true at all — the load-bearing support for the positive half of the answer.',
-   flip:'An independent, same-harness evaluation placing K3 well below the top tier.'},
- {id:'P2',cls:'pillar',x:300,y:164,kind:'Proposition',vd:'supported',conf:4,lb:true,title:'Headline wins aren’t independently reproduced',
-   why:'What caps the answer below “proven breakthrough.” Without it the marketing numbers would carry the verdict.',
-   flip:'Moonshot’s technical report plus third-party reproductions matching the headline numbers.'},
- {id:'P3',cls:'pillar',x:300,y:282,kind:'Proposition',vd:'supported',conf:3,title:'Materially cheaper & independently runnable',
-   why:'Supports the “cheap / accessible” half — solid, though real cost-of-ownership isn’t fully pinned down.',
-   flip:'Deployment costs or license limits eating the sticker-price advantage.'},
- {id:'P4',cls:'pillar',x:300,y:388,kind:'Proposition',vd:'caveat',conf:2,title:'Not yet fully open (weights ~July 27)',
-   why:'A caveat on the “open” framing — currently a promise, not a fact, so it can’t yet count toward the answer.',
-   flip:'Weights plus a permissive license actually shipping on July 27.'},
- {id:'P5',cls:'pillar',x:300,y:498,kind:'Proposition',vd:'too early',conf:1,title:'An efficiency breakthrough?',
-   why:'Speculative — not load-bearing. It could strengthen the answer, but there’s no evidence either way yet.',
-   flip:'A published analysis isolating architecture/training efficiency from raw scale.'},
- {id:'ANS',cls:'answer',x:720,y:246,kind:'The answer',vd:'calibrated',conf:3,
-   verdict:'Calibrated across 11 sub-questions · contested where evidence is thin',
-   title:'A credible, cheap, near-frontier model — not a proven breakthrough.',
-   why:'Built from the claims to its left. It leans hardest on two: that K3 is independently near-frontier, and that its headline wins aren’t independently reproduced.',
-   topev:['e_aa','e_th','e_ki']},
+ {id:'e1',cls:'evidence',x:16,y:12,kind:'Evidence',conf:5,title:'Independently scored #3 on the AA Intelligence Index',
+  src:'Artificial Analysis',quote:'K3 scores 57 on the Intelligence Index — #3 overall, comparable to Opus 4.8 and GPT-5.5.',u:'artificialanalysis.ai'},
+ {id:'e2',cls:'evidence',x:16,y:106,kind:'Evidence',conf:4,title:'Placed on Arena’s blind community leaderboard',
+  src:'Arena',quote:'Independent blind community voting places K3 on the WebDev arena leaderboard.',u:'arena.ai'},
+ {id:'e3',cls:'evidence',x:16,y:160,kind:'Evidence',conf:4,title:'All published K3 numbers are Moonshot-reported',
+  src:'Tom’s Hardware',quote:'Every published K3 number is Moonshot-reported or drawn from its own API.',u:'tomshardware.com'},
+ {id:'e4',cls:'evidence',x:16,y:254,kind:'Evidence',conf:4,title:'Benchmark scores swing ~17 points by harness choice',
+  src:'Kili Technology',quote:'Agent-harness choice alone swings scores dramatically — a 17-point gap.',u:'kili-technology.com'},
+ {id:'e5',cls:'evidence',x:16,y:312,kind:'Evidence',conf:5,title:'Priced at $3 / $15 per million tokens',
+  src:'OpenRouter',quote:'Listed at $3 / $15 per million tokens — materially below comparable US models.',u:'openrouter.ai'},
+ {id:'e6',cls:'evidence',x:16,y:410,kind:'Evidence',conf:4,title:'Open weights only promised for ~July 27; license TBD',
+  src:'Release notes',quote:'Open weights promised on Hugging Face “by July 27”; license terms still TBD.',u:''},
+ {id:'e7',cls:'evidence',x:16,y:520,kind:'Evidence',conf:2,title:'No analysis isolating efficiency from raw scale',
+  src:'—',quote:'No independent analysis separates architecture efficiency from raw scale. Too early.',u:''},
+ {id:'P1',cls:'pillar',x:300,y:35,kind:'Proposition',vd:'supported',conf:4,lb:true,title:'Independently ranked ~#3, Opus-4.8 level',
+  why:'What makes “credible / near-frontier” true at all — the load-bearing support for the positive half of the answer.',
+  flip:'An independent, same-harness evaluation placing K3 well below the top tier.'},
+ {id:'P2',cls:'pillar',x:300,y:159,kind:'Proposition',vd:'supported',conf:4,lb:true,title:'Headline wins aren’t independently reproduced',
+  why:'What caps the answer below “proven breakthrough.” Without it the marketing numbers would carry the verdict.',
+  flip:'Moonshot’s technical report plus third-party reproductions matching the headline numbers.'},
+ {id:'P3',cls:'pillar',x:300,y:299,kind:'Proposition',vd:'supported',conf:3,title:'Materially cheaper & independently runnable',
+  why:'Supports the “cheap / accessible” half — solid, though real cost-of-ownership isn’t fully pinned down.',
+  flip:'Deployment costs or license limits eating the sticker-price advantage.'},
+ {id:'P4',cls:'pillar',x:300,y:399,kind:'Proposition',vd:'caveat',conf:2,title:'Not yet fully open (weights ~July 27)',
+  why:'A caveat on the “open” framing — currently a promise, not a fact, so it can’t yet count toward the answer.',
+  flip:'Weights plus a permissive license actually shipping on July 27.'},
+ {id:'P5',cls:'pillar',x:300,y:505,kind:'Proposition',vd:'too early',conf:1,title:'An efficiency breakthrough?',
+  why:'Speculative — not load-bearing. It could strengthen the answer, but there’s no evidence either way yet.',
+  flip:'A published analysis isolating architecture/training efficiency from raw scale.'},
+ {id:'ANS',cls:'answer',x:720,y:250,kind:'The answer',vd:'calibrated',conf:3,
+  verdict:'Calibrated across 11 sub-questions · contested where evidence is thin',
+  title:'A credible, cheap, near-frontier model — not a proven breakthrough.',
+  why:'Built from the claims to its left. It leans hardest on two: that K3 is independently near-frontier, and that its headline wins aren’t independently reproduced.',
+  topev:['e1','e3','e4']},
 ];
-const EDGES=[['e_aa','P1'],['e_ar','P1'],['e_th','P2'],['e_ki','P2'],['e_or','P3'],['e_wa','P4'],['e_no','P5'],
+const EDGES=[['e1','P1'],['e2','P1'],['e3','P2'],['e4','P2'],['e5','P3'],['e6','P4'],['e7','P5'],
  ['P1','ANS'],['P2','ANS'],['P3','ANS'],['P4','ANS'],['P5','ANS']];
 const byId={};N.forEach(n=>byId[n.id]=n);
 const nb={};N.forEach(n=>nb[n.id]=new Set());EDGES.forEach(([a,b])=>{nb[a].add(b);nb[b].add(a)});
 function seg(conf,label){let s='<div class="seg">';for(let i=0;i<5;i++)s+=`<i style="background:${i<conf?Y:'rgba(255,255,255,.11)'}"></i>`;return s+(label?`<span class="l">${conf}/5</span>`:'')+'</div>'}
 const nc=document.getElementById('nodes');
 N.forEach(n=>{const d=document.createElement('div');d.className='node '+n.cls+(n.lb?' lbn':'');d.style.left=n.x+'px';d.style.top=n.y+'px';d.dataset.id=n.id;
- if(n.cls=='evidence'){const e=EV[n.id];d.innerHTML=`<div class="src">${e.src}</div><div class="quote">${e.q}</div>`}
- else{let h=`<div class="kind">${n.kind}<span class="vd">· ${n.vd}</span></div><div class="title">${n.title}</div><div class="cb">${seg(n.conf,n.cls=='answer')}</div>`;
-   if(n.cls=='answer')h+=`<div class="verdict">${n.verdict}</div>`;else if(n.lb)h+=`<div class="lb">◆ load-bearing</div>`;d.innerHTML=h}
- d.onclick=e=>{e.stopPropagation();select(n.id)};nc.appendChild(d)});
+ let h=`<div class="kind">${n.kind}${n.vd?`<span class="vd">· ${n.vd}</span>`:''}</div><div class="title">${n.title}</div><div class="cb">${seg(n.conf,n.cls=='answer')}</div>`;
+ if(n.cls=='answer')h+=`<div class="verdict">${n.verdict}</div>`;else if(n.lb)h+=`<div class="lb">◆ load-bearing</div>`;
+ d.innerHTML=h;d.onclick=e=>{e.stopPropagation();select(n.id)};nc.appendChild(d)});
 const eg=document.getElementById('edges');
-function cx(n){return n.x+(n.cls=='evidence'?212:n.cls=='pillar'?290:410)}
-function cyL(n){return n.y+(n.cls=='evidence'?27:n.cls=='answer'?98:47)}
+function cx(n){return n.x+(n.cls=='evidence'?214:n.cls=='pillar'?290:410)}
+function cyL(n){return n.y+(n.cls=='evidence'?44:n.cls=='answer'?95:48)}
 EDGES.forEach(([a,b])=>{const s=byId[a],t=byId[b],x1=cx(s),y1=cyL(s),x2=t.x,y2=cyL(t),lb=s.lb;
  const p=document.createElementNS('http://www.w3.org/2000/svg','path');const mid=(x1+x2)/2;
  p.setAttribute('d',`M${x1},${y1} C${mid},${y1} ${mid},${y2} ${x2},${y2}`);
@@ -135,7 +129,7 @@ EDGES.forEach(([a,b])=>{const s=byId[a],t=byId[b],x1=cx(s),y1=cyL(s),x2=t.x,y2=c
  const am=document.createElementNS('http://www.w3.org/2000/svg','animateMotion');am.setAttribute('dur',(2.4+Math.random()*1.3).toFixed(1)+'s');am.setAttribute('repeatCount','indefinite');
  const mp=document.createElementNS('http://www.w3.org/2000/svg','mpath');mp.setAttributeNS('http://www.w3.org/1999/xlink','href','#e-'+a+'-'+b);mp.setAttribute('href','#e-'+a+'-'+b);am.appendChild(mp);c.appendChild(am);eg.appendChild(c)});
 const stage=document.getElementById('stage'),graph=document.getElementById('graph'),W=1150,H=620;
-function fit(){const r=graph.getBoundingClientRect();const s=Math.min(r.width/W,r.height/H)*.94;stage.style.transform=`translate(${(r.width-W*s)/2}px,${(r.height-H*s)/2+16}px) scale(${s})`}
+function fit(){const r=graph.getBoundingClientRect();const availH=r.height-84;const s=Math.min(r.width/W,availH/H)*.97;stage.style.transform=`translate(${(r.width-W*s)/2}px,${84+(availH-H*s)/2}px) scale(${s})`}
 fit();addEventListener('resize',fit);
 let sel=null,spot=false;
 function paint(){
@@ -147,16 +141,17 @@ function paint(){
   document.querySelectorAll('.node').forEach(e=>{if(e.dataset.id==sel)e.classList.add('sel');else if(!keep.has(e.dataset.id))e.classList.add('dim')});
   document.querySelectorAll('#edges path').forEach(p=>{const on=p.dataset.a==sel||p.dataset.b==sel;p.style.stroke=on?Y:'rgba(255,255,255,.24)';p.style.strokeWidth=on?2.2:1;p.style.opacity=on?1:.07});
   document.querySelectorAll('#edges circle').forEach(c=>{const on=c.dataset.a==sel||c.dataset.b==sel;c.style.opacity=on?1:.05;c.setAttribute('fill',on?Y:'rgba(255,255,255,.6)')});}
- if(spot){document.querySelectorAll('.node').forEach(e=>{const n=byId[e.dataset.id];if(n.cls=='pillar'&&!n.lb&&e.dataset.id!=sel)e.classList.add('dim');if(n.cls=='evidence'&&e.dataset.id!=sel){const feedsLb=[...nb[n.id]].some(x=>byId[x].lb);if(!feedsLb)e.classList.add('dim')}});
-  document.querySelectorAll('#edges path').forEach(p=>{if(!byId[p.dataset.a].lb&&byId[p.dataset.b]&&!byId[p.dataset.b].lb&&p.dataset.a!=sel)p.style.opacity=.05})}
+ if(spot){document.querySelectorAll('.node').forEach(e=>{const n=byId[e.dataset.id];if(n.cls=='pillar'&&!n.lb&&e.dataset.id!=sel)e.classList.add('dim');if(n.cls=='evidence'&&e.dataset.id!=sel){if(![...nb[n.id]].some(x=>byId[x].lb))e.classList.add('dim')}});
+  document.querySelectorAll('#edges path').forEach(p=>{const t=byId[p.dataset.b];if(!byId[p.dataset.a].lb&&!(t&&t.lb)&&p.dataset.a!=sel)p.style.opacity=.05})}
 }
-function evCard(id){const e=EV[id];return `<div class="ev" onclick="select('${id}')"><div class="q">“${e.q}”</div><div class="s"><span>${e.src}</span>${e.u?`<a href="https://${e.u}" target="_blank" onclick="event.stopPropagation()">${e.u} ↗</a>`:''}</div></div>`}
 function sidebar(id){const s=document.getElementById('side');const n=id?byId[id]:byId['ANS'];
- if(n.cls=='evidence'){const e=EV[id];const feeds=[...nb[id]].map(x=>byId[x].title).join(', ');
-   s.innerHTML=`<div class="sk">Evidence</div><h2 style="font-size:17px">${e.src}</h2><div class="row"><div class="rl">what it says</div><div class="why">“${e.q}”</div></div>${e.u?`<div class="row"><div class="rl">source</div><div class="ev"><div class="s"><span>${e.src}</span><a href="https://${e.u}" target="_blank">${e.u} ↗</a></div></div></div>`:''}<div class="row"><div class="rl">supports</div><div class="why">${feeds}</div></div>`;return}
- let evids;
- if(!id||id=='ANS')evids=n.topev||[];else evids=[...nb[id]].filter(x=>byId[x].cls=='evidence');
- const ev=evids.map(evCard).join('')||'<div class="why" style="color:var(--faint)">no evidence yet — too early to tell.</div>';
+ if(n.cls=='evidence'){const feeds=[...nb[id]].map(x=>byId[x].title).join('; ');
+   s.innerHTML=`<div class="sk">Evidence</div><h2>${n.title}</h2>
+    <div class="row"><div class="rl">confidence</div>${seg(n.conf,true)}</div>
+    <div class="row"><div class="rl">source</div><div class="ev"><div class="q">“${n.quote}”</div><div class="s"><span>${n.src}</span>${n.u?`<a href="https://${n.u}" target="_blank">${n.u} ↗</a>`:''}</div></div></div>
+    <div class="row"><div class="rl">supports</div><div class="why">${feeds}</div></div>`;return}
+ let evids=(!id||id=='ANS')?(n.topev||[]):[...nb[id]].filter(x=>byId[x].cls=='evidence');
+ const ev=evids.map(e=>{const x=byId[e];return `<div class="ev" onclick="select('${e}')"><div class="q">“${x.quote}”</div><div class="s"><span>${x.src}</span>${x.u?`<a href="https://${x.u}" target="_blank" onclick="event.stopPropagation()">${x.u} ↗</a>`:''}</div></div>`}).join('')||'<div class="why" style="color:var(--faint)">no evidence yet — too early to tell.</div>';
  s.innerHTML=`<div class="sk">${id?n.kind:'Top evidence'}${n.lb?' · ◆ load-bearing':''}</div><h2>${n.title}</h2>
   <div class="row"><div class="rl">confidence</div>${seg(n.conf,true)}</div>
   ${n.why?`<div class="row"><div class="rl">${id&&id!='ANS'?'why it matters':'how it’s built'}</div><div class="why">${n.why}</div></div>`:''}
