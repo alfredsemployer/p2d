@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Kimi K3 — reasoning artifact</title>
+  <link rel="stylesheet" href="view.css">
+</head>
+<body>
+  <header class="mast">
+    <div class="mast__eyebrow">p2d / actual pipeline run / 23 July 2026</div>
+    <h1>What is the significance of Kimi K3?</h1>
+    <p class="mast__deck">A visual projection of the completed claim-and-argument artifact—not a mockup.</p>
+    <div class="mast__metrics" id="metrics" aria-label="Run summary"></div>
+  </header>
+
+  <main>
+    <section class="answer" aria-labelledby="answer-title">
+      <div class="section-kicker">Audited output</div>
+      <h2 id="answer-title">What the run concluded</h2>
+      <p class="answer__synthesis" id="synthesis">Loading the answer bundle…</p>
+      <div class="answer__audit" id="audit"></div>
+      <div class="verdict-grid" id="verdicts"></div>
+    </section>
+
+    <section class="map" aria-labelledby="map-title">
+      <div class="map__heading">
+        <div>
+          <div class="section-kicker">Argument map</div>
+          <h2 id="map-title">Claims are nodes. Reasoning is in the connections.</h2>
+        </div>
+        <div class="legend" aria-label="Graph legend">
+          <span><i class="legend__node legend__node--supported"></i> supported</span>
+          <span><i class="legend__node legend__node--insufficient"></i> insufficient</span>
+          <span><i class="legend__line"></i> argument</span>
+          <span><i class="legend__defeater"></i> defeater</span>
+        </div>
+      </div>
+
+      <div class="truth-note" id="truth-note">
+        <strong>Structural limitation exposed by the view</strong>
+        <span>The run contains ground-to-claim arguments, but no claim-to-claim dependencies. The visualization does not invent the missing logical links.</span>
+      </div>
+
+      <div class="map__guide" aria-hidden="true">
+        <span>grounded inferential routes</span>
+        <span>intermediate / hinge claims</span>
+        <span>terminal claims</span>
+      </div>
+      <div id="lanes"></div>
+    </section>
+
+    <section class="deferred" aria-labelledby="deferred-title">
+      <div class="section-kicker">Inquiry frontier</div>
+      <h2 id="deferred-title">A valuable question the run did not pretend to answer</h2>
+      <div id="deferred"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Source: <code>reasoning_lab/runs/20260723-kimi-k3-v02</code></span>
+    <span>OpenRouter cost: $0.912689538 / $3.00</span>
+  </footer>
+
+  <dialog id="inspector">
+    <button class="dialog__close" id="dialog-close" aria-label="Close">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <template id="verdict-template">
+    <article class="verdict">
+      <div class="verdict__top">
+        <span class="verdict__id"></span>
+        <span class="status-pill"></span>
+      </div>
+      <p class="verdict__line"></p>
+      <button class="verdict__more" type="button">show support and challenge</button>
+      <div class="verdict__detail">
+        <div><b>Strongest support</b><p class="verdict__support"></p></div>
+        <div><b>Strongest challenge</b><p class="verdict__challenge"></p></div>
+      </div>
+    </article>
+  </template>
+
+  <script src="view.js"></script>
+</body>
+</html>
