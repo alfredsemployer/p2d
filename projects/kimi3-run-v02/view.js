@@ -1,47 +1,10 @@
 const state = {};
 
-const COLUMN_X = [20, 440, 860];
-const ROW_Y = [20, 205, 390, 575, 760];
-const LAYOUT = {
-  Q1: {
-    width: 1240,
-    height: 930,
-    claims: {
-      RC2: [0, 0],
-      RC4: [0, 2],
-      RC5: [0, 4],
-      RC1: [1, 0],
-      RC10: [1, 1],
-      RC3: [1, 2],
-      RC6: [1, 3],
-      RC15: [2, 1],
-      RC14: [2, 2]
-    }
-  },
-  Q2: {
-    width: 820,
-    height: 565,
-    claims: {
-      RC7: [0, 0],
-      RC8: [0, 1],
-      RC9: [0, 2],
-      RC10: [1, 1],
-      RC16: [1, 2]
-    }
-  },
-  Q3: {
-    width: 1240,
-    height: 750,
-    claims: {
-      RC13: [0, 1],
-      RC2: [1, 0],
-      RC12: [1, 2],
-      RC1: [2, 0],
-      RC10: [2, 1],
-      RC11: [2, 3]
-    }
-  }
-};
+const CARD_WIDTH = 360;
+const CARD_HEIGHT = 176;
+const COLUMN_STEP = 420;
+const ROW_STEP = 205;
+const LAYOUT = {};
 
 const esc = value => String(value ?? "")
   .replaceAll("&", "&amp;")
@@ -65,8 +28,17 @@ function evidenceState(claimId) {
   return claimById(claimId)?.display_assessment?.evidential_state || "unassessed";
 }
 
+function acceptanceStatus(claimId) {
+  return claimById(claimId)?.display_assessment?.acceptance_status || "not_supported";
+}
+
 function coverageState(claimId) {
-  return claimById(claimId)?.display_assessment?.coverage_state || "not assessed";
+  return claimById(claimId)?.display_assessment?.coverage_state || "not_assessed";
+}
+
+function coverageQuarters(claimId) {
+  return claimById(claimId)?.display_assessment
+    ?.coverage_display?.harvey_quarters ?? 0;
 }
 
 function terminalFor(questionId, claimId) {
@@ -83,6 +55,135 @@ function defeatersFor(argumentId) {
   );
 }
 
+function buildProjection(questionId) {
+  const terminals = [
+    ...(state.graph.terminal_claim_ids_by_question?.[questionId] || [])
+  ];
+  const includedClaims = new Set(terminals);
+  const includedArguments = new Set();
+  const queue = [...terminals];
+
+  while (queue.length) {
+    const conclusionId = queue.shift();
+    argumentsFor(conclusionId).forEach(argument => {
+      includedArguments.add(argument.id);
+      const linkedClaims = [
+        ...argument.premise_claim_ids,
+        ...defeatersFor(argument.id).flatMap(
+          defeater => defeater.premise_claim_ids || []
+        )
+      ];
+      linkedClaims.forEach(claimId => {
+        if (!includedClaims.has(claimId)) {
+          includedClaims.add(claimId);
+          queue.push(claimId);
+        }
+      });
+    });
+  }
+
+  const edges = [];
+  includedArguments.forEach(argumentId => {
+    const argument = argumentById(argumentId);
+    argument.premise_claim_ids.forEach(source => {
+      if (includedClaims.has(source)) {
+        edges.push({ source, target: argument.conclusion_claim_id, type: "support" });
+      }
+    });
+    defeatersFor(argumentId).forEach(defeater => {
+      (defeater.premise_claim_ids || []).forEach(source => {
+        if (includedClaims.has(source)) {
+          edges.push({ source, target: argument.conclusion_claim_id, type: "challenge" });
+        }
+      });
+    });
+  });
+
+  const outgoing = new Map(
+    [...includedClaims].map(claimId => [claimId, []])
+  );
+  edges.forEach(edge => outgoing.get(edge.source)?.push(edge.target));
+
+  const distance = new Map(terminals.map(claimId => [claimId, 0]));
+  let changed = true;
+  while (changed) {
+    changed = false;
+    edges.forEach(edge => {
+      if (!distance.has(edge.target)) return;
+      const candidate = distance.get(edge.target) + 1;
+      if (!distance.has(edge.source) || candidate < distance.get(edge.source)) {
+        distance.set(edge.source, candidate);
+        changed = true;
+      }
+    });
+  }
+
+  const challengeClaims = new Set(
+    edges.filter(edge => edge.type === "challenge").map(edge => edge.source)
+  );
+  const designations = {};
+  includedClaims.forEach(claimId => {
+    designations[claimId] = terminals.includes(claimId)
+      ? "answer"
+      : challengeClaims.has(claimId)
+        ? "challenge"
+        : "support";
+  });
+
+  function terminalAffinity(claimId) {
+    const pending = [claimId];
+    const seen = new Set();
+    const reached = [];
+    while (pending.length) {
+      const current = pending.shift();
+      if (seen.has(current)) continue;
+      seen.add(current);
+      const terminalIndex = terminals.indexOf(current);
+      if (terminalIndex >= 0) reached.push(terminalIndex);
+      pending.push(...(outgoing.get(current) || []));
+    }
+    return Math.min(...reached, terminals.length);
+  }
+
+  const columns = new Map();
+  includedClaims.forEach(claimId => {
+    const column = distance.get(claimId);
+    if (column === undefined) {
+      throw new Error(`Claim ${claimId} does not reach a terminal for ${questionId}`);
+    }
+    if (!columns.has(column)) columns.set(column, []);
+    columns.get(column).push(claimId);
+  });
+  columns.forEach(items => items.sort((left, right) => {
+    const affinity = terminalAffinity(left) - terminalAffinity(right);
+    if (affinity) return affinity;
+    const designationOrder = { answer: 0, support: 1, challenge: 2 };
+    const designation = designationOrder[designations[left]]
+      - designationOrder[designations[right]];
+    return designation || left.localeCompare(right, undefined, { numeric: true });
+  }));
+
+  const maxRows = Math.max(...[...columns.values()].map(items => items.length));
+  const claims = {};
+  columns.forEach((items, column) => {
+    const slots = items.length === 1
+      ? [Math.floor((maxRows - 1) / 2)]
+      : items.map((_, index) =>
+        Math.round(index * (maxRows - 1) / (items.length - 1))
+      );
+    items.forEach((claimId, index) => {
+      claims[claimId] = [column, slots[index]];
+    });
+  });
+  const maxColumn = Math.max(...columns.keys());
+  return {
+    claims,
+    designations,
+    width: 40 + CARD_WIDTH + maxColumn * COLUMN_STEP,
+    height: 40 + CARD_HEIGHT + (maxRows - 1) * ROW_STEP
+  };
+}
+
 function sentenceList(text) {
   const sentences = typeof Intl.Segmenter === "function"
     ? [...new Intl.Segmenter("en", { granularity: "sentence" }).segment(text)]
@@ -91,7 +192,7 @@ function sentenceList(text) {
   return sentences.filter(Boolean);
 }
 
-function readableState(value) {
+function readableEvidentialState(value) {
   const labels = {
     supported: "Supported",
     insufficient: "Insufficient evidence",
@@ -103,14 +204,27 @@ function readableState(value) {
   return labels[value] || value.replaceAll("_", " ");
 }
 
-function directionFor(questionId, claimId) {
-  if (terminalFor(questionId, claimId)) return "Answer";
-  const visible = new Set(Object.keys(LAYOUT[questionId].claims));
-  const challenges = state.graph.defeaters.some(defeater =>
-    (defeater.premise_claim_ids || []).includes(claimId) &&
-    visible.has(argumentById(defeater.target_id)?.conclusion_claim_id)
-  );
-  return challenges ? "Challenges" : "Supports";
+function designationFor(questionId, claimId) {
+  return LAYOUT[questionId].designations[claimId];
+}
+
+function readableLabel(value) {
+  return value.replaceAll("_", " ").replace(/\b\w/g, letter => letter.toUpperCase());
+}
+
+function renderEngineStamp() {
+  const generated = new Date(state.graph.generated_at);
+  const timestamp = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZoneName: "short"
+  }).format(generated);
+  document.getElementById("engine-stamp").textContent =
+    `Reasoning engine output / ${timestamp}`;
 }
 
 function renderAnswer() {
@@ -130,20 +244,29 @@ function renderClaimNode(canvas, questionId, claimId, gridPosition) {
   const claim = claimById(claimId);
   if (!claim) return;
   const terminal = terminalFor(questionId, claimId);
-  const stateName = evidenceState(claim.id);
+  const acceptance = acceptanceStatus(claim.id);
+  const designation = designationFor(questionId, claim.id);
+  const coverage = coverageState(claim.id);
+  const quarters = coverageQuarters(claim.id);
   const node = document.createElement("button");
   node.type = "button";
   node.className = `claim-node${terminal ? " claim-node--answer" : ""}`;
   node.dataset.claim = claim.id;
-  node.dataset.state = stateName;
-  node.style.left = `${COLUMN_X[gridPosition[0]]}px`;
-  node.style.top = `${ROW_Y[gridPosition[1]]}px`;
+  node.dataset.acceptance = acceptance;
+  node.style.left = `${20 + gridPosition[0] * COLUMN_STEP}px`;
+  node.style.top = `${20 + gridPosition[1] * ROW_STEP}px`;
   node.innerHTML = `
+    <span class="claim-node__designation">${esc(readableLabel(designation))}</span>
     <span class="claim-node__text">${esc(claim.proposition)}</span>
     <span class="claim-node__assessment">
-      <span class="claim-node__direction">${esc(directionFor(questionId, claim.id))}</span>
-      <span class="claim-node__state">${esc(readableState(stateName))}</span>
-      <span class="claim-node__coverage">${esc(coverageState(claim.id))} evidence</span>
+      <span class="assessment-row">
+        <i class="valence-icon" data-valence="${esc(acceptance)}"></i>
+        <span>${esc(readableLabel(acceptance))}</span>
+      </span>
+      <span class="assessment-row">
+        <i class="coverage-icon" style="--coverage-turn:${quarters / 4}turn"></i>
+        <span>${esc(readableLabel(coverage))} coverage</span>
+      </span>
     </span>`;
   node.addEventListener("click", () => openClaim(claim.id, questionId));
   canvas.appendChild(node);
@@ -156,7 +279,8 @@ function renderLanes() {
   state.portfolio.questions
     .filter(question => question.disposition === "active")
     .forEach(question => {
-      const layout = LAYOUT[question.id];
+      const layout = buildProjection(question.id);
+      LAYOUT[question.id] = layout;
       const lane = document.createElement("section");
       lane.className = "question-lane";
       lane.dataset.question = question.id;
@@ -368,11 +492,12 @@ function openClaim(claimId, questionId) {
   const terminal = terminalFor(questionId, claimId);
   showDialog(`
     <article class="inspector">
-      <div class="inspector__eyebrow">${terminal ? "Answer claim" : `${directionFor(questionId, claimId)} the answer`}</div>
+      <div class="inspector__eyebrow">${esc(readableLabel(designationFor(questionId, claimId)))} claim</div>
       <h3>${esc(claim.proposition)}</h3>
       ${metricPills([
-        [readableState(evidenceState(claimId)), "assessment"],
-        [`${coverageState(claimId)} evidence`, "coverage"]
+        [readableLabel(acceptanceStatus(claimId)), "acceptance"],
+        [readableEvidentialState(evidenceState(claimId)), "evidential state"],
+        [readableLabel(coverageState(claimId)), "research coverage"]
       ])}
       <section class="inspector__section">
         <h4>Why this follows</h4>
@@ -451,6 +576,7 @@ async function init() {
     const response = await fetch("data.json");
     if (!response.ok) throw new Error(`data.json: ${response.status}`);
     Object.assign(state, await response.json());
+    renderEngineStamp();
     renderAnswer();
     renderLanes();
     renderDeferred();
