@@ -112,15 +112,12 @@ function directionFor(questionId, claimId) {
 
 function renderAnswer() {
   const target = document.getElementById("synthesis");
-  const sentences = sentenceList(state.answer.overall_synthesis);
-  if (sentences.length) {
-    sentences[0] = sentences[0].replace(
-      /^Provisional overall assessment:\s*/i,
-      ""
-    );
-  }
+  const synthesis = state.answer.overall_synthesis.replace(
+    /^Provisional overall assessment:\s*/i,
+    ""
+  );
+  const sentences = sentenceList(synthesis);
   target.innerHTML = `
-    <div class="answer__label">Provisional overall assessment</div>
     <ul>${sentences
       .map(sentence => `<li>${esc(sentence)}</li>`)
       .join("")}</ul>`;
