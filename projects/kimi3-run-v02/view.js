@@ -1,17 +1,60 @@
 const state = {};
 
+const LAYOUT = {
+  Q1: {
+    height: 650,
+    claims: {
+      RC1: [5, 20],
+      RC10: [5, 178],
+      RC3: [5, 336],
+      RC6: [5, 494],
+      RC2: [70, 20],
+      RC4: [70, 274],
+      RC5: [70, 494]
+    }
+  },
+  Q2: {
+    height: 550,
+    claims: {
+      RC10: [5, 190],
+      RC7: [37, 28],
+      RC8: [70, 98],
+      RC9: [70, 370]
+    }
+  },
+  Q3: {
+    height: 650,
+    claims: {
+      RC1: [5, 20],
+      RC10: [5, 178],
+      RC11: [5, 494],
+      RC2: [37, 20],
+      RC12: [37, 336],
+      RC13: [70, 220]
+    }
+  }
+};
+
 const esc = value => String(value ?? "")
   .replaceAll("&", "&amp;")
   .replaceAll("<", "&lt;")
   .replaceAll(">", "&gt;")
   .replaceAll('"', "&quot;");
 
+function claimById(id) {
+  return state.graph.claims.find(claim => claim.id === id);
+}
+
+function argumentById(id) {
+  return state.graph.arguments.find(argument => argument.id === id);
+}
+
 function evidenceState(claimId) {
-  return state.assessments[claimId]?.derived_verdict?.evidential_state || "unassessed";
+  return claimById(claimId)?.display_assessment?.evidential_state || "unassessed";
 }
 
 function coverageState(claimId) {
-  return state.assessments[claimId]?.derived_verdict?.coverage_state || "not assessed";
+  return claimById(claimId)?.display_assessment?.coverage_state || "not assessed";
 }
 
 function terminalFor(questionId, claimId) {
@@ -33,35 +76,42 @@ function groundById(id) {
 }
 
 function renderMetrics() {
-  const terminals = Object.values(state.graph.terminal_claim_ids_by_question || {})
-    .reduce((sum, ids) => sum + ids.length, 0);
-  const formal = state.graph.arguments.filter(argument => argument.formal_candidate?.suitable).length;
+  const reach = state.graph.inferential_reachability;
   const items = [
-    [`${state.portfolio.questions.filter(q => q.disposition === "active").length}`, "active questions"],
     [state.graph.claims.length, "claims"],
+    [reach.claim_dependency_edges, "claim dependencies"],
     [state.graph.arguments.length, "arguments"],
     [state.graph.defeaters.length, "defeaters"],
-    [terminals, "terminal assignments"],
-    [formal, "strict formalizations"]
+    [reach.maximum_claim_dependency_depth, "maximum depth"],
+    [`${reach.claims_reaching_a_terminal}/${state.graph.claims.length}`, "reach a terminal"]
   ];
   document.getElementById("metrics").innerHTML = items
     .map(([value, label]) => `<span class="metric"><b>${value}</b> ${label}</span>`)
     .join("");
+
+  const incomplete = reach.terminal_claim_ids_without_complete_ground_route;
+  document.querySelector("#truth-note span").textContent =
+    `No new evidence was added. The reconstruction has ${reach.claim_dependency_edges} ` +
+    `claim-to-claim dependencies, depth ${reach.maximum_claim_dependency_depth}, and all ` +
+    `${state.graph.claims.length} claims reach a terminal. ${incomplete.join(", ")} ` +
+    `remains explicitly incomplete because control-effectiveness evidence is missing.`;
 }
 
 function renderAnswer() {
   document.getElementById("synthesis").textContent = state.answer.overall_synthesis;
   const audit = document.getElementById("audit");
-  audit.textContent = state.audit.pass
-    ? "Independent prose audit passed · 0 fidelity issues"
-    : `Independent prose audit found ${state.audit.issues?.length || 0} issues`;
+  audit.textContent = state.answer._graph_projection?.independent_review_status === "pending"
+    ? "Prose audit passed · reconstructed claim mapping awaits independent review"
+    : "Independent prose and mapping audit passed";
 
   const target = document.getElementById("verdicts");
   const template = document.getElementById("verdict-template");
   state.answer.question_verdicts.forEach(item => {
     const node = template.content.firstElementChild.cloneNode(true);
-    node.querySelector(".verdict__id").textContent = `${item.question_id} verdict`;
-    node.querySelector(".status-pill").textContent = `${item.evidential_state} / ${item.coverage_state}`;
+    node.querySelector(".verdict__id").textContent =
+      `${item.question_id} · ${item.claim_ids.join(" / ")}`;
+    node.querySelector(".status-pill").textContent =
+      `${item.evidential_state} / ${item.coverage_state}`;
     node.querySelector(".verdict__line").textContent = item.one_line_verdict;
     node.querySelector(".verdict__support").textContent = item.strongest_support;
     node.querySelector(".verdict__challenge").textContent = item.strongest_challenge;
@@ -75,11 +125,30 @@ function renderAnswer() {
   });
 }
 
-function claimPosition(index, total, terminal) {
-  const mobile = window.innerWidth < 900;
-  const left = terminal ? (mobile ? 39 : 70) : (mobile ? 39 : 42);
-  const top = 18 + index * (mobile ? 152 : 132);
-  return { left, top };
+function renderClaimNode(canvas, questionId, claimId, position) {
+  const claim = claimById(claimId);
+  if (!claim) return;
+  const terminal = terminalFor(questionId, claimId);
+  const shared = (claim.question_ids || []).filter(id => id !== questionId);
+  const node = document.createElement("button");
+  node.type = "button";
+  node.className = "claim-node";
+  node.dataset.claim = claim.id;
+  node.dataset.state = evidenceState(claim.id);
+  node.style.left = `${position[0]}%`;
+  node.style.top = `${position[1]}px`;
+  node.innerHTML = `
+    <span class="claim-node__meta">
+      <b>${esc(claim.id)}</b>
+      <span>${esc(evidenceState(claim.id))} · ${esc(coverageState(claim.id))}</span>
+    </span>
+    <span class="claim-node__text">${esc(claim.proposition)}</span>
+    <span class="claim-node__foot">
+      ${terminal ? '<span class="terminal-mark">terminal</span>' : ""}
+      ${shared.length ? `<span class="shared-mark">shared: ${esc(shared.join(", "))}</span>` : ""}
+    </span>`;
+  node.addEventListener("click", () => openClaim(claim.id, questionId));
+  canvas.appendChild(node);
 }
 
 function renderLanes() {
@@ -89,13 +158,7 @@ function renderLanes() {
   state.portfolio.questions
     .filter(question => question.disposition === "active")
     .forEach(question => {
-      const claims = state.graph.claims.filter(claim =>
-        (claim.question_ids || []).includes(question.id)
-      );
-      const ordered = [...claims].sort((a, b) =>
-        Number(terminalFor(question.id, a.id)) - Number(terminalFor(question.id, b.id))
-      );
-
+      const layout = LAYOUT[question.id];
       const lane = document.createElement("section");
       lane.className = "question-lane";
       lane.dataset.question = question.id;
@@ -105,112 +168,188 @@ function renderLanes() {
           <div class="question-lane__question">${esc(question.question)}</div>
           <div class="question-lane__type">${esc(question.type)} contract</div>
         </div>
-        <div class="lane-canvas">
-          <svg class="lane-svg" aria-hidden="true"></svg>
+        <div class="lane-scroll">
+          <div class="lane-canvas" style="height:${layout.height}px">
+            <svg class="lane-svg" aria-hidden="true"></svg>
+          </div>
         </div>`;
-
       const canvas = lane.querySelector(".lane-canvas");
-      canvas.style.height = `${Math.max(175, 34 + ordered.length * (window.innerWidth < 900 ? 152 : 132))}px`;
-
-      ordered.forEach((claim, index) => {
-        const terminal = terminalFor(question.id, claim.id);
-        const position = claimPosition(index, ordered.length, terminal);
-        const shared = (claim.question_ids || []).filter(id => id !== question.id);
-        const node = document.createElement("button");
-        node.type = "button";
-        node.className = "claim-node";
-        node.dataset.claim = claim.id;
-        node.dataset.state = evidenceState(claim.id);
-        node.style.left = `${position.left}%`;
-        node.style.top = `${position.top}px`;
-        node.innerHTML = `
-          <span class="claim-node__meta">
-            <b>${esc(claim.id)}</b>
-            <span>${esc(evidenceState(claim.id))} · ${esc(coverageState(claim.id))}</span>
-          </span>
-          <span class="claim-node__text">${esc(claim.proposition)}</span>
-          <span class="claim-node__foot">
-            ${terminal ? '<span class="terminal-mark">terminal</span>' : ""}
-            ${shared.length ? `<span class="shared-mark">also ${esc(shared.join(", "))}</span>` : ""}
-          </span>`;
-        node.addEventListener("click", () => openClaim(claim.id, question.id));
-        canvas.appendChild(node);
-
-        const argument = argumentsFor(claim.id)[0];
-        if (!argument) return;
-        const label = document.createElement("button");
-        label.type = "button";
-        label.className = "route-label";
-        label.dataset.argument = argument.id;
-        label.style.left = "1.2%";
-        label.style.top = `${position.top + 33}px`;
-        label.innerHTML = `${esc(argument.id)} · ${esc(argument.scheme || argument.inference_type)}
-          <small>${argument.ground_ids.length} grounds · ${esc(argument.assessment)}</small>`;
-        label.addEventListener("click", () => openArgument(argument.id, question.id));
-        canvas.appendChild(label);
-
-        const defeaters = defeatersFor(argument.id);
-        if (defeaters.length) {
-          const badge = document.createElement("button");
-          badge.type = "button";
-          badge.className = "defeater-label";
-          badge.style.left = terminal ? "50%" : "31%";
-          badge.style.top = `${position.top + 75}px`;
-          badge.textContent = `${defeaters.length} defeater${defeaters.length === 1 ? "" : "s"}`;
-          badge.addEventListener("click", () => openArgument(argument.id, question.id, true));
-          canvas.appendChild(badge);
-        }
-      });
-
+      Object.entries(layout.claims).forEach(([claimId, position]) =>
+        renderClaimNode(canvas, question.id, claimId, position)
+      );
       lanes.appendChild(lane);
     });
 
   requestAnimationFrame(drawAllRoutes);
 }
 
-function drawAllRoutes() {
-  document.querySelectorAll(".question-lane").forEach(lane => {
-    const canvas = lane.querySelector(".lane-canvas");
-    const svg = lane.querySelector(".lane-svg");
-    const canvasRect = canvas.getBoundingClientRect();
-    svg.setAttribute("viewBox", `0 0 ${canvasRect.width} ${canvasRect.height}`);
-    svg.innerHTML = `
-      <defs>
-        <marker id="arrow-${lane.dataset.question}" viewBox="0 0 10 10" refX="9" refY="5"
-          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1 L 9 5 L 0 9 z" fill="#3e6579"></path>
-        </marker>
-      </defs>`;
+function center(rect, canvasRect) {
+  return {
+    left: rect.left - canvasRect.left,
+    right: rect.right - canvasRect.left,
+    top: rect.top - canvasRect.top,
+    bottom: rect.bottom - canvasRect.top,
+    x: rect.left - canvasRect.left + rect.width / 2,
+    y: rect.top - canvasRect.top + rect.height / 2
+  };
+}
 
-    lane.querySelectorAll(".route-label").forEach(label => {
-      const argument = state.graph.arguments.find(item => item.id === label.dataset.argument);
-      const node = lane.querySelector(`[data-claim="${argument.conclusion_claim_id}"]`);
-      if (!node) return;
-      const labelRect = label.getBoundingClientRect();
-      const nodeRect = node.getBoundingClientRect();
-      const x1 = labelRect.right - canvasRect.left + 8;
-      const y1 = labelRect.top - canvasRect.top + labelRect.height / 2;
-      const x2 = nodeRect.left - canvasRect.left - 7;
-      const y2 = nodeRect.top - canvasRect.top + nodeRect.height / 2;
-      const bend = Math.max(30, (x2 - x1) * .48);
-      const d = `M ${x1} ${y1} C ${x1 + bend} ${y1}, ${x2 - bend} ${y2}, ${x2} ${y2}`;
-      const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      const hit = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      hit.setAttribute("d", d);
-      hit.setAttribute("class", "route-hit");
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute("d", d);
-      path.setAttribute("class", "route-path");
-      path.setAttribute("marker-end", `url(#arrow-${lane.dataset.question})`);
-      group.append(hit, path);
-      svg.appendChild(group);
-    });
+function curve(x1, y1, x2, y2) {
+  const direction = x2 >= x1 ? 1 : -1;
+  const bend = Math.max(35, Math.abs(x2 - x1) * .43);
+  return `M ${x1} ${y1} C ${x1 + direction * bend} ${y1}, ` +
+    `${x2 - direction * bend} ${y2}, ${x2} ${y2}`;
+}
+
+function svgPath(svg, d, className, marker = "") {
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", d);
+  path.setAttribute("class", className);
+  if (marker) path.setAttribute("marker-end", marker);
+  svg.appendChild(path);
+  return path;
+}
+
+function addEdgeLabel(canvas, argument, x, y, questionId) {
+  const label = document.createElement("button");
+  label.type = "button";
+  label.className = "edge-label";
+  if (!argument.ground_ids.length && !argument.premise_claim_ids.length) {
+    label.classList.add("edge-label--missing");
+  }
+  label.style.left = `${x}px`;
+  label.style.top = `${y}px`;
+  const input = argument.ground_ids.length
+    ? `${argument.ground_ids.length} grounds`
+    : argument.premise_claim_ids.length
+      ? `${argument.premise_claim_ids.length} claim premise${argument.premise_claim_ids.length > 1 ? "s" : ""}`
+      : "missing evidence";
+  label.innerHTML = `${esc(argument.id)} · ${esc(argument.assessment)}
+    <small>${esc(input)}</small>`;
+  label.addEventListener("click", () => openArgument(argument.id, questionId));
+  canvas.appendChild(label);
+}
+
+function drawLaneRoutes(lane) {
+  const questionId = lane.dataset.question;
+  const canvas = lane.querySelector(".lane-canvas");
+  const svg = lane.querySelector(".lane-svg");
+  canvas.querySelectorAll(".edge-label,.defeater-label").forEach(node => node.remove());
+  const canvasRect = canvas.getBoundingClientRect();
+  svg.setAttribute("viewBox", `0 0 ${canvasRect.width} ${canvasRect.height}`);
+  svg.innerHTML = `
+    <defs>
+      <marker id="arrow-${questionId}" viewBox="0 0 10 10" refX="9" refY="5"
+        markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 1 L9 5 L0 9 Z" class="arrow-head"></path>
+      </marker>
+      <marker id="attack-${questionId}" viewBox="0 0 10 10" refX="9" refY="5"
+        markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M1 1 L9 9 M9 1 L1 9" class="attack-head"></path>
+      </marker>
+    </defs>`;
+
+  const visible = new Set(
+    [...lane.querySelectorAll(".claim-node")].map(node => node.dataset.claim)
+  );
+  const routeGeometry = new Map();
+
+  state.graph.arguments.forEach(argument => {
+    if (!visible.has(argument.conclusion_claim_id)) return;
+    const targetNode = lane.querySelector(
+      `[data-claim="${argument.conclusion_claim_id}"]`
+    );
+    const target = center(targetNode.getBoundingClientRect(), canvasRect);
+    const premises = argument.premise_claim_ids.filter(id => visible.has(id));
+    const midpoints = [];
+
+    if (argument.premise_claim_ids.length && !premises.length) return;
+
+    if (premises.length) {
+      premises.forEach(premiseId => {
+        const premiseNode = lane.querySelector(`[data-claim="${premiseId}"]`);
+        const premise = center(premiseNode.getBoundingClientRect(), canvasRect);
+        const sameColumn = Math.abs(premise.x - target.x) < 100;
+        const x1 = sameColumn ? premise.x : premise.right + 4;
+        const y1 = sameColumn ? premise.bottom + 4 : premise.y;
+        const x2 = sameColumn ? target.x : target.left - 7;
+        const y2 = sameColumn ? target.top - 7 : target.y;
+        const d = sameColumn
+          ? `M ${x1} ${y1} C ${x1} ${y1 + 42}, ${x2} ${y2 - 42}, ${x2} ${y2}`
+          : curve(x1, y1, x2, y2);
+        svgPath(svg, d, "route-path", `url(#arrow-${questionId})`);
+        midpoints.push({ x: (x1 + x2) / 2, y: (y1 + y2) / 2 });
+      });
+    } else {
+      const x1 = 2;
+      const y1 = target.y;
+      const x2 = target.left - 7;
+      const y2 = target.y;
+      const d = curve(x1, y1, x2, y2);
+      const missing = !argument.ground_ids.length;
+      svgPath(
+        svg,
+        d,
+        missing ? "route-path route-path--missing" : "route-path",
+        `url(#arrow-${questionId})`
+      );
+      midpoints.push({ x: (x1 + x2) / 2, y: y1 });
+    }
+
+    const midpoint = {
+      x: midpoints.reduce((sum, item) => sum + item.x, 0) / midpoints.length,
+      y: midpoints.reduce((sum, item) => sum + item.y, 0) / midpoints.length
+    };
+    routeGeometry.set(argument.id, midpoint);
+    addEdgeLabel(
+      canvas,
+      argument,
+      Math.max(8, midpoint.x - 56),
+      midpoint.y - 32,
+      questionId
+    );
   });
+
+  state.graph.defeaters.forEach(defeater => {
+    const targetArgument = argumentById(defeater.target_id);
+    if (!targetArgument || !visible.has(targetArgument.conclusion_claim_id)) return;
+    const target = routeGeometry.get(defeater.target_id);
+    if (!target) return;
+    const backingId = (defeater.premise_claim_ids || [])
+      .find(id => visible.has(id));
+
+    if (backingId) {
+      const backingNode = lane.querySelector(`[data-claim="${backingId}"]`);
+      const backing = center(backingNode.getBoundingClientRect(), canvasRect);
+      const d = curve(backing.right, backing.y, target.x, target.y);
+      svgPath(svg, d, "defeater-path", `url(#attack-${questionId})`);
+    } else {
+      const d = `M ${target.x} ${target.y + 38} L ${target.x} ${target.y + 5}`;
+      svgPath(svg, d, "defeater-path", `url(#attack-${questionId})`);
+    }
+
+    const badge = document.createElement("button");
+    badge.type = "button";
+    badge.className = "defeater-label";
+    badge.style.left = `${Math.max(4, target.x - 42)}px`;
+    badge.style.top = `${target.y + 38}px`;
+    badge.textContent = `${defeater.id} · ${defeater.attack_type}`;
+    badge.addEventListener("click", () =>
+      openArgument(defeater.target_id, questionId, true)
+    );
+    canvas.appendChild(badge);
+  });
+}
+
+function drawAllRoutes() {
+  document.querySelectorAll(".question-lane").forEach(drawLaneRoutes);
 }
 
 function renderDeferred() {
   const target = document.getElementById("deferred");
-  const questions = state.portfolio.questions.filter(question => question.disposition !== "active");
+  const questions = state.portfolio.questions.filter(
+    question => question.disposition !== "active"
+  );
   target.innerHTML = questions.map(question => `
     <article class="ghost-question">
       <div class="ghost-question__top">
@@ -224,20 +363,27 @@ function renderDeferred() {
 
 function metricPills(items) {
   return `<div class="inspector__stats">${items
-    .map(([value, label]) => `<span class="metric"><b>${esc(value)}</b> ${esc(label)}</span>`)
+    .map(([value, label]) =>
+      `<span class="metric"><b>${esc(value)}</b> ${esc(label)}</span>`
+    )
     .join("")}</div>`;
 }
 
+function sourceAssessmentFor(claim) {
+  const sourceIds = claim.display_assessment?.source_claim_assessment_ids || [];
+  return sourceIds
+    .map(id => state.assessments[id])
+    .find(Boolean);
+}
+
 function openClaim(claimId, questionId) {
-  const claim = state.graph.claims.find(item => item.id === claimId);
-  const assessment = state.assessments[claimId];
+  const claim = claimById(claimId);
+  const sourceAssessment = sourceAssessmentFor(claim);
   const argument = argumentsFor(claimId)[0];
-  const support = assessment?.verifier;
-  const challenge = assessment?.falsifier;
   const terminal = terminalFor(questionId, claimId);
   showDialog(`
     <article class="inspector">
-      <div class="inspector__eyebrow">${esc(claimId)} · claim node${terminal ? " · terminal for " + esc(questionId) : ""}</div>
+      <div class="inspector__eyebrow">${esc(claimId)} · claim node${terminal ? ` · terminal for ${esc(questionId)}` : ""}</div>
       <h3>${esc(claim.proposition)}</h3>
       ${metricPills([
         [evidenceState(claimId), "evidential state"],
@@ -246,33 +392,35 @@ function openClaim(claimId, questionId) {
         [argument?.assessment || "none", "argument"]
       ])}
       <section class="inspector__section">
+        <h4>Role in the graph</h4>
+        <p>${esc((claim.roles || []).join(" · "))}</p>
+      </section>
+      <section class="inspector__section">
         <h4>Why the support route bears on this claim</h4>
         <p>${esc(argument?.warrant_reconstruction || "No argument attempt recorded.")}</p>
       </section>
       <section class="inspector__section">
-        <h4>Assessment</h4>
-        <p>${esc(assessment?.comparator?.rationale || support?.rationale || "No assessment recorded.")}</p>
+        <h4>Source assessment</h4>
+        <p>${esc(
+          sourceAssessment?.comparator?.rationale ||
+          sourceAssessment?.verifier?.rationale ||
+          "This reconstructed claim has no directly inherited assessment rationale."
+        )}</p>
       </section>
       <section class="inspector__section">
-        <h4>Conditions</h4>
-        <ul>${(claim.conditions || []).map(item => `<li>${esc(item)}</li>`).join("")}</ul>
-      </section>
-      <section class="inspector__section">
-        <h4>What could falsify or overturn it</h4>
-        <ul>${(claim.conceivable_falsifiers || []).map(item => `<li>${esc(item)}</li>`).join("")}</ul>
-      </section>
-      <section class="inspector__section">
-        <h4>Strongest recorded challenge</h4>
-        <p>${esc(challenge?.rationale || "No challenge rationale recorded.")}</p>
+        <h4>Reconstruction status</h4>
+        <p>${esc(claim.display_assessment?.derivation)}. Independent review:
+          <b>${esc(claim.display_assessment?.independent_review_status)}</b>.</p>
       </section>
     </article>`);
 }
 
 function openArgument(argumentId, questionId, focusDefeaters = false) {
-  const argument = state.graph.arguments.find(item => item.id === argumentId);
-  const claim = state.graph.claims.find(item => item.id === argument.conclusion_claim_id);
+  const argument = argumentById(argumentId);
+  const claim = claimById(argument.conclusion_claim_id);
   const grounds = argument.ground_ids.map(groundById).filter(Boolean);
   const defeaters = defeatersFor(argument.id);
+  const premiseClaims = argument.premise_claim_ids.map(claimById).filter(Boolean);
   showDialog(`
     <article class="inspector">
       <div class="inspector__eyebrow">${esc(argument.id)} · argument relation · ${esc(questionId)}</div>
@@ -283,24 +431,38 @@ function openArgument(argumentId, questionId, focusDefeaters = false) {
         [argument.warrant_fidelity, "warrant fidelity"],
         [grounds.length, "grounds"]
       ])}
+      ${premiseClaims.length ? `
+        <section class="inspector__section">
+          <h4>Claim premises</h4>
+          <ul>${premiseClaims.map(premise =>
+            `<li><b>${esc(premise.id)}</b> — ${esc(premise.proposition)}</li>`
+          ).join("")}</ul>
+        </section>` : ""}
       <section class="inspector__section">
         <h4>Warrant reconstruction</h4>
         <p>${esc(argument.warrant_reconstruction)}</p>
       </section>
       <section class="inspector__section">
-        <h4>Grounds cited by this relation</h4>
+        <h4>${grounds.length ? "Grounds cited by this relation" : "Evidence requirement"}</h4>
         ${grounds.map(ground => `
           <div class="ground">
             <p>${esc(ground.content)}</p>
             ${ground.url ? `<a href="${esc(ground.url)}" target="_blank" rel="noreferrer">${esc(ground.source_title || "open source")} ↗</a>` : ""}
-          </div>`).join("") || "<p>No grounds recorded.</p>"}
+          </div>`).join("") || `
+            <p>No direct grounds are attached.</p>
+            <ul>${(argument.anticipated_ground_kinds || []).map(item =>
+              `<li>${esc(item)}</li>`
+            ).join("")}</ul>`}
       </section>
       <section class="inspector__section" ${focusDefeaters ? 'data-focused="true"' : ""}>
         <h4>Defeaters targeting this argument</h4>
         ${defeaters.map(defeater => `
           <div class="defeater">
-            <b>${esc(defeater.attack_type)}</b> · ${esc(defeater.status)}<br>
+            <b>${esc(defeater.id)} · ${esc(defeater.attack_type)}</b> · ${esc(defeater.status)}<br>
             ${esc(defeater.content)}
+            ${(defeater.premise_claim_ids || []).length
+              ? `<br><small>backed by ${esc(defeater.premise_claim_ids.join(", "))}</small>`
+              : ""}
           </div>`).join("") || "<p>No defeaters recorded.</p>"}
       </section>
       <section class="inspector__section">
@@ -317,7 +479,9 @@ function showDialog(content) {
   document.getElementById("dialog-content").innerHTML = content;
   dialog.showModal();
   const focused = dialog.querySelector('[data-focused="true"]');
-  if (focused) requestAnimationFrame(() => focused.scrollIntoView({ block: "center" }));
+  if (focused) {
+    requestAnimationFrame(() => focused.scrollIntoView({ block: "center" }));
+  }
 }
 
 async function init() {
@@ -342,7 +506,7 @@ document.getElementById("inspector").addEventListener("click", event => {
 });
 window.addEventListener("resize", () => {
   clearTimeout(window.__resizeTimer);
-  window.__resizeTimer = setTimeout(renderLanes, 120);
+  window.__resizeTimer = setTimeout(drawAllRoutes, 120);
 });
 
 init();
