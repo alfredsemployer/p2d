@@ -172,9 +172,13 @@ h1 {
 .stage:nth-of-type(7) { grid-area: 3 / 1; }
 .stage:nth-of-type(8) { grid-area: 3 / 2; }
 .stage:nth-of-type(9) { grid-area: 3 / 3; }
+.stage:nth-of-type(10) { grid-area: 4 / 3; }
+.stage:nth-of-type(11) { grid-area: 4 / 2; }
+.stage:nth-of-type(12) { grid-area: 4 / 1; }
 
 .stage:nth-of-type(3)::after,
-.stage:nth-of-type(6)::after {
+.stage:nth-of-type(6)::after,
+.stage:nth-of-type(9)::after {
   top: auto;
   right: calc(50% - 14px);
   bottom: -14px;
@@ -182,7 +186,9 @@ h1 {
 }
 
 .stage:nth-of-type(4)::after,
-.stage:nth-of-type(5)::after {
+.stage:nth-of-type(5)::after,
+.stage:nth-of-type(10)::after,
+.stage:nth-of-type(11)::after {
   right: auto;
   left: -14px;
   content: "←";
@@ -537,7 +543,10 @@ footer a {
   .stage:nth-of-type(3)::after,
   .stage:nth-of-type(4)::after,
   .stage:nth-of-type(5)::after,
-  .stage:nth-of-type(6)::after {
+  .stage:nth-of-type(6)::after,
+  .stage:nth-of-type(9)::after,
+  .stage:nth-of-type(10)::after,
+  .stage:nth-of-type(11)::after {
     top: auto;
     right: calc(50% - 14px);
     left: auto;

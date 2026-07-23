@@ -11,7 +11,12 @@ from typing import Any
 from .budget import BudgetExceeded, BudgetLedger
 from .compiler import compile_reasoning_artifact
 from .coverage import build_coverage_record
-from .inquiry import rank_questions
+from .inquiry import (
+    rank_questions,
+    validate_discourse_map,
+    validate_hypothesis_portfolio,
+    validate_question_map,
+)
 from .openrouter import OpenRouterClient
 from .verdict import (
     CoverageState,
@@ -22,12 +27,17 @@ from .verdict import (
 from .validation import validate_graph_skeleton
 
 
-FRAMERS = (
+DISCOURSE_MAPPERS = (
     ("openai", "openai/gpt-5.6-luna"),
     ("google", "google/gemini-2.5-pro"),
     ("deepseek", "deepseek/deepseek-v3.2"),
 )
-MERGER = "openai/gpt-5.6-luna"
+QUESTION_SYNTHESIZER = "openai/gpt-5.6-luna"
+HYPOTHESIS_EXPANDERS = (
+    ("deepseek", "deepseek/deepseek-v3.2"),
+    ("google", "google/gemini-2.5-pro"),
+)
+HYPOTHESIS_COMPLETER = "openai/gpt-5.6-luna"
 DECOMPOSER = "openai/gpt-5.6-luna"
 SUPPORT_RESEARCHER = "deepseek/deepseek-v3.2"
 CHALLENGE_RESEARCHER = "google/gemini-2.5-pro"
@@ -56,38 +66,73 @@ class PipelineRun:
         path.write_text(_json_text(payload) + "\n", encoding="utf-8")
         return path
 
-    def frame(self) -> list[dict[str, Any]]:
-        prompt = f"""You are one BLIND inquiry framer. Other framers exist, but you
-cannot see them. Use current web research only to map the live discourse and
-possible questions; discovery sources are agenda inputs, not verified evidence.
+    def map_discourse(self) -> list[dict[str, Any]]:
+        prompt = f"""You are one independent DISCOURSE MAPPER. Other mappers
+exist, but you cannot see their outputs. Use current web research to identify
+the questions people are actually debating and the candidate answers present
+in that discourse. Discovery sources are agenda inputs, not verified evidence.
+
+Keep three object types separate:
+- A Question defines an issue to resolve.
+- A Hypothesis is a candidate answer to one or more identified Questions.
+- Neither is an established Claim.
+Every hypothesis must reference question_local_ids from this response. Do not
+let a hypothesis masquerade as a loaded question.
 
 INITIAL QUERY: {self.question}
 AS OF: {self.as_of}
 
-Construct a question portfolio suitable for rigorous later testing. Include
-thought-provoking interpretations, not only yes/no questions. Do not answer the
-query. Return JSON:
+Map the naive or conventional view, important current debates, minority frames,
+and second-order implications a user asking this query may care about. Include
+thought-provoking questions, not only narrow yes/no restatements. Do not decide
+which hypothesis is correct.
+
+Elicit both object-level and meta questions:
+- object: directly asks what is true, how much, why, or what will happen;
+- meta: asks whether an object-level result matters for a broader outcome,
+  interpretation, or decision;
+- bridge: operationalizes one part of a meta question.
+Do not use a convenient proxy as though it were the broader outcome. For
+example, listed rental supply, effective housing access, incumbent retention,
+entrant access, construction, prices, and welfare are different questions.
+Represent how questions depend on or decompose into one another.
+
+Return JSON:
 {{
   "answer_contract": {{
     "referent": "", "time_boundary": "", "comparison_classes": [],
     "dimensions": [], "exclusions": [], "ambiguities": []
   }},
   "questions": [{{
+    "local_id": "QF1",
     "question": "", "type": "proposition|comparative|descriptive_magnitude|explanatory|causal|predictive|interpretive|normative|decision",
+    "question_level": "object|meta|bridge",
     "why_it_matters": "", "resolution_criteria": [],
-    "answerability": "high|medium|low", "suggested_disposition": "active|deferred|requires_specialized_pipeline"
+    "answerability": "high|medium|low",
+    "discourse_status": "mainstream|minority|emerging|latent_implication",
+    "debate_provenance": []
+  }}],
+  "question_relations": [{{
+    "source_question_local_id":"QF2",
+    "relation":"decomposes_into|depends_on|operationalizes|changes_interpretation_of|counterbalances",
+    "target_question_local_id":"QF1",
+    "rationale":""
   }}],
   "hypotheses": [{{
-    "claim": "", "falsifiers": [], "alternatives": [],
-    "necessary_auxiliaries": [], "discriminating_observations": []
+    "local_id": "HF1", "question_local_ids": ["QF1"],
+    "candidate_answer": "", "discourse_status": "mainstream|minority|emerging",
+    "falsifiers": [], "alternatives": [],
+    "necessary_auxiliaries": [], "discriminating_observations": [],
+    "debate_provenance": []
   }}],
   "minority_frames": [],
   "discovery_sources": [{{"url": "", "contribution": ""}}],
   "coverage_blind_spots": []
 }}
-Produce 7-10 questions and 5-8 hypotheses. Be concise and preserve scope."""
+Produce 7-10 questions and at least one discourse hypothesis for each question.
+Be concise and preserve scope."""
         outputs: list[dict[str, Any]] = []
-        for label, model in FRAMERS:
+        for label, model in DISCOURSE_MAPPERS:
             try:
                 result, reply = self.client.call_json(
                     purpose=f"framing:{label}",
@@ -98,66 +143,337 @@ Produce 7-10 questions and 5-8 hypotheses. Be concise and preserve scope."""
                     web=True,
                 )
                 result["_provenance"] = {
-                    "framer": label,
+                    "discourse_mapper": label,
                     "model": reply.model,
                     "response_id": reply.response_id,
                     "blind": True,
+                    "blind_to": "other discourse-mapper outputs",
+                    "web_context": True,
                 }
+                errors = validate_discourse_map(result)
+                if errors:
+                    raise ValueError("; ".join(errors))
                 outputs.append(result)
-                self.save(f"framing/{label}.json", result)
+                self.save(f"discourse_mapping/{label}.json", result)
             except (RuntimeError, ValueError, BudgetExceeded) as exc:
-                self.save(f"framing/{label}.error.json", {"error": str(exc)})
+                self.save(
+                    f"discourse_mapping/{label}.error.json", {"error": str(exc)}
+                )
         if len(outputs) < 2:
             raise RuntimeError("fewer than two framing passes succeeded")
         return outputs
 
-    def merge_portfolio(self, framings: list[dict[str, Any]]) -> dict[str, Any]:
-        prompt = f"""Merge BLIND framings into a question portfolio. Do not answer
-the research questions. Preserve consequential minority frames and do not
-silently resolve ambiguity. Select exactly 3 active questions for this bounded
-run; retain all others as deferred/covered/requires-specialized/currently-
-unanswerable with explicit reasons. Rank on relevance, user importance,
-explanatory leverage, interpretive impact, answerability, novelty, diversity,
-and cost.
+    def synthesize_questions(
+        self, discourse_maps: list[dict[str, Any]]
+    ) -> dict[str, Any]:
+        """Canonicalize questions without judging or merging hypotheses."""
+
+        question_only = [
+            {
+                "answer_contract": item.get("answer_contract"),
+                "questions": item.get("questions"),
+                "question_relations": item.get("question_relations"),
+                "minority_frames": item.get("minority_frames"),
+                "coverage_blind_spots": item.get("coverage_blind_spots"),
+                "_provenance": item.get("_provenance"),
+            }
+            for item in discourse_maps
+        ]
+        prompt = f"""Synthesize independent discourse maps into one canonical
+QUESTION MAP. Work only on questions. Do not evaluate, select, merge, or even
+summarize candidate hypotheses.
+
+Preserve consequential minority and second-order significance questions. A
+broad query such as "what is the significance?" often implies technical,
+economic, institutional, or geopolitical questions that should remain visible
+even when they may later be deferred. Remove loaded assumptions from wording
+and preserve them as explicit issues to test.
+
+Construct a typed inquiry graph:
+- object questions ask what is true, how much, why, or what will happen;
+- meta questions ask whether an object-level result matters for a broader
+  outcome, interpretation, or decision;
+- bridge questions operationalize the components required to resolve a meta
+  question.
+Every meta question must decompose into or depend on identified object or bridge
+questions. Audit proxy substitution: a change in one measurable quantity must
+not silently stand in for effective access, welfare, strategic significance, or
+another broader outcome.
 
 INITIAL QUERY: {self.question}
 AS OF: {self.as_of}
-FRAMINGS:
-{_json_text(framings)}
+QUESTION-ONLY DISCOURSE MAPS:
+{_json_text(question_only)}
 
 Return JSON:
 {{
  "answer_contract": {{}},
+ "neutral_context_summary": "",
+ "key_term_definitions": [{{"term":"","definition":"","ambiguities":[]}}],
  "questions": [{{
-   "id": "Q1", "question": "", "type": "", "disposition": "active|deferred|covered_by_other_question|requires_specialized_pipeline|currently_unanswerable",
-   "disposition_reason": "", "resolution_criteria": [],
-   "ranking": {{"relevance": 0, "importance": 0, "leverage": 0, "answerability": 0, "novelty": 0, "diversity": 0}},
-   "framer_provenance": []
+   "id":"Q1","question":"","type":"","why_it_matters":"",
+   "question_level":"object|meta|bridge",
+   "resolution_criteria":[],
+   "ranking":{{"relevance":0,"importance":0,"leverage":0,"answerability":0,"novelty":0,"diversity":0}},
+   "source_question_refs":["openai:QF1"],
+   "assumptions_to_audit":[],
+   "significance_dimension":"technical|economic|institutional|geopolitical|social|governance|other"
  }}],
- "hypotheses": [{{"id": "H1", "question_ids": [], "candidate_answer": "", "falsifiers": [], "alternatives": []}}],
- "minority_log": [],
- "coverage_plan": []
-}}"""
+ "question_relations":[{{
+   "source_question_id":"Q2",
+   "relation":"decomposes_into|depends_on|operationalizes|changes_interpretation_of|counterbalances",
+   "target_question_id":"Q1",
+   "rationale":""
+ }}],
+ "meta_question_audit":{{
+   "broader_outcomes_considered":[],
+   "proxy_substitutions_avoided":[],
+   "missing_meta_questions":[]
+ }},
+ "minority_log":[],
+ "coverage_plan":[]
+}}
+Use 0-10 ranking scores. Do not assign dispositions; deterministic code does
+that later."""
         result, reply = self.client.call_json(
-            purpose="portfolio_merge",
-            model=MERGER,
+            purpose="question_synthesis",
+            model=QUESTION_SYNTHESIZER,
             prompt=prompt,
-            max_tokens=3000,
+            max_tokens=3200,
             temperature=0,
         )
+        question_ids = [str(item.get("id") or "") for item in result.get("questions") or []]
+        if not question_ids or not all(question_ids):
+            raise ValueError("question synthesis produced missing question IDs")
+        if len(question_ids) != len(set(question_ids)):
+            raise ValueError("question synthesis produced duplicate question IDs")
+        question_errors = validate_question_map(result)
+        if question_errors:
+            raise ValueError("; ".join(question_errors))
         result["_provenance"] = {
             "model": reply.model,
             "response_id": reply.response_id,
-            "saw_framings": [f["_provenance"]["framer"] for f in framings],
+            "input_excluded": "all candidate hypotheses",
+            "saw_discourse_mappers": [
+                item["_provenance"]["discourse_mapper"]
+                for item in discourse_maps
+            ],
         }
-        result["questions"] = rank_questions(
-            list(result.get("questions") or []), active_limit=3
-        )
-        active = [q for q in result["questions"] if q.get("disposition") == "active"]
-        if len(active) != 3:
-            raise ValueError(f"portfolio must contain exactly 3 active questions, got {len(active)}")
-        self.save("question_portfolio.json", result)
+        self.save("canonical_question_map.json", result)
         return result
+
+    def expand_hypotheses(
+        self, question_map: dict[str, Any]
+    ) -> list[dict[str, Any]]:
+        """Generate alternatives without seeing discourse hypotheses."""
+
+        prompt = f"""Perform BLIND HYPOTHESIS EXPANSION for a canonical question
+map. You may see the questions, definitions, and a neutral context summary.
+You may not see the discourse hypotheses proposed by earlier models and must
+not use web search.
+
+For each question, propose candidate answers that make the alternative space
+less narrow: null or skeptical answers, boundary-condition answers, rival
+mechanisms, and consequential interpretations the visible debate may omit.
+Audit loaded assumptions and whether the question uses an object-level proxy
+for a broader outcome. For every meta question, inspect whether its stated
+subquestions are sufficient to resolve it and name missing subquestions. A
+Hypothesis is a candidate answer, never a question and never an established
+claim. Do not rank hypotheses by plausibility or choose a winner.
+
+INITIAL QUERY: {self.question}
+ANSWER CONTRACT: {_json_text(question_map.get("answer_contract", {}))}
+NEUTRAL CONTEXT: {question_map.get("neutral_context_summary", "")}
+KEY TERMS: {_json_text(question_map.get("key_term_definitions", []))}
+CANONICAL QUESTIONS: {_json_text(question_map.get("questions", []))}
+
+Return JSON:
+{{
+ "question_audits":[{{
+   "question_id":"Q1","loaded_assumptions":[],
+   "suggested_rewording":"","missing_alternative_classes":[],
+   "proxy_risks":[],"missing_subquestions":[]
+ }}],
+ "hypotheses":[{{
+   "local_id":"HX1","question_ids":["Q1"],"candidate_answer":"",
+   "category":"null|skeptical|boundary_condition|rival_mechanism|second_order_implication|other",
+   "falsifiers":[],"alternatives":[],"necessary_auxiliaries":[],
+   "discriminating_observations":[]
+ }}]
+}}
+Produce at least two genuinely distinct hypotheses per question."""
+        outputs: list[dict[str, Any]] = []
+        known_questions = {
+            str(item.get("id")) for item in question_map.get("questions") or []
+        }
+        for label, model in HYPOTHESIS_EXPANDERS:
+            try:
+                result, reply = self.client.call_json(
+                    purpose=f"hypothesis_expansion:{label}",
+                    model=model,
+                    prompt=prompt,
+                    max_tokens=3000,
+                    temperature=0.35,
+                )
+                for hypothesis in result.get("hypotheses") or []:
+                    links = {
+                        str(item) for item in hypothesis.get("question_ids") or []
+                    }
+                    if not links or not links.issubset(known_questions):
+                        raise ValueError(
+                            "hypothesis expansion produced invalid question linkage"
+                        )
+                result["_provenance"] = {
+                    "expander": label,
+                    "model": reply.model,
+                    "response_id": reply.response_id,
+                    "blind_to": "all discourse hypotheses and other expansion outputs",
+                    "web_context": False,
+                }
+                outputs.append(result)
+                self.save(f"hypothesis_expansion/{label}.json", result)
+            except (RuntimeError, ValueError, BudgetExceeded) as exc:
+                self.save(
+                    f"hypothesis_expansion/{label}.error.json",
+                    {"error": str(exc)},
+                )
+        if not outputs:
+            raise RuntimeError("no blind hypothesis-expansion pass succeeded")
+        return outputs
+
+    def select_questions(
+        self, question_map: dict[str, Any]
+    ) -> dict[str, Any]:
+        """Apply the governed ranking only to questions."""
+
+        selected = dict(question_map)
+        selected["questions"] = rank_questions(
+            list(question_map.get("questions") or []), active_limit=3
+        )
+        active = [
+            item
+            for item in selected["questions"]
+            if item.get("disposition") == "active"
+        ]
+        if len(active) != 3:
+            raise ValueError(
+                f"portfolio must contain exactly 3 active questions, got {len(active)}"
+            )
+        selected["selection_note"] = (
+            "Only questions are ranked. Hypotheses are retained as competing "
+            "candidate answers and are not truth-ranked at this stage."
+        )
+        self.save("question_selection.json", selected)
+        return selected
+
+    def complete_hypotheses(
+        self,
+        selected_questions: dict[str, Any],
+        discourse_maps: list[dict[str, Any]],
+        expansions: list[dict[str, Any]],
+    ) -> dict[str, Any]:
+        """Merge discourse-grounded and blind alternatives for active questions."""
+
+        active = [
+            item
+            for item in selected_questions.get("questions") or []
+            if item.get("disposition") == "active"
+        ]
+        discourse_hypotheses = [
+            {
+                "mapper": item["_provenance"]["discourse_mapper"],
+                "questions": item.get("questions") or [],
+                "hypotheses": item.get("hypotheses") or [],
+            }
+            for item in discourse_maps
+        ]
+        prompt = f"""Complete the HYPOTHESIS PORTFOLIO for the selected questions.
+Keep questions and hypotheses separate. A hypothesis is a candidate answer to
+one or more canonical question IDs. It is not an established claim.
+
+Merge duplicates conservatively while preserving materially different scope,
+mechanisms, null answers, minority positions, and boundary conditions. Use the
+source-question references to map local discourse hypotheses to canonical
+questions. Preserve both discourse-grounded and blind-expansion provenance.
+Do not select a winning hypothesis or rank by truth likelihood. Research
+priority may reflect discriminating value and tractability only.
+
+ACTIVE QUESTIONS: {_json_text(active)}
+ALL QUESTION DISPOSITIONS: {_json_text(selected_questions.get("questions", []))}
+DISCOURSE HYPOTHESES WITH LOCAL QUESTION MAPS:
+{_json_text(discourse_hypotheses)}
+BLIND EXPANSIONS:
+{_json_text(expansions)}
+
+Return JSON:
+{{
+ "hypotheses":[{{
+   "id":"H1","question_ids":["Q1"],"candidate_answer":"",
+   "category":"discourse_mainstream|discourse_minority|null|skeptical|boundary_condition|rival_mechanism|second_order_implication|other",
+   "falsifiers":[],"alternatives":[],"necessary_auxiliaries":[],
+   "discriminating_observations":[],
+   "generation_provenance":["openai:HF1","expansion:deepseek:HX2"],
+   "research_priority":"high|medium|low",
+   "priority_reason":""
+ }}],
+ "deferred_hypothesis_frontier":[],
+ "proposed_question_frontier":[{{
+   "question":"","question_level":"object|meta|bridge",
+   "relation":"decomposes_into|depends_on|operationalizes|changes_interpretation_of|counterbalances",
+   "target_question_id":"Q1","source_audit":"","why_deferred":""
+ }}],
+ "completion_notes":[]
+}}
+Produce 3-6 distinct hypotheses for every active question. Preserve missing
+meta subquestions or proxy-correction questions identified by the blind audits
+in proposed_question_frontier; do not silently discard them or insert them into
+the active set after selection."""
+        result, reply = self.client.call_json(
+            purpose="hypothesis_completion",
+            model=HYPOTHESIS_COMPLETER,
+            prompt=prompt,
+            max_tokens=4000,
+            temperature=0,
+        )
+        portfolio = dict(selected_questions)
+        portfolio["hypotheses"] = list(result.get("hypotheses") or [])
+        portfolio["deferred_hypothesis_frontier"] = list(
+            result.get("deferred_hypothesis_frontier") or []
+        )
+        portfolio["proposed_question_frontier"] = list(
+            result.get("proposed_question_frontier") or []
+        )
+        portfolio["question_audits"] = [
+            {
+                "expander": item["_provenance"]["expander"],
+                "audits": list(item.get("question_audits") or []),
+            }
+            for item in expansions
+        ]
+        portfolio["hypothesis_completion"] = {
+            "notes": list(result.get("completion_notes") or []),
+            "provenance": {
+                "model": reply.model,
+                "response_id": reply.response_id,
+                "discourse_inputs": [
+                    item["_provenance"]["discourse_mapper"]
+                    for item in discourse_maps
+                ],
+                "blind_expansion_inputs": [
+                    item["_provenance"]["expander"] for item in expansions
+                ],
+            },
+        }
+        active_ids = {str(item["id"]) for item in active}
+        errors = validate_hypothesis_portfolio(
+            portfolio,
+            active_question_ids=active_ids,
+            minimum_per_question=3,
+        )
+        if errors:
+            raise ValueError("; ".join(errors))
+        self.save("question_portfolio.json", portfolio)
+        return portfolio
 
     def construct_graph(self, portfolio: dict[str, Any]) -> dict[str, Any]:
         active = [
@@ -659,6 +975,8 @@ ACTIVE QUESTIONS: {_json_text(active)}
 TERMINAL CLAIM MAP: {_json_text(graph.get("terminal_claim_ids_by_question", {}))}
 CLAIM ASSESSMENTS: {_json_text(assessments)}
 DEFERRED QUESTIONS: {_json_text([q for q in portfolio["questions"] if q.get("disposition") != "active"])}
+PROPOSED QUESTION FRONTIER FROM META/PROXY AUDITS:
+{_json_text(portfolio.get("proposed_question_frontier", []))}
 
 Return JSON:
 {{
@@ -733,15 +1051,17 @@ def run_pipeline(
         policy=policy,
     )
     manifest = {
-        "pipeline_version": "0.3.0",
+        "pipeline_version": "0.4.0",
         "spec_version": "0.3",
         "question": question,
         "as_of": as_of_value,
         "started_at": datetime.now(UTC).isoformat(),
         "budget": ledger.summary(),
         "models": {
-            "framers": dict(FRAMERS),
-            "merger": MERGER,
+            "discourse_mappers": dict(DISCOURSE_MAPPERS),
+            "question_synthesizer": QUESTION_SYNTHESIZER,
+            "hypothesis_expanders": dict(HYPOTHESIS_EXPANDERS),
+            "hypothesis_completer": HYPOTHESIS_COMPLETER,
             "decomposer": DECOMPOSER,
             "support_researcher": SUPPORT_RESEARCHER,
             "challenge_researcher": CHALLENGE_RESEARCHER,
@@ -755,8 +1075,13 @@ def run_pipeline(
     }
     runner.save("run_manifest.json", manifest)
 
-    framings = runner.frame()
-    portfolio = runner.merge_portfolio(framings)
+    discourse_maps = runner.map_discourse()
+    question_map = runner.synthesize_questions(discourse_maps)
+    expansions = runner.expand_hypotheses(question_map)
+    selected_questions = runner.select_questions(question_map)
+    portfolio = runner.complete_hypotheses(
+        selected_questions, discourse_maps, expansions
+    )
     graph = runner.construct_graph(portfolio)
     research = runner.research(graph)
     assessments = runner.adjudicate(graph, research)
@@ -768,8 +1093,17 @@ def run_pipeline(
     manifest["completed_at"] = datetime.now(UTC).isoformat()
     manifest["budget"] = ledger.summary()
     manifest["artifact_counts"] = {
-        "framings": len(framings),
+        "discourse_maps": len(discourse_maps),
+        "hypothesis_expansion_passes": len(expansions),
         "questions": len(portfolio.get("questions", [])),
+        "meta_questions": len(
+            [
+                item
+                for item in portfolio.get("questions", [])
+                if item.get("question_level") == "meta"
+            ]
+        ),
+        "hypotheses": len(portfolio.get("hypotheses", [])),
         "active_questions": len(
             [
                 item

@@ -9,6 +9,12 @@
 
 **Version 0.3 revision:** Adds the artifact–agents–projections system shape, closed-vocabulary contract composition, stable claim fingerprints, explicit signed valence, separate research-coverage and evidence-depth records, source-dependence clustering, native post-evidence graph compilation, challenge and explain sessions, personalization boundaries, trust profiles, and the roadmap sequencing required by stable node identity.
 
+**Pipeline 0.4 revision:** Separates discourse questions from candidate
+hypotheses, confines blinding to independent mapper outputs and no-web
+hypothesis expansion, adds object/meta/bridge question relations and proxy
+audits, ranks questions rather than hypotheses, and delays claim decomposition
+until competing hypothesis sets are complete.
+
 ## 1. Purpose
 
 This document defines the intellectual and computational commitments of the p2d reasoning system. Its purpose is not to make model output look rigorous. Its purpose is to make the route from question to answer inspectable, criticizable, and mechanically constrained where possible.
@@ -1048,19 +1054,65 @@ Degeneracy should be allocated by expected value:
 
 Resolve the referent, scope, timeframe, comparison class, supported mode, and answer conditions. Select only versioned contracts from the closed library and record why each applies.
 
-### Stage 1: discovery and question portfolio
+### Stage 1: discourse mapping
 
-Run broad, blind reconnaissance. Generate candidate research questions, hypotheses, live disagreements, and potential failure frames. Type each subquestion and compose an inquiry plan from the selected contracts. Preserve minority framings. Treat discovery as agenda construction, not verified support.
+Run independent, web-enabled discourse maps. Each pass generates questions and
+discourse-visible candidate hypotheses, but keeps them as different object
+types and links every hypothesis to one or more local question IDs. Independence
+means blind to the other mapper outputs, not blind to the current debate.
+Preserve mainstream, minority, emerging, and latent-significance frames. Treat
+discovery as agenda construction, not verified support.
 
-### Stage 2: portfolio selection
+### Stage 2: canonical question and meta-question structure
 
-Deduplicate questions without erasing meaningful distinctions. Rank on visible criteria. Select active questions; retain all others with dispositions. Any proposed equivalence among questions or claims remains provenance-preserving and reviewable.
+Remove all hypotheses from the synthesis input before canonicalizing questions.
+Construct an inquiry-layer graph containing:
 
-### Stage 3: hypothesis and argument construction
+- object questions about what is true, how much, why, or what will happen;
+- meta questions about whether an object-level result matters for a broader
+  outcome, interpretation, or decision; and
+- bridge questions that operationalize the components of a meta question.
 
-For each active question, propose answer hypotheses, discriminating tests, rival hypotheses, necessary premises, and candidate argument schemes. Merge these into one shared claim-and-argument graph.
+Record `decomposes_into`, `depends_on`, `operationalizes`,
+`changes_interpretation_of`, and `counterbalances` relations. Audit proxy
+substitution explicitly. For example, listed housing supply cannot silently
+stand in for effective access, entrant access, incumbent retention,
+construction, price, or welfare.
 
-### Stage 4: structural audit
+### Stage 3: blind hypothesis expansion
+
+Provide independent expanders the answer contract, definitions, neutral context,
+and canonical questions, but not the discourse hypotheses or other expansion
+outputs. Do not use web search. Generate null and skeptical hypotheses, rival
+mechanisms, boundary conditions, second-order implications, proxy critiques,
+and missing subquestions for meta questions. This step expands the alternative
+space; it does not select a winner.
+
+### Stage 4: question selection
+
+Rank questions, not hypotheses, on visible criteria. Select active questions;
+retain all others with dispositions and inquiry-graph relations. Any proposed
+equivalence remains provenance-preserving and reviewable. Importance and
+second-order significance must remain visible even when low answerability
+causes deferral.
+
+### Stage 5: hypothesis completion
+
+For each active question, merge discourse-grounded and blind-expanded
+hypotheses conservatively. Preserve materially different scope, null answers,
+minority positions, mechanisms, boundary conditions, falsifiers,
+discriminating observations, and generation provenance. Do not rank hypotheses
+by truth likelihood or designate a winner. Research priority may depend only on
+discriminating value and tractability.
+
+### Stage 6: claim and argument construction
+
+Only after question and hypothesis portfolios are stable, construct atomic
+research-target claims, candidate arguments, rival routes, necessary premises,
+and falsifiers. Questions and hypotheses remain inquiry objects; they do not
+become claim vertices merely by entering this stage.
+
+### Stage 7: structural audit
 
 Mechanically and adversarially test:
 
@@ -1076,15 +1128,15 @@ Mechanically and adversarially test:
 - invalid topology;
 - premature causal or predictive routing.
 
-### Stage 5: evidence acquisition
+### Stage 8: evidence acquisition
 
 Prioritize load-bearing and resolvable claims. Fetch sources once, snapshot them, extract bounded grounds, and construct provenance paths. Search explicitly for support, opposition, alternatives, and undercutters. Maintain `CoverageRecord` entries throughout retrieval rather than reconstructing diligence afterward.
 
-### Stage 6: target assessment
+### Stage 9: target assessment
 
 Assess citations, grounds, claims, arguments, warrant reconstructions, correspondence proposals, coverage, and normalization under their own dimensions. Run verifier, falsifier, and comparator passes where useful. Split conflated claims and repeat.
 
-### Stage 7: native graph compilation
+### Stage 10: native graph compilation
 
 Compile the completed post-evidence claim, argument, defeater, provenance, and
 assessment records into the durable reasoning artifact. This is the graph used
@@ -1093,15 +1145,15 @@ reconstruction is prohibited. Every defeater has a visible claim premise;
 every claim has stable identity, explicit signed valence, coverage, evidence
 depth, and source-dependence records.
 
-### Stage 8: formal and computational checks
+### Stage 11: formal and computational checks
 
 Use arithmetic, code, SAT/SMT, theorem proving, statistical analysis, or causal identification only on suitable targets. Assess formalization fidelity separately.
 
-### Stage 9: recomposition and sensitivity
+### Stage 12: recomposition and sensitivity
 
 Compute supported routes under the declared `VerdictPolicy`. Cluster dependence before combining, test defensible alternative dependence models, and identify load-bearing claims, unresolved defeaters, and answer sensitivity.
 
-### Stage 10: question verdicts
+### Stage 13: question verdicts
 
 Produce one concise verdict for each active question with:
 
@@ -1115,7 +1167,7 @@ Produce one concise verdict for each active question with:
 - unresolved issues;
 - scope and date.
 
-### Stage 11: answer bundle
+### Stage 14: answer bundle
 
 Produce:
 
@@ -1128,7 +1180,7 @@ Produce:
 - adjacent inquiry frontier;
 - “as of” date.
 
-### Stage 12: entailment audit of prose
+### Stage 15: entailment audit of prose
 
 Map each material answer sentence to graph claims. Flag unsupported strengthening, scope drift, missing qualifiers, and prose that converts “not established” into “false.”
 
@@ -1169,6 +1221,13 @@ These are machine-checkable and enforced at write time:
     sources, and questions cannot become cards.
 23. Every visible challenge relation originates in a claim premise and targets
     an argument.
+24. Every hypothesis references one or more known question IDs and retains
+    generation provenance; no hypothesis is stored as a question or established
+    claim.
+25. Every meta question has at least one explicit `decomposes_into` or
+    `depends_on` relation to an object or bridge question.
+26. Question selection ranks questions only. Hypothesis likelihood cannot
+    affect selection before evidence acquisition.
 
 ### 14.2 Deterministic reasoning guards
 

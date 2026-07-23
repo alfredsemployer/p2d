@@ -27,10 +27,13 @@ python -m p2d_reasoning_lab.cli pipeline \
   --key-file /path/outside/repository/to/key
 ```
 
-The default pipeline is intentionally bounded: three discovery framers, one
-portfolio merge, three active research questions, six to ten research-target
-claims, two web-search lanes per claim, adversarial claim adjudication, native
-post-evidence graph compilation, and a final answer-bundle audit.
+The default pipeline is intentionally bounded: three independent web-enabled
+discourse maps; question-only canonicalization with object/meta/bridge
+relations; two blind, no-web hypothesis expansions; deterministic selection of
+three active questions; provenance-preserving hypothesis completion; six to ten
+research-target claims; two web-search lanes per claim; adversarial claim
+adjudication; native post-evidence graph compilation; and a final answer-bundle
+audit.
 
 The compiled `reasoning_artifact.json` is the single source for verdicts and
 visualization. Claims are vertices; arguments and defeaters are relations;

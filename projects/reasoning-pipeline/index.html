@@ -9,7 +9,7 @@
 </head>
 <body>
   <header class="mast">
-    <div class="eyebrow">P2D REASONING ENGINE / PIPELINE V0.3</div>
+    <div class="eyebrow">P2D REASONING ENGINE / PIPELINE V0.4</div>
     <h1>From an open question to an inspectable answer</h1>
     <p>The system turns a broad question into testable claims, researches both sides, constructs one typed reasoning graph, and derives the answer and visual from that same artifact.</p>
     <div class="legend" aria-label="Legend">
@@ -22,186 +22,142 @@
 
   <main>
     <section class="pipeline" aria-label="Reasoning pipeline">
-      <article class="stage stage--model">
+      <article class="stage stage--research">
         <div class="stage__number">01</div>
-        <div class="stage__type">Model judgment</div>
-        <h2>Frame the inquiry</h2>
-        <p>Resolve what the question means: subject, timeframe, comparison class, exclusions, and the standard an answer must meet.</p>
+        <div class="stage__type">Independent discourse mapping</div>
+        <h2>Map questions and hypotheses</h2>
+        <p>Three web-enabled models independently map current debates. Each keeps questions separate from candidate answers and links every hypothesis to a question.</p>
         <div class="stage__input"><b>Input</b><span>Initial query, as-of date, live discourse</span></div>
-        <div class="models" aria-label="Models used">
-          <span>GPT-5.6 Luna</span><span>Gemini 2.5 Pro</span><span>DeepSeek V3.2</span>
-        </div>
-        <div class="prompt-links">
-          <button data-prompt="framer">Framer prompt</button>
-        </div>
-        <div class="artifact"><b>Output</b> Answer contract</div>
+        <div class="models"><span>GPT-5.6 Luna</span><span>Gemini 2.5 Pro</span><span>DeepSeek V3.2</span></div>
+        <div class="prompt-links"><button data-prompt="framer">Discourse prompt</button></div>
+        <div class="artifact"><b>Output</b> Independent discourse maps</div>
       </article>
 
-      <div class="connector" aria-hidden="true">→</div>
-
-      <article class="stage stage--mixed">
+      <article class="stage stage--model">
         <div class="stage__number">02</div>
-        <div class="stage__type">Independent model passes + code</div>
-        <h2>Generate and select questions</h2>
-        <p>Several blind framers propose precise questions and hypotheses. A fixed ranking policy selects the active questions; the rest remain visible for later inquiry.</p>
-        <div class="mini-flow" aria-label="Independent question framing">
-          <span>Framer A</span><span>Framer B</span><span>Framer C</span>
-          <b>Deterministic ranking</b>
-        </div>
-        <div class="stage__input"><b>Input</b><span>Blind framing records</span></div>
-        <div class="models" aria-label="Models used">
-          <span>GPT-5.6 Luna</span><span class="model--code">Ranking policy</span>
-        </div>
-        <div class="prompt-links">
-          <button data-prompt="portfolio">Merge prompt</button>
-          <button data-prompt="ranking">Ranking rule</button>
-        </div>
-        <div class="artifact"><b>Output</b> Question portfolio</div>
+        <div class="stage__type">Question-only synthesis</div>
+        <h2>Structure direct and meta questions</h2>
+        <p>Canonicalize questions without seeing hypotheses. Distinguish object questions from higher-order questions about whether an effect matters, then map their dependencies.</p>
+        <div class="mini-flow"><span>Object</span><span>Bridge</span><span>Meta</span><b>Typed inquiry graph</b></div>
+        <div class="stage__input"><b>Input</b><span>Questions, definitions, minority frames—no hypotheses</span></div>
+        <div class="models"><span>GPT-5.6 Luna</span></div>
+        <div class="prompt-links"><button data-prompt="portfolio">Question prompt</button></div>
+        <div class="artifact"><b>Output</b> Answer contract + inquiry graph</div>
       </article>
-
-      <div class="connector" aria-hidden="true">→</div>
 
       <article class="stage stage--model">
         <div class="stage__number">03</div>
-        <div class="stage__type">Model judgment</div>
+        <div class="stage__type">Blind hypothesis expansion</div>
+        <h2>Find missing candidate answers</h2>
+        <p>Independent models receive the questions and neutral context, but not the discourse hypotheses or web search. They add nulls, rival mechanisms, boundary cases, and proxy critiques.</p>
+        <div class="split"><span>Alternative set A</span><span>Alternative set B</span></div>
+        <div class="stage__input"><b>Input</b><span>Contract, definitions, neutral context, questions</span></div>
+        <div class="models"><span>DeepSeek V3.2</span><span>Gemini 2.5 Pro</span></div>
+        <div class="prompt-links"><button data-prompt="hypothesis-expansion">Expansion prompt</button></div>
+        <div class="artifact"><b>Output</b> Blind alternatives + question audits</div>
+      </article>
+
+      <article class="stage stage--code">
+        <div class="stage__number">04</div>
+        <div class="stage__type">Deterministic question selection</div>
+        <h2>Select questions—not winners</h2>
+        <p>A fixed policy ranks questions by likely importance, significance, leverage, answerability, novelty, and diversity. Deferred and specialized questions remain visible.</p>
+        <div class="checks"><span>Importance</span><span>Leverage</span><span>Answerability</span><span>Diversity</span></div>
+        <div class="stage__input"><b>Input</b><span>Canonical question map</span></div>
+        <div class="models"><span class="model--code">Python ranking policy</span></div>
+        <div class="prompt-links"><button data-prompt="ranking">Ranking rule</button></div>
+        <div class="artifact"><b>Output</b> Active + deferred question portfolio</div>
+      </article>
+
+      <article class="stage stage--model">
+        <div class="stage__number">05</div>
+        <div class="stage__type">Hypothesis completion</div>
+        <h2>Complete competing hypothesis sets</h2>
+        <p>Combine discourse-grounded and blind alternatives for each active question. Preserve provenance and disagreement; do not truth-rank or select a winner.</p>
+        <div class="stage__input"><b>Input</b><span>Selected questions, discourse hypotheses, blind expansions</span></div>
+        <div class="models"><span>GPT-5.6 Luna</span></div>
+        <div class="prompt-links"><button data-prompt="hypothesis-completion">Completion prompt</button></div>
+        <div class="artifact"><b>Output</b> 3–6 hypotheses per active question</div>
+      </article>
+
+      <article class="stage stage--model">
+        <div class="stage__number">06</div>
+        <div class="stage__type">Claim and argument construction</div>
         <h2>Decompose into claims</h2>
-        <p>Create atomic, independently contestable research targets and candidate inference routes. Questions, sources, and reasoning steps do not become claim nodes.</p>
-        <div class="ontology">
-          <span class="ontology__claim">Claim</span>
-          <span class="ontology__relation">argument →</span>
-          <span class="ontology__claim">Claim</span>
-        </div>
-        <div class="stage__input"><b>Input</b><span>Answer contract, active questions, hypotheses</span></div>
-        <div class="models" aria-label="Models used">
-          <span>GPT-5.6 Luna</span>
-        </div>
-        <div class="prompt-links">
-          <button data-prompt="decomposer">Decomposition prompt</button>
-        </div>
+        <p>Only after the question–hypothesis sets are stable does the system create atomic, contestable research targets and candidate inference routes.</p>
+        <div class="ontology"><span class="ontology__claim">Claim</span><span class="ontology__relation">argument →</span><span class="ontology__claim">Claim</span></div>
+        <div class="stage__input"><b>Input</b><span>Active questions and completed hypotheses</span></div>
+        <div class="models"><span>GPT-5.6 Luna</span></div>
+        <div class="prompt-links"><button data-prompt="decomposer">Decomposition prompt</button></div>
         <div class="artifact"><b>Output</b> Research-target graph</div>
       </article>
 
-      <div class="connector" aria-hidden="true">→</div>
-
       <article class="stage stage--research">
-        <div class="stage__number">04</div>
+        <div class="stage__number">07</div>
         <div class="stage__type">External research</div>
         <h2>Research both directions</h2>
         <p>Each load-bearing claim receives separate support and challenge searches. Grounds preserve source, scope, extraction, limitations, and origin path.</p>
-        <div class="split">
-          <span class="split__support">Seek support</span>
-          <span class="split__challenge">Seek opposition</span>
-        </div>
+        <div class="split"><span class="split__support">Seek support</span><span class="split__challenge">Seek opposition</span></div>
         <div class="stage__input"><b>Input</b><span>One scoped claim and its operationalization</span></div>
-        <div class="models" aria-label="Models used">
-          <span>DeepSeek V3.2 · support</span><span>Gemini 2.5 Pro · challenge</span>
-        </div>
-        <div class="prompt-links">
-          <button data-prompt="support-research">Support prompt</button>
-          <button data-prompt="challenge-research">Challenge prompt</button>
-        </div>
+        <div class="models"><span>DeepSeek V3.2 · support</span><span>Gemini 2.5 Pro · challenge</span></div>
+        <div class="prompt-links"><button data-prompt="support-research">Support</button><button data-prompt="challenge-research">Challenge</button></div>
         <div class="artifact"><b>Output</b> Grounds + coverage records</div>
       </article>
 
-      <div class="connector" aria-hidden="true">→</div>
-
       <article class="stage stage--mixed">
-        <div class="stage__number">05</div>
-        <div class="stage__type">Independent model passes + code</div>
+        <div class="stage__number">08</div>
+        <div class="stage__type">Adversarial assessment</div>
         <h2>Assess each claim</h2>
-        <p>A verifier and falsifier independently build the strongest cases. A separate comparator checks scope, warrants, undercutters, and source dependence.</p>
-        <div class="mini-flow mini-flow--assessment">
-          <span>Verifier</span><span>Falsifier</span><span>Comparator</span>
-          <b>Dependence-aware aggregation</b>
-        </div>
+        <p>A verifier and falsifier independently build the strongest cases. A comparator checks scope, warrants, undercutters, and source dependence.</p>
+        <div class="mini-flow"><span>Verifier</span><span>Falsifier</span><span>Comparator</span><b>Dependence-aware aggregation</b></div>
         <div class="stage__input"><b>Input</b><span>Exact claim and extracted grounds</span></div>
-        <div class="models" aria-label="Models used">
-          <span>GPT-5.6 Luna · verify</span><span>DeepSeek V3.2 · falsify</span><span>Gemini 2.5 Pro · compare</span>
-        </div>
-        <div class="prompt-links">
-          <button data-prompt="verifier">Verifier</button>
-          <button data-prompt="falsifier">Falsifier</button>
-          <button data-prompt="comparator">Comparator</button>
-        </div>
+        <div class="models"><span>GPT-5.6 Luna</span><span>DeepSeek V3.2</span><span>Gemini 2.5 Pro</span></div>
+        <div class="prompt-links"><button data-prompt="verifier">Verify</button><button data-prompt="falsifier">Falsify</button><button data-prompt="comparator">Compare</button></div>
         <div class="artifact"><b>Output</b> Signed assessment records</div>
       </article>
 
-      <div class="connector" aria-hidden="true">→</div>
-
       <article class="stage stage--code stage--primary">
-        <div class="stage__number">06</div>
-        <div class="stage__type">Model construction + deterministic compiler</div>
+        <div class="stage__number">09</div>
+        <div class="stage__type">Model construction + compiler</div>
         <h2>Compile the reasoning artifact</h2>
         <p>The completed claim graph, arguments, claim-backed defeaters, grounds, assessments, provenance, and terminal claims become one durable object.</p>
         <div class="stage__input"><b>Input</b><span>Portfolio, skeleton, research, assessments, grounds</span></div>
-        <div class="models" aria-label="Models used">
-          <span>GPT-5.6 Luna · construct</span><span>DeepSeek V3.2 · review</span><span class="model--code">Python compiler</span>
-        </div>
-        <div class="prompt-links">
-          <button data-prompt="native-graph">Graph prompt</button>
-          <button data-prompt="graph-review">Review prompt</button>
-        </div>
+        <div class="models"><span>GPT-5.6 Luna · construct</span><span>DeepSeek V3.2 · review</span><span class="model--code">Python compiler</span></div>
+        <div class="prompt-links"><button data-prompt="native-graph">Graph</button><button data-prompt="graph-review">Review</button></div>
         <div class="artifact artifact--strong"><b>Output · source of truth</b> Native reasoning graph</div>
       </article>
 
-      <div class="connector" aria-hidden="true">→</div>
-
       <article class="stage stage--code">
-        <div class="stage__number">07</div>
-        <div class="stage__type">Deterministic code</div>
+        <div class="stage__number">10</div>
+        <div class="stage__type">Deterministic validation</div>
         <h2>Run checks and sensitivity</h2>
-        <p>Code rejects malformed topology, clusters dependent sources, evaluates defeasible routes, and tests strict formal candidates with Z3 plus a truth-table cross-check.</p>
-        <div class="checks">
-          <span>Schema</span><span>Identity</span><span>Dependence</span>
-          <span>Defeaters</span><span>Z3 when suitable</span>
-        </div>
+        <p>Code rejects malformed topology, clusters dependent sources, evaluates defeasible routes, and tests strict formal candidates with Z3 and a truth table.</p>
+        <div class="checks"><span>Schema</span><span>Identity</span><span>Dependence</span><span>Defeaters</span><span>Z3 when suitable</span></div>
         <div class="stage__input"><b>Input</b><span>Compiled reasoning artifact</span></div>
-        <div class="models" aria-label="Tools used">
-          <span class="model--code">Python policy engine</span><span class="model--code">Z3 4.16 + truth table</span>
-        </div>
-        <div class="prompt-links">
-          <button data-prompt="deterministic-checks">Deterministic rules</button>
-        </div>
+        <div class="models"><span class="model--code">Python policy engine</span><span class="model--code">Z3 4.16</span></div>
+        <div class="prompt-links"><button data-prompt="deterministic-checks">Rules</button></div>
         <div class="artifact"><b>Output</b> Validation reports</div>
       </article>
 
-      <div class="connector" aria-hidden="true">→</div>
-
       <article class="stage stage--mixed">
-        <div class="stage__number">08</div>
-        <div class="stage__type">Code-constrained model synthesis</div>
+        <div class="stage__number">11</div>
+        <div class="stage__type">Code-constrained synthesis</div>
         <h2>Answer from the graph</h2>
-        <p>Each active question receives terminal verdicts. The writer may compress the graph into prose but cannot add or strengthen claims; a separate pass audits the answer.</p>
-        <div class="outputs">
-          <span>One-line verdicts</span>
-          <span>Answer prose</span>
-          <span>Inquiry frontier</span>
-        </div>
+        <p>The writer compresses terminal verdicts into prose without adding or strengthening claims. A separate model audits every material sentence.</p>
         <div class="stage__input"><b>Input</b><span>Terminal claims and their assessments</span></div>
-        <div class="models" aria-label="Models used">
-          <span>GPT-5.6 Luna · write</span><span>DeepSeek V3.2 · audit</span>
-        </div>
-        <div class="prompt-links">
-          <button data-prompt="writer">Writer prompt</button>
-          <button data-prompt="answer-audit">Audit prompt</button>
-        </div>
+        <div class="models"><span>GPT-5.6 Luna · write</span><span>DeepSeek V3.2 · audit</span></div>
+        <div class="prompt-links"><button data-prompt="writer">Writer</button><button data-prompt="answer-audit">Audit</button></div>
         <div class="artifact"><b>Output</b> Audited answer bundle</div>
       </article>
 
-      <div class="connector" aria-hidden="true">→</div>
-
       <article class="stage stage--code">
-        <div class="stage__number">09</div>
+        <div class="stage__number">12</div>
         <div class="stage__type">Deterministic projection</div>
         <h2>Render the visual</h2>
-        <p>Cards and lines are derived from the same artifact: claims become cards, terminal claims become answers, arguments become support lines, and claim-backed defeaters become challenge lines.</p>
+        <p>Claims become cards; terminal claims become answers; arguments become support lines; claim-backed defeaters become challenge lines.</p>
         <div class="stage__input"><b>Input</b><span>Native artifact and active question ID</span></div>
-        <div class="models" aria-label="Tools used">
-          <span class="model--code">Deterministic browser code</span>
-        </div>
-        <div class="prompt-links">
-          <button data-prompt="projection">Projection rules</button>
-        </div>
+        <div class="models"><span class="model--code">Deterministic browser code</span></div>
+        <div class="prompt-links"><button data-prompt="projection">Projection rules</button></div>
         <div class="artifact"><b>Output</b> Answer-first graph view</div>
       </article>
     </section>
@@ -257,13 +213,13 @@
           </ul>
         </article>
       </div>
-      <p class="current-run"><b>Current Kimi run:</b> 16 claims, 16 arguments, 7 claim-backed defeaters, 12/12 artifact checks passed, and zero empirical arguments misrepresented as formal proofs.</p>
+      <p class="current-run"><b>Current Kimi artifact:</b> migrated from the earlier inquiry pipeline; 16 claims, 16 arguments, 7 claim-backed defeaters, 12/12 artifact checks passed, and zero empirical arguments misrepresented as formal proofs.</p>
     </section>
   </main>
 
   <footer>
     <a href="../kimi3-run-v02/">View the Kimi K3 reasoning graph →</a>
-    <span>Specification and implementation: v0.3</span>
+    <span>Artifact schema v0.3 · inquiry pipeline v0.4</span>
   </footer>
 
   <dialog id="prompt-dialog">

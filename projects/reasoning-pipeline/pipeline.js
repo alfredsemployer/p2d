@@ -1,76 +1,152 @@
 const prompts = {
   framer: {
-    title: "Blind inquiry-framing prompt",
-    meta: "Models: openai/gpt-5.6-luna, google/gemini-2.5-pro, and deepseek/deepseek-v3.2. Each receives the same prompt independently, with low-context web search enabled. Runtime fields are shown in [BRACKETS].",
-    text: String.raw`You are one BLIND inquiry framer. Other framers exist, but you
-cannot see them. Use current web research only to map the live discourse and
-possible questions; discovery sources are agenda inputs, not verified evidence.
+    title: "Independent discourse-mapping prompt",
+    meta: "Models: openai/gpt-5.6-luna, google/gemini-2.5-pro, and deepseek/deepseek-v3.2. Each receives the same prompt independently with web search enabled. Runtime fields are shown in [BRACKETS].",
+    text: String.raw`You are one independent DISCOURSE MAPPER. Other mappers
+exist, but you cannot see their outputs. Use current web research to identify
+the questions people are actually debating and the candidate answers present
+in that discourse. Discovery sources are agenda inputs, not verified evidence.
+
+Keep three object types separate:
+- A Question defines an issue to resolve.
+- A Hypothesis is a candidate answer to one or more identified Questions.
+- Neither is an established Claim.
+Every hypothesis must reference question_local_ids from this response. Do not
+let a hypothesis masquerade as a loaded question.
 
 INITIAL QUERY: [INITIAL QUERY]
 AS OF: [AS-OF DATE]
 
-Construct a question portfolio suitable for rigorous later testing. Include
-thought-provoking interpretations, not only yes/no questions. Do not answer the
-query. Return JSON:
+Map the conventional view, important current debates, minority frames, and
+second-order implications the user may care about. Do not decide which
+hypothesis is correct.
+
+Elicit object questions, meta questions about whether an object-level result
+matters for a broader outcome, and bridge questions that operationalize a meta
+question. Do not use a convenient proxy as though it were the broader outcome.
+Represent how questions depend on or decompose into one another.
+
+Return JSON:
 {
   "answer_contract": {
     "referent": "", "time_boundary": "", "comparison_classes": [],
     "dimensions": [], "exclusions": [], "ambiguities": []
   },
   "questions": [{
+    "local_id": "QF1",
     "question": "",
     "type": "proposition|comparative|descriptive_magnitude|explanatory|causal|predictive|interpretive|normative|decision",
+    "question_level": "object|meta|bridge",
     "why_it_matters": "", "resolution_criteria": [],
     "answerability": "high|medium|low",
-    "suggested_disposition": "active|deferred|requires_specialized_pipeline"
+    "discourse_status": "mainstream|minority|emerging|latent_implication",
+    "debate_provenance": []
+  }],
+  "question_relations": [{
+    "source_question_local_id": "QF2",
+    "relation": "decomposes_into|depends_on|operationalizes|changes_interpretation_of|counterbalances",
+    "target_question_local_id": "QF1",
+    "rationale": ""
   }],
   "hypotheses": [{
-    "claim": "", "falsifiers": [], "alternatives": [],
-    "necessary_auxiliaries": [], "discriminating_observations": []
+    "local_id": "HF1", "question_local_ids": ["QF1"],
+    "candidate_answer": "",
+    "discourse_status": "mainstream|minority|emerging",
+    "falsifiers": [], "alternatives": [], "necessary_auxiliaries": [],
+    "discriminating_observations": [], "debate_provenance": []
   }],
   "minority_frames": [],
   "discovery_sources": [{"url": "", "contribution": ""}],
   "coverage_blind_spots": []
 }
-Produce 7-10 questions and 5-8 hypotheses. Be concise and preserve scope.`
+Produce 7-10 questions and at least one discourse hypothesis per question.`
   },
 
   portfolio: {
-    title: "Portfolio-merging prompt",
-    meta: "Model: openai/gpt-5.6-luna. Temperature 0. The three blind framing records are inserted verbatim.",
-    text: String.raw`Merge BLIND framings into a question portfolio. Do not answer
-the research questions. Preserve consequential minority frames and do not
-silently resolve ambiguity. Select exactly 3 active questions for this bounded
-run; retain all others as deferred, covered, specialized, or currently
-unanswerable with explicit reasons. Rank on relevance, user importance,
-explanatory leverage, interpretive impact, answerability, novelty, diversity,
-and cost.
+    title: "Question-only synthesis prompt",
+    meta: "Model: openai/gpt-5.6-luna. Candidate hypotheses are removed from the model input before this prompt is sent.",
+    text: String.raw`Synthesize independent discourse maps into one canonical
+QUESTION MAP. Work only on questions. Do not evaluate, select, merge, or even
+summarize candidate hypotheses.
+
+Preserve consequential minority and second-order significance questions. A
+broad query such as "what is the significance?" often implies technical,
+economic, institutional, or geopolitical questions that should remain visible.
+Remove loaded assumptions from wording and preserve them as issues to test.
+
+Construct a typed inquiry graph:
+- object questions ask what is true, how much, why, or what will happen;
+- meta questions ask whether an object-level result matters for a broader
+  outcome, interpretation, or decision;
+- bridge questions operationalize the components required to resolve a meta
+  question.
+Every meta question must decompose into or depend on identified object or bridge
+questions. Audit proxy substitution: a measurable quantity must not silently
+stand in for effective access, welfare, strategic significance, or another
+broader outcome.
 
 INITIAL QUERY: [INITIAL QUERY]
 AS OF: [AS-OF DATE]
-FRAMINGS:
-[THREE BLIND FRAMING RECORDS]
+QUESTION-ONLY DISCOURSE MAPS: [QUESTIONS, RELATIONS, FRAMES—NO HYPOTHESES]
 
 Return JSON:
 {
   "answer_contract": {},
+  "neutral_context_summary": "",
+  "key_term_definitions": [{"term": "", "definition": "", "ambiguities": []}],
   "questions": [{
     "id": "Q1", "question": "", "type": "",
-    "disposition": "active|deferred|covered_by_other_question|requires_specialized_pipeline|currently_unanswerable",
-    "disposition_reason": "", "resolution_criteria": [],
-    "ranking": {
-      "relevance": 0, "importance": 0, "leverage": 0,
-      "answerability": 0, "novelty": 0, "diversity": 0
-    },
-    "framer_provenance": []
+    "question_level": "object|meta|bridge", "why_it_matters": "",
+    "resolution_criteria": [],
+    "ranking": {"relevance":0,"importance":0,"leverage":0,"answerability":0,"novelty":0,"diversity":0},
+    "source_question_refs": ["openai:QF1"],
+    "assumptions_to_audit": [],
+    "significance_dimension": "technical|economic|institutional|geopolitical|social|governance|other"
   }],
-  "hypotheses": [{
-    "id": "H1", "question_ids": [], "candidate_answer": "",
-    "falsifiers": [], "alternatives": []
+  "question_relations": [{
+    "source_question_id": "Q2",
+    "relation": "decomposes_into|depends_on|operationalizes|changes_interpretation_of|counterbalances",
+    "target_question_id": "Q1", "rationale": ""
   }],
+  "meta_question_audit": {
+    "broader_outcomes_considered": [],
+    "proxy_substitutions_avoided": [],
+    "missing_meta_questions": []
+  },
   "minority_log": [],
   "coverage_plan": []
-}`
+}
+Use 0-10 ranking scores. Do not assign dispositions.`
+  },
+
+  "hypothesis-expansion": {
+    title: "Blind hypothesis-expansion prompt",
+    meta: "Models: deepseek/deepseek-v3.2 and google/gemini-2.5-pro. No web search. Each is blind to discourse hypotheses and the other expansion output.",
+    text: String.raw`Perform BLIND HYPOTHESIS EXPANSION for a canonical question
+map. You may see the questions, definitions, and a neutral context summary.
+You may not see the discourse hypotheses proposed by earlier models and must
+not use web search.
+
+For each question, propose candidate answers that make the alternative space
+less narrow: null or skeptical answers, boundary-condition answers, rival
+mechanisms, and consequential interpretations the visible debate may omit.
+Audit loaded assumptions and whether an object-level proxy substitutes for a
+broader outcome. For every meta question, inspect whether its subquestions are
+sufficient and name missing subquestions.
+
+A Hypothesis is a candidate answer, never a question and never an established
+claim. Do not rank hypotheses by plausibility or choose a winner.
+
+INPUT:
+- Initial query
+- Answer contract
+- Neutral context summary
+- Key-term definitions
+- Canonical questions and question relations
+
+Return JSON with question audits and at least two hypotheses per question.
+Each hypothesis must include question IDs, category, candidate answer,
+falsifiers, alternatives, auxiliary assumptions, and discriminating observations.`
   },
 
   ranking: {
@@ -91,6 +167,34 @@ Rules:
 3. Eligible questions sort by descending score, then original order.
 4. The top three become active.
 5. Every other question remains in the artifact as deferred with a reason.`
+  },
+
+  "hypothesis-completion": {
+    title: "Hypothesis-completion prompt",
+    meta: "Model: openai/gpt-5.6-luna. It sees the selected questions, discourse hypotheses, and blind expansions. It does not choose a winner.",
+    text: String.raw`Complete the HYPOTHESIS PORTFOLIO for the selected questions.
+Keep questions and hypotheses separate. A hypothesis is a candidate answer to
+one or more canonical question IDs. It is not an established claim.
+
+Merge duplicates conservatively while preserving materially different scope,
+mechanisms, null answers, minority positions, and boundary conditions. Use
+source-question references to map local discourse hypotheses to canonical
+questions. Preserve both discourse-grounded and blind-expansion provenance.
+Do not select a winning hypothesis or rank by truth likelihood. Research
+priority may reflect discriminating value and tractability only.
+
+INPUT:
+- Active questions and all question dispositions
+- Discourse hypotheses with local question maps
+- Blind hypothesis expansions
+
+Return 3-6 hypotheses for every active question. Each includes canonical
+question IDs, candidate answer, category, falsifiers, alternatives, auxiliary
+assumptions, discriminating observations, generation provenance, and research
+priority. Preserve deferred hypotheses in an inquiry-frontier record. Missing
+meta subquestions and proxy-correction questions found by the blind audits go
+to a proposed-question frontier; they are not silently discarded or inserted
+into the active set after selection.`
   },
 
   decomposer: {
