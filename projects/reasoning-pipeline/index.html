@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>p2d reasoning pipeline</title>
+  <link rel="stylesheet" href="pipeline.css">
+</head>
+<body>
+  <header class="mast">
+    <div class="eyebrow">P2D REASONING ENGINE / PIPELINE V0.3</div>
+    <h1>From an open question to an inspectable answer</h1>
+    <p>The system turns a broad question into testable claims, researches both sides, constructs one typed reasoning graph, and derives the answer and visual from that same artifact.</p>
+    <div class="legend" aria-label="Legend">
+      <span><i class="dot dot--model"></i> Model judgment</span>
+      <span><i class="dot dot--research"></i> External research</span>
+      <span><i class="dot dot--code"></i> Deterministic code</span>
+      <span><i class="dot dot--human"></i> Human review point</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="pipeline" aria-label="Reasoning pipeline">
+      <article class="stage stage--model">
+        <div class="stage__number">01</div>
+        <div class="stage__type">Model judgment</div>
+        <h2>Frame the inquiry</h2>
+        <p>Resolve what the question means: subject, timeframe, comparison class, exclusions, and the standard an answer must meet.</p>
+        <div class="artifact"><b>Produces</b> Answer contract</div>
+      </article>
+
+      <div class="connector" aria-hidden="true">→</div>
+
+      <article class="stage stage--mixed">
+        <div class="stage__number">02</div>
+        <div class="stage__type">Independent model passes + code</div>
+        <h2>Generate and select questions</h2>
+        <p>Several blind framers propose precise questions and hypotheses. A fixed ranking policy selects the active questions; the rest remain visible for later inquiry.</p>
+        <div class="mini-flow" aria-label="Independent question framing">
+          <span>Framer A</span><span>Framer B</span><span>Framer C</span>
+          <b>Deterministic ranking</b>
+        </div>
+        <div class="artifact"><b>Produces</b> Question portfolio</div>
+      </article>
+
+      <div class="connector" aria-hidden="true">→</div>
+
+      <article class="stage stage--model">
+        <div class="stage__number">03</div>
+        <div class="stage__type">Model judgment</div>
+        <h2>Decompose into claims</h2>
+        <p>Create atomic, independently contestable research targets and candidate inference routes. Questions, sources, and reasoning steps do not become claim nodes.</p>
+        <div class="ontology">
+          <span class="ontology__claim">Claim</span>
+          <span class="ontology__relation">argument →</span>
+          <span class="ontology__claim">Claim</span>
+        </div>
+        <div class="artifact"><b>Produces</b> Research-target graph</div>
+      </article>
+
+      <div class="connector" aria-hidden="true">→</div>
+
+      <article class="stage stage--research">
+        <div class="stage__number">04</div>
+        <div class="stage__type">External research</div>
+        <h2>Research both directions</h2>
+        <p>Each load-bearing claim receives separate support and challenge searches. Grounds preserve source, scope, extraction, limitations, and origin path.</p>
+        <div class="split">
+          <span class="split__support">Seek support</span>
+          <span class="split__challenge">Seek opposition</span>
+        </div>
+        <div class="artifact"><b>Produces</b> Grounds + coverage records</div>
+      </article>
+
+      <div class="connector" aria-hidden="true">→</div>
+
+      <article class="stage stage--mixed">
+        <div class="stage__number">05</div>
+        <div class="stage__type">Independent model passes + code</div>
+        <h2>Assess each claim</h2>
+        <p>A verifier and falsifier independently build the strongest cases. A separate comparator checks scope, warrants, undercutters, and source dependence.</p>
+        <div class="mini-flow mini-flow--assessment">
+          <span>Verifier</span><span>Falsifier</span><span>Comparator</span>
+          <b>Dependence-aware aggregation</b>
+        </div>
+        <div class="artifact"><b>Produces</b> Signed assessment records</div>
+      </article>
+
+      <div class="connector" aria-hidden="true">→</div>
+
+      <article class="stage stage--code stage--primary">
+        <div class="stage__number">06</div>
+        <div class="stage__type">Model construction + deterministic compiler</div>
+        <h2>Compile the reasoning artifact</h2>
+        <p>The completed claim graph, arguments, claim-backed defeaters, grounds, assessments, provenance, and terminal claims become one durable object.</p>
+        <div class="artifact artifact--strong"><b>This is the source of truth</b> Native reasoning graph</div>
+      </article>
+
+      <div class="connector" aria-hidden="true">→</div>
+
+      <article class="stage stage--code">
+        <div class="stage__number">07</div>
+        <div class="stage__type">Deterministic code</div>
+        <h2>Run checks and sensitivity</h2>
+        <p>Code rejects malformed topology, clusters dependent sources, evaluates defeasible routes, and tests strict formal candidates with Z3 plus a truth-table cross-check.</p>
+        <div class="checks">
+          <span>Schema</span><span>Identity</span><span>Dependence</span>
+          <span>Defeaters</span><span>Z3 when suitable</span>
+        </div>
+        <div class="artifact"><b>Produces</b> Validation reports</div>
+      </article>
+
+      <div class="connector" aria-hidden="true">→</div>
+
+      <article class="stage stage--mixed">
+        <div class="stage__number">08</div>
+        <div class="stage__type">Code-constrained model synthesis</div>
+        <h2>Answer from the graph</h2>
+        <p>Each active question receives terminal verdicts. The writer may compress the graph into prose but cannot add or strengthen claims; a separate pass audits the answer.</p>
+        <div class="outputs">
+          <span>One-line verdicts</span>
+          <span>Answer prose</span>
+          <span>Inquiry frontier</span>
+        </div>
+        <div class="artifact"><b>Produces</b> Audited answer bundle</div>
+      </article>
+
+      <div class="connector" aria-hidden="true">→</div>
+
+      <article class="stage stage--code">
+        <div class="stage__number">09</div>
+        <div class="stage__type">Deterministic projection</div>
+        <h2>Render the visual</h2>
+        <p>Cards and lines are derived from the same artifact: claims become cards, terminal claims become answers, arguments become support lines, and claim-backed defeaters become challenge lines.</p>
+        <div class="artifact"><b>Produces</b> Answer-first graph view</div>
+      </article>
+    </section>
+
+    <section class="claim-record">
+      <div>
+        <div class="section-label">EVERY DISPLAYED CLAIM</div>
+        <h2>Four separate questions—not one confidence score</h2>
+      </div>
+      <div class="facets">
+        <article>
+          <i class="facet-icon facet-icon--positive"></i>
+          <h3>Which direction?</h3>
+          <p>Signed valence from −1 to +1. Positive displays as supported; negative as unsupported. Zero is exact equipoise.</p>
+        </article>
+        <article>
+          <i class="facet-icon facet-icon--depth"></i>
+          <h3>How deep is the record?</h3>
+          <p>A separate five-part evidence-depth measure. It does not determine direction.</p>
+        </article>
+        <article>
+          <i class="facet-icon facet-icon--coverage"></i>
+          <h3>How complete was the search?</h3>
+          <p>Coverage records directions searched, queries, blind spots, inaccessible material, saturation, and stopping reason.</p>
+        </article>
+        <article>
+          <i class="facet-icon facet-icon--dependence"></i>
+          <h3>How independent is it?</h3>
+          <p>Sources sharing an observation, dataset, press release, or harness are clustered before aggregation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="boundary">
+      <div class="section-label">WHAT DETERMINISTIC MEANS HERE</div>
+      <div class="boundary__grid">
+        <article>
+          <h2>Code can establish</h2>
+          <ul>
+            <li>Whether the graph obeys its schema</li>
+            <li>Whether every line has a valid origin and target</li>
+            <li>Whether signed values and projections were computed correctly</li>
+            <li>Whether a strict formal conclusion follows from its formal premises</li>
+          </ul>
+        </article>
+        <article>
+          <h2>Code cannot establish by itself</h2>
+          <ul>
+            <li>Whether a source accurately describes the world</li>
+            <li>Whether a natural-language formalization is faithful</li>
+            <li>Whether a defeasible empirical warrant is substantively good</li>
+            <li>Whether an uncalibrated model assessment is a true probability</li>
+          </ul>
+        </article>
+      </div>
+      <p class="current-run"><b>Current Kimi run:</b> 16 claims, 16 arguments, 7 claim-backed defeaters, 12/12 artifact checks passed, and zero empirical arguments misrepresented as formal proofs.</p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="../kimi3-run-v02/">View the Kimi K3 reasoning graph →</a>
+    <span>Specification and implementation: v0.3</span>
+  </footer>
+</body>
+</html>
