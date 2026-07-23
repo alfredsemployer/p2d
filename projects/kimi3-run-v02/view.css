@@ -33,10 +33,9 @@ footer {
 }
 
 .mast {
-  padding: clamp(3.5rem, 8vw, 7rem) 0 clamp(4rem, 8vw, 7rem);
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
 }
 
-.mast__eyebrow,
 .section-kicker {
   color: var(--yellow);
   font-size: .7rem;
@@ -46,24 +45,22 @@ footer {
 }
 
 .mast h1 {
-  max-width: 1150px;
-  margin: .85rem 0 2rem;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.35rem, 5vw, 5rem);
-  font-weight: 500;
-  letter-spacing: -.045em;
-  line-height: .98;
+  max-width: 1000px;
+  margin: 0 0 1.35rem;
+  font-size: clamp(1.65rem, 2.4vw, 2.4rem);
+  font-weight: 650;
+  letter-spacing: -.025em;
+  line-height: 1.08;
 }
 
 .answer__synthesis {
-  max-width: 1120px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.25rem, 2.15vw, 2rem);
-  line-height: 1.38;
+  max-width: 1050px;
+  font-size: clamp(.82rem, 1.05vw, 1rem);
+  line-height: 1.5;
 }
 
 .answer__label {
-  margin-bottom: .75rem;
+  margin-bottom: .55rem;
   color: var(--muted);
   font: 720 .68rem/1.2 Inter, sans-serif;
   letter-spacing: .11em;
@@ -72,7 +69,7 @@ footer {
 
 .answer__synthesis ul {
   display: grid;
-  gap: .7rem;
+  gap: .4rem;
   margin: 0;
   padding-left: 1.25em;
 }
@@ -84,23 +81,22 @@ footer {
 }
 
 .question-lane {
-  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  padding: clamp(2.5rem, 4vw, 3.5rem) 0;
   border-bottom: 1px solid var(--line);
 }
 
 .question-lane__heading {
-  max-width: 1200px;
-  margin-bottom: 2.4rem;
+  max-width: 1050px;
+  margin-bottom: 1.5rem;
 }
 
 .question-lane__heading h2,
 .deferred h2 {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.65rem, 3vw, 2.85rem);
-  font-weight: 500;
-  letter-spacing: -.025em;
-  line-height: 1.16;
+  font-size: clamp(.85rem, 1.25vw, 1.15rem);
+  font-weight: 650;
+  letter-spacing: -.01em;
+  line-height: 1.4;
 }
 
 .lane-scroll {
@@ -112,8 +108,6 @@ footer {
 
 .lane-canvas {
   position: relative;
-  width: 1240px;
-  min-width: 1240px;
 }
 
 .lane-svg {
@@ -212,7 +206,6 @@ footer {
 .claim-node__text {
   display: -webkit-box;
   overflow: hidden;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.3;
@@ -244,7 +237,7 @@ footer {
 .claim-node[data-state="insufficient"] .claim-node__state { color: var(--gray); }
 
 .deferred {
-  padding: clamp(4rem, 8vw, 7rem) 0;
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
 }
 
 .deferred h2 { margin-top: .55rem; }
@@ -253,8 +246,7 @@ footer {
   max-width: 1120px;
   margin: 1.2rem 0 0;
   color: var(--muted);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.15rem, 2vw, 1.6rem);
+  font-size: clamp(.72rem, 1vw, .85rem);
 }
 
 footer {
@@ -313,9 +305,8 @@ dialog::backdrop {
 
 .inspector h3 {
   margin: .55rem 2.5rem 1.4rem 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.45rem, 3vw, 2.15rem);
-  font-weight: 500;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-weight: 650;
   line-height: 1.2;
 }
 

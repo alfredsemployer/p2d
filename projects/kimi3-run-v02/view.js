@@ -4,6 +4,7 @@ const COLUMN_X = [20, 440, 860];
 const ROW_Y = [20, 205, 390, 575, 760];
 const LAYOUT = {
   Q1: {
+    width: 820,
     height: 930,
     claims: {
       RC2: [0, 0],
@@ -16,6 +17,7 @@ const LAYOUT = {
     }
   },
   Q2: {
+    width: 820,
     height: 565,
     claims: {
       RC7: [0, 0],
@@ -25,6 +27,7 @@ const LAYOUT = {
     }
   },
   Q3: {
+    width: 1240,
     height: 750,
     claims: {
       RC13: [0, 1],
@@ -109,9 +112,16 @@ function directionFor(questionId, claimId) {
 
 function renderAnswer() {
   const target = document.getElementById("synthesis");
+  const sentences = sentenceList(state.answer.overall_synthesis);
+  if (sentences.length) {
+    sentences[0] = sentences[0].replace(
+      /^Provisional overall assessment:\s*/i,
+      ""
+    );
+  }
   target.innerHTML = `
     <div class="answer__label">Provisional overall assessment</div>
-    <ul>${sentenceList(state.answer.overall_synthesis)
+    <ul>${sentences
       .map(sentence => `<li>${esc(sentence)}</li>`)
       .join("")}</ul>`;
 }
@@ -155,7 +165,7 @@ function renderLanes() {
           <h2>${esc(question.question)}</h2>
         </div>
         <div class="lane-scroll">
-          <div class="lane-canvas" style="height:${layout.height}px">
+          <div class="lane-canvas" style="width:${layout.width}px;min-width:${layout.width}px;height:${layout.height}px">
             <svg class="lane-svg" aria-hidden="true"></svg>
           </div>
         </div>`;
@@ -273,21 +283,9 @@ function drawLaneRoutes(lane) {
         midpoints.push({ x: (x1 + x2) / 2, y: (y1 + y2) / 2 });
       });
     } else {
-      const x1 = canvasRect.width - 2;
-      const y1 = target.y;
-      const x2 = target.right + 7;
-      const y2 = target.y;
-      const d = orthogonalPath(x1, y1, x2, y2);
-      const missing = !argument.ground_ids.length;
-      clickableRoute(
-        svg,
-        d,
-        missing ? "route-path route-path--missing" : "route-path",
-        `url(#arrow-${questionId})`,
-        missing ? "Open the missing evidence requirement" : "Open the supporting evidence",
-        () => openArgument(argument.id, questionId)
-      );
-      midpoints.push({ x: (x1 + x2) / 2, y: y1 });
+      // Grounds are inspected inside the claim. They are not graph nodes, so
+      // a line from the canvas edge falsely suggests clipped content.
+      midpoints.push({ x: target.right + 9, y: target.y });
     }
 
     routeGeometry.set(argument.id, {
@@ -310,7 +308,7 @@ function drawLaneRoutes(lane) {
       const x1 = target.x < backing.x ? backing.left - 7 : backing.right + 7;
       d = orthogonalPath(x1, backing.y, target.x, target.y);
     } else {
-      d = verticalPath(target.x, target.y + 52, target.x, target.y + 4);
+      d = orthogonalPath(target.x + 42, target.y, target.x, target.y);
     }
 
     clickableRoute(
