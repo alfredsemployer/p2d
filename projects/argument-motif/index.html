@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Argument</title>
+<style>
+:root{
+  --ink:#f5f5f7; --mut:rgba(245,245,247,.46);
+  --evi:#9aa6ba; --pro:#5b9dff; --inf:#9a86ff; --con:#5ad9a6; --def:#ff6e83;
+}
+*{margin:0;box-sizing:border-box}
+html,body{height:100%;background:#060608;color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow:hidden}
+/* ambient background */
+body::before{content:"";position:fixed;inset:0;z-index:0;
+  background:
+   radial-gradient(1100px 620px at 66% 52%, rgba(154,134,255,.10), transparent 60%),
+   radial-gradient(760px 520px at 88% 52%, rgba(90,217,166,.07), transparent 60%),
+   radial-gradient(700px 700px at 20% 30%, rgba(91,157,255,.05), transparent 60%),
+   #060608;}
+body::after{content:"";position:fixed;inset:0;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:34px 34px;-webkit-mask-image:radial-gradient(80% 80% at 50% 50%,#000,transparent 78%);mask-image:radial-gradient(80% 80% at 50% 50%,#000,transparent 78%)}
+.head{position:fixed;top:22px;left:26px;z-index:6}
+.head .k{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.head .t{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-top:3px}
+.wrap{position:fixed;inset:0;display:grid;place-items:center;z-index:2}
+.stage{position:relative;width:1500px;height:560px;transform-origin:center center}
+svg.edges{position:absolute;inset:0;width:1500px;height:560px;overflow:visible}
+/* glass node */
+.node{position:absolute;width:250px;min-height:92px;border-radius:20px;padding:17px 20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.066),rgba(255,255,255,.022));
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(14px) saturate(1.35);-webkit-backdrop-filter:blur(14px) saturate(1.35);
+  box-shadow:0 22px 60px -20px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.10), inset 0 0 0 .5px rgba(255,255,255,.02);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s;cursor:default;z-index:3}
+.node:hover{transform:translateY(-4px)}
+.node .kind{display:flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.85;margin-bottom:9px}
+.node .kind .d{width:7px;height:7px;border-radius:50%}
+.node .title{font-size:18px;font-weight:560;letter-spacing:-.015em;line-height:1.2}
+/* accent glows per type (soft) */
+.evi{box-shadow:0 22px 60px -20px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.10),0 0 46px -20px var(--evi)}
+.pro{box-shadow:0 22px 60px -20px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.10),0 0 46px -16px var(--pro)}
+.inf{box-shadow:0 22px 70px -18px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.12),0 0 70px -14px var(--inf);
+  border-color:rgba(154,134,255,.28);animation:breathe 5.5s ease-in-out infinite}
+.con{box-shadow:0 22px 60px -20px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.10),0 0 60px -14px var(--con);border-color:rgba(90,217,166,.24)}
+.def{box-shadow:0 22px 60px -20px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.10),0 0 46px -18px var(--def)}
+@keyframes breathe{0%,100%{box-shadow:0 22px 70px -18px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.12),0 0 60px -18px var(--inf)}50%{box-shadow:0 22px 70px -18px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.12),0 0 92px -8px var(--inf)}}
+.k-evi .d{background:var(--evi)}.k-pro .d{background:var(--pro)}.k-inf .d{background:var(--inf)}.k-con .d{background:var(--con)}.k-def .d{background:var(--def)}
+.k-evi{color:var(--evi)}.k-pro{color:var(--pro)}.k-inf{color:var(--inf)}.k-con{color:var(--con)}.k-def{color:var(--def)}
+.uclabel{position:absolute;z-index:3;font-size:12px;font-style:italic;color:var(--def);opacity:.8;letter-spacing:.02em}
+.legend{position:fixed;bottom:22px;left:26px;z-index:6;display:flex;gap:18px;font-size:11.5px;color:var(--mut)}
+.legend .ln{display:inline-block;width:26px;height:0;vertical-align:middle;margin-right:7px}
+.sup{border-top:1.5px solid rgba(245,245,247,.55)} .und{border-top:1.5px dotted var(--def)}
+.corner{position:fixed;top:20px;right:22px;z-index:6;color:var(--mut)}
+</style></head><body>
+<div class="head"><div class="k">Reasoning</div><div class="t">Argument</div></div>
+<div class="corner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 5h6v6M11 5L4 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+
+<div class="wrap"><div class="stage" id="stage">
+<svg class="edges" viewBox="0 0 1500 560">
+ <defs>
+  <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="g-e1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9aa6ba"/><stop offset="1" stop-color="#5b9dff"/></linearGradient>
+  <linearGradient id="g-p1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b9dff"/><stop offset="1" stop-color="#9a86ff"/></linearGradient>
+  <linearGradient id="g-p2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b9dff"/><stop offset="1" stop-color="#9a86ff"/></linearGradient>
+  <linearGradient id="g-i1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9a86ff"/><stop offset="1" stop-color="#5ad9a6"/></linearGradient>
+  <marker id="a-pro" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 Z" fill="#5b9dff"/></marker>
+  <marker id="a-inf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 Z" fill="#9a86ff"/></marker>
+  <marker id="a-con" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 Z" fill="#5ad9a6"/></marker>
+  <marker id="a-def" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 Z" fill="#ff6e83"/></marker>
+ </defs>
+ <!-- support edges (with soft glow + a travelling signal) -->
+ <g filter="url(#glow)" opacity=".95">
+  <path id="e1" d="M290,88 L406,88" stroke="url(#g-e1)" stroke-width="1.7" fill="none" marker-end="url(#a-pro)"/>
+  <path id="p1" d="M672,88 C778,88 800,283 846,283" stroke="url(#g-p1)" stroke-width="1.7" fill="none" marker-end="url(#a-inf)"/>
+  <path id="p2" d="M672,283 L846,283" stroke="url(#g-p2)" stroke-width="1.7" fill="none" marker-end="url(#a-inf)"/>
+  <path id="i1" d="M1112,283 L1226,283" stroke="url(#g-i1)" stroke-width="1.7" fill="none" marker-end="url(#a-con)"/>
+ </g>
+ <!-- undercut (defeater) -->
+ <path id="ud" d="M660,488 C815,488 865,360 968,331" stroke="#ff6e83" stroke-width="1.6" stroke-dasharray="1.5 7" stroke-linecap="round" fill="none" marker-end="url(#a-def)" opacity=".9">
+   <animate attributeName="stroke-dashoffset" from="0" to="-17" dur="1.1s" repeatCount="indefinite"/>
+ </path>
+ <!-- travelling signals -->
+ <circle r="2.6" fill="#cfe0ff" filter="url(#glow)"><animateMotion dur="2.4s" repeatCount="indefinite" rotate="auto"><mpath href="#e1"/></animateMotion></circle>
+ <circle r="2.6" fill="#c9c2ff" filter="url(#glow)"><animateMotion dur="3.1s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+ <circle r="2.6" fill="#c9c2ff" filter="url(#glow)"><animateMotion dur="2.6s" begin=".6s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle>
+ <circle r="2.8" fill="#b9f2d8" filter="url(#glow)"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#i1"/></animateMotion></circle>
+</svg>
+
+<div class="node evi" style="left:40px;top:42px"><div class="kind k-evi"><span class="d"></span>Evidence</div><div class="title">Independently reported</div></div>
+<div class="node pro" style="left:422px;top:42px"><div class="kind k-pro"><span class="d"></span>Proposition</div><div class="title">K3 is near-frontier</div></div>
+<div class="node pro" style="left:422px;top:237px"><div class="kind k-pro"><span class="d"></span>Proposition</div><div class="title">Built under export limits</div></div>
+<div class="node def" style="left:422px;top:442px"><div class="kind k-def"><span class="d"></span>Defeater</div><div class="title">Pre-ban chip stockpile</div></div>
+<div class="node inf" style="left:860px;top:237px"><div class="kind k-inf"><span class="d"></span>Inference</div><div class="title">So the limits didn&rsquo;t bite</div></div>
+<div class="node con" style="left:1240px;top:237px"><div class="kind k-con"><span class="d"></span>Conclusion</div><div class="title">Controls are failing</div></div>
+<div class="uclabel" style="left:748px;top:392px">undercuts</div>
+</div></div>
+
+<div class="legend"><span><span class="ln sup"></span>supports</span><span><span class="ln und"></span>undercuts</span></div>
+<script>
+const st=document.getElementById('stage');
+function fit(){const s=Math.min(innerWidth/1500,innerHeight/560)*(innerWidth<760?0.98:0.9);st.style.transform='scale('+s+')'}
+fit();addEventListener('resize',fit);
+</script>
+</body></html>
