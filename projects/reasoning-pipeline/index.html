@@ -27,7 +27,14 @@
         <div class="stage__type">Model judgment</div>
         <h2>Frame the inquiry</h2>
         <p>Resolve what the question means: subject, timeframe, comparison class, exclusions, and the standard an answer must meet.</p>
-        <div class="artifact"><b>Produces</b> Answer contract</div>
+        <div class="stage__input"><b>Input</b><span>Initial query, as-of date, live discourse</span></div>
+        <div class="models" aria-label="Models used">
+          <span>GPT-5.6 Luna</span><span>Gemini 2.5 Pro</span><span>DeepSeek V3.2</span>
+        </div>
+        <div class="prompt-links">
+          <button data-prompt="framer">Framer prompt</button>
+        </div>
+        <div class="artifact"><b>Output</b> Answer contract</div>
       </article>
 
       <div class="connector" aria-hidden="true">→</div>
@@ -41,7 +48,15 @@
           <span>Framer A</span><span>Framer B</span><span>Framer C</span>
           <b>Deterministic ranking</b>
         </div>
-        <div class="artifact"><b>Produces</b> Question portfolio</div>
+        <div class="stage__input"><b>Input</b><span>Blind framing records</span></div>
+        <div class="models" aria-label="Models used">
+          <span>GPT-5.6 Luna</span><span class="model--code">Ranking policy</span>
+        </div>
+        <div class="prompt-links">
+          <button data-prompt="portfolio">Merge prompt</button>
+          <button data-prompt="ranking">Ranking rule</button>
+        </div>
+        <div class="artifact"><b>Output</b> Question portfolio</div>
       </article>
 
       <div class="connector" aria-hidden="true">→</div>
@@ -56,7 +71,14 @@
           <span class="ontology__relation">argument →</span>
           <span class="ontology__claim">Claim</span>
         </div>
-        <div class="artifact"><b>Produces</b> Research-target graph</div>
+        <div class="stage__input"><b>Input</b><span>Answer contract, active questions, hypotheses</span></div>
+        <div class="models" aria-label="Models used">
+          <span>GPT-5.6 Luna</span>
+        </div>
+        <div class="prompt-links">
+          <button data-prompt="decomposer">Decomposition prompt</button>
+        </div>
+        <div class="artifact"><b>Output</b> Research-target graph</div>
       </article>
 
       <div class="connector" aria-hidden="true">→</div>
@@ -70,7 +92,15 @@
           <span class="split__support">Seek support</span>
           <span class="split__challenge">Seek opposition</span>
         </div>
-        <div class="artifact"><b>Produces</b> Grounds + coverage records</div>
+        <div class="stage__input"><b>Input</b><span>One scoped claim and its operationalization</span></div>
+        <div class="models" aria-label="Models used">
+          <span>DeepSeek V3.2 · support</span><span>Gemini 2.5 Pro · challenge</span>
+        </div>
+        <div class="prompt-links">
+          <button data-prompt="support-research">Support prompt</button>
+          <button data-prompt="challenge-research">Challenge prompt</button>
+        </div>
+        <div class="artifact"><b>Output</b> Grounds + coverage records</div>
       </article>
 
       <div class="connector" aria-hidden="true">→</div>
@@ -84,7 +114,16 @@
           <span>Verifier</span><span>Falsifier</span><span>Comparator</span>
           <b>Dependence-aware aggregation</b>
         </div>
-        <div class="artifact"><b>Produces</b> Signed assessment records</div>
+        <div class="stage__input"><b>Input</b><span>Exact claim and extracted grounds</span></div>
+        <div class="models" aria-label="Models used">
+          <span>GPT-5.6 Luna · verify</span><span>DeepSeek V3.2 · falsify</span><span>Gemini 2.5 Pro · compare</span>
+        </div>
+        <div class="prompt-links">
+          <button data-prompt="verifier">Verifier</button>
+          <button data-prompt="falsifier">Falsifier</button>
+          <button data-prompt="comparator">Comparator</button>
+        </div>
+        <div class="artifact"><b>Output</b> Signed assessment records</div>
       </article>
 
       <div class="connector" aria-hidden="true">→</div>
@@ -94,7 +133,15 @@
         <div class="stage__type">Model construction + deterministic compiler</div>
         <h2>Compile the reasoning artifact</h2>
         <p>The completed claim graph, arguments, claim-backed defeaters, grounds, assessments, provenance, and terminal claims become one durable object.</p>
-        <div class="artifact artifact--strong"><b>This is the source of truth</b> Native reasoning graph</div>
+        <div class="stage__input"><b>Input</b><span>Portfolio, skeleton, research, assessments, grounds</span></div>
+        <div class="models" aria-label="Models used">
+          <span>GPT-5.6 Luna · construct</span><span>DeepSeek V3.2 · review</span><span class="model--code">Python compiler</span>
+        </div>
+        <div class="prompt-links">
+          <button data-prompt="native-graph">Graph prompt</button>
+          <button data-prompt="graph-review">Review prompt</button>
+        </div>
+        <div class="artifact artifact--strong"><b>Output · source of truth</b> Native reasoning graph</div>
       </article>
 
       <div class="connector" aria-hidden="true">→</div>
@@ -108,7 +155,14 @@
           <span>Schema</span><span>Identity</span><span>Dependence</span>
           <span>Defeaters</span><span>Z3 when suitable</span>
         </div>
-        <div class="artifact"><b>Produces</b> Validation reports</div>
+        <div class="stage__input"><b>Input</b><span>Compiled reasoning artifact</span></div>
+        <div class="models" aria-label="Tools used">
+          <span class="model--code">Python policy engine</span><span class="model--code">Z3 4.16 + truth table</span>
+        </div>
+        <div class="prompt-links">
+          <button data-prompt="deterministic-checks">Deterministic rules</button>
+        </div>
+        <div class="artifact"><b>Output</b> Validation reports</div>
       </article>
 
       <div class="connector" aria-hidden="true">→</div>
@@ -123,7 +177,15 @@
           <span>Answer prose</span>
           <span>Inquiry frontier</span>
         </div>
-        <div class="artifact"><b>Produces</b> Audited answer bundle</div>
+        <div class="stage__input"><b>Input</b><span>Terminal claims and their assessments</span></div>
+        <div class="models" aria-label="Models used">
+          <span>GPT-5.6 Luna · write</span><span>DeepSeek V3.2 · audit</span>
+        </div>
+        <div class="prompt-links">
+          <button data-prompt="writer">Writer prompt</button>
+          <button data-prompt="answer-audit">Audit prompt</button>
+        </div>
+        <div class="artifact"><b>Output</b> Audited answer bundle</div>
       </article>
 
       <div class="connector" aria-hidden="true">→</div>
@@ -133,7 +195,14 @@
         <div class="stage__type">Deterministic projection</div>
         <h2>Render the visual</h2>
         <p>Cards and lines are derived from the same artifact: claims become cards, terminal claims become answers, arguments become support lines, and claim-backed defeaters become challenge lines.</p>
-        <div class="artifact"><b>Produces</b> Answer-first graph view</div>
+        <div class="stage__input"><b>Input</b><span>Native artifact and active question ID</span></div>
+        <div class="models" aria-label="Tools used">
+          <span class="model--code">Deterministic browser code</span>
+        </div>
+        <div class="prompt-links">
+          <button data-prompt="projection">Projection rules</button>
+        </div>
+        <div class="artifact"><b>Output</b> Answer-first graph view</div>
       </article>
     </section>
 
@@ -196,5 +265,14 @@
     <a href="../kimi3-run-v02/">View the Kimi K3 reasoning graph →</a>
     <span>Specification and implementation: v0.3</span>
   </footer>
+
+  <dialog id="prompt-dialog">
+    <button class="dialog__close" id="prompt-close" aria-label="Close">×</button>
+    <div class="dialog__eyebrow" id="prompt-kind">PROMPT TEMPLATE</div>
+    <h2 id="prompt-title"></h2>
+    <div class="dialog__meta" id="prompt-meta"></div>
+    <pre id="prompt-text"></pre>
+  </dialog>
+  <script src="pipeline.js"></script>
 </body>
 </html>
