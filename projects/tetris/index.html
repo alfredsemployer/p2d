@@ -5,11 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>tetris · p2d</title>
   <meta name="description" content="A small Tetris, built for thinking with.">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tetris">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <link rel="stylesheet" href="../../assets/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    .offline-install {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .install-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid var(--border-hi);
+      background: var(--bg-panel);
+      color: var(--fg-hi);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 9px 12px;
+      cursor: pointer;
+    }
+    .install-button:hover,
+    .install-button:focus-visible {
+      border-color: var(--amber);
+      color: var(--amber);
+      outline: none;
+    }
+    .install-button:disabled {
+      cursor: default;
+      color: var(--fg-mute);
+      border-color: var(--border);
+    }
+    .install-icon { width: 18px; height: 18px; flex: 0 0 auto; }
+    .install-note {
+      color: var(--fg-mute);
+      font-size: 11px;
+      line-height: 1.45;
+      max-width: 34ch;
+      margin: 0;
+    }
     .tetris-wrap {
       display: flex;
       gap: 28px;
@@ -139,6 +185,9 @@
       .side { flex-direction: row; flex-wrap: wrap; min-width: 0; width: 100%; }
       .panel { flex: 1; min-width: 120px; }
     }
+    @media (display-mode: standalone) {
+      .offline-install { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -156,6 +205,19 @@
     <section class="intro">
       <h1>tetris</h1>
       <p>seven-bag randomizer, hold, ghost piece, hard drop. keyboard or touch. that's it.</p>
+      <div class="offline-install">
+        <button class="install-button" id="install-button" type="button" aria-describedby="install-note">
+          <svg class="install-icon" viewBox="0 0 18 18" aria-hidden="true">
+            <rect x="1" y="1" width="5" height="5" rx="1" fill="#b491d6"></rect>
+            <rect x="6.5" y="1" width="5" height="5" rx="1" fill="#b491d6"></rect>
+            <rect x="12" y="1" width="5" height="5" rx="1" fill="#b491d6"></rect>
+            <rect x="6.5" y="6.5" width="5" height="5" rx="1" fill="#b491d6"></rect>
+            <path d="M9 12.8v3.5m0 0-1.7-1.7M9 16.3l1.7-1.7" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span id="install-label">download for offline</span>
+        </button>
+        <p class="install-note" id="install-note" role="status" aria-live="polite">install once, then play without wi-fi. the game has no audio, so your audiobook keeps going.</p>
+      </div>
     </section>
 
     <div class="tetris-wrap">
@@ -591,6 +653,126 @@
     // ── boot ──
     reset();
     showOverlay('tetris', 'stack lines, clear them, don’t reach the top.', 'press enter / tap to start');
+  })();
+  </script>
+  <script>
+  (function () {
+    'use strict';
+
+    const button = document.getElementById('install-button');
+    const label = document.getElementById('install-label');
+    const note = document.getElementById('install-note');
+    let installPrompt = null;
+
+    const isStandalone = () =>
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true;
+
+    function markReady() {
+      button.disabled = true;
+      label.textContent = 'offline ready';
+      note.textContent = 'installed and ready for airplane mode.';
+    }
+
+    async function downloadStandaloneCopy() {
+      button.disabled = true;
+      label.textContent = 'preparing…';
+      note.textContent = 'building a single-file offline copy.';
+
+      try {
+        const [pageResponse, cssResponse] = await Promise.all([
+          fetch('./index.html', { cache: 'no-store' }),
+          fetch('../../assets/style.css', { cache: 'no-store' })
+        ]);
+        if (!pageResponse.ok || !cssResponse.ok) throw new Error('offline copy unavailable');
+
+        const [pageSource, sharedCss] = await Promise.all([
+          pageResponse.text(),
+          cssResponse.text()
+        ]);
+        const standaloneSource = pageSource
+          .replace(
+            '<link rel="stylesheet" href="../../assets/style.css">',
+            '<style>\n' + sharedCss + '\n</style>'
+          )
+          .replace('<link rel="manifest" href="./manifest.webmanifest">', '')
+          .replace('<link rel="icon" href="./icon.svg" type="image/svg+xml">', '')
+          .replace('<link rel="apple-touch-icon" href="./apple-touch-icon.png">', '');
+        const file = new Blob([standaloneSource], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(file);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'p2d-tetris-offline.html';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        label.textContent = 'download again';
+        note.textContent = 'saved as p2d-tetris-offline.html — open that file without wi-fi.';
+      } catch (error) {
+        label.textContent = 'try again';
+        note.textContent = 'could not build the offline copy. check your connection and try again.';
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      installPrompt = event;
+      note.textContent = 'installs as a small app and works without wi-fi.';
+    });
+
+    window.addEventListener('appinstalled', () => {
+      installPrompt = null;
+      markReady();
+    });
+
+    button.addEventListener('click', async () => {
+      if (isStandalone()) {
+        markReady();
+        return;
+      }
+
+      if (installPrompt) {
+        installPrompt.prompt();
+        const choice = await installPrompt.userChoice;
+        if (choice.outcome === 'accepted') markReady();
+        installPrompt = null;
+        return;
+      }
+
+      const platform = navigator.userAgent.toLowerCase();
+      const isIos = /iphone|ipad|ipod/.test(platform);
+      const isAndroid = /android/.test(platform);
+      if (isIos) {
+        note.textContent = 'tap Share, then “Add to Home Screen.” it will be ready offline.';
+        return;
+      }
+      if (isAndroid) {
+        note.textContent = 'open your browser menu, then choose “Install app” or “Add to Home screen.”';
+        return;
+      }
+
+      await downloadStandaloneCopy();
+    });
+
+    if (window.location.protocol === 'file:') {
+      markReady();
+      note.textContent = 'this is the offline copy — no connection needed.';
+      return;
+    }
+
+    if (isStandalone()) markReady();
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js').catch(() => {
+          note.textContent = 'offline setup failed. reload while connected and try again.';
+        });
+      });
+    }
   })();
   </script>
 </body>
