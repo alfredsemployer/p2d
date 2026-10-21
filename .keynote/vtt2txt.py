@@ -4,7 +4,7 @@ import html, re, sys
 def parse(path):
     out, last = [], ""
     ts = None
-    for line in open(path, encoding="utf-8"):
+    for line in open(path, encoding="utf-8-sig"):
         line = line.rstrip("\n")
         m = re.match(r"(\d+):(\d\d):(\d\d)\.\d+ -->", line)
         if m:
@@ -12,7 +12,7 @@ def parse(path):
             continue
         if not line.strip() or line.startswith(("WEBVTT", "Kind:", "Language:", "NOTE")):
             continue
-        text = html.unescape(re.sub(r"<[^>]+>", "", line)).strip()
+        text = html.unescape(re.sub(r"<[^>]+>", "", line)).replace("\ufeff", "").strip()
         if not text or text == last:
             continue
         # rolling captions repeat the previous line as a prefix
