@@ -43,7 +43,7 @@ if [ ! -s transcript-captions.txt ]; then
       log "captions OK: $f ($(wc -w < transcript-captions.txt) words, video $ID)"; break
     fi
     log "attempt $i ($ID): $(grep -m1 -oE 'ERROR.{0,90}|live event will begin.{0,40}' fetch.log || echo 'no captions yet (still live or processing)')"
-    sleep 45
+    sleep 120  # gentler polling: 45s got the IP rate-limited (HTTP 429)
   done
   [ -s transcript-captions.txt ] || { log "CAPTIONS NOT AVAILABLE YET after $MINUTES min"; exit 2; }
 fi
